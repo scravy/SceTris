@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns="http://technodrom.scravy.de/2010/relations" targetNamespace="http://technodrom.scravy.de/2010/relations" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<xs:element name="relations">
+	<xs:annotation>
+		<!-- description here -->
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="setup" minOccurs="0" maxOccurs="1" />
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="entitiy" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="relationship" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="trait" minOccrus="0" maxOccurs="unbounded" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="entity">
+	
+</xs:element>
+
+<xs:element name="relationship">
+
+</xs:element>
+
+<xs:element name="subject">
+
+</xs:element>
+
+<xs:element name="object">
+
+</xs:element>
+
+<xs:element name="unique">
+
+</xs:element>
+
+<xs:element name="primary">
+
+</xs:element>
+
+<xs:element name="ref">
+	
+</xs:element>
+
+<xs:element name="include">
+
+</xs:element>
+
+<xs:element name="attribute">
+
+</xs:element>
+
+<xs:element name="trait">
+
+</xs:element>
+
+<xs:element name="setup">
+
+</xs:element>
+
+</xs:schema>
