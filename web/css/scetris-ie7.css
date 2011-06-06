@@ -1,9 +1,0 @@
-@import url("lego.css");
-@import url("ui/jquery-ui-1.8.6.custom.css");
-
-body {
-	margin: 0;
-	padding-top: 30px;
-	font-size: 11px;
-	font-family: "Verdana", "Arial", "Helvetica", sans-serif;
-}
