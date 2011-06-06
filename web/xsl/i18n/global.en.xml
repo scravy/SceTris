@@ -1,0 +1,105 @@
+<lang>
+	<footer-text>Freie Universität Berlin – Projekt Scetris</footer-text>
+	
+	<welcome>Welcome</welcome>
+	
+	<my-grades>My Grades</my-grades>
+	<my-courses>My Courses</my-courses>
+	<my-schedule>My Schedule</my-schedule>
+	
+	<logged-in-as>You are logged in as</logged-in-as>
+	<not-logged-in>You are not logged in.</not-logged-in>
+	<logged-out>Logged out</logged-out>
+	<just-logged-out>Your were successfully logged out.</just-logged-out>
+	<never-logged-in>You never logged in to the system before.</never-logged-in>
+	<do-logout>logout</do-logout>
+	<do-login>Login</do-login>
+	<preferences>Preferences</preferences>
+	
+	<login>Login</login>
+	<index>Index</index>
+	<home>Home</home>
+	<people>People</people>
+	<help>Help</help>
+	<search>Search</search>
+	<alternate-versions>Alternative Versions</alternate-versions>
+	
+	<lectures>Lectures</lectures>
+	<courses>Courses</courses>
+	<list-of-lectures>List of lectures</list-of-lectures>
+	<lecturer>Lecturer</lecturer>
+	<lecturers>Lecturers</lecturers>
+	
+	<admin>Admin</admin>
+	<admin-facilities>Buildings &amp; Rooms</admin-facilities>
+	<admin-users>Users &amp; Roles</admin-users>
+	<admin-courses>Academic Terms &amp; Courses</admin-courses>
+	<admin-imex>Import / Export</admin-imex>
+	<admin-sysconfig>System settings</admin-sysconfig>
+	<admin-schedulerPanel>Scheduler panel</admin-schedulerPanel>
+	
+	<import>Import</import>
+	<export>Export</export>
+	<export-all>Export everything</export-all>
+	
+	<global-meta>additional info</global-meta>
+	<global-main>content</global-main>
+	<global-menu>page menu</global-menu>
+	<global-navbar>site navigation</global-navbar>
+	<global-jump>Jump to:</global-jump>
+	
+	<labels>
+		<username>Username</username>
+		<password>Password</password>
+		<submit-login>Sign in</submit-login>
+		<import-submit>Import now</import-submit>
+	</labels>
+	
+	<info>
+		<username>Provide your username or your EMail-Address here.</username>
+		<password>Provide your password here.</password>
+	</info>
+	
+	<bad-browser>
+		<message>You're using an outdated browser. You should consider updating</message>
+		<alternative link="http://www.getfirefox.com/">Firefox</alternative>
+		<alternative link="http://www.opera.com/">Opera</alternative>
+		<alternative link="http://www.google.com/chrome">Chrome</alternative>
+	</bad-browser>
+	
+	<exceptions>
+		<NotScheduleableException>
+			<title>Program not scheduable.</title>
+			<explanation>You may add some more rooms to provide enough space.</explanation>
+		</NotScheduleableException>
+
+		<AccessDeniedException>
+			<title>Access denied.</title>
+			<explanation>You lack the right to access this page.</explanation>
+			<not-logged-in>It may help to log in the system.</not-logged-in>
+		</AccessDeniedException>
+		<UnknownActionException>
+			<title>The requested page does not exist.</title>
+			<explanation>The page that you requested does not exist.
+				In case you were following a link it seems to be broken.
+				Please contact the administrator in that case. In case
+				you were following a bookmark the page may have ceased to
+				exist.</explanation>
+		</UnknownActionException>
+		<UnknownModuleException>
+			<title>The requested page does not exist.
+				In case you were following a link it seems to be broken.
+				Please contact the administrator in that case. In case
+				you were following a bookmark the page may have ceased to
+				exist.</title>
+			<explanation>e.</explanation>
+		</UnknownModuleException>
+		<NullPointerException>
+			<title>Internal Error.</title>
+			<explanation>We’re sorry – an internal error occured. This should not happen at all.
+				If you’re experiencing problems like this more often than you feel you should,
+				please contact the administration.
+			</explanation>
+		</NullPointerException>
+	</exceptions>
+</lang>

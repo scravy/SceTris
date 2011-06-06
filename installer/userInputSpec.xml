@@ -1,0 +1,72 @@
+﻿<userInput>
+  <panel order="0">
+		<field type="title" txt="Select tomcat location" id="titleTomcatLocation" />
+		<field type="divider" align="top" />
+		<field type="staticText" txt="Select the tomcat folder" id="tomcatLocationInfo" />
+		<field type="dir" variable="user.tomcat">
+			<spec txt="" size="25" set=" " />
+		</field>
+	</panel>
+	<panel order="1">
+		<field type="title" txt="Enter properties" id="properties" />
+		<field type="staticText" txt="some properties you have to enter" id="propertiesInfo" />
+		<field type="divider" align="top" />
+		<field type="text" variable="setup.db.database">
+			<description txt="The name of the setupDatabase" id="setup.db.database.text" />
+			<spec size="25" set="" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+		<field type="divider" />
+		<field type="text" variable="webapp.db.hostname">
+			<description txt="The name of the host" id="webapp.db.hostname.text" />
+			<spec size="25" set="" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+		<field type="divider" />
+		<field type="text" variable="webapp.db.port">
+			<description txt="The port of the Database" id="webapp.db.port.text" />
+			<spec size="25" set="" />
+			<validator class="com.izforge.izpack.util.RegularExpressionValidator" id="portOnlyNumbers">
+				<param name="pattern" value="[0-9]{1,5}" />
+			</validator>
+		</field>
+		<field type="divider" />
+		<field type="text" variable="setup.db.username">
+			<description txt="The username of the setupDatabase" id="setup.db.username.text" />
+			<spec size="25" set="" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+		<field type="divider" />
+		<field type="password" variable="setup.db.password">
+			<description txt="The password of the setupDatabase" id="setup.db.password.text" />
+			<spec>
+				<pwd txt="The Password:" id="password.enter" size="25" set="" />
+				<pwd txt="Retype Password:" id="password.reenter" size="25" set="" />
+			</spec>
+			<validator class="com.izforge.izpack.util.PasswordEqualityValidator" id="passwordsNotEqual" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+		<field type="divider" />
+		<field type="text" variable="webapp.db.database">
+			<description txt="The name of the Database for the webapp" id="webapp.db.database.text" />
+			<spec size="25" set="" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+		<field type="divider" />
+		<field type="text" variable="webapp.db.username">
+			<description txt="The username of the Database" id="webapp.db.username.text" />
+			<spec size="25" set="" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+		<field type="divider" />
+		<field type="password" variable="webapp.db.password">
+			<description txt="The password for ..." id="webapp.db.password.text" />
+			<spec>
+				<pwd txt="The Password:" size="25" set="" />
+				<pwd txt="Retype Password:" size="25" set="" />
+			</spec>
+			<validator class="com.izforge.izpack.util.PasswordEqualityValidator" id="passwordsNotEqual" />
+			<validator class="com.izforge.izpack.util.NotEmptyValidator" id="fieldEmpty" />
+		</field>
+	</panel>
+</userInput>

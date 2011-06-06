@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+@import "fuberlin.css";
+@import "lego.css";
+@import "ui/jquery-ui-1.8.6.custom.css";
+
+@namespace "http://www.w3.org/1999/xhtml";
+
+.optionLink:before {
+	content: "[";
+}
+
+.optionLink:after {
+	content: "]";
+}
+
+.users {
+	width: 550px;
+}
+
+.users .name, .users .time {
+	display: block;	
+}
+
+.users .time {
+	color: gray;
+}
+
+ul.topMostDepartments > li > a {
+	font-weight: bold;
+}
+
+ul.topMostDepartments > li ul {
+	margin-top: .3em;
+	margin-bottom: .4em;
+}
+
+head {
+	display: none;
+}
+
+.exception {
+	border-color: #c00;
+	background: #c00;
+	padding: 1em 1em .5em;
+	margin: 1em 0;
+}
+
+.exception, .exception * {
+	color: white !important;
+}
+
+.exception .explanation {
+	font-size: 120%;
+}
+
+.notice:before {
+	content: "! ";
+	color: white;
+	font-family: "Times New Roman", serif;
+	font-size: 40px;
+	line-height: 40px;
+} 
+
+.notice {
+	padding: .5em;
+	padding-left: 20px;
+	min-height: 40px;
+	background-repeat: no-repeat;
+	background-color: rgb(255,153,51);
+	color: white;
+	font-weight: bold;
+}
+
+.mod-admin.act- #global-menu {
+	width: 750px;
+	height: 300px;
+	background: white;
+	text-align: center;
+}
+
+.mod-admin.act- #global-menu .heading, .mod-admin.act- #global-breadcrumb {
+	display: none;
+}
+
+.mod-admin.act- #global-menu li {
+	border: none;
+}
+
+.mod-admin.act- #global-menu .heading + ul > li > a {
+	font-size: 120%;
+	font-weight: bold;
+	text-align: center;
+	margin-top: .85em;
+	margin-bottom: .35em;
+}
+
+.mod-admin.act- #global-menu > li > ul > li {
+	display: block;
+	width: 33%;
+	float: left;
+}
+
+.mod-admin.act- #global-menu > li + li {
+	display: none;
+}
+

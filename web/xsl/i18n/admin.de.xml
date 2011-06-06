@@ -1,0 +1,115 @@
+<lang>
+	<users>Benutzerverwaltung</users>
+	<roles>Login-Rollen</roles>
+	<groups>Benutzergruppen</groups>
+	<buildings>Gebäude</buildings>
+	<rooms>Räume</rooms>
+	<departments>Institute</departments>
+	<features>Raumaustattungen</features>
+	<roomsAndFeatures>Räume und Ausstattungen</roomsAndFeatures>
+	<no-superordinate-department>Kein übergeordnetes Institut</no-superordinate-department>
+	<belonging-to-no-dep>Gehört zu keinem Institut</belonging-to-no-dep>
+	<userAttributes>Benutzerattribute</userAttributes>
+	<courseAttributes>Kursattribute</courseAttributes>
+	<usersAndRolesDescription>Hier können Sie Benutzerkonten, Gruppen, Rollen und Privilegien verwalten</usersAndRolesDescription>
+	<noCourse>Es sind keine Kurse in der Datenbank. Um einen Kurs zu erzeugen, wählen Sie "neuer Kurs" aus dem Menü auf der linken Seite</noCourse>
+	<noDepartment>Momentan sind keine Institute in der Datenbank. Vielleicht möchten Sie eines mit dem oben liegenden Formular erzeugen.</noDepartment>
+	<noBuildings>Momentan sind keine Gebäude in der Datenbank vorhanden. Um eines zu erzeugen, wählen Sie "neues Gebäude" aus dem Menü auf der linken Seite</noBuildings>
+	<noFeatures>Momentan existieren keine Ausstattungsmerkmale in der Datenbank. Um eines zu erzeugen, wählen Sie "neues Merkmal" aus dem Menü auf der linken Seite.</noFeatures>
+	<noRooms>Momentan sind keine Räume in der Datenbank vorhanden. Um einen anzulegen, wählen Sie ein Gebäude und legen darin einen neuen Raum an.</noRooms>
+	<noPrivileges>Es sind keine Privilegien in der Datenbank vorhanden. Dies sollte nicht passieren. Sind Sie sicher, dass SceTris korrekt eingestellt ist?</noPrivileges>
+	<noUsers>Momentan existieren keine registrierten Benutzer. Dies sollte nicht passieren. Überprüfen Sie bitte, ob SceTris korrekt eingestellt ist und bei der Installation mindestens ein superadmin erzeugt wurde.</noUsers>
+
+	<!-- USED in left nav and so on-->
+	<createUser>Neues Benutzerkonto anlegen</createUser>
+	<createUserShort>neu</createUserShort>
+	<editUser>Benutzerkonto editieren</editUser>
+	<listUsers>Zeige eine Liste aller Benutzer</listUsers>
+	<listUsersShort>Alle Benutzer</listUsersShort>
+	<createGroup>Eine neue Benutzergruppe anlegen</createGroup>
+	<createGroupShort>neue Gruppe</createGroupShort>
+	<listGroups>zeige Gruppen</listGroups>
+	<listGroupShort>alle Gruppen</listGroupShort>
+	<createDepartment>Erzeuge ein neues Institut</createDepartment>
+	<createDepartmentShort>neu</createDepartmentShort>
+	<listDepartments>zeige Institute</listDepartments>
+	<listDepartmentsShort>alle Institute</listDepartmentsShort>
+	<createRole>erzeuge eine neue Login-Rolle</createRole>
+	<createRoleShort>neu</createRoleShort>
+	<listRoles>zeige Login-Rollen</listRoles>
+	<listRolesShort>alle Rollen</listRolesShort>
+	<createRoom>neuen Raum anlegen</createRoom>
+	<createRoomShort>neuer Raum</createRoomShort>
+	<listRooms>Räume auflisten</listRooms>
+	<listRoomsShort>alle Räume</listRoomsShort>
+	<createBuilding>Gebäude erzeugen</createBuilding>
+	<createBuildingShort>neues Gebäude</createBuildingShort>
+	<listBuildings>Gebäude auflisten</listBuildings>
+	<listBuildingsShort>alle Gebäude</listBuildingsShort>
+	<createFeature>neues Ausstattungsmerkmal erzeugen</createFeature>
+	<createFeatureShort>neues Ausstattungsmerkmal</createFeatureShort>
+	<listFeatures>Ausstattungsmerkmale anzeigen</listFeatures>
+
+
+	<noPatternUser>Keine Benutzer gefunden.</noPatternUser>
+
+	<my-grades>Meine Noten</my-grades>
+	<my-courses>Meine Kurse</my-courses>
+	<my-schedule>Mein Stundenplan</my-schedule>
+	
+	<logged-in-as>Du bist eingeloggt als</logged-in-as>
+	<not-logged-in>Du bist nicht eingeloggt.</not-logged-in>
+	<logged-out>Ausgeloggt</logged-out>
+	<just-logged-out>Du wurdest erfolgreich ausgeloggt.</just-logged-out>
+	<do-logout>Ausloggen</do-logout>
+	<do-login>Einloggen</do-login>
+	<preferences>Einstellungen</preferences>
+	
+	<login>Login</login>
+	<index>Index</index>
+	<home>Start</home>
+	<people>Personen</people>
+	<help>Hilfe</help>
+	<search>Suche</search>
+	<alternate-versions>Alternative Versionen</alternate-versions>
+	
+	<lectures>Veranstaltungen</lectures>
+	<courses>Kurse</courses>
+	<list-of-lectures>Vorlesungsverzeichnis</list-of-lectures>
+	<lecturer>Dozent</lecturer>
+	<lecturers>Dozenten</lecturers>
+	
+	<admin>Verwaltung</admin>
+	<admin-facilities>Gebäude &amp; Räume</admin-facilities>
+	<admin-users>Benutzer &amp; Rollen</admin-users>
+	<admin-courses>Semester &amp; Kurse</admin-courses>
+	<admin-imex>Import / Export</admin-imex>
+	<admin-sysconfig>Systemeinstellungen</admin-sysconfig>
+	
+	<import>Import</import>
+	<export>Export</export>
+	<export-all>Alles exportieren</export-all>
+	
+	<labels>
+		<username>Benutzername</username>
+		<password>Passwort</password>
+		<submit-login>Einloggen</submit-login>
+		<import-submit>Jetzt importieren</import-submit>
+		
+		<someselect>Some select</someselect>
+		<anotherselect>Another select</anotherselect>
+
+	<name>Name</name>
+	<options>Optionen</options>
+	<details>Details</details>
+	<edit>Bearbeiten</edit>
+	<add>Anlegen</add>
+	<delete>Entfernen</delete>
+
+	</labels>
+	
+	<info>
+		<username>Gib hier deinen Benutzernamen oder deine EMail-Adresse an.</username>
+		<password>Gib hier dein Passwort an.</password>
+	</info>
+</lang>

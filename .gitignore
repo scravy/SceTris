@@ -3,6 +3,6 @@
 .project
 .settings
 .classpath
-bin
+/bin
 *.jar
-
+lib

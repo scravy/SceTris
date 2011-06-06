@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: de.fu.scetris.Installer
+Class-Path: aspectjrt.jar aspectjtools.jar avalon-framework-4.2.0.jar batik-all-1.7.jar commons-io-1.3.1.jar commons-logging-1.0.4.jar fop.jar jetty-6.1.26.jar jetty-util-6.1.26.jar json.jar junction.jar junit-4.8.2.jar log4j-1.2.16.jar postgresql-8.4-702.jdbc4.jar serializer.jar servlet-api-2.5-20081211.jar weave.jar xalan.jar xercesImpl.jar xml-apis.jar xmlgraphics-commons-1.4.jar yuicompressor-2.4.2.jar
+
