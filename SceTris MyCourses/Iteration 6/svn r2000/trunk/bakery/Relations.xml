@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<relations xmlns="http://technodrom.scravy.de/2010/relations" xmlns:n="http://technodrom.scravy.de/2010/notes" xmlns:dc="http://dublincore.org/documents/dcmi-namespace/">
+<!--
+ * Relations.xml / 2010
+ * Part of SCORE myCourses
+ * 
+ * Team Scetris: David Bialik, Julian Fleischer,
+ * Hagen Mahnke, Konrad Reiche, André Zoufahl
+-->
+	<setup fk-prefix="" quotes="yes" schema="scetris" />
+	
+	<trait name="common" />
+	
+	<trait name="provenanceAttrs">
+		<attribute name="ctime" type="timestamp" default="now" hidden="true">
+			<dc:title xml:lang="de">Datum der Erstellung</dc:title>
+			<dc:title xml:lang="en">date of creation</dc:title>
+		</attribute>
+		<attribute name="mtime" type="timestamp" default="now" use="timestamp" hidden="true">
+			<dc:title xml:lang="de">Datum der letzten Änderung</dc:title>
+			<dc:title xml:lang="en">date of last edit</dc:title>
+		</attribute>
+		<attribute name="created_by" ref="Person" nullable="true" hidden="true">
+			<dc:title xml:lang="de">ursprünglich erstellt von</dc:title>
+			<dc:title xml:lang="en">initially created by</dc:title>
+		</attribute>
+		<attribute name="modified_by" ref="Person" nullable="true" hidden="true">
+			<dc:title xml:lang="de">zuletzt verändert von</dc:title>
+			<dc:title xml:lang="en">least recently modified by</dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="securityKey">
+		<attribute name="timekey" type="timestamp" default="now" hidden="true" use="timestamp" />
+	</trait>
+	
+	<trait name="uniqueName">
+		<attribute name="name" type="string" unique="true" use="title">
+			<dc:title xml:lang="de">eindeutiger Name</dc:title>
+			<dc:title xml:lang="en">unique name</dc:title>
+			<dc:description>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dc:description>
+		</attribute>
+	</trait>
+	
+	<trait name="artificialKey">
+		<attribute name="id" type="integer" primary="true" serial="true" use="id">
+			<dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+			<dc:title xml:lang="en">numeric identifier</dc:title>
+			<dc:description>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>
+		</attribute>
+	</trait>
+	
+	<trait name="namedEntity">
+		<include trait="artificialKey" />
+		<include trait="uniqueName" />
+	</trait>
+	
+	<trait name="genericAttribute">
+		<include trait="namedEntity" />
+		<attribute name="type" type="string" default="string">
+			<dc:title xml:lang="de">Typ des Attributs</dc:title>
+			<dc:title xml:lang="en">type of the attribute</dc:title>
+		</attribute>
+		<attribute name="unique_value" type="boolean" default="false">
+			<dc:title xml:lang="de">ist eindeutig</dc:title>
+			<dc:title xml:lang="en">is unique</dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="attributeValue">
+		<attribute name="time" type="timestamp" default="now" primary="true">
+			<dc:title xml:lang="de">Datum der letzten Änderung</dc:title>
+			<dc:title xml:lang="en">date of last edit</dc:title>
+		</attribute>
+		<attribute name="editor" ref="Person" />
+		<attribute name="value" type="string" nullable="true">
+			<dc:title xml:lang="de">Wert des Attributs</dc:title>
+			<dc:title xml:lang="en">value of the attribute</dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="priority">
+		<attribute name="priority" type="integer" min="0" max="100">
+			<dc:title xml:lang="de">Priorität</dc:title>
+			<dc:title xml:lang="en">priority</dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="featureRequirement">
+		<attribute name="quantity_min" type="integer">
+			<dc:title xml:lang="de">Mindestanzahl des Features die vorhanden sein muss</dc:title>
+			<dc:title xml:lang="en">minimum number of the feature required</dc:title>
+		</attribute>
+		<attribute name="quantity_better" type="integer">
+			<dc:title xml:lang="de">Anzahl des Features welche besser wäre</dc:title>
+			<dc:title xml:lang="en">number of features that would be better</dc:title>
+		</attribute>
+	</trait>
+	
+	
+	<!-- ENTITIES -->
+	
+	<!-- Room -->
+	<entity name="Room">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description>
+A Room is a physical location where CourseElementInstances take place. A Room has an identifier which uniquely identifies it across the whole university. A Room is located inside a Building. Every Room has a number which is unique in the Building. A Room has Features and it may have a certain quantity of any Feature (e.g. 300 seats, a beamer, 20 workstations). Some Rooms do have a special name (“Audimax”) which is unique in the building. A Room may be of a certain type (auditorium, lab, ...). Not all rooms are always available.
+		</dc:description>
+		<attribute name="name" type="string" nullable="true">
+			<dc:title xml:lang="de">Name des Raumes</dc:title>
+			<dc:title xml:lang="en">name of the room</dc:title>
+			<dc:description>
+				The Roomname is unique per Building and identifies the Room in this Building.
+			</dc:description>
+		</attribute>
+		<attribute name="number" type="string">
+			<dc:title xml:lang="de">Raum-Nummer</dc:title>
+			<dc:title xml:lang="en">room number</dc:title>
+			<dc:description>
+				The Roomnumber has not to be unique. It is an alternative name for the Room.
+			</dc:description>
+		</attribute>
+		<attribute name="building" ref="Building">
+			<dc:title xml:lang="de">ist in Gebäude</dc:title>
+			<dc:title xml:lang="en">located in</dc:title>
+			<dc:description>
+				The Buildingname is unique and represents a location where the Room is.
+			</dc:description>
+		</attribute>
+		<unique>
+			<ref field="name" />
+			<ref field="building" />
+		</unique>
+	</entity>
+	
+	<!-- Building -->
+	<entity name="Building">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description>
+A Building> has a unique street address and belongs to a Department. Some Buildings have a special name (“Henry-Ford-Building”) which is unique across the whole university.
+		</dc:description>
+		<attribute name="name" type="string" nullable="true" unique="true">
+			<dc:title xml:lang="de">Name des Gebäudes</dc:title>
+			<dc:title xml:lang="en">name of the building</dc:title>
+			<dc:description>
+				The name of Building has to be unique so it identifies the Building.
+			</dc:description>
+		</attribute>
+		<attribute name="address" type="string" unique="true">
+			<dc:title xml:lang="de">Adresse</dc:title>
+			<dc:title xml:lang="en">street adress</dc:title>
+			<dc:description>
+				The address of the Building has to be unique.
+			</dc:description>
+		</attribute>
+		<attribute name="department" ref="Department" nullable="true">
+			<dc:title xml:lang="de">gehört zu Department</dc:title>
+			<dc:title xml:lang="en">belongs to Department</dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- Feature -->
+	<entity name="Feature">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+Rooms do have certain Features which may have a certain quantity. A Feature is identified by a name (“seats”, “beamers”, ...). For example any Room which is suitable to hold a lecture or a seminar in it will have a certain amount of seats, a lab has a certain amount of workplaces. While an auditorium may have 300 seats suitable for doing a lecture it might have only 75 seats suitable for doing an examination.
+		</dc:description>
+	</entity>
+
+	<!-- Person -->
+	<entity name="Person" use="user">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+A Person is a natural person who is able to login to myCourses. Therefore she is having login credentials (e.g. username and password or mail address and password). Every Person has a first name and a last name. There are many different roles at a university and there are persons who act in more than one role (e.g. there are students doing lectures, while not being professors). Every person needs to have a unique identifier regardless of the roles they belong to for administration reasons.
+		</dc:description>
+		<attribute name="first_name" type="string">
+			<dc:title xml:lang="de">Vorname</dc:title>
+			<dc:title xml:lang="en">first name</dc:title>
+			<dc:description>
+				The first name of a Person.
+			</dc:description>
+		</attribute>
+		<attribute name="additional_names" type="string" nullable="true">
+			<dc:title xml:lang="de">weitere Namen</dc:title>
+			<dc:title xml:lang="en">additional names</dc:title>
+			<dc:description>
+				Additional names of a Person.
+			</dc:description>
+		</attribute>
+		<attribute name="last_name" type="string">
+			<dc:title xml:lang="de">Nachname</dc:title>
+			<dc:title xml:lang="en">last name</dc:title>
+			<dc:description>
+				The last name of a Person.
+			</dc:description>
+		</attribute>
+		<attribute name="email_address" type="string" unique="true" nullable="true" use="user.login" java-profile="de.fu.junction.data.EMailAddress">
+			<dc:title xml:lang="de">eMail-Adresse</dc:title>
+			<dc:title xml:lang="en">email address</dc:title>
+			<dc:description>
+				The email address of a Person. It has to be unique.
+			</dc:description>
+		</attribute>
+		<attribute name="login_name" type="string" unique="true" use="user.login" min="3" max="40" match="^[a-zA-Z][a-zA-Z0-9]+([\\.\\-_][a-zA-Z][a-zA-Z0-9]+)*$">
+			<dc:title xml:lang="de">Login-Name</dc:title>
+			<dc:title xml:lang="en">login name</dc:title>
+			<dc:description>
+				The name that is used to log into the system. It has to be unique.
+			</dc:description>
+		</attribute>
+		<attribute name="login_password" type="password" min="6" use="user.password" java-profile="de.fu.junction.data.Password">
+			<dc:title xml:lang="de">Passwort</dc:title>
+			<dc:title xml:lang="en">password</dc:title>
+			<dc:description>
+				The password that is used together with the login name in order to log in into the system.
+			</dc:description>
+		</attribute>
+		<attribute name="is_superuser" type="boolean" default="false">
+			<dc:title xml:lang="de">ist Administrator</dc:title>
+			<dc:title xml:lang="en">is administrator</dc:title>
+			<dc:description>
+				Attribute that shows whether the Person is a superuser or not.
+			</dc:description>
+		</attribute>
+		<attribute name="deleted" type="timestamp" nullable="true" hidden="true">
+			<dc:title xml:lang="de">gelöscht</dc:title>
+			<dc:title xml:lang="en">deleted</dc:title>
+			<dc:description>
+				Attribute that shows on which date a Person was deleted from the system.
+			</dc:description>
+		</attribute>
+		<attribute name="deleted_by" ref="Person" nullable="true" hidden="true">
+			<dc:title xml:lang="de">gelöscht von</dc:title>
+			<dc:title xml:lang="en">deleted by</dc:title>
+			<dc:description>
+				Attribute that shows by which Person the User was deleted.
+			</dc:description>
+		</attribute>
+		<attribute name="working_hours" type="integer" nullable="true">
+			<dc:title xml:lang="de">Arbeitsstunden</dc:title>
+			<dc:title xml:lang="en">working hours</dc:title>
+			<dc:description>
+				This attribute shows the number of working hours of a Person.
+			</dc:description>
+		</attribute>
+		<attribute name="is_student" type="boolean" default="false">
+			<dc:title xml:lang="de">Matrikelnummer</dc:title>
+			<dc:title xml:lang="en">student number</dc:title>
+			<dc:description>
+				The number identifies the Person (student) uniquely.
+			</dc:description>
+		</attribute>
+		<attribute name="is_lecturer" type="boolean" default="false">
+			<dc:title xml:lang="de">gelöscht von</dc:title>
+			<dc:title xml:lang="en">deleted by</dc:title>
+			<dc:description>
+				If part of the staff the staff ID will identify the Persion uniquely.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- Role -->
+	<entity name="Role" use="userRole">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+			A role bundles a set of privileges i.e. permissions a user gains when having one or more roles. The right managment is not hierarchal, it is plain.
+		</dc:description>
+	</entity>
+	
+	<!-- Privilege -->
+	<entity name="Privilege" use="userPrivilege">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+			A privilege represents the permission to do specific tasks, such as logging in, changing data of courses or publishing the shedule.
+		</dc:description>
+	</entity>
+	
+	<!-- Course -->
+	<entity name="Course">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+A Course is a well-defined set of CourseElements. For example there may be a Course which consists of two CourseElements of which one is a mandatory lecture and the other one is an optional seminar.
+		</dc:description>
+	</entity>
+	
+	<!-- CourseElement -->
+	<entity name="CourseElement">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description xmlns="http://www.w3.org/1999/xhtml">
+			A CourseElement is a type of event at a school or university, like a lecture or a seminar. A CourseElement has a duration and it may take place several times in a week (of which each occurrence has a certain duration). A CourseElement may have some dependencies regarding the Features the Room it is held in has. A CourseElement is part of a Course. It is of a certain type (e.g. lecture, seminar, discussion, meeting, ...).
+		</dc:description>
+		<attribute name="name" type="string" nullable="true">
+			<dc:title xml:lang="de">Name des Kurselements</dc:title>
+			<dc:title xml:lang="en">name of the course element</dc:title>
+			<dc:description>
+				The name of the Course Element.
+			</dc:description>
+		</attribute>
+		<attribute name="part_of" ref="Course">
+			<dc:title xml:lang="de">gehört zu</dc:title>
+			<dc:title xml:lang="en">part of</dc:title>
+			<dc:description>
+				The Course this Course Elements belongs to.
+			</dc:description>
+		</attribute>
+		<attribute name="duration" type="integer" min="1">
+			<dc:title xml:lang="de">Dauer</dc:title>
+			<dc:title xml:lang="en">duration</dc:title>
+			<dc:description>
+				The duration of the Course Element.
+			</dc:description>
+		</attribute>
+		<attribute name="type" ref="CourseElementType" nullable="true">
+			<dc:title xml:lang="de">Typ der Lehrveranstaltung</dc:title>
+			<dc:title xml:lang="en">type of lessons</dc:title>
+			<dc:description>
+				The type of the Course Element.
+			</dc:description>
+		</attribute>
+		<attribute name="required" type="boolean" default="true">
+			<dc:title xml:lang="de">obligatorisch</dc:title>
+			<dc:title xml:lang="en">obligatory</dc:title>
+			<dc:description>
+				Whether this Course Element is obligatory or not.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- CourseInstance -->
+	<entity name="CourseInstance">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description>
+			A CourseInstance is created within a Program. It is a Course actually taking place. There can be several CourseInstances of the same Course within a program. There is a main lecturer being primary responsible for any CourseInstance.
+		</dc:description>
+		<attribute name="program" ref="Program" nullable="false">
+			<dc:title xml:lang="de">läuft innerhalb von</dc:title>
+			<dc:title xml:lang="en">takes place in</dc:title>
+			<dc:description>
+				The Program this Course Instance is running in.
+			</dc:description>
+		</attribute>..
+		<attribute name="instance_of" ref="Course" nullable="false">
+			<!-- TODO -->
+		</attribute>
+		<attribute name="start" type="date">
+			<dc:title xml:lang="de">beginnt am</dc:title>
+			<dc:title xml:lang="en">start date</dc:title>
+			<dc:description>
+				The start date of the Course Instance.
+			</dc:description>
+		</attribute>
+		<attribute name="end" type="date">
+			<dc:title xml:lang="de">endet am</dc:title>
+			<dc:title xml:lang="en">end date</dc:title>
+			<dc:description>
+				The end date of the Course Instance.
+			</dc:description>
+		</attribute>
+		<attribute name="main_lecturer" ref="Person">
+			<dc:title xml:lang="de">Dozent</dc:title>
+			<dc:title xml:lang="en">teacher</dc:title>
+			<dc:description>
+				The docent for this Course Element.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- CourseElementInstance -->
+	<entity name="CourseElementInstance">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description>
+			A CourseElementInstance is created within a Program belonging to a CourseInstance. It is a CourseElement actually taking place.
+		</dc:description>
+
+		<attribute name="course_instance" ref="CourseInstance">
+			<dc:title xml:lang="de">ist Teil von</dc:title>
+			<dc:title xml:lang="en">is a part of</dc:title>
+			<dc:description>
+				The Course this Course Element Instance is part of.
+			</dc:description>
+		</attribute>
+		<attribute name="course_element" ref="CourseElement">
+			<dc:title xml:lang="de">abgeleitet von</dc:title>
+			<dc:title xml:lang="en">derived from</dc:title>
+			<dc:description>
+				The Course Element this Course Element Instance is derived from.
+			</dc:description>
+		</attribute>
+		<attribute name="starting_timeslot" ref="Timeslot" nullable="true">
+			<dc:title xml:lang="de">Beginn</dc:title>
+			<dc:title xml:lang="en">begin</dc:title>
+			<dc:description>
+				The starting Timeslot this Course Element Instance is beginning at.
+			</dc:description>
+		</attribute>
+		<attribute name="lecturer" ref="Person" nullable="true">
+			<dc:title xml:lang="de">Dozent</dc:title>
+			<dc:title xml:lang="en">docent</dc:title>
+			<dc:description>
+				The teacher for this Course Element Instance.
+			</dc:description>
+		</attribute>
+		<attribute name="duration" type="integer" min="1">
+			<dc:title xml:lang="de">Dauer</dc:title>
+			<dc:title xml:lang="en">duration</dc:title>
+			<dc:description>
+				The duration of this Course Element Instance.
+			</dc:description>
+		</attribute>
+		<attribute name="schedulable_lesson" type="boolean" default="true">
+			<dc:title xml:lang="de">Schedulebar</dc:title>
+			<dc:title xml:lang="en">scheduleable</dc:title>
+			<dc:description>
+				Whether or not this Course Element Instance is scheduleable.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- CourseElementType -->
+	<entity name="CourseElementType">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+			A CourseElementType describes a type of event, like a lecture or a seminar.
+		</dc:description>
+	</entity>
+	
+	<!-- Program -->
+	<entity name="Program">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description>
+			A Program is a set of CourseInstances. It has a running period (start and end date). A program manager is responsible for a Program. A Program belongs to a Department and to one Department only.
+		</dc:description>
+		<attribute name="academic_term" ref="AcademicTerm">
+			<dc:title xml:lang="de">gehört zu Semester</dc:title>
+			<dc:title xml:lang="en">belongs to academic term</dc:title>
+			<dc:description>
+				The academic turn this Program is running it.
+			</dc:description>
+		</attribute>
+		<attribute name="department" ref="Department">
+			<dc:title xml:lang="de">gehört zum Fachbereich</dc:title>
+			<dc:title xml:lang="en">belongs to department</dc:title>
+			<dc:description>
+				The department to which this Program is belonging.
+			</dc:description>
+		</attribute>
+		<attribute name="freezed" type="boolean" default="false">
+			<dc:title xml:lang="de">Eingefroren(fertig geplant)</dc:title>
+			<dc:title xml:lang="en">freezed(got ready)</dc:title>
+			<dc:description>
+				Whether or not the Program is freezed i.e. no Courses Element Instances will change their place in the Shedule any more.
+			</dc:description>
+		</attribute>
+		<attribute name="published" type="boolean" default="false">
+			<dc:title xml:lang="de">Veröffentlicht</dc:title>
+			<dc:title xml:lang="en">published</dc:title>
+			<dc:description>
+				Whether or not the Program is already released or not.
+			</dc:description>
+		</attribute>
+		<attribute name="program_manager" ref="Person">
+			<dc:title xml:lang="de">Programm Manager</dc:title>
+			<dc:title xml:lang="en">program manager</dc:title>
+			<dc:description>
+				The program manager for this Program i.e. the person which is responsible for it.
+			</dc:description>
+		</attribute>
+		<constraint type="less-than-or-equal">
+			<ref field="start" />/Tim
+			<ref field="start_lessons" />
+		</constraint>
+		<constraint type="less-than-or-equal">
+			<ref field="start_lessons" />
+			<ref field="end_lessons" />
+		</constraint>
+		<constraint type="less-than-or-equal">
+			<ref field="end_lessons" />
+			<ref field="end" />
+		</constraint>
+	</entity>
+	
+	<!-- Timeslot -->
+	<entity name="Timeslot">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="securityKey" />
+		<dc:description>
+			A Timeslot represents a duration in time in which a CourseElementInstance can take place.
+		</dc:description>
+		<attribute name="day" ref="Day">
+			<dc:title xml:lang="de">Tag an welchem der Entsprechende Timeslot liegt.</dc:title>
+			<dc:title xml:lang="en">Day on which this Timeslot takes place.</dc:title>
+			<dc:description>
+				The Day on which the Timeslot will be placed.
+			</dc:description>
+		</attribute>
+		<attribute name="startingTime" type="time">
+			<dc:title xml:lang="de">Uhrzeit zu der der Kurs anfaengt.</dc:title>
+			<dc:title xml:lang="en">Time on which the CourseElementInstance will begin.</dc:title>
+		<dc:description>
+				Time on which the COurseElementInstance will begin.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- Day -->
+	<entity name="Day">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+			A Day holds a set of Timeslots.
+		</dc:description>
+	</entity>
+	
+	<!-- Department -->
+	<entity name="Department">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<attribute name="superordinate_department" ref="Department" nullable="true">
+			<dc:title xml:lang="de">Übergeordneter Fachbereich</dc:title>
+			<dc:title xml:lang="en">superordinated department</dc:title>
+			<dc:description>
+				The superordinated department of this department.
+			</dc:description>
+		</attribute>
+		<dc:description>
+			A logical group of several entities. Persons, Buildings and Courses belong to a Department. Buildings may belong to several Departments.
+		</dc:description>
+	</entity>
+
+	<!-- AcademicTerm -->
+	<entity name="AcademicTerm">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:description>
+			All Programs happen in a Period. A Period is has a start and end date. No start date of a Program may be set before the periods start Program and no end date of Program may be set after the Periods end date. One can say: A period is the program of the university, where the university consists of all departments.
+		</dc:description>
+		<attribute name="start" type="date">
+			<dc:title xml:lang="de">beginnt am</dc:title>
+			<dc:title xml:lang="en">start date</dc:title>
+			<dc:description>
+				The date at which the Academic turn begins.
+			</dc:description>
+		</attribute>
+		<attribute name="end" type="date">
+			<dc:title xml:lang="de">endet am</dc:title>
+			<dc:title xml:lang="en">end date</dc:title>
+			<dc:description>
+				The date at which the Academic turn ends.
+			</dc:description>
+		</attribute>
+		<attribute name="start_lessons" type="date">
+			<dc:title xml:lang="de">Kurse beginnen am</dc:title>
+			<dc:title xml:lang="en">courses starting date</dc:title>
+			<dc:description>
+				The date of the first Course Element Instance taking place.
+			</dc:description>
+		</attribute>
+		<attribute name="end_lessons" type="date">
+			<dc:title xml:lang="de">Kurse enden am</dc:title>
+			<dc:title xml:lang="en">courses ending date</dc:title>
+			<dc:description>
+				The date of the last Course Element Instance taking place.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- Year -->
+	<entity name="Year">
+		<include trait="common" />
+		<include trait="namedEntity" />
+		<include trait="securityKey" />
+		<dc:title xml:lang="de">Jahrgang</dc:title>
+		<dc:title xml:lang="en">year</dc:title>
+		<dc:description>
+			Typically Students start studying sometime and end studying sometime later and their course of studies has a regular length. Of course Courses a Student has to enroll in in the same year must not overlap. That is what Year is for. Courses may be assigned to a certain Year (e.g. first year, second year), but they do not necessarily have to.
+		</dc:description>
+	</entity>
+	
+	<!-- Configuration -->
+	<entity name="Configuration">
+		<include trait="common" />
+		<include trait="securityKey" />
+		<attribute name="key" type="string" primary="true" use="id" />
+		<attribute name="value" type="string" nullable="true" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Configuration</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- Attribute -->
+	<entity name="Attribute">
+		<include trait="common" />
+		<include trait="securityKey" />
+		<include trait="genericAttribute" />
+		<dc:description>
+			The Attribute represents user-created Attributes for Persons which can be used to construct constraints.
+		</dc:description>
+	</entity>
+	
+	<!-- CourseAttribute -->
+	<entity name="CourseAttribute">
+		<include trait="common" />
+		<include trait="securityKey" />
+		<include trait="genericAttribute" />
+		<dc:description>
+			CourseAttribute represents user-created Attributes for Courses which can be used to construct constraints.
+		</dc:description>
+		<attribute name="required" type="boolean" default="false">
+			<dc:title xml:lang="de">obligatorisch</dc:title>
+			<dc:title xml:lang="en">obligatory</dc:title>
+			<dc:description>
+				Whether or not this Course Attribute is obligatory.
+			</dc:description>
+		</attribute>
+	</entity>
+	
+	<!-- ProposedScheduling -->
+	<entity name="ProposedScheduling">
+		<include trait="common" />
+		<include trait="artificialKey" />
+		<include trait="priority" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity ProposedScheduling</n:todo></n:issue>
+		</dc:description>
+		<attribute name="element_instance" ref="CourseElementInstance">
+			<dc:title xml:lang="de">konkretes Kurselement</dc:title>
+			<dc:title xml:lang="en">course element instance</dc:title>
+		</attribute>
+		<attribute name="timeslot" ref="Timeslot" nullable="true">
+			<dc:title xml:lang="de">Zeitfenster</dc:title>
+			<dc:title xml:lang="en">timeslot</dc:title>
+		</attribute>
+		<attribute name="room" ref="Room" nullable="true">
+			<dc:title xml:lang="de">Raum</dc:title>
+			<dc:title xml:lang="en">room</dc:title>
+		</attribute>
+		<unique>
+			<ref field="element_instance" />
+			<ref field="timeslot" />
+			<ref field="room" />
+		</unique>
+	</entity>
+	
+	
+	<!-- RELATIONS -->
+	
+	<relationship name="roomProvidesFeature" subject="Room" object="Feature">
+		<include trait="common" />
+		<subject fk="room" />
+		<object fk="feature" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation tells us which Feature is provided by this room.
+		</dc:description>
+		<attribute name="quantity" type="integer" min="0">
+			<dc:title xml:lang="de">Quantität</dc:title>
+			<dc:title xml:lang="en">quantity</dc:title>
+			<dc:description>
+				The quantity in which the Room provides the Feature of question.
+			</dc:description>
+		</attribute>
+	</relationship>
+	
+	<relationship name="personGivesCourse" subject="Person" object="Course">
+		<include trait="common" />
+		<subject fk="person" />
+		<object fk="course" />
+		<include trait="securityKey" />
+		<include trait="priority" />
+		<dc:description>
+			This relation tells us which Persons are holding which Courses.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="personPrefersTimeslot" subject="Person" object="Timeslot">
+		<subject fk="user" />
+		<object fk="timeslot" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<include trait="priority" />
+		<dc:description>
+			This relation describes that the given person wants this Timeslot more than other timeslots.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="roomPrefersTimeslot" subject="Room" object="Timeslot">
+		<subject fk="room" />
+		<object fk="timeslot" />
+		<include trait="common" />
+		<include trait="priority" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation describes that the given Room should be booked at the given Timeslot.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="elementInstancePrefersTimeslot" subject="CourseElementInstance" object="Timeslot">
+		<subject fk="room" />
+		<object fk="timeslot" />
+		<include trait="common" />
+		<include trait="priority" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation describes that the given CourseElementInstance is better to be placed in the given Timeslot.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="elementInstancePrefersRoom" subject="CourseElementInstance" object="Room">
+		<subject fk="element_instance" />
+		<object fk="room" />
+		<include trait="common" />
+		<include trait="priority" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation describes that the given CourseElementInstance is better to be placed in the given Room.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="elementRequiresFeature" subject="CourseElement" object="Feature">
+		<subject fk="course_element" />
+		<object fk="feature" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<include trait="featureRequirement" />
+		<dc:description>
+			This relation tells us what kind and amount of Feature is required in order to be held.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="elementInstanceRequiresFeature" subject="CourseElementInstance" object="Feature">
+		<subject fk="element_instance" />
+		<object fk="feature" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<include trait="featureRequirement" />
+		<dc:description>
+			This relation tells us what kind of Feature is needed or whished by the Person which holds this particular CourseElementInstance.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="personHasPrivilege" subject="Person" object="Privilege">
+		<subject fk="user" />
+		<object fk="privilege" />
+		<include trait="common" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			This relation tells us that the given Person has the given Privilege.
+		</dc:description>
+		<attribute name="target" type="string" default="" primary="true">
+			<dc:title xml:lang="de">Ziel</dc:title>
+			<dc:title xml:lang="en">target</dc:title>
+			<dc:description>
+				The target of this relation (should be a Person) will gain the new Privilege.
+			</dc:description>
+		</attribute>
+		<attribute name="because_of_role" type="boolean" nullable="true">
+			<dc:title xml:lang="de">aufgrund der Rolle</dc:title>
+			<dc:title xml:lang="en">because of role</dc:title>
+			<dc:description>
+				This is a explanation because of which Role the Privilege was gained.
+			</dc:description>
+		</attribute>
+	</relationship>
+	
+	<relationship name="personHasRole" subject="Person" object="Role">
+		<subject fk="user" />
+		<object fk="role" />
+		<include trait="common" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			This relation tells us that the given Person has the given Role.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="roleImpliesPrivilege" subject="Role" object="Privilege">
+		<subject fk="role" />
+		<object fk="privilege" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<attribute name="target" type="string" default="" primary="true">
+			<dc:title xml:lang="de">Ziel</dc:title>
+			<dc:title xml:lang="en">target</dc:title>
+			<dc:description>
+				The target of this relation (should be a Role) will gain the new Privilege.
+			</dc:description>
+		</attribute>
+		<dc:description>
+			This relation tells us what Privileges are implied by a given Role.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="personTakesPartInElementInstance" subject="Person" object="CourseElementInstance">
+		<subject fk="user" />
+		<object fk="element_instance" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation tells us that the given Person takes part in the mentioned CourseElementInstance.
+		</dc:description>
+		<attribute name="timeslot" ref="Timeslot">
+			<dc:title xml:lang="de">Zeitfenster</dc:title>
+			<dc:title xml:lang="en">timeslot</dc:title>
+			<dc:description>
+				The Timeslot in which the Person will take part in the given Course Element Instance
+			</dc:description>
+		</attribute>
+		<unique>
+			<ref field="user" />
+			<ref field="timeslot" />
+		</unique>
+	</relationship>
+	
+	<relationship name="elementInstanceTakesPlaceInRoom" subject="CourseElementInstance" object="Room">
+		<subject fk="element_instance" />
+		<object fk="room" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation tells us that the mentioned CourseElementInstance is taking place in the given Room.
+		</dc:description>
+		<attribute name="timeslot" ref="Timeslot">
+			<dc:title xml:lang="de">Zeitfenster</dc:title>
+			<dc:title xml:lang="en">timeslot</dc:title>
+			<dc:description>
+				The Timeslot in which the Course Element Instance will take place in the given Room.
+			</dc:description>
+		</attribute>
+		<unique>
+			<ref field="room" />
+			<ref field="timeslot" />
+		</unique>
+	</relationship>
+	
+	<relationship name="courseRequiresCourse" subject="Course" object="Course">
+		<subject fk="course" />
+		<object fk="dependency" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation tells us that it is neccessary to take part in the first Course in order to take part in the second Course.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="personEnrolledInCourseInstance" subject="Person" object="CourseInstance">
+		<subject fk="user" />
+		<object fk="course_instance" />
+		<include trait="common" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			This relation gives us the Persons that are enrolled to a specific CourseInstance.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="courseRecommendedForYear" subject="Course" object="Year">
+		<subject fk="course" />
+		<object fk="year" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation gives the Person(students) a hint in which Course they should enroll in order to maintain their studies in order.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="personSuccessfullyPassedCourse" subject="Person" object="Course">
+		<subject fk="user" />
+		<object fk="course" />
+		<include trait="common" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			This relation tells us that a Person has passed a specific Course.
+		</dc:description>
+		<attribute name="grade" type="string" nullable="true">
+			<dc:title xml:lang="de">Note</dc:title>
+			<dc:title xml:lang="en">grade</dc:title>
+			<dc:description>
+				The grade the Person got in the specified Course.
+			</dc:description>
+		</attribute>
+		<attribute name="notes" type="text" nullable="true">
+			<dc:title xml:lang="de">Anmerkungen</dc:title>
+			<dc:title xml:lang="en">notes</dc:title>
+			<dc:description>
+				Notes regarding the Person in question.
+			</dc:description>
+		</attribute>
+	</relationship>
+	
+	<relationship name="roleImpliesAttribute" subject="Role" object="Attribute">
+		<subject fk="role" />
+		<object fk="attribute" />
+		<include trait="common" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation keeps track of user-defined Attributes that are implied by a role.
+		</dc:description>
+		<attribute name="default" type="string" nullable="true">
+			<dc:title xml:lang="de">Standardmäßig</dc:title>
+			<dc:title xml:lang="en">default</dc:title>
+			<dc:description>
+				Describes whether or not this attribute is set by default.
+			</dc:description>
+		</attribute>
+		<attribute name="required" type="boolean" default="false">
+			<dc:title xml:lang="de">benötigt</dc:title>
+			<dc:title xml:lang="en">required</dc:title>
+			<dc:description>
+				Whether or not this Attribute is required or not.
+			</dc:description>
+		</attribute>
+	</relationship>
+	
+	<relationship name="personHasAttribute" subject="Person" object="Attribute">
+		<subject fk="user" />
+		<object fk="attribute" />
+		<include trait="common" />
+		<include trait="attributeValue" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation tells us that the Person mentioned has the Attribute given.
+		</dc:description>
+	</relationship>
+	
+	<relationship name="courseHasCourseAttribute" subject="Course" object="CourseAttribute">
+		<subject fk="course" />
+		<object fk="attribute" />
+		<include trait="common" />
+		<include trait="attributeValue" />
+		<include trait="securityKey" />
+		<dc:description>
+			This relation tells us that the given Course has the given Attribute.
+		</dc:description>
+	</relationship>
+
+</relations>

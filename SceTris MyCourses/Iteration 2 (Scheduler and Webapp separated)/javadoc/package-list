@@ -1,0 +1,14 @@
+de.fu.scetris
+de.fu.scetris.data
+de.fu.scetris.model
+de.fu.scheduler.model.data
+de.fu.scheduler.model.strategy.implementations
+de.fu.scheduler.model.strategy.interfaces
+de.fu.weave
+de.fu.weave.annotation
+de.fu.weave.meta
+de.fu.weave.orm
+de.fu.weave.orm.interfaces
+de.fu.weave.reflect
+de.fu.weave.xml
+de.fu.weave.xml.annotation

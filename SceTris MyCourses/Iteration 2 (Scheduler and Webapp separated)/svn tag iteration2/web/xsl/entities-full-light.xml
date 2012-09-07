@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<entities xmlns="http://technodrom.scravy.de/2010/entities-lite" xmlns:en="http://technodrom.scravy.de/2010/entities" xmlns:n="http://technodrom.scravy.de/2010/notes" xmlns:dc="http://dublincore.org/documents/dcmi-namespace/" xmlns:pg="http://technodrom.scravy.de/2010/postgres" relationships="21" entities="22">
+  <pg:schema xmlns="http://technodrom.scravy.de/2010/entities" xmlns:a="http://technodrom.scravy.de/2010/purpose">scetris</pg:schema>
+  <entity name="AcademicTerm">
+    <dc:description xml:lang="en">
+			All Programs happen in a Period. A Period is has a start and end date. No start date of a Program may be set before the periods start Program and no end date of Program may be set after the Periods end date. One can say: A period is the program of the university, where the university consists of all departments.
+		</dc:description> 
+    <attribute name="id" serial="true" type="integer" nullable="false">
+      <dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+      <dc:title xml:lang="en">numeric identifier</dc:title>
+      <dc:description xml:lang="en">
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>  
+    </attribute>
+    <attribute name="name" serial="false" type="string" nullable="false">
+     <dc:title xml:lang="de">Name</dc:title>
+      <dc:title xml:lang="en">name</dc:title>
+      <dc:description xml:lang="en">
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dc:description>	
+    </attribute>
+    <attribute name="timeKey" serial="false" type="timestamp" nullable="false" default="now"/>
+    <attribute name="start" serial="false" type="date" nullable="false"/>
+    <attribute name="end" serial="false" type="date" nullable="false"/>
+    <attribute name="start_lessons" serial="false" type="date" nullable="false"/>
+    <attribute name="end_lessons" serial="false" type="date" nullable="false"/>
+    <primary>
+      <ref field="id"/>
+    </primary>
+    <unique>
+      <ref field="name"/>
+    </unique>
+  </entity>
+  <entity name="Attribute">
+    <attribute name="timeKey" serial="false" type="timestamp" nullable="false" default="now"/>
+    <attribute name="id" serial="true" type="integer" nullable="false">
+      <dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+      <dc:title xml:lang="en">numeric identifier</dc:title>
+      <dc:description xml:lang="en">
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>	
+    </attribute>
+    <attribute name="name" serial="false" type="string" nullable="false">
+      <dc:title xml:lang="de">Name</dc:title>
+      <dc:title xml:lang="en">name</dc:title>
+      <dc:description xml:lang="en">
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dc:description>	
+    </attribute>
+    <attribute name="type" serial="false" type="string" nullable="false" default="xsd:string"/>
+    <attribute name="unique_value" serial="false" type="boolean" nullable="false" default="false"/>
+    <primary>
+      <ref field="id"/>
+    </primary>
+    <unique>
+      <ref field="name"/>
+    </unique>
+  </entity>
+  <entity name="Building">
+    <dc:description xml:lang="en">
+A Building&gt; has a unique street address and belongs to a Department. Some Buildings have a special name (“Henry-Ford-Building”) which is unique across the whole university.
+		</dc:description>	
+    <attribute name="id" serial="true" type="integer" nullable="false">
+      <dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+      <dc:title xml:lang="en">numeric identifier</dc:title>
+      <dc:description xml:lang="en">
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>	
+    </attribute>
+    <attribute name="timeKey" serial="false" type="timestamp" nullable="false" default="now"/>
+    <attribute name="name" serial="false" type="string" nullable="true">
+      <dc:title xml:lang="de">Name</dc:title>
+      <dc:title xml:lang="en">name</dc:title>	
+    </attribute>
+    <attribute name="address" serial="false" type="string" nullable="false">
+      <dc:title xml:lang="de">Adresse</dc:title>
+      <dc:title xml:lang="en">street adress</dc:title>	
+    </attribute>
+    <primary>
+      <ref field="id"/>
+    </primary>
+    <unique>
+      <ref field="name"/>
+    </unique>
+    <unique>
+      <ref field="address"/>
+    </unique>
+  </entity>
+  <entity name="Configuration">
+    <attribute name="timeKey" serial="false" type="timestamp" nullable="false" default="now"/>
+    <attribute name="key" serial="false" type="string" nullable="false"/>
+    <attribute name="value" serial="false" type="string" nullable="true"/>
+    <primary>
+      <ref field="key"/>
+    </primary>
+  </entity>
+  <entity name="Course">
+    <dc:description xml:lang="en">
+A Course is a well-defined set of CourseElements. For example there may be a Course which consists of two CourseElements of which one is a mandatory lecture and the other one is an optional seminar.
+		</dc:description>	
+    <attribute name="id" serial="true" type="integer" nullable="false">
+      <dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+      <dc:title xml:lang="en">numeric identifier</dc:title>
+      <dc:description xml:lang="en">
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>	
+    </attribute>
+    <attribute name="name" serial="false" type="string" nullable="false">
+      <dc:title xml:lang="de">Name</dc:title>
+      <dc:title xml:lang="en">name</dc:title>
+      <dc:description xml:lang="en">
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dc:description>	
+    </attribute>
+    <primary>
+      <ref field="id"/>
+    </primary>
+    <unique>
+      <ref field="name"/>
+    </unique>
+  </entity>
+  <entity name="CourseAttribute">
+    <attribute name="timeKey" serial="false" type="timestamp" nullable="false" default="now"/>
+    <attribute name="id" serial="true" type="integer" nullable="false">
+      <dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+      <dc:title xml:lang="en">numeric identifier</dc:title>
+      <dc:description xml:lang="en">
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>	
+    </attribute>
+    <attribute name="name" serial="false" type="string" nullable="false">
+      <dc:title xml:lang="de">Name</dc:title>
+      <dc:title xml:lang="en">name</dc:title>
+      <dc:description xml:lang="en">
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dc:description>	
+    </attribute>
+    <attribute name="type" serial="false" type="string" nullable="false" default="xsd:string"/>
+    <attribute name="unique_value" serial="false" type="boolean" nullable="false" default="false"/>
+    <attribute name="required" serial="false" type="boolean" nullable="false" default="false">
+      <dc:title xml:lang="de">obligatoisch</dc:title>
+      <dc:title xml:lang="en">obligatotry</dc:title>	
+    </attribute>
+    <primary>
+      <ref field="id"/>
+    </primary>
+    <unique>
+      <ref field="name"/>
+    </unique>
+  </entity>
+  <entity name="CourseElement">
+    <dc:description xml:lang="en">
+			A CourseElement is a type of event at a school or university, like a lecture or a seminar. A CourseElement has a duration and it may take place several times in a week (of which each occurrence has a certain duration). A CourseElement may have some dependencies regarding the Features the Room it is held in has. A CourseElement is part of a Course. It is of a certain type (e.g. lecture, seminar, discussion, meeting, ...).
+		</dc:description>	
+    <attribute name="id" serial="true" type="integer" nullable="false">
+      <dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+      <dc:title xml:lang="en">numeric identifier</dc:title>
+      <dc:description xml:lang="en">
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>	
+    </attribute>
+    <attribute name="timeKey" serial="false" type="timestamp" nullable="false" default="now"/>
+    <attribute name="name" serial="false" type="string" nullable="true">
+      <dc:title xml:lang="de">Name</dc:title>
+      <dc:title xml:lang="en">name</dc:title>	
+    </attribute>
+    <attribute name="part_of" serial="false" ref="Course" type="integer" nullable="false">
+      <dc:title xml:lang="de">gehört zu</dc:title>
+      <dc:title xml:lang="en">part of</dc:title>	
+    </attribute>
+    <attribute name="duration" serial="false" type="integer" min="1" nullable="false">
+      <dc:title xml:lang="de">Dauer</dc:title>
+      <dc:title xml:lang="en">duration</dc:title>	
+    </attribute>
+    <attribute name="type" serial="false" ref="CourseElementType" type="integer" nullable="true">
+      <dc:title xml:lang="de">Typ der Lehrveranstaltung</dc:title>
+      <dc:title xml:lang="en">type of lessons</dc:title>	
+    </attribute>
+    <attribute name="required" serial="false" type="boolean" nullable="false" default="true">
+      <dc:title xml:lang="de">obligatorisch</dc:title>
+      <dc:title xml:lang="en">obligatory</dc:title>	
+    </attribute>
+    <primary>
+      <ref field="id"/>
+    </primary>
+  </entity>
+</entities>

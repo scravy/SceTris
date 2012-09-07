@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entities xmlns="http://technodrom.scravy.de/2010/entities" xmlns:n="http://technodrom.scravy.de/2010/notes" xmlns:dc="http://dublincore.org/documents/dcmi-namespace/" xmlns:pg="http://technodrom.scravy.de/2010/postgres">
+
+	<dc:creator>Julian</dc:creator>
+	
+	<pg:schema>scetris</pg:schema>
+	<fk-prefix><!-- there is none --></fk-prefix>
+	
+	<!-- TRAITS (as in Scala) -->
+	
+	<trait name="provenanceAttrs">
+		<attribute name="ctime" type="timestamp" default="now">
+			<dc:title xml:lang="de">Datum der Erstellung</dc:title>
+			<dc:title xml:lang="en">date of creation</dc:title>
+		</attribute>
+		<attribute name="mtime" type="timestamp" default="now">
+			<dc:title xml:lang="de">Datum der letzten Änderung</dc:title>
+			<dc:title xml:lang="en">date of last edit</dc:title>
+		</attribute>
+		<attribute name="created_by" ref="Person">
+			<dc:title xml:lang="de">ursprünglich erstellt von</dc:title>
+			<dc:title xml:lang="en">initially created by</dc:title>
+		</attribute>
+		<attribute name="modified_by" ref="Person">
+			<dc:title xml:lang="de">zuletzt verändert von</dc:title>
+			<dc:title xml:lang="en">least recently modified by</dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="uniqueName">
+		<attribute name="name" type="string" unique="true">
+			<dc:title xml:lang="de">Name</dc:title>
+			<dc:title xml:lang="en">name</dc:title>
+			<dc:description>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dc:description>
+		</attribute>
+	</trait>
+	
+	<trait name="artificialKey">
+		<attribute name="id" type="integer" primary="true">
+			<dc:title xml:lang="de">Identifikations-Nummer</dc:title>
+			<dc:title xml:lang="en">numeric identifier</dc:title>
+			<dc:description>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dc:description>
+		</attribute>
+	</trait>
+	
+	<trait name="namedEntity">
+		<include trait="artificialKey" />
+		<include trait="uniqueName" />
+	</trait>
+	
+	<trait name="genericAttribute">
+		<include trait="namedEntity" />
+		<attribute name="type" type="string" default="xsd:string">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="unique_value" type="boolean" default="false">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="attributeValue">
+		<attribute name="time" type="timestamp" default="now" primary="true">
+			<dc:title xml:lang="de">Datum der letzten Änderung</dc:title>
+			<dc:title xml:lang="en">date of last edit</dc:title>
+		</attribute>
+		<attribute name="editor" ref="Person">
+			<dc:title xml:lang="de">ursprünglich erstellt von</dc:title>
+			<dc:title xml:lang="en">initially created by</dc:title>
+		</attribute>
+		<attribute name="value" type="string" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="priority">
+		<attribute name="priority" type="integer" min="0" max="100">
+			<dc:title xml:lang="de">Priorität</dc:title>
+			<dc:title xml:lang="en">priority</dc:title>
+		</attribute>
+	</trait>
+	
+	<trait name="featureRequirement">
+		<include trait="priority" />
+		<attribute name="quantity_min" type="integer" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="quantity_better" type="integer" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</trait>
+	
+	
+	<!-- ENTITIES -->
+	
+	<!-- Room -->
+	<entity name="Room">
+		<include trait="artificialKey" />
+		<dc:description>
+A Room is a physical location where CourseElementInstances take place. A Room has an identifier which uniquely identifies it across the whole university. A Room is located inside a Building. Every Room has a number which is unique in the Building. A Room has Features and it may have a certain quantity of any Feature (e.g. 300 seats, a beamer, 20 workstations). Some Rooms do have a special name (“Audimax”) which is unique in the building. A Room may be of a certain type (auditorium, lab, ...). Not all rooms are always available.
+		</dc:description>
+		<attribute name="name" type="string" nullable="true">
+			<dc:title xml:lang="de">Name</dc:title>
+			<dc:title xml:lang="en">name</dc:title>
+		</attribute>
+		<attribute name="number" type="string">
+			<dc:title xml:lang="de">Raum-Nummer</dc:title>
+			<dc:title xml:lang="en">room number</dc:title>
+		</attribute>
+		<attribute name="building" ref="Building">
+			<dc:title xml:lang="de">ist in Gebäude</dc:title>
+			<dc:title xml:lang="en">located in</dc:title>
+		</attribute>
+		<unique>
+			<ref field="name" />
+			<ref field="building" />
+		</unique>
+	</entity>
+	
+	<!-- Building -->
+	<entity name="Building">
+		<include trait="artificialKey" />
+		<dc:description>
+A Building> has a unique street address and belongs to a Department. Some Buildings have a special name (“Henry-Ford-Building”) which is unique across the whole university.
+		</dc:description>
+		<attribute name="name" type="string" nullable="true" unique="true">
+			<dc:title xml:lang="de">Name</dc:title>
+			<dc:title xml:lang="en">name</dc:title>
+		</attribute>
+		<attribute name="address" type="string" unique="true">
+			<dc:title xml:lang="de">Adresse</dc:title>
+			<dc:title xml:lang="en">street adress</dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- Feature -->
+	<entity name="Feature">
+		<include trait="namedEntity" />
+		<dc:description>
+Rooms do have certain Features which may have a certain quantity. A Feature is identified by a name (“seats”, “beamers”, ...). For example any Room which is suitable to hold a lecture or a seminar in it will have a certain amount of seats, a lab has a certain amount of workplaces. While an auditorium may have 300 seats suitable for doing a lecture it might have only 75 seats suitable for doing an examination.
+		</dc:description>
+	</entity>
+
+	<!-- Person -->
+	<entity name="Person">
+		<include trait="artificialKey" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+A Person is a natural person who is able to login to myCourses. Therefore she is having login credentials (e.g. username and password or mail address and password). Every Person has a first name and a last name. There are many different roles at a university and there are persons who act in more than one role (e.g. there are students doing lectures, while not being professors). Every person needs to have a unique identifier regardless of the roles they belong to for administration reasons. Persons may belong to several Groups.
+		</dc:description>
+		<attribute name="first_name" type="string">
+			<dc:title xml:lang="de">Vorname</dc:title>
+			<dc:title xml:lang="en">first name</dc:title>
+		</attribute>
+		<attribute name="additional_names" type="string" nullable="true">
+			<dc:title xml:lang="de">weitere Namen</dc:title>
+			<dc:title xml:lang="en">additional names</dc:title>
+		</attribute>
+		<attribute name="last_name" type="string">
+			<dc:title xml:lang="de">Nachname</dc:title>
+			<dc:title xml:lang="en">last name</dc:title>
+		</attribute>
+		<attribute name="email_address" type="string" unique="true" nullable="true">
+			<dc:title xml:lang="de">eMail-Adresse</dc:title>
+			<dc:title xml:lang="en">email address</dc:title>
+		</attribute>
+		<attribute name="login_name" type="string" unique="true">
+			<dc:title xml:lang="de">Login-Name</dc:title>
+			<dc:title xml:lang="en">login name</dc:title>
+		</attribute>
+		<attribute name="login_password" type="password">
+			<dc:title xml:lang="de">Passwort</dc:title>
+			<dc:title xml:lang="en">password</dc:title>
+		</attribute>
+		<attribute name="is_superuser" type="boolean" default="false">
+			<dc:title xml:lang="de">ist Administrator</dc:title>
+			<dc:title xml:lang="en">is administrator</dc:title>
+		</attribute>
+		<attribute name="deleted" type="timestamp" nullable="true">
+			<dc:title xml:lang="de">gelöscht</dc:title>
+			<dc:title xml:lang="en">deleted</dc:title>
+		</attribute>
+		<attribute name="deleted_by" ref="Person" nullable="true">
+			<dc:title xml:lang="de">gelöscht von</dc:title>
+			<dc:title xml:lang="en">deleted by</dc:title>
+		</attribute>
+		<attribute name="working_hours" type="integer" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="student_id" type="string" nullable="true" unique="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="staff_id" type="string" nullable="true" unique="true">
+			<dc:title xml:lang="de">gelöscht von</dc:title>
+			<dc:title xml:lang="en">deleted by</dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- Group -->
+	<entity name="Group">
+		<include trait="namedEntity" />
+		<dc:description>
+			Persons may be organized into different Groups, e.g. Students may belong to certain Classes. Groups may be attached to a certain Year. A Group is identified by a name. For some universities it might be desirable to define certain kinds of groups sharing certain special properties.
+		</dc:description>
+	</entity>
+	
+	<!-- Role -->
+	<entity name="Role">
+		<include trait="namedEntity" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Role</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- Permission -->
+	<entity name="Permission">
+		<include trait="namedEntity" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Permission</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- Course -->
+	<entity name="Course">
+		<include trait="namedEntity" />
+		<dc:description>
+A Course is a well-defined set of CourseElements. For example there may be a Course which consists of two CourseElements of which one is a mandatory lecture and the other one is an optional seminar.
+		</dc:description>
+	</entity>
+	
+	<!-- CourseElement -->
+	<entity name="CourseElement">
+		<include trait="artificialKey" />
+		<dc:description xmlns="http://www.w3.org/1999/xhtml">
+			A CourseElement is a type of event at a school or university, like a lecture or a seminar. A CourseElement has a duration and it may take place several times in a week (of which each occurrence has a certain duration). A CourseElement may have some dependencies regarding the Features the Room it is held in has. A CourseElement is part of a Course. It is of a certain type (e.g. lecture, seminar, discussion, meeting, ...).
+		</dc:description>
+		<attribute name="name" type="string" nullable="true">
+			<dc:title xml:lang="de">Name</dc:title>
+			<dc:title xml:lang="en">name</dc:title>
+		</attribute>
+		<attribute name="part_of" ref="Course">
+			<dc:title xml:lang="de">gehört zu</dc:title>
+			<dc:title xml:lang="en">part of</dc:title>
+		</attribute>
+		<attribute name="duration" type="integer" min="1">
+			<dc:title xml:lang="de">Dauer</dc:title>
+			<dc:title xml:lang="en">duration</dc:title>
+		</attribute>
+		<attribute name="type" ref="CourseElementType" nullable="true">
+			<dc:title xml:lang="de">Typ der Lehrveranstaltung</dc:title>
+			<dc:title xml:lang="en">type of lessons</dc:title>
+		</attribute>
+		<attribute name="required" type="boolean" default="true">
+			<dc:title xml:lang="de">obligatorisch</dc:title>
+			<dc:title xml:lang="en">obligatory</dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- CourseInstance -->
+	<entity name="CourseInstance">
+		<include trait="artificialKey" />
+		<dc:description>
+			A CourseInstance is created within a Program. It is a Course actually taking place. There can be several CourseInstances of the same Course within a program. There is a main lecturer being primary responsible for any CourseInstance.
+		</dc:description>
+		<attribute name="program" ref="Program">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="start" type="date">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="end" type="date">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="main_lecturer" ref="Person">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- CourseElementInstance -->
+	<entity name="CourseElementInstance">
+		<include trait="artificialKey" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity CourseElementInstance</n:todo></n:issue>
+		</dc:description>
+
+		<attribute name="course_instance" ref="CourseInstance">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="course_element" ref="CourseElement">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="starting_timeslot" ref="Timeslot" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="duration" type="integer" min="1">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="locked" type="boolean" default="false">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="scheduled" type="boolean" default="false">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="schedulable_lesson" type="boolean" default="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- CourseElementType -->
+	<entity name="CourseElementType">
+		<include trait="namedEntity" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity CourseElementType</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- Program -->
+	<entity name="Program">
+		<include trait="artificialKey" />
+		<dc:description>
+			A Program is a set of CourseInstances. It has a running period (start and end date). A program manager is responsible for a Program. A Program belongs to a Department and to one Department only.
+		</dc:description>
+		<attribute name="academic_term" ref="AcademicTerm">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="department" ref="Department">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="freezed" type="boolean" default="false">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="published" type="boolean" default="false">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="program_manager" ref="Person">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<constraint type="less-than-or-equal">
+			<ref field="start" />
+			<ref field="start_lessons" />
+		</constraint>
+		<constraint type="less-than-or-equal">
+			<ref field="start_lessons" />
+			<ref field="end_lessons" />
+		</constraint>
+		<constraint type="less-than-or-equal">
+			<ref field="end_lessons" />
+			<ref field="end" />
+		</constraint>
+	</entity>
+	
+	<!-- Timeslot -->
+	<entity name="Timeslot">
+		<include trait="artificialKey" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Timeslot</n:todo></n:issue>
+		</dc:description>
+		<attribute name="day" ref="Day">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- Day -->
+	<entity name="Day">
+		<include trait="namedEntity" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Day</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- Department -->
+	<entity name="Department">
+		<include trait="namedEntity" />
+		<attribute name="superordinate_department" ref="Department" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<dc:description>
+			A logical group of several entities. Persons, Buildings and Courses belong to a Department. Buildings may belong to several Departments.
+		</dc:description>
+	</entity>
+
+	<!-- AcademicTerm -->
+	<entity name="AcademicTerm">
+		<include trait="namedEntity" />
+		<dc:description>
+			All Programs happen in a Period. A Period is has a start and end date. No start date of a Program may be set before the periods start Program and no end date of Program may be set after the Periods end date. One can say: A period is the program of the university, where the university consists of all departments.
+		</dc:description>
+		<attribute name="start" type="date">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="end" type="date">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="start_lessons" type="date">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="end_lessons" type="date">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- Year -->
+	<entity name="Year">
+		<include trait="namedEntity" />
+		<dc:title xml:lang="de">Jahrgang</dc:title>
+		<dc:title xml:lang="en">Year like vintage when speaking of wine</dc:title>
+		<dc:description>
+			Typically Students start studying sometime and end studying sometime later and their course of studies has a regular length. Of course Courses a Student has to enroll in in the same year must not overlap. That is what Year is for. Courses may be assigned to a certain Year (e.g. first year, second year), but they do not necessarily have to.
+		</dc:description>
+	</entity>
+	
+	<!-- Configuration -->
+	<entity name="Configuration">
+		<attribute name="key" type="string" primary="true" />
+		<attribute name="value" type="string" nullable="true" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Configuration</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- Attribute -->
+	<entity name="Attribute">
+		<include trait="genericAttribute" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity Attribute</n:todo></n:issue>
+		</dc:description>
+	</entity>
+	
+	<!-- CourseAttribute -->
+	<entity name="CourseAttribute">
+		<include trait="genericAttribute" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity CourseAttribute</n:todo></n:issue>
+		</dc:description>
+		<attribute name="required" type="boolean" default="false">
+			<dc:title xml:lang="de">obligatoisch</dc:title>
+			<dc:title xml:lang="en">obligatotry</dc:title>
+		</attribute>
+	</entity>
+	
+	<!-- ProposedScheduling -->
+	<entity name="ProposedScheduling">
+		<include trait="artificialKey" />
+		<include trait="priority" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			<n:issue><n:todo>Describe entity ProposedScheduling</n:todo></n:issue>
+		</dc:description>
+		<attribute name="element_instance" ref="CourseElementInstance">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="timeslot" ref="Timeslot">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="room" ref="Room">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<unique>
+			<ref field="element_instance" />
+			<ref field="timeslot" />
+			<ref field="room" />
+		</unique>
+	</entity>
+	
+	
+	<!-- RELATIONS -->
+	
+	<!-- Room -> providesFeature -> Feature -->
+	<relationship name="providesFeature" subject="Room" object="Feature">
+		<subject fk="room" />
+		<object fk="feature" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation providesFeature</n:todo></n:issue>
+		</dc:description>
+		<attribute name="quantity" type="integer" min="0">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</relationship>
+	
+	<!-- Lecturer -> givesCourse -> Course -->
+	<relationship name="givesCourse" subject="Person" object="Course">
+		<subject fk="person" />
+		<object fk="course" />
+		<include trait="priority" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation givesCourse</n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="prefersTimeslot" subject="Person" object="Timeslot">
+		<subject fk="user" />
+		<object fk="timeslot" />
+		<include trait="priority" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation lecturerPrefers</n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="lecturerNotAvailable" subject="Person" object="Timeslot">
+		<subject fk="user" />
+		<object fk="timeslot" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation lecturerNotAvailable</n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="preferablyBookedAt" subject="Room" object="Timeslot">
+		<subject fk="room" />
+		<object fk="timeslot" />
+		<include trait="priority" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation roomPreferablyBookedAt</n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="requiresFeatureAlways" subject="CourseElement" object="Feature">
+		<subject fk="course_element" />
+		<object fk="feature" />
+		<include trait="featureRequirement" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation requiresFeatureAlways</n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="requiresFeature" subject="CourseElementInstance" object="Feature">
+		<subject fk="element_instance" />
+		<object fk="feature" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation requiresFeature</n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="hasPermission" subject="Person" object="Permission">
+		<subject fk="user" />
+		<object fk="permission" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation </n:todo></n:issue>
+		</dc:description>
+		<attribute name="target" type="string" nullable="true" primary="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="because_of_role" type="boolean" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</relationship>
+	
+	<relationship name="hasRole" subject="Person" object="Role">
+		<subject fk="user" />
+		<object fk="role" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation </n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="impliesPermission" subject="Role" object="Permission">
+		<subject fk="role" />
+		<object fk="permission" />
+		<attribute name="target" type="string" nullable="true" primary="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<dc:description>
+			<n:issue><n:todo>Describe the relation </n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="memberOf" subject="Person" object="Group">
+		<subject fk="user" />
+		<object fk="group" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			<n:issue><n:todo>Describe the relation </n:todo></n:issue>
+		</dc:description>
+	</relationship>
+	
+	<relationship name="takesPartIn" subject="Person" object="CourseElementInstance">
+		<subject fk="user" />
+		<object fk="element_instance" />
+		<dc:description>
+			
+		</dc:description>
+		<attribute name="timeslot" ref="Timeslot">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<unique>
+			<ref field="lecturer" />
+			<ref field="timeslot" />
+		</unique>
+	</relationship>
+	
+	<relationship name="takesPlaceIn" subject="CourseElementInstance" object="Room">
+		<subject fk="element_instance" />
+		<object fk="room" />
+		<dc:description>
+			
+		</dc:description>
+		<attribute name="timeslot" ref="Timeslot">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<unique>
+			<ref field="room" />
+			<ref field="timeslot" />
+		</unique>
+	</relationship>
+	
+	<relationship name="requiresCourse" subject="Course" object="Course">
+		<subject fk="course" />
+		<object fk="dependency" />
+		<dc:description>
+			
+		</dc:description>
+	</relationship>
+	
+	<relationship name="enrolledIn" subject="Person" object="CourseInstance">
+		<subject fk="user" />
+		<object fk="course_instance" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			
+		</dc:description>
+	</relationship>
+	
+	<relationship name="recommendedFor" subject="Course" object="Year">
+		<subject fk="course" />
+		<object fk="year" />
+		<dc:description>
+			
+		</dc:description>
+	</relationship>
+	
+	<relationship name="successfullyPassed" subject="Person" object="Course">
+		<subject fk="user" />
+		<object fk="course" />
+		<include trait="provenanceAttrs" />
+		<dc:description>
+			
+		</dc:description>
+		<attribute name="grade" type="string" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="notes" type="text" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</relationship>
+	
+	<relationship name="impliesAttribute" subject="Role" object="Attribute">
+		<subject fk="role" />
+		<object fk="attribute" />
+		<dc:description>
+			
+		</dc:description>
+		<attribute name="default" type="string" nullable="true">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+		<attribute name="required" type="boolean" default="false">
+			<dc:title xml:lang="de"></dc:title>
+			<dc:title xml:lang="en"></dc:title>
+		</attribute>
+	</relationship>
+	
+	<relationship name="hasAttribute" subject="Person" object="Attribute">
+		<subject fk="user" />
+		<object fk="attribute" />
+		<include trait="attributeValue" />
+		<dc:description>
+			
+		</dc:description>
+	</relationship>
+	
+	<relationship name="hasCourseAttribute" subject="Course" object="CourseAttribute">
+		<subject fk="course" />
+		<object fk="attribute" />
+		<include trait="attributeValue" />
+		<dc:description>
+			
+		</dc:description>
+	</relationship>
+	
+	<!-- <entity name="Log">
+		<attribute name="user" ref="Person" primary="true" />
+		<attribute name="action" ref="Permission" primary="true" />
+		<attribute name="time" type="timestamp" default="now" primary="true" />
+	</entity> -->
+</entities>

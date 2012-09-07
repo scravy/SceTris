@@ -1,0 +1,9 @@
+Optional parameters:
+
+	-a [Number of academic terms]
+	-d [Number of departments]
+	-r [Number of rooms per building]
+	-s [Random seed]
+	-h [Percent of hard constraints]
+	-s [Percent of soft constraints]
+

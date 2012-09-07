@@ -1,0 +1,199 @@
+@namespace url("http://www.w3.org/1999/xhtml");
+
+
+/* units */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 70px 0 50px 0;
+}
+
+body, td {
+	font-family: Helvetica, Arial, sons-serif; 
+}
+
+body, body > *, p {
+	font-size: 15px;
+}
+
+td, small {
+	font-size: 11pt !important;
+}
+
+
+
+h1 {
+	font-size: 2em;
+	margin-bottom: .2em;
+}
+
+h2 {
+	font-size: 1.65em;
+}
+
+h3 {
+	font-size: 1.30em;
+}
+
+h4 {
+	font-size: 1.16em;
+}
+
+h2, h3, h4 {
+	margin-top: .5em;
+	margin-bottom: .25em;
+}
+
+ul, ol, dl {
+	padding-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* decorations */
+
+a, a:active {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+legend {
+	padding: 3px;
+	margin: 0 5px;	
+}
+
+/* NAVIGATION START */
+#navigation #rootmenu, #navigation #submenu, #footer {
+	width: 100%;
+	visibility: visible;
+	position: fixed;
+	left: 0px;
+	z-index: 5;
+}
+
+#navigation #rootmenu {
+	top: 0px;
+}
+
+#navigation #submenu {
+	top: 24px;
+}
+
+#navigation ul, #footer ul {
+	position: relative;
+	list-style-type: none;	
+}
+
+#footer {
+	bottom: 0px;
+}
+
+#navigation li, #footer li {
+	float: left;
+	margin: 3px 3px 0px 3px;
+	padding: 3px 10px 0px 10px;
+}      
+
+#navigation .logout a {
+	right: 1px;
+	font-weight: bold;
+	float: right;
+	margin: 0px 0px 3px 3px;
+	padding: 3px 10px 3px 10px;
+	z-index: 10;	
+}  
+
+/* NAVIGATION END*/
+
+/* MAIN CONTENT START */
+#mainContent {
+	position: relative;
+	border: 3px solid #DDDDDD;
+	margin: 0 auto;
+	padding: 0 0 0 50px;
+	width: 90%;
+}
+/* MAIN CONTENT END */
+
+/* FORMULARS START */
+form fieldset {
+	display: table;
+}
+
+form .xmltr {
+	display: table-row;	
+}
+
+form fieldset div > div {
+	display: table-cell;
+	vertical-align: top;
+	padding: 5px;
+}
+
+form .hidden {
+	display: table-row;
+	background-color: #DDDDDD;	
+}
+
+form input {
+	display: block;	
+}
+
+
+/* FORMULARS END */
+
+/* HELP START */
+.help {
+	display: none;
+	position: absolute;
+	padding: 5px;
+	margin: -4px 0 0 10px;
+	width: 200px;
+	position: absolute;
+	font-size: 0.8em;
+}
+
+.helptrigger, .helptrigger:focus + .help {
+	display: inline;
+}
+
+/* HELP END*/
+
+
+/* MISC START */
+.right {
+	float: right;	
+}
+
+#csschooser {
+	background-color: #FFFFFF;	
+}
+
+#footer #csschooser li {
+	border: none;
+	padding: 1px;	
+}
+
+#csschooser li .green {
+	color: #8CC63F;
+}
+
+#csschooser li .blue {
+	color: #000099;
+}
+
+#csschooser li .red {
+	color: #990000;
+}
+
+#csschooser li .mono {
+	color: #666666;
+}
+/* MISC END */

@@ -1,0 +1,96 @@
+@charset "UTF-8";
+@namespace "http://www.w3.org/1999/xhtml";
+
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul,li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;}
+
+html{background:#FFF;color:#000;font-size:16px;text-align:left;}
+body,th,td{font-size:11px;line-height:15px;color:#333;font-family:"Verdana","Arial","Helvetica",sans-serif;}
+
+table{max-width:550px;}
+table,tr,td{border-collapse:collapse;border-spacing:0;border:1px solid #D1D1D1;}
+th{font-weight:bold;background:#F4F4F4;color:#000;}
+
+a{text-decoration:none;color:#039;}
+a:visited{color:#036;}
+a:hover{text-decoration:underline;}
+
+.content h1,.content h2,.content h3{color:#000;font-weight:bold;margin-bottom:.65em;}
+.content h1{font-size:14px;}
+.content h2,.content h3{font-size:11px;}
+.content h2{border-bottom:1px solid #CCC;}
+.content * + h1,.content h2,.content h3{margin-top:1em;}
+.content p{text-align:justify;}
+.content p,.content ul,.content dl,.content ol,.content table{margin-bottom: .75em;}
+.content dt { font-weight: bold; }
+.content dd { margin-left: 1.5em; }
+.content li{display:list-item;list-style:square;margin-left:1.5em;}
+.content td,.content th{padding:.3em;}
+.content em,.content i{font-style:italic;}
+.content strong,.content bold{font-weight:bold;}
+
+.nav a{color:#666;}
+.nav a:hover{color:#000;}
+
+#global-header-container{position:absolute;top:0;left:0;width:100%;}
+#global-corpus-container{width:952px;margin-top:194px;background:url("../gfx/bg_mainWrapper.gif");}
+#global-menu-container{width:184px;float:left;}
+#global-menu{padding:0 0 0 18px;}
+#global-main-container{width:584px;margin:0 184px;}
+#global-main{padding:0 0 13px 21px;}
+#global-meta-container{width:184px;float:right;}
+#global-meta{padding:0 18px 0 8px;}
+#global-footer{padding:10px 0 8px;font-size:10px;color:#666;clear:both;}
+#global-jump-container{position:absolute;}
+
+.terminator{clear: both;}
+.line{background-color:#99CC00;height:4px;width:100%;}
+#top-line{position:absolute;top:47px;}
+#logo-fu{position:absolute;height:76px;width:255px;background:url("../gfx/Logo_Web_RGB.gif") no-repeat 18px 6px;}
+#logo-fu span{display:none;}
+#bottom-left{position:absolute;left:18px;text-align:left;width:750px;padding:7px 0 9px;}
+#bottom-right{position:absolute;text-align:right;width:768px;padding:7px 0 9px;}
+
+#global-navbar-container{position:absolute;left:0;top:77px;width:100%;height:20px;font-size:11px;z-index:10;}
+#global-navbar-container.fixed{position:fixed;top:0;background-color:rgba(197,210,228,.90);}
+#global-navbar-container, #global-navbar > ul > li:hover > ul > li > a{background-color:#C5D2E4;}
+#global-navbar{width:780px;}
+#global-navbar > ul{display:block;float:right;border-right:1px solid white;}
+#global-navbar > ul > li{float:left;display:block;}
+#global-navbar > ul > li ul{display:none;}
+#global-navbar > ul > li > a{border-left:1px solid white;}
+#global-navbar a{display:block;height:20px;line-height:19px;color:#003366;padding:0 7px;text-decoration:none;}
+#global-navbar div > ul > li:hover > ul > li{list-style:none;}
+#global-navbar > ul > li:hover > ul > li > a{border-top:1px solid white;margin-left:1px;}
+#global-navbar > ul > li:hover > ul{display:block;position:absolute;top:20px;}
+#global-navbar > ul > li:hover > a{background:#003366 !important;color:white;}
+#global-navbar a:hover{background:#003366 !important;color:white !important;}
+
+#ident{height:80px;position:absolute;top:98px;left:0;width:100%;background-color:#F4F4F4;}
+#ident-pic{position:absolute;top:0;left:194px;width:584px;border-left:1px solid white;border-right:1px solid white;height:80px;background:url("../gfx/ident.jpg");}
+#logo-scetris{position:absolute;top:0;left:0;background:#f4f4f4 url("../gfx/scetris.png") no-repeat 10px 15px;display:block;height:60px;width:195px;height:80px;}
+#logo-scetris span{display:none;}
+
+#global-topnav-container{position:absolute;font-size:10px;top:30px;left:355px;width:423px;text-align:right;}
+#global-topnav li{display:inline;}
+#global-topnav li + li:before{content:" | ";}
+
+#global-status-container{position:absolute;top:57px;left:355px;width:423px;text-align:right;}
+#global-breadcrumb{font-size:10px;margin-bottom:.5em;}
+#global-breadcrumb li{display:inline;}
+#global-breadcrumb li + li:before{content:" > ";}
+
+#global-menu ul ul{margin-left:1em;}
+#global-menu li{display:block;line-height:18px;}
+#global-menu li + li {border-top:1px solid #CCC;}
+#global-menu a{display:block;}
+#global-menu a:hover{text-decoration:none;background:#F4F4F4;}
+#global-menu .heading{display:block;font-weight:bold;margin-top:.5em;}
+#global-menu .emphasized{display:block;font-style:italic;}
+#global-menu .inline a{display:inline;}

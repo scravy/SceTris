@@ -1,0 +1,12 @@
+<!ELEMENT booking (rooms)>
+
+<!ELEMENT rooms (day*)>
+<!ATTLIST rooms
+	name CDATA #REQUIRED
+	>
+
+<!ELEMENT day (#PCDATA)>
+<!ATTLIST day
+	name CDATA #REQUIRED
+	time CDATA #REQUIRED
+	>

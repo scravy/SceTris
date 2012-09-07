@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ====================================================================== 
+     install-definition.xml
+     Part of SCORE myCourses
+
+     Team Scetris: David Bialik, Julian Fleischer,
+     	Hagen Mahnke, Konrad Reiche, André Zoufahl
+
+     Author: David Bialik
+     Since:  Iteration5
+     ====================================================================== -->
+<project name="installer-wrapper" default="step">
+	<description>
+		This buildfile is used to make the izpack task know about the properties defined in
+		build.xml and should never be used on its own.
+	</description>
+	
+	<target name="step" description="Creates an installer in order to deploy our final product to the consumer.">
+		<taskdef name="izpack" classpath="${scetris.build.lib}/standalone-compiler.jar" classname="com.izforge.izpack.ant.IzPackTask" />
+		<izpack output="installer/step.jar"  basedir="${basedir}" >
+			<config><![CDATA[
+<installation version="1.0">
+	<info>
+		<appname>scetris</appname>
+		<appsubpath>scetris</appsubpath>
+		<appversion>prealpha</appversion>
+		<authors>
+			<author name="David Bialik" email="david.bialik@fu-berlin.de" />
+			<author name="Julian Fleischer" email="julian.fleischer@fu-berlin.de" />
+			<author name="Hagen Mahnke" email="hagen.mahnke@fu-berlin.de" />
+			<author name="Konrad Reiche" email="konrad.reiche@fu-berlin.de" />
+			<author name="André Zoufahl" email="andre.zoufahl@fu-berlin.de" />
+		</authors>
+	</info>
+	
+	<guiprefs width="525" height="425" resizable="yes" />
+	
+	<locale>
+		<langpack iso3="eng" />
+		<langpack iso3="deu" />
+	</locale>
+	
+	<variables>
+		<variable name="tomcat.zip.path" value="@{scetris.setup.tomcat.zip}" />
+		<variable name="scetris.dir" value="@{scetris.build.deploy}" />
+		<variable name="tomcat.context" value="@{scetris.setup.tomcat.context}" />
+		<variable name="user.tomcat" value="" />
+		
+		<variable name="setup.db.database" value="" />
+		<variable name="setup.db.password" value="" />
+		<variable name="setup.db.username" value="" />
+		<variable name="webapp.db.database" value="" />
+		<variable name="webapp.db.hostname" value="" />
+		<variable name="webapp.db.password" value="" />
+		<variable name="webapp.db.port" value="" />
+		<variable name="webapp.db.username" value="" />
+	</variables>
+	
+	<dynamicvariables>
+		<variable name="user.tomcat" value="${INSTALL_PATH}${FILE_SEPARATOR}tomcat" condition="installTomcat" />
+	</dynamicvariables>
+	
+	<resources>
+		<res id="Installer.image" src="installer/scetris_install.png" />
+		<res id="userInputSpec.xml" src="installer/userInputSpec.xml" />
+		<res id="userInputLang.xml_eng" src="installer/userInputLang.xml_eng" />
+		<res id="userInputLang.xml_deu" src="installer/userInputLang.xml_deu" />
+	</resources>
+	
+	<conditions>
+		<condition id="installTomcat" type="PackSelection">
+			<packid>tomcatID</packid>
+		</condition>
+	</conditions>
+	
+	<panels>
+		<panel classname="HelloPanel" />
+		<panel classname="UserInputPanel" condition="!installTomcat" />
+		<panel classname="UserInputPanel" />
+		<panel classname="TargetPanel" />
+		<panel classname="PacksPanel" />
+		<panel classname="SummaryPanel" />
+		<panel classname="DataCheckPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="FinishPanel" />
+	</panels>
+	
+	<packs>
+		<pack id="tomcatID" name="tomcat" required="no" preselected="yes">
+			<description>copy tomcat to user defined path</description>
+			<file src="${tomcat.zip.path}" targetdir="${INSTALL_PATH}/tomcat" override="askfalse" unpack="true" />
+		</pack>
+		<pack name="scetris" required="yes" preselected="yes">
+			<description>copy scetris into tomcat/webapps/ROOT/</description>
+			<fileset dir="@{scetris.build.deploy}" targetdir="${user.tomcat}/webapps/${tomcat.context}" override="askfalse" />
+			<parsable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/scetris.properties" />
+		</pack>
+	</packs>
+</installation>
+			]]></config>
+		</izpack>
+	</target>
+</project>

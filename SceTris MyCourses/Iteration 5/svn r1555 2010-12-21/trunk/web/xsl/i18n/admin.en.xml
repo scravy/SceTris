@@ -1,0 +1,86 @@
+<lang>
+	<users>User accounts</users>
+	<roles>Login roles</roles>
+	<groups>User groups</groups>
+	<buildings>Buildings</buildings>
+	<rooms>Rooms</rooms>
+	<departments>Departments</departments>
+	<features>Room features</features>
+	<roomsAndFeatures>Rooms and features</roomsAndFeatures>
+	
+	<userAttributes>User attributes</userAttributes>
+	<courseAttributes>Course attributes</courseAttributes>
+	
+	<usersAndRolesDescription>Here you can manage user accounts, groups, roles and privileges.</usersAndRolesDescription>
+	
+	<createUser>Create a new user account</createUser>
+	<listUsers>Show a listing of all users</listUsers>
+	
+	<createGroup>Create a new user account</createGroup>
+	<listGroups>Show existing groups</listGroups>
+	
+	<createRole>Create a new login role</createRole>
+	<listRoles>List available login roles</listRoles>
+	
+	<createAttribute>Create a new attribute for users</createAttribute>
+	<listAttributes>Manage existing attributes</listAttributes>
+	
+	<createCourseAttribute>Create a new attribute for courses</createCourseAttribute>
+	<listCourseAttributes>Manage existing attributes</listCourseAttributes>
+	
+	<createBuilding>Create a new building</createBuilding>
+	<listBuildings>Show detailed listing</listBuildings>
+	<createDepartment>Create a new department</createDepartment>
+	<listDepartments>Show detailed listing</listDepartments>
+	<createFeature>Create a feature</createFeature>
+	<listFeatures>Manage features</listFeatures>
+	<createRoom>Create a new room</createRoom>
+	
+	<sysconfigDescription>- description -</sysconfigDescription>
+	
+	<userAttributesDescription>User accounts may have certain attributes, for example a student may a
+	student id whereas a lecturere may have an office. These attributes can be managed here.</userAttributesDescription>
+	
+	<courseAttributesDescription>As well as user account may have certain attributes, courses may have them, too.
+	For example a course may have a list of recommended literature. These attributes can be managed here.</courseAttributesDescription>
+	
+	<roomsAndFeaturesDescription>- description (rooms and features) - [ e.g. Rooms feature certain resources, like seats, beamers, chalkboards...]</roomsAndFeaturesDescription>
+	<buildingsDescription>- description (buildings) -</buildingsDescription>
+	<departmentsDescription>- description (departments) -</departmentsDescription>
+	
+	<schedulerConfiguration>Scheduler configuration</schedulerConfiguration>
+	<schedulerConfigurationDescription>- description - </schedulerConfigurationDescription>
+	<configureScheduler>Set scheduling parameters</configureScheduler>
+	
+	<systemStatus>System status</systemStatus>
+	<systemStatusDescription>- description -</systemStatusDescription>
+	<showStatistics>Show statistics</showStatistics>
+	<showInstallationDetails>Info about current Scetris setup</showInstallationDetails>
+	
+	<import>Import data</import>
+	<export>Export data</export>
+	<imexDescription>- description (import / export) -</imexDescription>
+	<importDescription>- description (import xml) -</importDescription>
+	<exportDescription>- description (export everything) -</exportDescription>
+	
+	<labels>
+		<searchUser.q>Search existing</searchUser.q>
+		<searchUser.button.submit>Search</searchUser.button.submit>
+		
+		<searchGroup.q>Search existing</searchGroup.q>
+		<searchGroup.button.submit>Search</searchGroup.button.submit>
+		
+		<searchRole.q>Search existing</searchRole.q>
+		<searchRole.button.submit>Search</searchRole.button.submit>
+		
+		<quickEditBuilding.button.submit>Edit</quickEditBuilding.button.submit>
+		<quickEditDepartment.button.submit>Edit</quickEditDepartment.button.submit>
+		
+		<importXML.data>XML data</importXML.data>
+		<importXML.button.submit>Import now</importXML.button.submit>
+	</labels>
+	
+	<info>
+		
+	</info>
+</lang>

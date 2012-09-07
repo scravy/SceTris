@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,citecolor = black] {hyperref}
+
+\begin{document}
+\begin{titlepage}
+ 
+%opening
+
+\newcommand{\changefont}[3]{
+\fontfamily{#1}  \fontseries{#2}  \fontshape{#3}  \selectfont}
+
+\title{\huge \textbf{S.C.O.R.E  MyCourses} \vskip 2ex \includegraphics[width=0.5\textwidth]{images/scetris_trans_blackglow.png} \vskip 2ex \textbf{\large Summary report} \vskip 2ex}
+\author{\changefont{cmr}{m}{sc} David Bialik, Julian Fleischer, Hagen Mahnke,\\ \changefont{cmr}{m}{sc} Konrad Reiche, André Zoufahl}
+\date{\today}
+
+\maketitle
+
+\vskip 3ex
+\center \includegraphics[width=0.3\textwidth]{images/siegel.jpg}
+
+\center \changefont{cmr}{m}{sc} \LARGE Free University of Berlin \vskip 2ex \large Department of Mathematics and Computer Science\\Institute of Computer Science
+
+\thispagestyle{empty}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\begin{abstract}
+This document summarizes the activities of a team of undergraduate students in the context of the student contest on software engineering [SCORE] 2011. The work was done on the project myCourses. It provides a description of the problem, the software development process and the product.
+\end{abstract}
+
+
+
+
+\input{content/whoarewe.tex}
+\input{content/development.tex}
+\input{content/requirements.tex}
+\input{content/arch_design.tex}
+\input{content/technologies.tex}
+\input{content/implementation.tex}
+\input{content/validation.tex}
+\input{content/application.tex}
+\input{content/outcome.tex}
+\input{content/conclusion.tex}
+
+
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{summary_report}
+
+
+
+\end{document}

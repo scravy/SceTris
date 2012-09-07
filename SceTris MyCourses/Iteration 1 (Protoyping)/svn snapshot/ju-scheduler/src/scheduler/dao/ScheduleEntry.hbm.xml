@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="scheduler.data.ScheduleEntry" table="schedule">
+		<meta attribute="class-description">
+			This class contains the course details.
+  		</meta>
+
+		<id name="id" type="int" column="id">
+			<generator class="sequence"/>
+		</id>
+
+		<property name="monday" type="string" column="monday" not-null="false"/>
+		<property name="tuesday" type="string" column="tuesday" not-null="false"/>
+		<property name="wednesday" type="string" column="wednesday" not-null="false"/>
+		<property name="thursday" type="string" column="thursday" not-null="false"/>
+		<property name="friday" type="string" column="friday" not-null="false"/>
+				
+		<property name="room" type="string" column="room" not-null="true"/>
+			
+	</class>
+</hibernate-mapping>

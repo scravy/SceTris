@@ -1,0 +1,108 @@
+@charset "UTF-8";
+@namespace "http://www.w3.org/1999/xhtml";
+
+body {
+	background: none;	
+}
+
+#az_head {
+	height: 77px;
+}
+
+#navigation, #status, #subnavigation, #ident, #az_left, #az_content_right {
+	display: none;	
+}
+
+#az_content {
+	margin: 0;	
+}
+
+#az_content_all {
+	width: 100%;
+	background-color: #AAFFCC;
+	border: 2px solid #000000;
+}
+
+#az_content_left {
+	width: 979px;
+	border: none;	
+}
+
+
+
+
+#az_site {
+	background-color: #FFFFFF;
+	padding-top: 10px;
+	clear: both;
+	position: relative;
+	width: 979px;
+}
+
+#az_breadcrump {
+	font-size: 90%;
+	line-height: 120%;
+	margin-bottom: 15px;	
+}
+
+#az_breadcrump a {
+	color: #666666;
+	text-decoration: none;	
+}
+
+
+
+
+#az_content_all ul {
+	margin: 0 20px 0 0;
+	padding: 4px 0 4px 0;
+}
+
+#az_content_all li {
+	list-style-type: none;
+	line-height: 140%;
+	/*margin: 0 0 0 20px;*/	
+	margin: 0 0 0 35px; 
+	padding: 0;
+}
+
+#az_content_all ul li {
+  	margin: 0;
+	line-height: 140%;
+	padding: 0 0 0 10px;
+	background-image: url(http://www.fu-berlin.de/layout_1_3/img/rechteck_gr_liste.gif);
+	background-repeat: no-repeat;
+	background-position: 0 7px;
+}
+
+
+#az_content_right {
+	float: left;
+	width: 150px;	
+}
+
+#az_content_right #search-results {
+	margin-top: 0px;	
+}
+
+#az_left {
+	width: 174px;
+	float: left;
+	padding: 0 10px;
+}
+
+#az_left li {
+	display: block;
+	list-style: none;
+	height: 17px;
+	line-height: 16px;
+	border-bottom: 1px solid #CCCCCC;	
+}
+
+#az_left ul {
+	margin-left: 5px;
+}
+
+#az_left a {
+	display: block;
+}

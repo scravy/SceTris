@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://technodrom.scravy.de/2010/weavlet-config"
+           xmlns:wc="http://technodrom.scravy.de/2010/weavlet-config"
+           targetNamespace="http://technodrom.scravy.de/2010/weavlet-config"
+           elementFormDefault="qualified">
+
+	<xs:complexType name="connection">
+		<xs:attribute name="database" type="xs:string" use="required" />
+		<xs:attribute name="host" default="localhost" type="xs:string" />
+		<xs:attribute name="port" default="5432">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:minExclusive value="0" />
+					<xs:maxInclusive value="65535" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="username" type="xs:string" use="required" />
+		<xs:attribute name="password" type="xs:string" />
+	</xs:complexType>
+	
+	<xs:complexType name="session">
+		<xs:attribute name="default-language" default="en" type="xs:language" />
+		<xs:attribute name="default-stylesheet" default="screen.css" type="xs:string" />
+		<xs:attribute name="print-stylesheet" default="print.css" type="xs:string" />
+		<xs:attribute name="default-type" default="html" type="xs:string" />
+	</xs:complexType>
+	
+	<xs:complexType name="output">
+		<xs:sequence>
+			<xs:element name="converter" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="name" type="xs:string" use="required" />
+					<xs:attribute name="class" type="cannonical-class-name" use="required" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="modules">
+		<xs:sequence>
+			<xs:element name="module" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="path" minOccurs="1" maxOccurs="unbounded" type="path" />
+					</xs:sequence>
+					<xs:attribute name="class" type="cannonical-class-name" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="cannonical-class-name">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Za-z_$][A-Za-z0-9_$]*\.)*[A-Za-z_$][A-Za-z0-9_$]*" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="path">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Za-z0-9_\-\.]+/)*[A-Za-z0-9_\-\.]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="locations">
+		<xs:sequence>
+			<xs:element name="location" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="path">
+							<xs:attribute name="name" type="xs:string" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="weavlet">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="connection" type="connection" minOccurs="1" />
+				<xs:element name="session" type="session" minOccurs="1" />
+				<xs:element name="modules" type="modules" minOccurs="1" />
+				<xs:element name="output" type="output" minOccurs="0" />
+				<xs:element name="locations" type="locations" minOccurs="0" />
+			</xs:all>
+		</xs:complexType>
+		<xs:key name="modulesID">
+			<xs:selector xpath="wc:modules/wc:module" />
+			<xs:field xpath="@class" />
+		</xs:key>
+		<xs:key name="modulesPath">
+			<xs:selector xpath="wc:modules/wc:module/wc:path" />
+			<xs:field xpath="." />
+		</xs:key>
+		<xs:key name="converterID">
+			<xs:selector xpath="wc:output/wc:converter" />
+			<xs:field xpath="@class" />
+		</xs:key>
+		<xs:key name="converterName">
+			<xs:selector xpath="wc:output/wc:converter" />
+			<xs:field xpath="@name" />
+		</xs:key>
+	</xs:element>
+
+</xs:schema>

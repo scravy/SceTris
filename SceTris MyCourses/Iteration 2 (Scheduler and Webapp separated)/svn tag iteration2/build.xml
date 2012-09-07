@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="tools/build.xsl" ?>
+<!-- ====================================================================== 
+     build.xml
+     Part of SCORE myCourses
+
+     Team Scetris: David Bialik, Julian Fleischer,
+     	Hagen Mahnke, Konrad Reiche, André Zoufahl
+
+     Author: David Bialik, Julian Fleischer
+     Since:  Iteration2
+     ====================================================================== -->
+<project name="scetris" default="scetris" xmlns:aspectj="antlib:org.aspectj">
+
+	<description>
+		The program MyCourses provides as optimal as possible a plan for scheduling courses.
+		This buildfile is intended to provide an operating development environment as well as
+		a working application within a minimum of steps.
+	</description>
+	
+
+	<!-- INITIALIZATION -->
+
+	<!-- load properties -->
+	<property file="build.properties" />
+	
+	<!-- default properties -->
+	<property name="scetris.build.webxml" value="web.xml" />
+	<property name="scetris.build.src" value="src" />
+	<property name="scetris.build.bin" value="bin" />
+	<property name="scetris.build.lib" value="lib" />
+	<property name="scetris.build.deploy" value="scetris" />
+	<property name="scetris.build.war" value="${scetris.build.deploy}.war" />
+	<property name="scetris.build.web" value="web" />
+	<property name="scetris.build.webxsl" value="${scetris.build.web}/xsl" />
+	<property name="scetris.build.repository" value="http://page.mi.fu-berlin.de/scravy/score" />
+
+	<property name="scetris.setup.tomcat" value="tomcat" />
+	<property name="scetris.setup.tomcat.zip" value="${scetris.setup.tomcat}.zip" />
+	<property name="scetris.setup.tomcat.context" value="ROOT" />
+	
+	<property name="scetris.webapp.db.database" value="scetris" />
+	<property name="scetris.webapp.db.username" value="scetris" />
+	<property name="scetris.webapp.db.password" value="" />
+	<property name="scetris.webapp.db.hostname" value="localhost" />
+	<property name="scetris.webapp.db.port" value="5432" />
+	
+	<property name="scetris.testing.db.database" value="scetris-testing" />
+	<property name="scetris.testing.db.username" value="scetris-testing" />
+	<property name="scetris.testing.db.hostname" value="localhost" />
+	<property name="scetris.testing.db.password" value="" />
+	<property name="scetris.testing.db.port" value="5432" />
+	
+	<property name="scetris.setup.db.username" value="postgres" />
+	<property name="scetris.setup.db.password" value="" />
+	<property name="scetris.setup.db.hostname" value="${scetris.db.hostname}" />
+	<property name="scetris.setup.db.port" value="${scetris.db.port}" />
+	
+	
+	<!-- classpath -->
+	<path id="build.classpath">
+		<fileset dir="${scetris.build.lib}" erroronmissingdir="false">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${scetris.setup.tomcat}/lib" erroronmissingdir="false">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<path id="project.trunk">
+		<dirset dir=".">
+			<include name="**/*" />
+		</dirset>
+	</path>
+	
+	<available property="tomcat.exists" file="${scetris.setup.tomcat}" />
+	<available property="tomcat.zip.exists" file="${scetris.setup.tomcat.zip}" />
+	
+	
+	<!-- MAIN TARGETS -->
+	
+	<target name="list-properties">
+		<echoproperties prefix="scetris." />
+	</target>
+	
+	<target name="make-properties">
+		<echoproperties prefix="scetris." destfile="build.properties" />
+	</target>
+	
+	<!-- main taks -->
+
+	<target name="scetris" description="The default target. Builds the whole scetris project. Use this and deploy afterwards to do both.">
+		<available classname="org.aspectj.lang.Aspects" property="avail.ajrt" classpathref="build.classpath" />
+		<fail unless="avail.ajrt" message="AspectJ Runtime is not available on classpath (try get-libs)." />
+		<available classname="javax.servlet.http.HttpServlet" property="avail.api" classpathref="build.classpath" />
+	    <fail unless="avail.api" message="Servlet-API is not available on classpath (try get-tomcat)." />
+	    
+		<taskdef uri="antlib:org.aspectj" resource="org/aspectj/antlib.xml" classpathref="build.classpath" />
+
+	    <aspectj:iajc source="1.6" destDir="${scetris.build.bin}">
+	        <classpath refid="build.classpath" />
+	        <sourceroots>
+	            <pathelement location="${scetris.build.src}" />
+	        </sourceroots>
+	    </aspectj:iajc>
+	</target>
+	
+	<target name="install" depends="make-scetris">
+		<available file="${scetris.setup.tomcat}/webapps/ROOT" property="avail.webapps" />
+		<fail unless="avail.webapps" message="Tomcat is not installed (try get-tomcat)." />
+		
+		<delete quiet="true" dir="${scetris.setup.tomcat}/webapps/${scetris.setup.tomcat.context}" />
+		<mkdir dir="${scetris.setup.tomcat}/webapps/ROOT" />
+		<move file="${scetris.build.deploy}" tofile="${scetris.setup.tomcat}/webapps/${scetris.setup.tomcat.context}" />
+	</target>
+	
+	<target name="deploy" depends="make-scetris">
+		<war destfile="${scetris.build.war}" webxml="${scetris.build.deploy}/WEB-INF/web.xml">
+			<fileset dir="${scetris.build.deploy}">
+				<include name="**/*" />
+			</fileset>
+		</war>
+	</target>
+	
+	<target name="setup" description="Sets up a development environment, i.e. it downloads libraries and a tomcat-bundle. Running this is almost the same as executing the targets get-libs and get-tomcat (in parallel).">
+		<mkdir dir="${scetris.build.lib}" />
+		<mkdir dir="${scetris.build.bin}" />
+		<parallel>
+			<antcall target="get-libs" />
+			<antcall target="get-tomcat" />
+		</parallel>
+	</target>
+
+	<target name="clean">
+		<delete dir="${scetris.build.deploy}" quiet="true" />
+		<delete file="${scetris.build.war}" quiet="true" />
+		<delete quiet="true">
+			<fileset dir="${scetris.build.bin}">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="purge">
+		<antcall target="clean" />
+		<antcall target="clean-libs" />
+		<antcall target="clean-tomcat" />
+		<delete dir="${scetris.build.bin}" />
+	</target>
+	
+	<target name="setup-database">
+		<java classname="de.fu.scetris.Installer">
+		</java>
+	</target>
+
+	
+	<!-- helper targets -->
+	
+	<target name="make-scetris">
+		<xmlvalidate failonerror="true" lenient="true">
+			<attribute name="http://xml.org/sax/features/validation" value="false" />
+			<fileset file="web.xml" />
+			<fileset dir="${scetris.build.webxsl}">
+				<include name="**/*.xsl" />
+			</fileset>
+		</xmlvalidate>
+		
+		<mkdir dir="${scetris.build.deploy}" />
+		<copy todir="${scetris.build.deploy}"> 
+			<fileset dir="${scetris.build.web}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
+		<mkdir dir="${scetris.build.deploy}/WEB-INF" />
+		<echoproperties destfile="${scetris.build.deploy}/WEB-INF/scetris.properties" prefix="scetris." />
+		<copy todir="${scetris.build.deploy}/WEB-INF/lib">
+			<fileset dir="${scetris.build.lib}">
+				<exclude name="**/junit*.jar" />
+				<exclude name="**/aspectjtools.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${scetris.build.deploy}/WEB-INF/classes" includeemptydirs="false">
+			<fileset dir="${scetris.build.bin}">
+				<exclude name="**/*Test*" />
+				<exclude name="**/package-info.class" />
+			</fileset>
+		</copy>
+		<copy file="${scetris.build.webxml}" tofile="${scetris.build.deploy}/WEB-INF/web.xml" />
+	</target>
+	
+	
+	<!-- check -->
+	
+	<target name="check-xsl">
+		<xmlvalidate failonerror="false" lenient="true">
+			<attribute name="http://xml.org/sax/features/validation" value="false" />
+			<fileset dir="${scetris.build.webxsl}">
+				<include name="**/*.xsl" />
+			</fileset>
+		</xmlvalidate>
+	</target>
+	
+	<target name="check-xml">
+		<xmlvalidate failonerror="false" lenient="true">
+			<attribute name="http://xml.org/sax/features/validation" value="false" />
+			<fileset dir=".">
+				<include name="**/*.xml" />
+				<include name="**/*.xhtml" />
+				<include name="**/*.xsl" />
+				<include name="**/*.svg" />
+			</fileset>
+		</xmlvalidate>
+	</target>
+	
+	
+	<!-- runnable tasks -->
+	
+	<target name="rebuild">
+		<antcall target="clean" />
+		<antcall target="scetris" />
+		<antcall target="reinstall" />
+	</target>
+	
+	<target name="reinstall">
+		<antcall target="install" />
+		<antcall target="reload" />		
+	</target>
+	
+	<target name="reload">
+		<exec executable="bash" outputproperty="shutdown.out">
+			<arg file="tomcat/bin/shutdown.sh" />
+		</exec>
+		<exec executable="bash" outputproperty="startup.out">
+			<arg file="tomcat/bin/startup.sh" />
+		</exec>
+	</target>
+	
+	<!-- tomcat related tasks -->
+	
+	<target name="zip-tomcat">
+		<zip destfile="${scetris.setup.tomcat.zip}" basedir="${scetris.setup.tomcat}" excludes="**/*.log, **/*.out, **/*.err, webapps/${scetris.setup.tomcat.context}" />
+	</target>
+	
+	<target name="get-tomcat">
+		<get dest="${scetris.setup.tomcat.zip}" usetimestamp="true" src="${scetris.build.repository}/tomcat.zip" />
+		<unzip src="${scetris.setup.tomcat.zip}" dest="${scetris.setup.tomcat}" />
+		<mkdir dir="${scetris.setup.tomcat}/webapps/ROOT" />
+		<echo file="${scetris.setup.tomcat}/webapps/ROOT/index.htm">
+			&lt;h1 xmlns="http://www.w3.org/1999/xhtml">&amp;#x3c9; + 1 *does* equal 1 + &amp;#x3c9;&lt;/h1&gt;
+		</echo>
+		<chmod perm="a+rx" type="file">
+			<fileset dir="${scetris.setup.tomcat}/bin">
+				<include name="*.sh" />
+			</fileset>
+		</chmod>
+	</target>
+	
+	<target name="clean-tomcat" depends="clean-tomcat-zip" if="tomcat.exists">
+		<delete dir="${scetris.setup.tomcat}" quiet="true" />
+	</target>
+	
+	<target name="clean-tomcat-zip" if="tomcat.zip.exists">
+		<delete file="${scetris.setup.tomcat.zip}" quiet="true" />
+	</target>
+	
+	
+	<!-- libraries related tasks -->
+	
+	<target name="get-libs">
+		<get src="http://page.mi.fu-berlin.de/scravy/score/aspectjrt.jar" dest="${scetris.build.lib}" usetimestamp="true" />
+		<get src="http://page.mi.fu-berlin.de/scravy/score/aspectjtools.jar" dest="${scetris.build.lib}" usetimestamp="true" />
+		<get src="http://page.mi.fu-berlin.de/scravy/score/junit-4.8.2.jar" dest="${scetris.build.lib}" usetimestamp="true" />
+		<get src="http://page.mi.fu-berlin.de/scravy/score/postgresqlDriver.jar" dest="${scetris.build.lib}" usetimestamp="true" />
+	</target>
+	
+	<target name="clean-libs">
+		<delete quiet="true">
+			<fileset dir="${scetris.build.lib}">
+				<include name="*.jar" />
+			</fileset>
+		</delete>
+	</target>
+
+	
+
+</project>

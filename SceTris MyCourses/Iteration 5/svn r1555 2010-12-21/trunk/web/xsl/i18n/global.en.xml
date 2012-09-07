@@ -1,0 +1,50 @@
+<lang>
+	<my-grades>My Grades</my-grades>
+	<my-courses>My Courses</my-courses>
+	<my-schedule>My Schedule</my-schedule>
+	
+	<logged-in-as>You are logged in as</logged-in-as>
+	<not-logged-in>You are not logged in.</not-logged-in>
+	<logged-out>Logged out</logged-out>
+	<just-logged-out>Your were successfully logged out.</just-logged-out>
+	<do-logout>logout</do-logout>
+	<do-login>Login</do-login>
+	<preferences>Preferences</preferences>
+	
+	<login>Login</login>
+	<index>Index</index>
+	<home>Home</home>
+	<people>People</people>
+	<help>Help</help>
+	<search>Search</search>
+	<alternate-versions>Alternate Versions</alternate-versions>
+	
+	<lectures>Lectures</lectures>
+	<courses>Courses</courses>
+	<list-of-lectures>List of lectures</list-of-lectures>
+	<lecturer>Lecturer</lecturer>
+	<lecturers>Lecturers</lecturers>
+	
+	<admin>Admin</admin>
+	<admin-facilities>Buildings &amp; Rooms</admin-facilities>
+	<admin-users>Users &amp; Roles</admin-users>
+	<admin-courses>Academic Terms &amp; Courses</admin-courses>
+	<admin-imex>Import / Export</admin-imex>
+	<admin-sysconfig>System settings</admin-sysconfig>
+	
+	<import>Import</import>
+	<export>Export</export>
+	<export-all>Export everything</export-all>
+	
+	<labels>
+		<username>Username</username>
+		<password>Password</password>
+		<submit-login>Sign in</submit-login>
+		<import-submit>Import now</import-submit>
+	</labels>
+	
+	<info>
+		<username>Provide your username or your EMail-Address here.</username>
+		<password>Provide your password here.</password>
+	</info>
+</lang>

@@ -1,0 +1,487 @@
+@charset "UTF-8";
+@namespace "http://www.w3.org/1999/xhtml";
+
+/* HARD RESET */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote{margin:0;padding:0;}
+/* table{border-collapse:collapse;border-spacing:0;}  */
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym {border:0;}
+
+/* BASIC START */
+body {
+	font-family: "Verdana", "Helvetica", "Arial", sans-serif;
+	font-size: 11px;
+}
+
+a {
+	text-decoration: none;
+	color: #003366;
+	color: navy;
+}
+
+h1 {
+	font-size: 130%;
+	line-height: 140%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h6 {
+	margin-top: .83em;
+	margin-bottom: .27em;
+}
+
+p {
+	color:#333333;
+	margin: 0;
+	padding: 4px 0;
+}
+
+.content a:hover, .logout-link:hover {
+	text-decoration: underline !important;
+}
+
+table, tr, td, th {
+	font-size: 100%;
+	line-height: 140%;
+	color:#333333;
+	border: 1px solid #d1d1d1;
+}
+table {
+	width: 100%;
+	border-spacing: 0;
+	border-color: #d1d1d1;
+	border-collapse: collapse;
+}
+
+td {
+	border-spacing: 0;
+	padding: 3px;
+}
+
+th {
+	background-color: #f4f4f4;
+	font-weight: bold;
+	border-spacing: 0;
+}
+
+#content ul {
+	margin: 0 20px 0 0;
+	padding: 4px 0 4px 0;
+}
+
+#content li {
+	list-style-type: none;
+	line-height: 140%;
+	/*margin: 0 0 0 20px;*/	
+	margin: 0 0 0 35px; 
+	padding: 0;
+}
+
+#content ul li {
+  	margin: 0;
+	line-height: 140%;
+	padding: 0 0 0 10px;
+	background-image: url(http://www.fu-berlin.de/layout_1_3/img/rechteck_gr_liste.gif);
+	background-repeat: no-repeat;
+	background-position: 0 7px;
+}
+
+ul, ol, li {
+	font-size: 100%;
+	line-height: 140%;
+	list-style-type: none;
+}
+
+
+/* BASIC END */
+
+/* BASIC LAYOUT START */
+#header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 76px;
+	width: 255px;
+	background-image: url("../gfx/Logo_Web_RGB.gif");
+	background-position: 18px 6px; /* left: 22px */
+	background-repeat: no-repeat;
+}
+
+#header span {
+	display: none;
+}
+
+#top-line {
+	position: absolute;
+	top: 47px;
+	left: 0;
+	overflow: hidden;
+}
+
+#bottom-line {
+	color: #333333;
+	clear: both;
+}
+
+#bottom-line > div {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.bottom-left {
+	padding-left: 10px;
+}
+
+.bottom-right {
+	position: absolute;
+	width: 780px;
+	text-align: right;
+}
+
+.line {
+	background-color: #99CC00;
+	height: 4px;
+	width: 100%;
+}
+
+#status {
+	display: block;
+	position: absolute;
+	top: 57px;
+	left: 355px;
+	width: 425px;
+	text-align: right;
+	
+	height: 15px;
+	line-height: 14px;
+}
+
+
+
+#content-container {
+	display: block;
+	margin-top: 190px;
+	margin-left: 194px;
+	width: 586px;
+}
+
+#content {
+	width: 549px;
+	margin-bottom: 10px;
+	padding: 0 20px 21px 15px;
+	
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	
+	min-height: 200px;
+	float: left;
+}
+
+#ident {
+	height: 80px;
+	position: absolute;
+	top: 97px;
+	left: 0;
+	width: 100%;
+	background-color: #F4F4F4;
+}
+
+
+#logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #f4f4f4;
+	background-image: url("../gfx/scetris.png");
+	background-repeat: no-repeat;
+	background-position: 10px 15px;
+	display: block;
+	height: 60px;
+	width: 195px;
+	height: 80px;
+}
+
+#pic {
+	position: absolute;
+	top: 0;
+	left: 194px;
+	width: 584px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	height: 80px;
+	background-image: url("../gfx/ident_pop.jpg");
+}
+
+.ui.auto-complete {
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+/* BASIC LAYOUT END */
+
+/* NAVIGATION     START */
+#navigation {
+	text-align: right;
+	position: absolute;
+	width: 425px;
+	top: 30px;
+	left: 355px;
+}
+
+#navigation, #navigation a {
+	color: #666666;
+}
+
+#navigation a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+#navigation li {
+	list-style: none;
+	display: inline;
+}
+
+#navigation li + li::before {
+	content: " | ";
+}
+
+#menu {
+	position: absolute;
+	left: 10px;
+	top: 190px;
+	width: 174px;
+	margin-bottom: 136px;
+}
+
+#menu li {
+	display: block;
+	list-style: none;
+	height: 17px;
+	line-height: 16px;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#menu ul {
+	margin-left: 5px;
+}
+
+#menu a {
+	display: block;
+}
+
+#subnavigation {
+	position: absolute;
+	left: 0;
+	top: 77px;
+	width: 100%;
+	height: 20px;
+	font-size: 11px;
+	z-index: 10;
+}
+
+#subnavigation > div {
+	width: 780px;
+}
+
+#subnavigation > div > ul {
+	display: block;
+	float: right;
+	border-right: 1px solid white;
+}
+
+#subnavigation > div > ul > li {
+	float: left;
+	display: block;
+}
+
+#subnavigation > div > ul > li ul {
+	display: none;
+}
+
+#subnavigation > div > ul > li > a {
+	border-left: 1px solid white;
+}
+
+#subnavigation a {
+	display: block;
+	height: 20px;
+	line-height: 19px;
+	color: #003366;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+#subnavigation > div > ul > li:hover > ul > li {
+	list-style: none;
+}
+
+#subnavigation, #subnavigation > div > ul > li:hover > ul > li > a {
+	background-color: #C5D2E4;
+}
+
+#subnavigation > div > ul > li:hover > ul > li > a {
+   	border-top: 1px solid white;
+	margin-left: 1px;
+}
+
+#subnavigation > div > ul > li:hover > ul {
+	display: block;
+	position: absolute;
+	top: 20px;
+}
+
+#subnavigation > div > ul > li:hover > a {
+	background: #003366 !important;
+	color: white;
+}
+
+#subnavigation a:hover {
+	background: #003366 !important;
+	color: white !important;
+}
+
+#subnavigation.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(197, 210, 228, .95);
+}
+/* NAVIGATION     END */
+
+/* SEARCH      START */
+#search {
+	position: absolute;
+	top: 5px;
+	left: 780px;
+	margin-left: 10px;
+	z-index: 5;
+}
+
+#search-results {
+	margin-top: 190px;
+	/* padding-bottom: 10px; */
+	position: relative;
+	left: 10px;
+	margin-right: 10px;
+}
+
+#search-results li {
+	list-style: none;
+	display: block;
+}
+
+#search-results div {
+	display: none;
+}
+
+.text-input {
+	border: 1px solid #999999;
+	background-color: white;
+	color: black;
+	font-size: 130%;
+}
+
+#search input {
+	height: 1em;
+}
+
+#search-field {
+	width: 100px;
+	height: 25px;
+}
+/* SEARCH  END */
+
+/* FORM/INPUT          START */
+
+.formField label {
+	width: 22%;
+	display: block;
+	float: left;
+	height: 2.5em;
+	line-height: 2.45em;
+	vertical-align: middle;
+}
+
+.formField label:after {
+	content: ":";
+}
+
+.formField {
+	clear: left;
+	padding: .4em 0;
+}
+
+.formControls {
+	clear: left;
+	margin-left: 22%;
+	padding: 1em 0;
+}
+
+.text-input, select {
+	width: 40%;
+	font-size: 1.5em;
+	height: 1.65em;
+}
+
+.text-input + .info, select + .info {
+	display: none;
+	float: right;
+	width: 30%;
+	margin-right: 5%;
+	background-color: black;
+	background-color: rgba(0,0,0,.8);
+	color: white;
+	padding: .2em;
+	border: 1px solid black;
+}
+
+.text-input {
+	float: left;
+}
+
+.text-input:focus + .info, select:focus + .info {
+	display: block;
+}
+/* FORMS/INPUT     END */
+
+/* MISC START */
+
+.action {
+	font-size: 1.4em;	
+}
+
+.delete {
+	color: red;
+}
+/* MISC END */
+
+/* TIMETABLE START */
+.timetable {
+	width: 550px; 
+}
+
+.timetable th{
+	width: 87px;
+	height: 30px;
+}
+
+.timeslot{
+	float: left;
+	position: absolute; 
+	width: 70px;
+	margin: 2px;
+	border: 1px dashed #999999;
+	background-color: #FFFFFF;
+	overflow: hidden;	
+}
+
+/* TIMETABLE END */

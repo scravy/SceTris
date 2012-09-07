@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="list.xsl"?>
+<!DOCTYPE booking SYSTEM "booking.dtd">
+
+<booking>
+    <hoursaday>10</hoursaday>
+    <daysaweek>5</daysaweek>
+    <room name="Taku9-HS">
+        <course day="1" duration="1" lecturer="Kriegel" name="TI-1" time="2"/>
+        <course day="1" duration="1" lecturer="Loehr" name="TI-2" time="9"/>
+        <course day="3" duration="1" lecturer="Loehr" name="Alp-2" time="5"/>
+        <course day="4" duration="4" lecturer="Kriegel" name="TI-4" time="6"/>
+        <course day="5" duration="1" lecturer="Kyas" name="Alp-3" time="4"/>
+    </room>
+    <room name="Taku6-HS">
+        <course day="1" duration="1" lecturer="Esponda" name="Alp-1" time="7"/>
+        <course day="2" duration="1" lecturer="Liers" name="TI-3" time="9"/>
+        <course day="3" duration="1" lecturer="Kyas" name="Alp-5" time="3"/>
+        <course day="3" duration="1" lecturer="Liers" name="Alp-4" time="9"/>
+    </room>
+</booking>

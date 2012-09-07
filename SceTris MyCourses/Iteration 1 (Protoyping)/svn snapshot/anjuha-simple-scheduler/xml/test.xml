@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE courseData SYSTEM "prototype.dtd">
+<courseData>
+	<rooms>
+		<!-- Room(
+				long id;
+				int numberOfSeats;
+				bool lab;
+		) -->
+		<room id="r0" numberOfSeats="24" lab="TRUE" />
+		<room id="r1" numberOfSeats="60" lab="FALSE" />
+	</rooms>
+
+	<courses>
+		<!-- Course(
+				long id,
+				String name
+		) -->
+		<course id="c0">ALP I</course>
+		<course id="c1">TI I</course>
+		<course id="c2">ALP II</course>
+		<course id="c3">TI II</course>
+		<course id="c4">ALP III</course>
+		<course id="c5">TI III</course>
+		<course id="c6">ALP IV</course>
+		<course id="c7">TI IV</course>
+	</courses>
+	
+	<studentsGroups>
+		<!--  StudentsGroup(
+				long id;
+			    String name;
+			    int numberOfStudents;
+			    ( List<CourseClass> attendedClasses // this can be inferred from course classes )
+		) -->
+		<studentsGroup id="g0" numberOfStudents="19">Info-Jahrgang 2010</studentsGroup>
+		<studentsGroup id="g1" numberOfStudents="19">Info-Jahrgang 2009</studentsGroup>
+		<studentsGroup id="g2" numberOfStudents="19">Info-Jahrgang 2008</studentsGroup>
+		<studentsGroup id="g3" numberOfStudents="19">Info-Jahrgang 2007</studentsGroup>
+	</studentsGroups>
+	
+	
+	<professors>
+		<!-- Professor(
+				long id,
+				String name,
+				( List<CourseClass> classes // this can be inferred from course classes )
+		) -->
+		<professor id="p0">Heinz Schweppe</professor>
+		<professor id="p1">Achim Liers</professor>
+		<professor id="p2">Margrita Esponda</professor>
+		<professor id="p3">Marcel Kyas</professor>
+		<professor id="p4">L. Ückenfüller</professor>
+	</professors>
+
+	<courseClasses>
+		<!-- CourseClass(
+				Professor professor,
+				Course course,
+			    List<StudentsGroup> attendedStudentGroups,
+			    int requiredSeats,
+			    boolean requiresLab,
+			    int durationInHours
+		) -->
+		<courseClass professor="p0" course="c0" requiredSeats="100" studentsGroups="g0" durationInHours="2" requiresLab="false" />
+		<courseClass professor="p2" course="c2" requiredSeats="100" studentsGroups="g0" durationInHours="2" requiresLab="false" />
+		<courseClass professor="p2" course="c3" requiredSeats="100" studentsGroups="g0" durationInHours="2" requiresLab="false" />
+	</courseClasses>
+</courseData>

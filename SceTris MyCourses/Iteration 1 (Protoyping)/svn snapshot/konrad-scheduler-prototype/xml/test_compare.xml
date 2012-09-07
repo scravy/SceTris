@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE courseData SYSTEM "prototype.dtd">
+<courseData>
+	<rooms>
+		<!-- Room(
+				long id;
+				int numberOfSeats;
+				bool lab;
+		) -->
+		<room id="r0" numberOfSeats="24" lab="true" />
+		<room id="r1" numberOfSeats="60" lab="false" />
+	</rooms>
+
+	<courses>
+		<!-- Course(
+				long id,
+				String name
+		) -->
+		<course id="c1">Introduction to Programming</course>
+		<course id="c2">Introduction to Computer Arch</course>
+		<course id="c3">Business Applications</course>
+		<course id="c4">English</course>
+		<course id="c5">Discrete Mathematic I</course>
+		<course id="c6">Linear Algebra</course>
+		<course id="c7">Introduction to IT</course>
+		<course id="c8">System Administration</course>
+	</courses>
+
+	<studentsGroups>
+		<!--  StudentsGroup(
+				long id;
+			    String name;
+			    int numberOfStudents;
+			    ( List<CourseClass> attendedClasses // this can be inferred from course classes )
+		) -->
+		<studentsGroup id="g1" numberOfStudents="19">Info-Jahrgang 101</studentsGroup>
+		<studentsGroup id="g2" numberOfStudents="19">Info-Jahrgang 102</studentsGroup>
+		<studentsGroup id="g3" numberOfStudents="19">Info-Jahrgang 103</studentsGroup>
+		<studentsGroup id="g4" numberOfStudents="19">Info-Jahrgang 1S1</studentsGroup>
+	</studentsGroups>
+
+	<professors>
+		<!-- Professor(
+				long id,
+				String name,
+				( List<CourseClass> classes // this can be inferred from course classes )
+		) -->
+		<professor id="p1">Victor</professor>
+		<professor id="p2">Red</professor>
+		<professor id="p3">Philip</professor>
+		<professor id="p4">Marry</professor>
+		<professor id="p5">Don</professor>
+		<professor id="p6">Mark</professor>
+		<professor id="p7">Peter</professor>
+		<professor id="p8">John</professor>
+		<professor id="p9">Ben</professor>
+		<professor id="p10">Mike</professor>
+		<professor id="p11">Steve</professor>
+		<professor id="p12">Ann</professor>
+		<professor id="p13">Alex</professor>
+	</professors>
+
+	<courseClasses>
+		<!-- CourseClass(
+				Professor professor,
+				Course course,
+			    List<StudentsGroup> attendedStudentGroups,		// doesnt matter, data from rSeats
+			    int requiredSeats,		// this can be inferred from studentsGroups
+			    boolean requiresLab,
+			    int durationInHours
+		) -->
+		<courseClass professor="p1" course="c1" durationInHours="2" requiredSeats="38" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p1" course="c1" durationInHours="2" requiredSeats="38" studentsGroups="g3" requiresLab="false" />
+		<courseClass professor="p9" course="c1" durationInHours="3" requiredSeats="19" studentsGroups="g1" requiresLab="true" />
+		<courseClass professor="p9" course="c1" durationInHours="3" requiredSeats="19" studentsGroups="g2" requiresLab="true" />
+		<courseClass professor="p9" course="c1" durationInHours="3" requiredSeats="19" studentsGroups="g3" requiresLab="true" />
+		<courseClass professor="p9" course="c1" durationInHours="3" requiredSeats="19" studentsGroups="g4" requiresLab="true" />
+		<courseClass professor="p2" course="c2" durationInHours="2" requiredSeats="38" studentsGroups="g3" requiresLab="false" />
+		<courseClass professor="p2" course="c2" durationInHours="2" requiredSeats="38" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p3" course="c2" durationInHours="2" requiredSeats="19" studentsGroups="g1" requiresLab="true" />
+		<courseClass professor="p3" course="c2" durationInHours="2" requiredSeats="19" studentsGroups="g2" requiresLab="true" />
+		<courseClass professor="p3" course="c2" durationInHours="2" requiredSeats="19" studentsGroups="g3" requiresLab="true" />
+		<courseClass professor="p3" course="c2" durationInHours="2" requiredSeats="19" studentsGroups="g4" requiresLab="true" />
+		<courseClass professor="p4" course="c4" durationInHours="2" requiredSeats="38" studentsGroups="g3" requiresLab="false" />
+		<courseClass professor="p4" course="c4" durationInHours="2" requiredSeats="38" studentsGroups="g3" requiresLab="false" />	<!-- doppelt -->
+		<courseClass professor="p4" course="c4" durationInHours="2" requiredSeats="38" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p4" course="c4" durationInHours="2" requiredSeats="38" studentsGroups="g1" requiresLab="false" />	<!-- doppelt -->
+		<courseClass professor="p5" course="c6" durationInHours="2" requiredSeats="57" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p5" course="c6" durationInHours="2" requiredSeats="57" studentsGroups="g1" requiresLab="false" />	<!-- doppelt -->
+		<courseClass professor="p7" course="c5" durationInHours="2" requiredSeats="57" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p7" course="c5" durationInHours="2" requiredSeats="38" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p10" course="c5" durationInHours="2" requiredSeats="19" studentsGroups="g2" requiresLab="false" />
+		<courseClass professor="p8" course="c3" durationInHours="2" requiredSeats="19" studentsGroups="g2" requiresLab="false" />
+		<courseClass professor="p8" course="c3" durationInHours="2" requiredSeats="19" studentsGroups="g3" requiresLab="false" />
+		<courseClass professor="p12" course="c3" durationInHours="2" requiredSeats="19" studentsGroups="g1" requiresLab="false" />
+		<courseClass professor="p12" course="c3" durationInHours="2" requiredSeats="19" studentsGroups="g4" requiresLab="false" />
+		<courseClass professor="p11" course="c7" durationInHours="2" requiredSeats="19" studentsGroups="g4" requiresLab="false" />
+		<courseClass professor="p13" course="c8" durationInHours="2" requiredSeats="19" studentsGroups="g4" requiresLab="false" />
+	</courseClasses>
+
+
+	
+</courseData>

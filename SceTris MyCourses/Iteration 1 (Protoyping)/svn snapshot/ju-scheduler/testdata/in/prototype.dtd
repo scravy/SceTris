@@ -1,0 +1,31 @@
+
+<!ELEMENT courseData (rooms,professors,courses)>
+<!ATTLIST courseData
+	daysNum CDATA '5'
+	daysHours CDATA '12'
+	numberOfRooms CDATA '10'
+	numberOfClasses CDATA '5'
+	>
+
+<!ELEMENT rooms (room*)>
+<!ELEMENT courses (course*)>
+<!ELEMENT professors (professor*)>
+
+<!ELEMENT room (#PCDATA)>
+<!ATTLIST room
+	id	ID	#REQUIRED
+	numberOfSeats CDATA #REQUIRED
+	lab CDATA #REQUIRED
+	>
+<!ELEMENT professor (#PCDATA)*>
+<!ATTLIST professor
+	id	ID	#REQUIRED
+	>
+<!ELEMENT course (#PCDATA)*>
+<!ATTLIST course
+	id	ID	#REQUIRED
+	professor	IDREF	#REQUIRED
+	requiredSeats	CDATA	#REQUIRED
+	durationInHours	CDATA	#REQUIRED
+	>
+

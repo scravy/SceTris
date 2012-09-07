@@ -1,0 +1,44 @@
+@import url("main.css");
+
+@namespace url("http://www.w3.org/1999/xhtml");
+
+/* colors */
+
+body, td {
+	color: black;
+}
+
+/* NAVIGATION START */
+#navigation #rootmenu, #footer {
+	background-color: #8CC63F;
+	color: #FFFFFF;	
+}
+
+#navigation #submenu {
+	background-color: #389298;
+	color: #FFFFFF;	
+}
+
+#navigation ul li a, #footer ul li a {
+	color: #FFFFFF;	
+}
+
+#navigation ul li, #footer ul li{
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;	
+}
+
+.logout, .logout a {
+	color: #8CC63F;
+	background-color: #FFFFFF;	
+}
+/* NAVIGATION END */
+
+/* HELP START */
+.help {
+	background-color: #FFFFFF;
+	border: 2px solid #8CC63F;
+}
+
+
+/* HELP END*/

@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+@namespace "http://www.w3.org/1999/xhtml";
+
+.text-input, .optionsBox {
+	border: 1px solid #999999;
+}
+
+.text-input {
+	background-color: white;
+	color: black;
+	font-size: 130%;
+}
+
+.formField label, .optionsLabel {
+	width: 22%;
+	display: block;
+	float: left;
+	height: 2.5em;
+	line-height: 1.45em;
+	vertical-align: middle;
+}
+
+.formField label:after, .optionsLabel {
+	content: ":";
+}
+
+.formField {
+	margin-bottom: .5em;
+}
+
+.formField.errorneous .text-input {
+	border-color: red;
+	border-width: 1px;
+	background-color: #fff0f0;
+}
+
+.formField.errorneous label {
+	color: red;
+}
+
+.formField .error {
+	
+}
+
+.formControls {
+	margin-left: 22%;
+	padding: 1em 0;
+}
+
+.text-input, select {
+	width: 40%;
+	font-size: 1.5em;
+	height: 1.65em;
+}
+
+.text-input + .info, select + .info {
+	display: none;
+	float: right;
+	width: 200px;
+	background-color: black;
+	background-color: rgba(0,0,0,.8);
+	color: white;
+	padding: .15em;
+	border: 1px solid black;
+}
+
+.text-input:focus + .info, select:focus + .info {
+	display: block;
+}
+
+.error + .info {
+	display: none;
+}
+
+.error {
+	display: block;
+	float: right;
+	width: 200px;
+	color: red;
+	padding: .15em;
+}
+
+.formField textarea {
+	width: 400px;
+	height: 200px;
+}
+
+.input-numeric {
+	width: 80px;
+}
+
+.input-date {
+	width: 120px;
+}
+
+.input-checkbox {
+	margin: .75em 0;
+}
+
+.dismissable-message * {
+	color: white;
+}
+
+.dismissable-message p {	
+	font-weight: bold;
+}
+
+.dismissable-message {
+	padding: 1em 1em .5em;
+	margin: 1em 0;
+}
+
+.commit-success {
+	border-color: #9c0;
+	background: #9c0;
+}
+
+.commit-failure {
+	border-color: #c00;
+	background: #c00;
+}
+
+.input-checkbox {
+	float: none;
+}
+
+.optionsBox {
+	display: block;
+	max-height: 150px;
+	overflow: auto;
+	width: 300px;
+}
+
+.optionsBox li {
+	list-style: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.optionsBox input {
+	margin: 0;
+}
+
+.optionsBox label {
+	margin-left: .5em;
+	display: inline;
+	float: none;
+}
+
+
+
+/** TIMETABLE **/
+.timetable {
+	width: 550px; 
+}
+
+.timetable th{
+	width: 87px;
+	height: 30px;
+}
+
+.timeslot{
+	float: left;
+	position: absolute; 
+	width: 80px;
+	margin: 2px;
+	border: 1px dashed #999999;
+	background-color: #FFFFFF;
+	overflow: hidden;
+	cursor: help;
+	line-height: 9pt;	
+}
+
+.ceiselector {
+	position: absolute;
+	right: 0px;
+	border-left: 3px solid #FFFFFF;	
+}
+
+
+.timeslot + .info {
+	background-image: url(http://userpage.fu-berlin.de/andrez/timetablebox.png);
+	background-repeat: no-repeat; 	
+	position: absolute;
+	display: none;
+	width: 190px;
+	z-index: 3;	
+}
+
+.timeslot:hover + .info {
+	display: block;
+}
+
+
+.infotext {
+	background-color: #FFFFFF;
+	border-top: 2px solid #D1D1D1;
+	border-right: 2px solid #D1D1D1;
+	border-bottom: 2px solid #D1D1D1;
+	padding: 10px;
+	margin-left: 20px;
+
+}
+
+/** /TIMETABLE **/

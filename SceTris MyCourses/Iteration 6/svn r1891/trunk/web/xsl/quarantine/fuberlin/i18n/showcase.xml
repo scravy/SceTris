@@ -1,0 +1,15 @@
+<lang>
+	<labels>
+		<text>Text</text>
+		<date>Date</date>
+		<select1>Select (1)</select1>
+		<select2>Select (2)</select2>
+	</labels>
+	
+	<info>
+		<text>Some text.</text>
+		<date>Some date.</date>
+		<select1>Some select.</select1>
+		<select2>Another select.</select2>
+	</info>
+</lang>

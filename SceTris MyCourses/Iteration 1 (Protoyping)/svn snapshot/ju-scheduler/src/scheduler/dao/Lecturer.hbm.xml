@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="scheduler.data.Lecturer" table="lecturer">
+		<meta attribute="class-description">
+			This class contains the lecturer details.
+		</meta>
+		<id name="id" type="int" column="id">
+			<generator class="sequence"/>
+		</id>
+		<property name="firstname" type="string" column="firstname"
+			not-null="true"/>
+		<property name="name" type="string" column="surname"
+			not-null="true"/>
+
+		<set name="myCourses" table="course" cascade="all">
+			<key column="lecturer"/>
+			<one-to-many class="scheduler.data.Course"/>
+		</set>
+	</class>
+</hibernate-mapping>

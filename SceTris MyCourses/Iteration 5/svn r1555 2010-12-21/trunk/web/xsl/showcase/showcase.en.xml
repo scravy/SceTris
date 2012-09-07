@@ -1,0 +1,54 @@
+<lang>
+	<formBuilder>
+		<title>Showcase: Form Builder</title>
+		<heading>Form Builder</heading>
+	</formBuilder>
+	
+	<formControls>
+		<title>Showcase: Form Controls</title>
+		<heading>Form Controls</heading>
+	</formControls>
+	
+	<formValidation>
+		<title>Showcase: Form Validation</title>
+		<heading>Form Validation</heading>
+	</formValidation>
+	
+	<multipleForms>
+		<title>Showcase: Multiple Forms</title>
+		<heading>Multiple Forms</heading>
+	</multipleForms>
+	
+	<extendedForm>
+		<title>Showcase: Extended Form</title>
+		<heading>Extended Form</heading>
+	</extendedForm>
+	
+	<acgtForms>
+		<title>Showcase: Advanced Code Generation Techniques</title>
+		<heading>ACGT Forms</heading>
+	</acgtForms>
+
+	<misc>Miscellaneous</misc>
+
+	<labels>
+		<szimpla.firstName>First name</szimpla.firstName>
+		<szimpla.lastName>Last name</szimpla.lastName>
+		<szimpla.loginName>Login name</szimpla.loginName>
+		<szimpla.pw>Password</szimpla.pw>
+		<szimpla.mail>E-Mail-Address</szimpla.mail>
+		<szimpla.numeric>A number</szimpla.numeric>
+		
+		<szimpla.string>String</szimpla.string>
+		
+		<szimpla.title>Title</szimpla.title>
+		<szimpla.subtitle>Subtitle</szimpla.subtitle>
+		<szimpla.description>Description</szimpla.description>
+		
+		<szimpla.button.submit>Create new user</szimpla.button.submit>
+	</labels>
+	
+	<info>
+		
+	</info>
+</lang>

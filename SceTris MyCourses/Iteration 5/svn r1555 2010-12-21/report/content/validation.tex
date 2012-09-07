@@ -1,0 +1,17 @@
+\section{Verification and Validation}
+
+This section will cover testing and other measurements which were taken to convince ourself of the correctness of our implementations. But also performance measurement is part of Verification and Validation.
+
+\subsection{JUnit}
+
+\subsubsection{Scheduler Validation}
+
+Testing the scheduler for correctness is a non-trivial task. Not only raises the presents of a genetic algorithm the complexity, but also does its random-factor make it hard to test conditions which have to be satisfied all the time.
+
+One approach to improve the testability of the scheduler is the introduction of a seeded random generator. Whenever randomness is applied in the scheduler, it can be reproduced by using the same seed.
+
+In order to achieve a high guarantee of the schedulers correctness JUnit tests were implemented as little as possible. There are unit tests for every component of the scheduler, for instance a unit test testing the \emph{crossover} operation. On the downside unit tests allow only little input testing. Data-driven testing would be a more promising approach for testing the scheduler. On the other side this makes it also harder to check for correctness.
+
+\subsection{Performance}
+
+Performance, especially of the scheduler, can be easily tested by test runs with varying size of data input. However this gives no detailed information about the actual performance of separate components. For that reason the profiler \emph{JProfiler} was used to inspect the Java Virtual Machine while executing the program. This lead to a step-by-step process of picking up the slowest component display in the profiler and trying to improve its performance. In some cases this procedure gave us huge performance boosts.

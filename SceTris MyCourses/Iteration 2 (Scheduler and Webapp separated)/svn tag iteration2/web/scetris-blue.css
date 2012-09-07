@@ -1,0 +1,35 @@
+@import url("main.css");
+
+@namespace url("http://www.w3.org/1999/xhtml");
+
+/* colors */
+
+body, td {
+	color: black;
+}
+
+/* NAVIGATION START */
+#navigation #rootmenu, #footer {
+	background-color: blue;
+	color: #FFFFFF;	
+}
+
+#navigation #submenu {
+	background-color: lightblue;
+	color: #000000;	
+}
+
+#navigation ul li a, #footer ul li a {
+	color: #FFFFFF;	
+}
+
+#navigation ul li, #footer ul li{
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;	
+}
+
+.logout, .logout a {
+	color: blue;
+	background-color: #FFFFFF;	
+}
+/* NAVIGATION END */

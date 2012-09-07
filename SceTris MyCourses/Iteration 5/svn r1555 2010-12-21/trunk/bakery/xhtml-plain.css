@@ -1,0 +1,36 @@
+* {
+	display: none;
+	margin: 0;
+	padding: 0;
+	font-size: 12pt;
+	font-family: "Times New Roman", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+	color: black;
+	text-decoration: none;
+}
+
+html, body, div, ul, li, table, thead, tfoot {
+	display: block;
+}
+
+thead tr, tfoot tr, thead tr th, tfoot tr th {
+	display: block;
+}
+
+thead tr th, tfoot tr th {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.dc_title, .dc_description, .dc_title *, .dc_description * {
+	display: block !important;
+	text-align: justify;
+}
+
+thead tr th a {
+	display: inline;
+	font-size: inherit;
+	font-weight: inerhit;
+}

@@ -1,0 +1,42 @@
+<menu>
+	<item target="scheduling">Years
+		<submenu name="scheduling">
+			<item target="programs">Programs</item>
+			<item target="courseelementinstances">CourseElementInstances</item>
+		</submenu>
+	</item>
+	<item target="ressources">Ressourses
+		<submenu name="ressources">
+			<item target="room">Rooms</item>
+			<item target="building">Buildings</item>
+			<item target="department">Departments</item>
+			<item target="CourseInstance">CourseInstances</item>
+			<item target="CourseElement">CourseElements</item>
+		</submenu>
+	</item>
+	<item target="usermanagement">Usermanagement
+		<submenu name="usermanagement" >
+			<item target="students">Students</item>
+			<item target="lecturers">Lecturers</item>
+			<item target="staff">Staff</item>
+			<item target="groups">Groups</item>
+			<item target="roles">Roles</item>
+			<item target="permission">Permissions</item>
+		</submenu>
+	</item>
+	<item target="myprofile">MyProfile</item>
+	<item target="settings">Settings
+		<submenu name="settings">
+			<item target="configuration">Configuration</item>
+			<item>Timeslots</item>
+			<item>Days</item>
+			<item>Features</item>
+			<item>Attributes</item>
+			<item>Courses</item>
+			<item>CourseElementTypes</item>
+			<item>CourseAttributes</item>
+			<item>AcademicTerms</item>
+			<item>Years</item>
+		</submenu>
+	</item>
+</menu>

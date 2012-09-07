@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE courseData SYSTEM "prototype.dtd">
+<courseData>
+	<rooms>
+		<!-- Room(
+				long id;
+				int numberOfSeats;
+				String name;
+				bool lab;
+		) -->
+		<room id="r1" numberOfSeats="200" lab="false">Taku9-HS</room>
+		<room id="r2" numberOfSeats="100" lab="false">Taku6-HS</room>
+	</rooms>
+	
+	<professors>
+		<!-- Professor(
+				long id,
+				String name;
+		) -->
+		<professor id="p1">Schweppe</professor>
+		<professor id="p2">Esponda</professor>
+		<professor id="p3">Loehr</professor>
+		<professor id="p4">Kyas</professor>
+		<professor id="p5">Liers</professor>
+		<professor id="p6">Kriegel</professor>
+		<professor id="p7">Prechelt</professor>
+	</professors>
+
+	<courses>
+		<!-- Course(
+				long id,
+				String name,
+				Professor professor,
+			    int requiredSeats,
+			    int durationInHours;
+		) -->
+		<course id="c1" professor="p1" requiredSeats="100" durationInHours="2">Alp-1</course>
+		<course id="c2" professor="p2" requiredSeats="100" durationInHours="4">Alp-2</course>
+		<course id="c3" professor="p3" requiredSeats="100" durationInHours="4">Alp-3</course>
+		<course id="c4" professor="p4" requiredSeats="150" durationInHours="4">Alp-4</course>
+		<course id="c5" professor="p3" requiredSeats="150" durationInHours="4">Alp-5</course>
+
+		<course id="c6" professor="p5" requiredSeats="100" durationInHours="3">TI-1</course>
+		<course id="c7" professor="p2" requiredSeats="150" durationInHours="2">TI-2</course>
+		<course id="c8" professor="p4" requiredSeats="100" durationInHours="5">TI-3</course>
+		<course id="c9" professor="p5" requiredSeats="150" durationInHours="4">TI-4</course>
+
+		<course id="c10" professor="p6" requiredSeats="100" durationInHours="2">MafI-1</course>
+		<course id="c11" professor="p6" requiredSeats="150" durationInHours="2">MafI-2</course>
+		<course id="c12" professor="p6" requiredSeats="150" durationInHours="2">MafI-3</course>
+
+	</courses>
+	
+</courseData>
+
+<!--
+/* The last courses might be a bit modified, nothing to worry about
+
+		Lecturer schweppe = scheduler.createLecturer("Schweppe");
+		Lecturer esponda = scheduler.createLecturer("Esponda");
+		Lecturer loehr = scheduler.createLecturer("Loehr");
+		Lecturer kyas = scheduler.createLecturer("Kyas");
+		Lecturer liers = scheduler.createLecturer("Liers");
+		Lecturer kriegel = scheduler.createLecturer("Kriegel");
+		Lecturer prechelt = scheduler.createLecturer("Prechelt");
+		
+		scheduler.createCourse("Alp1", schweppe, 100, 1);
+		scheduler.createCourse("Alp2", esponda, 100, 1);
+		scheduler.createCourse("Alp3", loehr, 100, 1);
+		scheduler.createCourse("Alp4", kyas, 100, 1);
+		scheduler.createCourse("Alp5", loehr, 100, 1);
+		
+		scheduler.createCourse("Ti1", liers, 100, 1);
+		scheduler.createCourse("Ti2", esponda, 100, 1);
+		scheduler.createCourse("Ti3", kyas, 100, 1);
+		scheduler.createCourse("Ti4", liers, 100, 4);
+		
+		scheduler.createCourse("Mafi1", kriegel, 100, 2);
+		scheduler.createCourse("Mafi2", kriegel, 100, 2);
+		scheduler.createCourse("Mafi3", kriegel, 100, 2);
+		
+		scheduler.createCourse("GTI", kyas, 100, 1);
+		scheduler.createCourse("DBS", schweppe, 100, 1);
+		scheduler.createCourse("SWT", prechelt, 100, 1);
+		scheduler.createCourse("AWS", prechelt, 100, 1);
+		scheduler.createCourse("SWP1", prechelt, 25, 1);
+		scheduler.createCourse("SWP2", schweppe, 25, 1);
+		scheduler.createCourse("Erlang", kyas, 40, 3);
+		scheduler.createCourse("SWT+", prechelt, 40, 1);
+		
+		scheduler.createRoom("Taku9 Gro√üer HS", 200);
+		scheduler.createRoom("Mathe HS", 100);
+		scheduler.createRoom("Seminarraum", 40);
+*/
+-->

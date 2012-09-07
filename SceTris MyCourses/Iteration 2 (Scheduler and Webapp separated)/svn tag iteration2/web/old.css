@@ -1,0 +1,61 @@
+
+dt {
+	margin-left: 1em;
+}
+
+dd {
+	margin-left: 2em;
+}
+
+td, th {
+	padding: .5em;
+}
+
+header, footer {
+	padding: .5em;
+}
+
+header {
+	margin-bottom: .4em;
+}
+
+footer {
+	margin-top: .4em;
+}
+
+/* visuals */
+
+dt {
+	font-weight: bold;
+}
+
+table, tr, td, th {
+	border-collapse: collapse;
+	border: 2px solid white;
+}
+
+td, th {
+	background: black;
+	color: white !important;
+}
+
+footer address {
+	text-align: right;
+	position: relative;
+	top: 3.5em;
+}
+
+.denied {
+	text-align: center;
+	color: red;
+	background: black;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-family: monospace;
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 6em;
+}	

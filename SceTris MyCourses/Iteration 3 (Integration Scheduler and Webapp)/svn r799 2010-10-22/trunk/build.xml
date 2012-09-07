@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     build.xml
+     Part of SCORE myCourses
+
+     Team Scetris: David Bialik, Julian Fleischer,
+     Hagen Mahnke, Konrad Reiche, André Zoufahl
+
+     Author: David Bialik
+     Since:  Iteration2
+     ====================================================================== -->
+<project name="scetris" default="all" xmlns:aspectj="antlib:org.aspectj">
+<description>
+    The program MyCourses provides as optimal as possible a plan for scheduling courses.
+		This buildfile is intended to provide an operating development environment as well as
+		a working application within a minimum of steps.
+</description>
+
+<!-- =================================
+     properties
+     ================================ -->
+<property name="AJC" value="ajc" />
+<property name="AJC_ARGS" value="-1.6" />
+<property name="AJDOC" value="ajdoc" />
+
+<property name="DIR_OTHERS" location="doc" />
+<property name="DIR_APIDOC" location="doc/public" />
+<property name="DIR_DEVDOC" location="doc/private" />
+<property name="DIR_SRC" location="src" />
+<property name="DIR_BIN" location="web/WEB-INF/classes" />
+<property name="DIR_LIB" location="web/WEB-INF/lib" />
+
+<!-- =================================
+            taskdef
+     ================================ -->
+<taskdef uri="antlib:org.aspectj" resource="org/aspectj/antlib.xml" classpath="${DIR_LIB}/aspectjtools.jar" />
+
+<!-- ================================= 
+     target: default              
+     ================================= -->
+<target name="all" depends="build-cp">
+    <description>
+        Builds the whole project. Build will always be a clean one since AspectJ
+        needs to recompile everything everytime.
+    </description>
+    <echo>
+        If aspectJ-compiler fails it could be due that either aspectjtools.jar
+        or servlet-api.jar (tomcat/lib) is missing. Try ant devel.
+    </echo>
+    <aspectj:iajc verbose="true" source="1.6" destDir="${DIR_BIN}">    
+        <classpath>
+            <pathelement location="${cp_files}" />
+        </classpath>
+        <sourceroots>
+            <pathelement location="${DIR_SRC}" />
+        </sourceroots>
+    </aspectj:iajc>
+</target>
+
+<!-- ================================= 
+     dependency targets; i.e. targets required by other targets to work                      
+     ================================= -->
+<target name="build-cp" description="grabs together needed files, is called by other targets">
+	<fileset dir="${DIR_LIB}" id="cp.files">
+		<include name="**/*.jar" />
+	</fileset>
+	<pathconvert property="cp_files" refid="cp.files" />
+</target>
+
+<target name="all-src" description="grabs together sourcefiles, is called by other targets">
+	<fileset dir="${DIR_SRC}" id="src.files">
+		<include name="**/*.java" />
+		<include name="**/*.aj" />
+	</fileset>
+	<pathconvert property="all_src" refid="src.files" />
+</target>
+
+<!-- =================================
+     target : devel
+     ================================= -->
+<target name="devel" description="loads some jars needed for the development process">
+    <get dest="${DIR_LIB}" usetimestamp="true" verbose="on">
+        <url url="http://page.mi.fu-berlin.de/scravy/score/ant.jar"/>
+        <url url="http://page.mi.fu-berlin.de/scravy/score/junit-4.8.2.jar"/>
+        <url url="http://page.mi.fu-berlin.de/scravy/score/aspectjrt.jar"/>
+        <url url="http://page.mi.fu-berlin.de/scravy/score/aspectjtools.jar"/>
+        <url url="http://page.mi.fu-berlin.de/scravy/score/postgresqlDriver.jar"/>
+        <url url="http://page.mi.fu-berlin.de/scravy/score/servlet-api.jar"/>
+    </get>
+</target>
+
+<target name="clean-devel" description="deletes the folder created by 'ant devel' with all content">
+    <delete dir="${DIR_LIB}" />
+</target>
+
+<!-- =================================
+		 documentation targets
+		 ================================= -->
+<target name="html">
+	<description>
+		creates both apidoc and devdoc
+	</description>
+	<antcall target="devdoc" />
+	<antcall target="apidoc" />
+</target>
+
+<target name="clean-html">
+	<delete dir="${DIR_OTHERS}" />
+</target>
+
+<target name="devdoc" depends="build-cp, all-src">
+	<description>
+		creates internal documentation devels may need to understand the code
+	</description>
+	<javadoc destdir="${DIR_DEVDOC}" Private="true">
+		<classpath>
+			<pathelement location="${cp_files}" />
+		</classpath>
+		<sourcepath>
+			<pathelement location="${DIR_SRC}" />
+		</sourcepath>
+	</javadoc>
+</target>
+
+<target name="clean-devdoc">
+	<delete dir="${DIR_DEVDOC}" />
+</target>
+
+<target name="apidoc" depends="build-cp, all-src">
+	<description>
+		creates documentation of our public api that is neeses to extend the application
+	</description>
+	<javadoc destdir="${DIR_APIDOC}" Public="true">
+		<classpath>
+			<pathelement location="${cp_files}" />
+		</classpath>
+		<sourcepath>
+			<pathelement location="${DIR_SRC}" />
+		</sourcepath>
+	</javadoc>
+</target>
+
+<target name="clean-apidoc">
+	<delete dir="${DIR_APIDOC}" />
+</target>
+
+<!-- =================================
+		 clean targets
+		 ================================= -->
+
+<target name="clean">
+	<delete dir="${DIR_BIN}" />
+</target>
+
+<target name="maintainer-clean">
+	<description>
+		this one removes nearly anything which could be built using this build.xml
+	</description>
+	<delete dir="${DIR_BIN}" />
+	<delete dir="${DIR_APIDOC}" />
+	<delete dir="${DIR_DEVDOC}" />
+	<delete dir="${DIR_OTHERS}" />
+</target>
+
+</project>

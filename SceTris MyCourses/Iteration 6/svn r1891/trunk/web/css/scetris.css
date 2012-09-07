@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@import "fuberlin.css";
+@import "lego.css";
+@import "ui/jquery-ui-1.8.6.custom.css";
+
+@namespace "http://www.w3.org/1999/xhtml";
+
+.optionLink:before {
+	content: "[";
+}
+
+.optionLink:after {
+	content: "]";
+}
+
+.users {
+	width: 550px;
+}
+
+.users .name, .users .time {
+	display: block;	
+}
+
+.users .time {
+	color: gray;
+}
+
+ul.topMostDepartments > li > a {
+	font-weight: bold;
+}
+
+ul.topMostDepartments > li ul {
+	margin-top: .3em;
+	margin-bottom: .4em;
+}
+
+head {
+	display: none;
+}

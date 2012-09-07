@@ -1,0 +1,43 @@
+
+<!ELEMENT courseData (rooms,professors,courseClasses,courses,studentsGroups)>
+<!ATTLIST courseData
+	daysNum CDATA '5'
+	daysHours CDATA '12'
+	numberOfRooms CDATA '10'
+	numberOfClasses CDATA '5'
+	>
+
+<!ELEMENT rooms (room*)>
+<!ELEMENT courses (course*)>
+<!ELEMENT studentsGroups (studentsGroup*)>
+<!ELEMENT professors (professor*)>
+<!ELEMENT courseClasses (courseClass*)>
+
+<!ELEMENT room EMPTY>
+<!ATTLIST room
+	id	ID	#REQUIRED
+	numberOfSeats CDATA #REQUIRED
+	lab (true|false) 'false'
+	>
+<!ELEMENT course (#PCDATA)*>
+<!ATTLIST course
+	id	ID	#REQUIRED
+	>
+<!ELEMENT studentsGroup (#PCDATA)*>
+<!ATTLIST studentsGroup
+	id	ID	#REQUIRED
+	numberOfStudents CDATA #REQUIRED
+	>
+<!ELEMENT professor (#PCDATA)*>
+<!ATTLIST professor
+	id	ID	#REQUIRED
+>
+<!ELEMENT courseClass EMPTY>
+<!ATTLIST courseClass
+	professor	IDREF	#REQUIRED
+	course	IDREF	#REQUIRED
+	requiredSeats	CDATA	#REQUIRED
+	studentsGroups	IDREFS #REQUIRED
+	durationInHours	CDATA	'1'
+	requiresLab	(true|false)	'false'
+>

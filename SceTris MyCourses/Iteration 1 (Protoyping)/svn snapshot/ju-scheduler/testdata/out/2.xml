@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="list.xsl"?>
+<!DOCTYPE booking SYSTEM "booking.dtd">
+
+<booking>
+    <hoursaday>10</hoursaday>
+    <daysaweek>5</daysaweek>
+    <room name="seminarraum 13"/>
+    <room name="seminarraum 13b">
+        <course day="1" duration="2" lecturer="schweppe" name="dbs" time="4"/>
+        <course day="4" duration="1" lecturer="prechelt" name="swp" time="6"/>
+        <course day="4" duration="1" lecturer="schweppe" name="dbs-tut" time="8"/>
+    </room>
+</booking>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="scetris/meta" default="all">
+
+<property name="MANAGER" value="RelationManager" />
+
+<target name="all">
+	<antcall target="html" />
+	<antcall target="sql" />
+	<antcall target="java" />
+	<antcall target="pdf" />
+	<antcall target="svg" />
+</target>
+
+<target name="java" depends="Relations.full.xml, autoTemplate.xsl">
+	<xslt in="Relations.xml" out="temp.xml" style="lib/buildtempxml.xsl">
+		<param name="managerName" expression="${MANAGER}" />
+	</xslt>
+	<ant antfile="temp.xml" />
+	<delete file="temp.xml" />
+	<antcall target="java/MANAGER" />
+</target>
+
+<target name="java/MANAGER" depends="Relations.full.xml, autoTemplate.xsl">
+	<javaMANAGER managerName="${MANAGER}" />
+</target>
+
+<macrodef name="javaMANAGER">
+	<attribute name="managerName" />
+	<sequential>
+		<xslt in="Relations.full.xml" out="java/@{managerName}.java" style="autoTemplate.xsl">
+			<param name="relation" expression="#manager" />
+			<param name="targetPackage" expression="de.fu.scetris.data" />
+			<param name="managerName" expression="@{managerName}" />
+		</xslt>
+	</sequential>
+</macrodef>
+
+<target name="install" depends="java">
+	<move todir="../src/de/fu/scetris/data">
+		<fileset dir="java" includes="*.java" />
+	</move>
+</target>
+
+<target name="autoTemplate.xsl">
+	<xslt in="templates/java2.xml" out="autoTemplate.xsl" style="lib/java2.metaTemplate.xsl" />
+</target>
+
+<target name="pdf">
+	<antcall target="erm.pdf" />
+	<antcall target="erm2.pdf" />
+	<antcall target="uml.pdf" />
+	<antcall target="uml2.pdf" />
+</target>
+
+<target name="erm.pdf" depends="erm.dot">
+	<exec executable="dot">
+		<arg value="erm.dot" />
+		<arg value="-Tpdf" />
+		<arg value="-oerm.pdf" />
+	</exec>
+</target>
+
+<target name="erm2.pdf" depends="erm.dot">
+	<exec executable="neato">
+		<arg value="erm.dot" />
+		<arg value="-Tpdf" />
+		<arg value="-oerm2.pdf" />
+	</exec>
+</target>
+
+<target name="uml.pdf" depends="uml.dot">
+	<exec executable="dot">
+		<arg value="uml.dot" />
+		<arg value="-Tpdf" />
+		<arg value="-ouml.pdf" />
+	</exec>
+</target>
+
+<target name="uml2.pdf" depends="uml.dot">
+	<exec executable="neato">
+		<arg value="uml.dot" />
+		<arg value="-Tpdf" />
+		<arg value="-ouml2.pdf" />
+	</exec>
+</target>
+
+<target name="svg">
+	<antcall target="erm.svg" />
+	<antcall target="erm2.svg" />
+	<antcall target="uml.svg" />
+	<antcall target="uml2.svg" />
+</target>
+
+<target name="erm.svg" depends="erm.dot">
+	<exec executable="dot">
+		<arg value="erm.dot" />
+		<arg value="-Tsvg" />
+		<arg value="-oerm.svg" />
+	</exec>
+</target>
+
+<target name="erm2.svg" depends="erm.dot">
+	<exec executable="neato">
+		<arg value="erm.dot" />
+		<arg value="-Tsvg" />
+		<arg value="-oerm2.svg" />
+	</exec>
+</target>
+
+<target name="uml.svg" depends="uml.dot">
+	<exec executable="dot">
+		<arg value="uml.dot" />
+		<arg value="-Tsvg" />
+		<arg value="-ouml.svg" />
+	</exec>
+</target>
+
+<target name="uml2.svg" depends="uml.dot">
+	<exec executable="neato">
+		<arg value="uml.dot" />
+		<arg value="-Tsvg" />
+		<arg value="-ouml2.svg" />
+	</exec>
+</target>
+
+<target name="erm.dot" depends="Relations.full.xml">
+	<xslt in="Relations.full.xml" out="erm.dot" style="lib/erm.xsl" />
+</target>
+
+<target name="uml.dot" depends="Relations.full.xml">
+	<xslt in="Relations.full.xml" out="uml.dot" style="lib/uml.xsl" />
+</target>
+
+<target name="sql" depends="create.sql" />
+
+<target name="create.sql" depends="Relations.full.xml">
+	<xslt in="Relations.full.xml" out="create.sql" style="lib/sql.xsl" />
+</target>
+
+<target name="html" depends="Relations.xhtml" />
+
+<target name="Relations.xhtml" depends="Relations.full.xml">
+	<xslt in="Relations.full.xml" out="Relations.xhtml" style="lib/xhtml.xsl" />
+</target>
+
+<target name="Relations.full.xml">
+	<xslt in="Relations.xml" out="Relations.full.xml" style="lib/prepare.xsl" />
+</target>
+
+<target name="clean">
+	<delete quiet="true" file="Relations.full.xml" />
+	<delete quiet="true" file="Relations.xhtml" />
+	<delete quiet="true" file="create.sql" />
+	<delete quiet="true" verbose="true">
+		<fileset dir="." includes="*.java" />
+		<fileset dir="." includes="*.dot" />
+		<fileset dir="." includes="*.log" />
+		<fileset dir="." includes="*.pdf" />
+		<fileset dir="." includes="*.svg" />
+		<fileset dir="java" includes="*.java" />
+	</delete>
+	<delete quiet="true" file="autoTemplate.xsl" />
+	<delete quiet="true" file="temp.xml" />
+</target>
+
+</project>

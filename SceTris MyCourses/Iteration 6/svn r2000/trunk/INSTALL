@@ -1,0 +1,47 @@
+= INSTALLING =
+There are several ways to install SceTris MyCourses on your machine. 
+However, you need to make sure that the following preconditions are 
+met:
+
+ *  JaA Java SE 6 Runtime Environment
+ *  woA working PostgreSQL database server, version 8.3 or later
+
+
+== Installing using the installer ==
+
+If you’ve got a binary distribution of SceTris MyCourses, you may 
+choose to install it using a graphical installer. The installer will 
+guide you through the installation and connect with a given 
+database. It is not necessary to have a servlet container up and 
+running, since the installer can setup up one for you. However, it 
+is recommended that in production environments a separate webserver 
+is set up and configured.
+
+If you can’t simply double-click the installer (most likeley because 
+*.jar files are not automatically executed) you can execute it on 
+the command line using
+
+
+== Installing form a WAR-Archive ==
+
+If you’ve got a binary distribution of SceTris MyCourses, you may 
+choose to install it using a WAR-Archive. Most Servlet Container 
+provide you with an easy way of plugin WARs into your server, see 
+the documentation of your Servlet Container for further information. 
+However, you need to create a configuration-file (web.xml) by hand.
+
+(notes on creating web.xml)
+
+
+== Installing it from the command line ==
+
+(how to plug it into, for example, tomcat manually)
+
+
+== Creating a custom build ==
+
+If you’ve got a source package of SceTris MyCourses, or simply want 
+to create a custom build, please follow the the steps describes in .
+
+
+$ File: INSTALL / Date: 2011-01-28T23:28:27+01:00 $

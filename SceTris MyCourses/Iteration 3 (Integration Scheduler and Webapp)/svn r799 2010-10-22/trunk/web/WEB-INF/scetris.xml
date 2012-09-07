@@ -1,0 +1,30 @@
+<config xmlns="http://technodrom.scravy.de/2010/scetris/config">
+
+<de.fu.scetris.Scetris>
+
+	<!-- All paths are relative to the web-directory -->
+
+	<controller
+		first-page="start"
+		dir-xsl-public="xsl"
+		dir-xsl="xsl"
+	/>
+
+	<database
+		name="postgres"
+		user="postgres"
+		host="localhost"
+		password=""
+	/>
+	
+	<relations
+		file="Relations.full.xml"
+	/>
+	
+	<modules>
+		<module>de.fu.scetris.modules.About</module>
+	</module>
+
+</de.fu.scetris.Scetris>
+
+</config>
