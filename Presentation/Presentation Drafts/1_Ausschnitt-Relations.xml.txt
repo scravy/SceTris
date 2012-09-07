@@ -1,0 +1,23 @@
+
+	<!-- Person -->
+	<entity name="Person">
+		<attribute name="first_name"
+			type="string" />
+		
+		<attribute name="additional_names"
+			type="string"
+			nullable="true" />
+		
+		<attribute name="last_name"
+			type="string" />
+			
+		<attribute name="email_address"
+			type="string"
+			unique="true"
+			nullable="true" />
+
+		<attribute name="home_department"
+			ref="Department"
+			nullable="true" />
+
+	
