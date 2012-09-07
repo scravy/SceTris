@@ -1,0 +1,173 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>System management</category>
+
+	<use-case>
+		<title>Create privileges</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>A new privilege is inserted into the database.</success>
+		<ev>User opens the privilege panel.</ev>
+		<ev>User clicks on new privilege.</ev>
+		<ev>
+			User enters the name for the new privilege.
+			<or>User enters many privileges in the extended text field.</or>
+		</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new privilege into the database.</ev>
+		<status>Implemented.</status>
+		<note>The privileges can be created in the web interface, however only
+			privileges created by the installer have an effect..</note>
+	</use-case>
+
+	<use-case>
+		<title>Delete privileges</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of
+			an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The selected privilege is deleted from the database.
+		</success>
+		<ev>User opens the privilege panel.</ev>
+		<ev>User clicks on delete privilege.</ev>
+		<ev>User selects a privilege.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI deletes the privilege from the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Privileges detail view</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The GUI displays the privilege and its details.</success>
+		<ev>User opens the privilege panel.</ev>
+		<ev>User clicks on "all privileges"</ev>
+		<ev>GUI requests data from the database</ev>
+		<ev>GUI displays the data from the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Edit privileges</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The privilege is altered.
+		</success>
+		<ev>User opens the privilege panel.</ev>
+		<ev>User clicks on edit privilege.</ev>
+		<ev>User selects a privilege.</ev>
+		<ev>User changes the privilege name.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI updates the privilege into the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Create Attribute regarding Persons</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The attribute is created.</success>
+		<ev>User opens the attribute panel.</ev>
+		<ev>User clicks on create attribute.</ev>
+		<ev>User enters the name of the attribute.</ev>
+		<ev>User enters the type of the attribute.</ev>
+		<ev>
+			User chooses the attribute to be a unique attribute.
+			<or>User chooses the attribute to be not a unique attribute.</or>
+		</ev>
+		<ev>GUI inserts the attribute into the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Edit Attribute regarding Persons</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The attribute is altered.</success>
+		<ev>User opens the attribute panel.</ev>
+		<ev>User clicks on edit attribute.</ev>
+		<ev>User changes the data of the attribute.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI updates the attribute into the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Delete Attribute regarding Persons</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The selected attribute is deleted from the database.
+		</success>
+		<ev>User opens the attribute panel.</ev>
+		<ev>User clicks on delete attribute.</ev>
+		<ev>User selects an attribute.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI deletes the attribute from the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Create Course Attribute</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The course attribute is created.</success>
+		<ev>User opens the course attribute panel.</ev>
+		<ev>User clicks on create course attribute.</ev>
+		<ev>User enters the name of the course attribute.</ev>
+		<ev>User enters the type of the course attribute.</ev>
+		<ev>
+			User chooses the course attribute to be a unique attribute.
+			<or>User chooses the course attribute to be not a unique attribute.
+			</or>
+		</ev>
+		<ev>GUI inserts the course attribute into the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Edit Course Attribute</title>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The course attribute is altered.</success>
+		<ev>User opens the course attribute panel.</ev>
+		<ev>User clicks on edit course attribute.</ev>
+		<ev>User changes the data of the course attribute.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI updates the attribute into the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Delete Course Attribute</title>
+		<actor>Program Administrator, GUI</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The selected attribute is deleted from the database.
+		</success>
+		<ev>User opens the course attribute panel.</ev>
+		<ev>User clicks on delete course attribute.</ev>
+		<ev>User selects a course attribute.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI deletes the course attribute from the database.</ev>
+	</use-case>
+
+</use-cases>

@@ -1,0 +1,81 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+<category>Rooms</category>
+
+<use-case>
+	<title>Create room</title>
+	<actor>administrator or program administrator</actor>
+	<pre>The system is up and running, the user who wants to create a new room is logged in.</pre>
+	<success>The new room is created</success>
+	
+	<ev>User navigates to the "create room" page.
+		<or>Without needed rights, the user should be sent to the "public room list".</or>
+	</ev>
+	<ev>A form will be presented to the user in which the user can enter data about the room to create: name, number, building(from list of existent buildings), preferred timeslot, provided features(from list or new one) together with quantity via form field that only accepts positive integers</ev>
+	<q>how to select the preferred timeslot(list, ...)?</q>
+	<q>how are the quantities of features saved? It is possible that a feature is restricted to have only the values 0 and 1(then boolean checkboxed would be preferable for this kind of feature)?</q>
+	<ev>The form will be submitted.</ev>
+	<ev>The new room is created. A new empty form will be presented to enter data about the next room.
+		<or>The new room is not created, due to malformed data (bad syntax, invalid values). In this case the same form with hints on what went wrong should be displayed again.</or>
+		<or>A database exception occurs. The user should be informed about it, the data should not be lost, i.e. the same form should be shown again (maybe in a way that it can easily be retried).</or>
+	</ev>
+	<status>not implemented</status>
+</use-case>
+
+<use-case>
+	<title>Edit a room</title>
+	<actor>administrator or program administrator</actor>
+	<pre>The system is up and running, the user who wants to edit a room is logged in.</pre>
+	<post>The room will not be lost or deleted in case of an error while changing the data of the room.</post>
+	<success>The room will have its data legally changed.</success>
+	
+	<ev>The user selects a room for editing. From list or similar.
+		<or>The user does not has sufficient rights for editing. In lists the entry edit should be missing.</or>
+	</ev>
+	<ev>The edit-room form is shown, with the current values of the room filled in.
+		<or>Show an error message, explaining the missing rights, if the user does not have the needed rights.</or>
+	</ev>
+	<ev>The user changes the values he wish to change. May add features from a list of existing ones or create a new feature.</ev>
+	<ev>The entered data are checked before they are submitted. If the quantity of a feature was changed to zero it should be deleted from the room.</ev>
+	<ev>If the informations are not outdated (e.g. a newer record has been saved in between), the new values are written to the database.
+		<or>If the informations <i>are</i> outdated, they should not be written to the database. However, the information should not get lost. Thus is would be best to display the form whose values could not be updated again.</or>
+		<or>It would be even better to show the differences and assist in merging the two (Wikipedia does have such a feature for so-called "edit conflicts").</or>
+	</ev>
+	<status>not implemented</status>
+</use-case>
+
+<use-case>
+	<title>Delete a room</title>
+	<actor>administrator or program administrator</actor>
+	<pre>The system is up and running, the user who wants to delete a room is logged in.</pre>
+	<post>The room will not be deleted in parts and only if not referred to somewhere.</post>
+	<success>The room will be deleted.</success>
+	
+	<ev>The user selects a room to delete. From list or similar.
+		<or>The user does not has sufficient rights for deleting. In lists the entry delete should be missing.</or>
+	</ev>
+	<ev>A confirmation page is shown, asking if the room should be really deleted.
+		<or>A message page is shown, that the page is referred to somewhere and where.</or>
+	</ev>
+	<ev>The room will be deleted.</ev>
+	<ev>The user will be shown where he came from. Probably a list view of rooms.</ev>
+	<status>not implemented</status>
+</use-case>
+
+<use-case>
+	<title>List rooms</title>
+	<actor>User with or without the right to change rooms</actor>
+	<pre>The system is up and running, the user with the right to change rooms is logged in.</pre>
+	<post>no changes will be made to the database</post>
+	<success>presentation of rooms</success>
+	
+	<ev>User navigates to the "list rooms" page.</ev>
+	<ev>User can specify his search for rooms by using different things.</ev>
+	<q>What should be supported here? All features, name, department, number, ...</q>
+	<ev>User will get a list of rooms fulfilling his search.
+		<or>User with rights to change rooms will get a list of rooms fulfilling his search with links to edit and delete</or>
+	</ev>
+	<q>Should all the data of the searched rooms be shown in this table, would make a detail view unnecessary?</q>
+	<status>not implemented</status>
+</use-case>
+
+</use-cases>

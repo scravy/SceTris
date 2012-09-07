@@ -1,0 +1,11 @@
+class org.json.JSONObject
+true
+INFO   init, Starting up.
+0 [main] INFO de.fu.scetris.web.ScetrisServlet  - Starting up.
+INFO   init, Lazyload, templates will be dynamically loaded at runtime
+125 [main] INFO de.fu.scetris.web.ScetrisServlet  - Lazyload, templates will be dynamically loaded at runtime
+INFO   init, Connected.
+833 [main] INFO de.fu.scetris.web.ScetrisServlet  - Connected.
+INFO   afterInitialization, Scetris startup time: 1763ms
+834 [main] INFO de.fu.scetris.web.ScetrisServlet  - Scetris startup time: 1763ms
+

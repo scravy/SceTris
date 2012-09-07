@@ -1,0 +1,40 @@
+fullyCreateCourseRecommendedForYear: INSERT INTO "scetris"."courseRecommendedForYear" ("course", "year") VALUES (?, ?);
+fullyCreateCourseRequiresCourse: INSERT INTO "scetris"."courseRequiresCourse" ("course", "dependency") VALUES (?, ?);
+fullyCreateElementInstancePrefersRoom: INSERT INTO "scetris"."elementInstancePrefersRoom" ("element_instance", "room", "priority") VALUES (?, ?, ?);
+fullyCreateElementInstancePrefersTimeslot: INSERT INTO "scetris"."elementInstancePrefersTimeslot" ("room", "timeslot", "priority") VALUES (?, ?, ?);
+fullyCreateElementInstanceRequiresFeature: INSERT INTO "scetris"."elementInstanceRequiresFeature" ("element_instance", "feature", "priority", "quantity_min", "quantity_better") VALUES (?, ?, ?, ?, ?);
+fullyCreateElementInstanceTakesPlaceInRoom: INSERT INTO "scetris"."elementInstanceTakesPlaceInRoom" ("element_instance", "room", "timeslot") VALUES (?, ?, ?);
+fullyCreateElementRequiresFeature: INSERT INTO "scetris"."elementRequiresFeature" ("course_element", "feature", "priority", "quantity_min", "quantity_better") VALUES (?, ?, ?, ?, ?);
+fullyCreatePersonBelongsToGroup: INSERT INTO "scetris"."personBelongsToGroup" ("user", "group", "ctime", "mtime", "created_by") VALUES (?, ?, ?, ?, ?);
+fullyCreatePersonEnrolledInCourseInstance: INSERT INTO "scetris"."personEnrolledInCourseInstance" ("user", "course_instance", "ctime", "mtime", "created_by") VALUES (?, ?, ?, ?, ?);
+fullyCreatePersonGivesCourse: INSERT INTO "scetris"."personGivesCourse" ("person", "course", "priority") VALUES (?, ?, ?);
+fullyCreatePersonHasRole: INSERT INTO "scetris"."personHasRole" ("user", "role", "ctime", "mtime", "created_by") VALUES (?, ?, ?, ?, ?);
+fullyCreatePersonPrefersTimeslot: INSERT INTO "scetris"."personPrefersTimeslot" ("user", "timeslot", "priority") VALUES (?, ?, ?);
+fullyCreatePersonSuccessfullyPassedCourse: INSERT INTO "scetris"."personSuccessfullyPassedCourse" ("user", "course", "ctime", "mtime", "created_by", "grade", "notes") VALUES (?, ?, ?, ?, ?, ?, ?);
+fullyCreatePersonTakesPartInElementInstance: INSERT INTO "scetris"."personTakesPartInElementInstance" ("user", "element_instance", "timeslot") VALUES (?, ?, ?);
+fullyCreateRoleImpliesAttribute: INSERT INTO "scetris"."roleImpliesAttribute" ("role", "attribute", "default", "required") VALUES (?, ?, ?, ?);
+fullyCreateRoomPrefersTimeslot: INSERT INTO "scetris"."roomPrefersTimeslot" ("room", "timeslot", "priority") VALUES (?, ?, ?);
+fullyCreateRoomProvidesFeature: INSERT INTO "scetris"."roomProvidesFeature" ("room", "feature", "quantity") VALUES (?, ?, ?);
+fullyCreateProposedScheduling: INSERT INTO "scetris"."ProposedScheduling" ("priority" , "ctime" , "mtime" , "created_by" , "element_instance" , "timeslot" , "room" ) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id;
+de.fu.scetris.data.CourseRequiresCourse has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonBelongsToGroup has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonGivesCourse has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonHasAttribute has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonSuccessfullyPassedCourse has no get(Filter...) method in Manager
+de.fu.scetris.data.RoleImpliesAttribute has no get(Filter...) method in Manager
+de.fu.scetris.data.RoleImpliesPrivilege has no get(Filter...) method in Manager
+de.fu.scetris.data.RoomProvidesFeature has no get(Filter...) method in Manager
+de.fu.scetris.data.CourseHasCourseAttribute has no get(Filter...) method in Manager
+de.fu.scetris.data.CourseRecommendedForYear has no get(Filter...) method in Manager
+de.fu.scetris.data.ElementRequiresFeature has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonEnrolledInCourseInstance has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonHasPrivilege has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonHasRole has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonPrefersTimeslot has no get(Filter...) method in Manager
+de.fu.scetris.data.RoomPrefersTimeslot has no get(Filter...) method in Manager
+de.fu.scetris.data.ElementInstancePrefersRoom has no get(Filter...) method in Manager
+de.fu.scetris.data.ElementInstancePrefersTimeslot has no get(Filter...) method in Manager
+de.fu.scetris.data.ElementInstanceRequiresFeature has no get(Filter...) method in Manager
+de.fu.scetris.data.ElementInstanceTakesPlaceInRoom has no get(Filter...) method in Manager
+de.fu.scetris.data.PersonTakesPartInElementInstance has no get(Filter...) method in Manager
+

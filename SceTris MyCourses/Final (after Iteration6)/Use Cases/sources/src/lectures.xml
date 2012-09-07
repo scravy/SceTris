@@ -1,0 +1,87 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>Public listings</category>
+
+	<use-case>
+		<title>A User displays list of lectures</title>
+
+		<actor>Any user (anonymous &amp; logged in)</actor>
+		<pre>The system is running.</pre>
+
+		<ev>User clicks on a link "lectures".</ev>
+		<ev>
+			An alphabetically sorted list of all lectures is shown.
+			<or>If too many lectures were to be shown, a multi-page is generated.
+			</or>
+			<or>If no lectures match the given filters (or there are none), a
+				message like "no lectures match the given filters" is shown.</or>
+			<or>The user may equally well stop here.</or>
+		</ev>
+		<ev>
+			Using a form on that page, a lecturer can be searched or the current
+			view narrowed (filtered).
+			<or>A preset filter may be selected: "Display lectures recommended
+				for my Year" (if the user is logged in). This should only display
+				courses which are available (i.e. there are Course Instances in the
+				running Academic Term) and subject of "recommendedForYear" with the
+				Year of the currently logged in user.</or>
+			<or>A preset filter may be selected: "Display lectures at my home
+				institute only" (if the user is logged in).</or>
+		</ev>
+		<ev>The filter-form is submitted.</ev>
+
+		<success>A page displaying an alphabetically sorted list, grouped by
+			the first letter, is displayed.</success>
+		<post>-</post>
+
+		<q>Is the information about the current year of a student stored
+			somewhere?</q>
+		<q>Is the information about a "home institute" stored somewhere?</q>
+	</use-case>
+
+	<use-case>
+		<title>Detail view for a lecture</title>
+		<scope>GUI</scope>
+		<actor>Any user</actor>
+		<pre>The system is running and the user is logged in.</pre>
+		<post>The system is still running and the user is still logged in.
+		</post>
+		<success>A page displaying information about a lecture is shown. This
+			includes which Course Element Instances happen when &amp; where, who
+			is the main lecturer, and Course Attributes. If the currently logged
+			in user has sufficient rights, links for editing/deleting the
+			currently shown resource may be displayed, too.</success>
+		<ev>User opens the user panel.</ev>
+		<ev>User enters the name of a lecturer.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI displays a link to the lecturer.</ev>
+		<ev>User clicks on the link.</ev>
+		<ev>GUI requests user data from the database.</ev>
+		<ev>GUI displays the lecturer data.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Anonymous user displays list of lecturers</title>
+
+		<actor>Any user (anonymous &amp; logged in)</actor>
+		<pre>The system is running.</pre>
+
+		<ev>User clicks on a link "people".</ev>
+		<ev>
+			An alphabetically sorted list of all lecturers is shown.
+			<or>If no lecturers match the given filters (or there are none), a
+				message like "no data set matches the given filters" is shown.</or>
+			<or>If too many lecturers were to be shown, a multi-page is
+				generated.</or>
+			<or>The user may equally well stop here.</or>
+		</ev>
+		<ev>Using a form on that page, a lecturer can be searched or the
+			current view narrowed (filtered), e.g. "view only lecturers from the
+			institute for computer science".</ev>
+		<ev>The filter-form is submitted.</ev>
+
+		<success>A page displaying an alphabetically sorted list, grouped by
+			the first letter, is displayed.</success>
+		<post>-</post>
+	</use-case>
+
+</use-cases>

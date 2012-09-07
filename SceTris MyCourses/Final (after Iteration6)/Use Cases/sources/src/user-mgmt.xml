@@ -1,0 +1,248 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>User management</category>
+
+	<use-case>
+		<title>Admin creates a new user account</title>
+
+		<actor>A user with sufficient rights (typically called admin)</actor>
+		<pre>The system is up and running, the user who wants to create a new
+			user account is logged in</pre>
+		<post></post>
+		<success>The new user account is created</success>
+
+		<ev>
+			The user navigates to the "create user" page.
+			<or>With insufficient rights, the user should not be able to navigate
+				there at all.</or>
+		</ev>
+		<ev>A form is displayed which offers to create a new user, including
+			first-name, middle-name, last-name, login-name, email-address,
+			password, whether it is a student or a lecturer, etc. Most
+			importantly it should also be possible to select roles and privileges
+			from a list to assign to the user.</ev>
+		<ev>The form is submitted.</ev>
+		<ev>
+			The new user account is created. The user is shown another empty form
+			for the creation of another user.
+			<or>The new account is not created, due to malformed data (bad
+				syntax, invalid values). In this case the same form with hints on
+				what went wrong should be displayed again.</or>
+			<or>A database exception occurs. The user should be informed about
+				it, the data should not be lost, i.e. the same form should be shown
+				again (maybe in a way that it can easily be retried).</or>
+		</ev>
+
+		<q>
+			Should we extend a user account by the option of making him a
+			super-user (super-user do have all rights)
+			<a>Yes.</a>
+		</q>
+		<q>Should we extend a user account by a "home department"?</q>
+
+		<status>Implemented, except for checking of rights.</status>
+	</use-case>
+
+	<use-case>
+		<title>Edit another user account</title>
+		<actor>A user with sufficient rights</actor>
+		<pre>The system is up and running, the user who wants to edit is
+			logged in.</pre>
+		<post></post>
+		<success>The user account to be edited gets updated by the values
+			provided by the editing user. A page informaing about the success is
+			shown.</success>
+
+		<ev>
+			The user selects a user account for editing. This is typically
+			achived by clicking an "edit"-link in an appropriate list (search
+			result, user listing, etc.).
+			<or>The user does not have sufficient rights to edit another users
+				account. Edit links should not be displayed at all then.</or>
+		</ev>
+		<ev>
+			The edit-user form is shown, with the current account properties
+			filled in. However, certain special fields, i.e. "password" are
+			specially protected. If the user does also have the right to edit
+			those fields, these fields should also be shown. If the user does
+			not, these should simply not be shown at all.
+			<or>
+				If the user has gotten
+				<i>somehow</i>
+				to that page (e.g. by copying a link) and does not have sufficient
+				rights to do so, a page that explains that the user does not have
+				sufficient rights should be shown.
+			</or>
+		</ev>
+		<ev>The user changes the values.</ev>
+		<ev>The form is checked by the application according to the definition
+			set up for it (see Forms).</ev>
+		<ev>
+			If the information is not outdated (e.g. a newer record has been
+			saved in between), the new values are to be written to the database.
+			<or>
+				If the information
+				<i>is</i>
+				outdated, it should not be written to the database. However, the
+				information should not get lost. Thus is would be best to display
+				the form whose values could not be updated again.
+			</or>
+			<or>It would be even better to show the differences and assist in
+				merging the two (Wikipedia does have such a feature for so-called
+				"edit conflicts").</or>
+		</ev>
+
+		<note>A transaction should be used to save the values.</note>
+		<note>The "timekey" attribte has special support to identify outdated
+			records.</note>
+		<status>Implement, rights are party respected already.</status>
+		<note>Currently there are two privileges "edit_user_accounts",
+			"edit_user_passwords".</note>
+	</use-case>
+
+	<use-case>
+		<title>Create a Role</title>
+
+		<actor>A user with sufficient rights</actor>
+		<pre>The system is up and running, the user who wants to create the
+			role is logged in.</pre>
+		<post></post>
+		<success>The new role is created.</success>
+
+		<ev>The user navigates to the "create role" form.</ev>
+		<ev>The user enters the name of the role and selects privileges which
+			should be associated with this role.</ev>
+		<ev>The user submits the form.</ev>
+		<ev>
+			The system displays the successful creation of the role and
+			association of privileges.
+			<or>If a role with the same name already exists, the role is not
+				created but a hint on the issue is shown.</or>
+			<or>If some error occurs (like connection to the database is lost), a
+				message informing the user about the error is shown.</or>
+			<or>The system detects that the user does not have sufficient rights
+				to create a role. While a user should not be able to navigate to
+				pages he does not have the right to access, it is (in corner-cases)
+				possible to happen so; for example if a user navigated to such a
+				page and the right to use that page is revoked while he is working
+				on that form.</or>
+		</ev>
+
+		<note>Creation of the role and creation of the
+			roleImpliesPrivilege-relations should happen within a single
+			transaction. If one of these fails, the users request can not be
+			completed as a whole and therefor nothing should be done at all. This
+			way we do not have half-baked relations within the database.</note>
+	</use-case>
+
+	<use-case>
+		<title>Edit a Role</title>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The role is altered.</success>
+		<ev>User opens the role panel.</ev>
+		<ev>User clicks on edit role.</ev>
+		<ev>User changes the data of the role.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI updates the role into the database.</ev>
+
+	</use-case>
+
+	<use-case>
+		<title>Assign a Privilege to a Role</title>
+		<actor>Administrator</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The role has a new privilege assigned.</success>
+		<ev>User opens the role panel.</ev>
+		<ev>User clicks on edit role.</ev>
+		<ev>User selects a privilege.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new association between privilege and role into
+			the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Assign an Attribute to a Role</title>
+		<actor>Administrator, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The role has a new attribute assigned.</success>
+		<ev>User opens the role panel.</ev>
+		<ev>User clicks on edit role.</ev>
+		<ev>User selects an attribute.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new association between attribute and role into
+			the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Assign a Role to a User</title>
+		<actor>Administrator, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The user has a new role assigned.</success>
+		<ev>User opens the user panel.</ev>
+		<ev>User clicks on edit user.</ev>
+		<ev>User selects a role.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new association between user and role into
+			the
+			database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Remove a Role form a User</title>
+		<actor>Administrator, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The user has a new role assigned.</success>
+		<ev>User opens the user panel.</ev>
+		<ev>User clicks on edit user.</ev>
+		<ev>User clicks on delete role for a defined role.</ev>
+		<ev>GUI deletes the association between user and role into
+			the
+			database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Delete a Role</title>
+		<actor>Administrator, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The selected role is deleted.</success>
+		<ev>User opens the role panel.</ev>
+		<ev>User clicks on delete role.</ev>
+		<ev>User selects a role.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI deletes the role from the database.</ev>
+	</use-case>
+
+	<use-case>
+		<title>Assign a Privilege to a User</title>
+		<actor>Administrator, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of an administrator.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The user has a new privilege assigned.</success>
+		<ev>User opens the user panel.</ev>
+		<ev>User clicks on edit user.</ev>
+		<ev>User selects an privilege.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new association between user and privilege into
+			the database.</ev>
+	</use-case>
+
+</use-cases>

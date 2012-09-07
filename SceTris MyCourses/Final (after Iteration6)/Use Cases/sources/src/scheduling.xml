@@ -1,0 +1,220 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>Scheduling (both collaborative and automatic)</category>
+
+	<use-case>
+		<title>Program admin starts scheduling</title>
+		<actor>Program administrator, GUI, Scheduler, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of a program administrator.</pre>
+		<post>The system is still running, the user is still logged in and if
+			there was a previous proposed scheduling it is not lost due to
+			exceptions.</post>
+		<success>The proposed schedule is inserted or updated into the
+			database.</success>
+		<ev>User opens schedule panel.</ev>
+		<ev>User defines a program to schedule.</ev>
+		<ev>User clicks on start.</ev>
+		<ev>Scheduler launches the scheduling of the defined program.</ev>
+		<ev>Scheduler changes its status to running.</ev>
+		<ev>
+			User waits until the scheduling is finished by itself.
+			<or>User clicks on stop.</or>
+			<or>Scheduler changes its status to stopping.</or>
+		</ev>
+		<ev>
+			Scheduler inserts the proposed schedule into the database.
+			<or>Scheduler updates the proposed schedule in the database.</or>
+		</ev>
+		<ev>Scheduler changes its status to ready.
+	</ev>
+		<q>Should a program administrator only be enabled to schedule his own
+			program?</q>
+		<q>Should an administrator also be enabled to schedule a program?</q>
+		<q>
+			Should the program administrator get a notifaction on his next login?
+			<a>Yes.</a>
+		</q>
+		<q>
+			Will there be scheduling proposals for conctlict resolutions?
+			<a>No, but the user will be informed about the reasons of the
+				conflicts</a>
+		</q>
+		<status>Program administrator notification is missing.</status>
+	</use-case>
+
+	<use-case>
+		<title>Pause the scheduling process</title>
+		<actor>Program administrator, GUI, Scheduler, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running, the scheduling process has been started,
+			it is running and the user is still logged in with the rights of a
+			program administrator.</pre>
+		<post>The system is still running, the user is still logged in and if
+			the pausing did not take action yet the scheduling status is set to
+			stopping.</post>
+		<success>The scheduling process is paused.</success>
+		<ev>User opens schedule panel.</ev>
+		<ev>User clicks on stop.</ev>
+		<ev>Scheduler changes its status to stopping.</ev>
+		<ev>
+			Schedulers inserts current proposed schedule into the database.
+			<or>Scheduler updates current proposed schedule in the database.</or>
+		</ev>
+		<ev>Scheduler changes its status to ready.</ev>
+		<note>The Java thread interruption policy is used for implementation.
+		</note>
+	</use-case>
+
+	<use-case>
+		<title>Resume a scheduling process</title>
+		<actor>Program administrator, GUI, Scheduler, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running, the scheduling process is ready and the
+			user is still logged in with the rights of a program administrator.
+		</pre>
+		<post>The system is still running, the user is still logged in and if
+			there was no proposed schedule the scheduling process starts as a new
+			scheduling.</post>
+		<success>The resumed scheduling starts with the previous number of
+			resolved constraints.</success>
+		<ev>User opens schedule panel.</ev>
+		<ev>User clicks on resume.</ev>
+		<ev>Scheduler launches the scheduling of the defined program.</ev>
+		<ev>Scheduler changes its status to running.</ev>
+		<note>Resume is implemented by using the current proposed schedule of
+			each course to reallocate their position in the scheduler internal
+			presentation of rooms, time slots and courses.</note>
+	</use-case>
+
+
+	<use-case>
+		<title>A conflict occurs</title>
+		<actor>Program administrator, GUI, Scheduler, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running, the user is logged in with the rights of a
+			program administrator and the scheduling was started.</pre>
+		<post>The system is still running, the user is still logged in and if
+			there was a previous proposed scheduling it is not lost due to the
+			conflict.</post>
+
+		<success>The reasons for the conflicts are displayed.</success>
+		<ev>Scheduler spots a non-solveable conflict while scheduling.</ev>
+		<ev>Scheduler notfies the systems about the conflict.</ev>
+		<ev>Scheduler terminates the scheduling process.</ev>
+		<ev>User opens schedule panel.</ev>
+		<ev>GUI displays the reason of the conflict.</ev>
+		<q>
+			Should the current proposed schedule of the scheduling process be
+			inserted or updated into the database?
+			<a>No, as the current proposed schedule is incomplete.</a>
+		</q>
+		<q>The scheduler uses exceptions to inform the system about conflicts.
+			Will the exceptions be saved to display them until the user opens the
+			schedule panel again?</q>
+	</use-case>
+
+	<use-case>
+		<title>Change the proposed schedule of a Course Element Instance
+		</title>
+		<actor>Program administrator, Main lecturer, GUI, Scheduler, Database
+		</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and user is logged in with the rights of a
+			program administrator or main lecturer.</pre>
+		<post>The system is still running, the user is still logged in and if
+			there was a previous proposed schedule it is not lost due to
+			exceptions.</post>
+		<success>The proposed schedule is inserted or updated into the
+			database.</success>
+		<ev>User opens the timetable of a room.</ev>
+		<ev>User moves the Course Element Instance to its new time slot.</ev>
+		<ev>
+			User clicks on submit.
+			<or>User clicks on discard.</or>
+			<or>GUI reverses the changes and displays the original state.</or>
+		</ev>
+		<ev>Scheduler calculates the score and potential conflicts.</ev>
+		<ev>GUI displays potential conflicts.</ev>
+		<ev>
+			User clicks on accept.
+			<or>User clicks on discard.</or>
+			<or>GUI reverses the changes and displays the original state.</or>
+		</ev>
+		<ev>
+			Scheduler inserts the new proposed schedule into the database.
+			<or>Scheduler updates the existing proposed schedule in the database.
+			</or>
+		</ev>
+		<q>
+			Should the program administrator get a notification on his next
+			login?
+			<a>Yes.</a>
+		</q>
+		<q>
+			Will there be scheduling proposals for conflict resolutions?
+			<a>No, but the user will be informed about the reasons of the
+				conflicts.</a>
+		</q>
+	</use-case>
+
+	<use-case>
+		<title>Automatically reschedule a subset of courses</title>
+		<actor>Program administrator, GUI, Scheduler, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running, the user is logged in with the rights of a
+			program administrator and there is no running scheduling process.
+		</pre>
+		<post>The system is still running, the user is still logged in and if
+			there was a previous proposed schedule it is not lost due to
+			exceptions.</post>
+		<success>The proposed schedule is inserted or updated into the
+			database.</success>
+		<ev>User opens the course panel.</ev>
+		<ev>User defines a program</ev>
+		<ev>User selects the course element instances which belong to the
+			subset of courses.</ev>
+		<ev>User clicks on schedule.</ev>
+		<ev>System updates the course element instances attribute scheduleable
+			lesson of those course element instances which were not selected but
+			belong to the same program to false.</ev>
+		<ev>Scheduler launches the scheduling of the defined program.</ev>
+		<ev>Scheduler changes its status to running.</ev>
+		<ev>
+			User waits until the scheduling is finished by itself.
+			<or>User clicks on stop.</or>
+			<or>Scheduler changes its status to stopping.</or>
+		</ev>
+		<ev>
+			Scheduler inserts the proposed schedule into the database.
+			<or>Scheduler updates the proposed schedule in the database.</or>
+		</ev>
+		<ev>Scheduler changes its status to ready.</ev>
+		<q>Should the subset scheduling of courses be offered as a method of
+			the scheduler?</q>
+	</use-case>
+
+	<use-case>
+		<title>Define a program</title>
+		<actor>Program administrator, GUI, Scheduler, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of a program administrator.</pre>
+		<post>The system is still running and the user is still logged in.
+		</post>
+		<success>The system finds a program fitting for the specified academic
+			term and department.</success>
+		<ev>User opens the schedule panel.</ev>
+		<ev>User selects an academic term from the available academic terms.
+		</ev>
+		<ev>User selects a department from the available departments.</ev>
+		<ev>
+			User clicks on start.
+			<or>User clicks on resume.</or>
+		</ev>
+		<ev>System queries the database for a program with the given academic
+			term and the given department.</ev>
+		<ev>Database returns the required program.</ev>
+	</use-case>
+
+</use-cases>

@@ -1,0 +1,34 @@
+<use-case xmlns="http://technodrom.scravy.de/2010/use-case">
+
+	<title>Something happens</title>
+	
+	<actor>Actor 1</actor>
+	<actor>Actor 2</actor>
+	<scope>Scope of this use-case.</scope>
+	
+	<pre>Pre-condition.</pre>
+	<post>Post-condition (anyway).</post>
+	<success>Special conditions if successfull.</success>
+	
+	<ev>Actor 1 does something</ev>
+	<ev>Actor 2 does something
+		<or>Actor 2 does something not.</or>
+	</ev>
+	<ev>Actor 1 does something smart.
+		<or>Actor 2 does something stupid.</or>
+		<or>Actor 2 does nothing.</or>
+	</ev>
+	
+	<q>What happens if x?
+		<a>Then y.</a></q>
+	<q>What happens if z?</q>
+	<q>What happens if z-prime?</q>
+	
+	<note>An implementation note.</note>
+	<note>Yet another note...</note>
+	<note>Give us more notes!</note>
+	<note>Math-mode: <m>\sqrt[7]{45}</m></note>
+	
+	<status>May <bf>contain</bf> <sl>slanted</sl> and <it>italic</it> <tt>formattings</tt>. Also <sc>Small Caps</sc> if you want to.</status>
+	
+</use-case>

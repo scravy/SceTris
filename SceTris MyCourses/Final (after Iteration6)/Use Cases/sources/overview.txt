@@ -1,0 +1,53 @@
+Scheduler:
+
+- Calculate a Proposed Schedule of a Program
+
+- Manually Update a Proposed Schedule
+
+- Freeze a Program
+
+- Publish a Program
+
+Web Interface:
+
+- System Login
+
+- Role Granting
+
+Interaction: Entering Data
+
+- Create, Read, Update, Delete Entities
+
+- Enter a Department
+
+- Enter a Feature
+
+- Define Course Element Instance Constraints
+
+- Enter Available Lecture Rooms
+
+- A Lecture Enters His Timetable
+
+- A Student Selects a Course
+
+Presentation of Scheduled Courses:
+
+- Display Scheduled Data by Room
+
+- Student Views Their Schedule
+
+Scalability:
+
+- The Administrator Defines the Academic Term
+
+- The Administrator Defines the Periods of Course Execution
+
+Miscellaneous:
+
+- Data is Stored into the Database
+
+- Export to Other Systems
+
+- Import Data to the Database
+
+

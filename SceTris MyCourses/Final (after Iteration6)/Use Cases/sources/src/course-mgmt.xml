@@ -1,0 +1,774 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>Course Management</category>
+
+	<use-case>
+		<title>Program manager creates a new Course</title>
+		<actor>Program Manager</actor>
+		<scope>GUI</scope>
+		<pre>The user is logged in.</pre>
+		<success>A new Course is created</success>
+
+		<ev>
+			The user navigates to the admin list of all courses.
+			<or>The user does not have permission to edit courses and sees a
+				message "Permission denied"</or>
+		</ev>
+		<ev>The user clicks a "create new" button at the top of the list.</ev>
+		<ev>The user sees a form to enter details about the
+			course: name,
+			Courses that are required
+			for this Course (from a list of existing
+			courses) with a button to
+			add more, required features (from a list of
+			existing features) and their quantity with a
+			button to add more,
+			CourseAttributes (from a list of existing
+			CourseAttributes) and their
+			value with a button to add more, a year.
+		</ev>
+		<ev>The user submits the form.</ev>
+		<ev>
+			The Course is created. The user sees an empty "new
+			Course" form.
+			<or> The Course is not created due to invalid values and the form is
+				presented again, containing the data that was entered and
+				information about which values are defective.</or>
+			<or>
+				A database exception occurs. The same form including the data is
+				presented again plus a message stating the problem.</or>
+		</ev>
+		<note>Values for CourseAttributes are always Strings.</note>
+		<status>not implemented</status>
+
+	</use-case>
+	<use-case>
+		<title>Program manager edits a course</title>
+		<actor>Program Manager, GUI, Database</actor>
+		<pre>The system is running and the user is logged in with the rights
+			of a program manager.</pre>
+		<post>The system is still running, the user is still logged in and
+			previous course data is not lost due to exceptions.
+		</post>
+		<success>The course information is updated into the database.
+		</success>
+		<ev>
+			The user navigates to the administrator list of all courses.
+			<or>The user does not have permission to edit courses and the GUI
+				displays the
+				message "Permission denied".</or>
+		</ev>
+		<ev>The user clicks an edit button beside the course the user wishes
+			to edit.
+	</ev>
+		<ev>The GUI displays a form with details about the
+			course, e.g. name,
+			course elements, course instances, courses that are required
+			for this
+			course with a button to add more, required features and their
+			quantity with a button to add more, course attributes abd their value
+			with a button to add more and a year.
+		</ev>
+		<ev>The user edits the information.</ev>
+		<ev>The user submits the form.</ev>
+		<ev>
+			The GUI updates the altered course information to the databasse. The
+			user sees the
+			admin list of all
+			courses.
+			<or> The Course information is not altered due to invalid values and
+				the form is presented again, containing the data that was entered
+				and
+				information about which values are defective</or>
+			<or>
+				A database exception occurs. The same form including the data is
+				presented again plus a message stating the problem
+	</or>
+		</ev>
+		<note>Values for CourseAttributes are always Strings.</note>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>Program manager views the admin list of Courses</title>
+		<actor>Program Manager</actor>
+
+		<pre>The user is logged in.</pre>
+		<success>The user sees the admin list of Courses</success>
+
+		<ev>
+			The user navigates to the admin list of all Courses.
+			<or>The user does not have permission to see a list of Courses and
+				sees a
+				message "Permission denied"</or>
+		</ev>
+		<ev>The user navigates to the admin list of all Courses for a certain
+			program. The page contains a button to create a new course at the top
+			and a list of single letters for navigation to Courses that start
+			with this letter. Below that are the courses (ordered
+			lexicographically). Beside each Course are buttons to delete and edit
+		</ev>
+
+		<status>not implemented</status>
+
+	</use-case>
+
+	<use-case>
+		<title>Program manager deletes a Course</title>
+		<actor>Program Manager</actor>
+
+		<pre>The user is logged in.</pre>
+		<success>The Course is deleted.</success>
+
+		<ev>
+			The user navigates to the admin list of all Courses.
+			<or>The user does not have permission to edit courses and sees a
+				message "Permission denied"</or>
+		</ev>
+		<ev>The user clicks the delete button beside the Course he wishes to
+			delete.</ev>
+		<ev>The user sees a prompt to choose what shall happen to associated
+			CourseInstances, CourseElements and CourseElementInstances. The
+			choices are "delete all", "keep all" and "delete selected" as radio
+			buttons. When selecting "delete marked", a list with CI, CE, CEI and
+			a check-box for each becomes available. The prompt can be terminated
+			by pressing "ok" or "abort", and "abort" is the default selection.
+		</ev>
+		<ev>The user makes his decision and presses "ok".</ev>
+		<ev>The user sees a prompt, to ensure he wants to
+			delete the Course.
+			The choices are "yes", "no" and "abort"
+			The default choice is "no".
+		</ev>
+		<ev>The user chooses "yes".</ev>
+		<ev>
+			The Course (and CI,CE,CEI if desired) is tagged as deleted. The user
+			sees the admin list of all
+			Courses.
+			<or>
+				The Course is not tagged as deleted due to a database
+				exception.
+				The user sees a prompt
+				stating the problem and a "retry"
+				and a "abort"
+				button. The default is "retry". Every subsequent
+				failed attempt
+				brings up the same prompt.
+		</or>
+		</ev>
+
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>Program Manager or Main Lecturer views the detail view of a
+			Course</title>
+		<actor>Program Manager or Main Lecturer</actor>
+		<pre>The user is logged in.</pre>
+		<success>The user views the detail view of a Course.</success>
+		<ev>The user navigates to an admin list of Courses that contains the
+			desired Course.</ev>
+		<ev>The user clicks on the name of the Course.</ev>
+		<ev>The user sees the detail view of that Course. It contains
+			information: name,
+			CourseElements, CourseInstances, Courses that are
+			required
+			for this course with a button to add more, required
+			features
+			and their quantity with a button to add more, CourseAttributes and
+			their value with a button to add more, a year.</ev>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>Program manager creates a new CourseInstance</title>
+		<actor>Program Manager</actor>
+
+		<pre>The user is logged in.</pre>
+		<success>A new CourseInstance is created</success>
+
+		<ev>
+			The user navigates to the admin list of all CourseInstances.
+			<or>The user does not have permission to edit CourseInstances and
+				sees the public list of all CourseInstances.</or>
+		</ev>
+		<ev>The user clicks a "create new" button at the top of the list.</ev>
+		<ev>The user sees a form to enter details about the
+			course: Course,
+			program (from a list of programs), start and end
+			date, main-lecturer
+			(from a list of lecturers), CourseElementInstance
+			(from a list of
+			CEIs) with a button to add more. The form also
+			contains a smart-copy
+			option. Here a Course and a Program of which
+			the Course was part can
+			be chosen from a list and a button to copy
+			those values into the form
+			is present.</ev>
+		<ev>The user enters the information manually or enters them via
+			smart-copy (maybe adjusting manually).</ev>
+		<ev>The user submits the form.</ev>
+		<ev>
+			The CourseInstance is created. The user sees an empty
+			"new Course"
+			form.
+			<or> The CourseInstance is not created due to invalid values and the
+				form is presented again, containing the data that was entered and
+				information about which values are defective</or>
+			<or>
+				The CourseInstance is not created due to a database exception.
+				The
+				same form including the data is presented again plus a message
+				stating the problem.
+		</or>
+		</ev>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>Main lecturer or Program Manager edits a CourseInstance</title>
+		<actor>Main Lecturer or Program Manager</actor>
+		<pre> The user is logged in.</pre>
+		<success> The information of a CourseInstance is altered.</success>
+		<ev>The user navigates to a (public or admin) list of all
+			CourseInstances.</ev>
+		<ev>The user clicks a CourseInstance.</ev>
+		<ev>The user sees the detail view of that CourseInstance.</ev>
+		<ev>
+			The user clicks the the edit button.
+			<or>The user does not have permission to edit this CourseInstance and
+				gets a view without the button.</or>
+		</ev>
+		<ev>
+			The user sees a form, containig the current values for that
+			CourseInstance.
+			<or>The user does not have permission to edit this CourseInstance and
+				sees a message stating that he lacks permission for that action.
+			</or>
+		</ev>
+		<ev>The user edits the information and submits the form.</ev>
+		<ev>
+			The altered CourseInstance information is saved. The user sees the
+			detail view of the CourseInstance.
+			<or> The altered CourseInstance information is not saved due to
+				invalid values and the
+				form is presented again, containing the data
+				that was entered and
+				information about which values are defective
+			</or>
+			<or>
+				The altered CourseInstance information is not saved due to a
+				database exception. The
+				same form including the data is presented
+				again plus a message
+				stating the problem.
+		</or>
+		</ev>
+		<note>A Program Manager may only edit CourseInstances from his
+			Program. A Main Lecturer may only edit CourseInstances where he is
+			assigned as Main Lecturer.</note>
+
+		<q>Does our system support the restrictions stated above, that is
+			especially a Main Lecturer may only edit his CourseInstances and a
+			Program Manager may only edit CourseInstances of his program?</q>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>A Program Manager deletes a CourseInstance</title>
+		<actor>Program Manager</actor>
+		<pre>The user is logged in.</pre>
+		<success>The CourseInstance is tagged as deleted.</success>
+		<ev>The user navigates to the admin list of all CourseInstances.</ev>
+		<ev>The user clicks the "delete" button right next to the
+			CourseInstance she wishes to delete.</ev>
+		<ev>
+			The user sees a prompt asking whether associated
+			CourseElementInstances shall be deleted as well. The Choices are
+			"yes", "no" and "abort" and "yes" is the default.
+			<or>The user does not have permission to edit that CourseInstance and
+				sees a message stating that he lacks permission for that action.
+			</or>
+		</ev>
+		<ev>The user chooses "yes".</ev>
+		<ev>The user sees a prompt asking to verify the deletion of the
+			CourseInstance. The Choices are "yes", "no" and "abort" and "no" is
+			the default.</ev>
+		<ev>The user chooses "yes".</ev>
+		<ev>
+			The CourseInstance (and associated CEI if desired)is tagged as
+			deleted. The user sees the admin list of all CourseInstances.
+			<or>
+				The CourseInstance is not tagged as deleted due to a database
+				exception. The user sees a prompt
+				stating the problem and a "retry"
+				and a "abort" button. The default is "retry". Every subsequent
+				failed attempt brings up the same prompt.
+		</or>
+		</ev>
+
+		<status>not implemented </status>
+	</use-case>
+
+	<use-case>
+		<title>A user views a list of CourseInstances.</title>
+		<actor>Any user</actor>
+		<success>The user sees the list of CourseInstances she
+			desires.
+		</success>
+		<ev>
+			The user navigates to the public list of all CourseInstances.
+			<or>The user is a Program Manager or Main Lecturer and sees the admin
+				list of all CourseInstances.</or>
+		</ev>
+		<ev>
+			The user sees a list of all CourseInstances and (horizontal) lists
+			for academic terms, departments and letters. Also a check-box for "My
+			CourseInstances" is available. Beneath the lists is an
+			"apply" button.
+			<or>>The user sees the public list and beside each CourseInstance are
+				"edit" and "delete" buttons plus a "create new" button at the top of
+				the page.</or>
+		</ev>
+		<ev>
+			The user makes his selection for a sub-list and presses "apply".
+			<or>The user is satisfied with the list shown.</or>
+		</ev>
+		<ev>The user sees the selected sub-list and the same selection
+			possibilities as before, indicating the selection via color/bold
+			font.</ev>
+		<note>Each entry in a list defines a subset of CourseInstances. For
+			example applying the selection "Computer Science" will result in a
+			list that contains all CourseInstances associated with computer
+			science. Multiple selections are possible, selecting multiple values
+			from one list will produce the union of the subsets. Selecting values
+			from different lists will produce the intersection. Each list has
+			"all" as an entry. All is the same as not selecting for that list.
+			Selecting "My CourseInstances" will produce the subset of
+			CourseInstances where the user is involved.</note>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>A user views the detail view of a CourseInstance</title>
+		<actor>Any user</actor>
+		<success>The user sees the detail view of the CourseInstance he is
+			interested in.</success>
+		<ev>The user navigates to a list of CourseInstances that includes the
+			desired CourseInstance (see use case "A user views a list of
+			CourseInstances")</ev>
+		<ev>The user clicks on the name of the CourseInstance</ev>
+		<ev>
+			The user sees the detail view of that CourseInstance, which includes:
+			Main lecturer, academic term, department(s),recommended for year,
+			description and (if already allocated) time and place or the
+			associated CourseInstanceElements.
+			<or>The user has permission to edit this CourseInstance and also sees
+				buttons to delete and edit.</or>
+		</ev>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>Program Manager creates a CourseElement</title>
+		<actor>Program Manager</actor>
+		<pre>The user is logged in.</pre>
+		<success>A new CourseElement is created.</success>
+		<ev>The user navigates to the admin list of CEs.</ev>
+		<ev>The user presses the "create new" button at the top of the list.
+		</ev>
+		<ev>The user sees a form to enter the information about the new CE.
+			The fields include: The Course that this CE is associated with,
+			CourseElementType (from a list of existing CETs), name, duration,
+			whether the CE is mandatory, the features that are required and
+			their
+			quantity (with a button to add more). Of these fields only the name
+			and the type can be null.</ev>
+		<ev>The user submits the form</ev>
+		<ev>
+			The CourseElement is created. The user sees an empty "new
+			CourseElement" form.
+			<or> The CourseElement is not created due to invalid values and the
+				form is
+				presented again, containing the data that was entered and
+				information about which values are defective.</or>
+			<or>
+				A database exception occurs. The same form including the data is
+				presented again plus a message stating the problem.</or>
+		</ev>
+	</use-case>
+
+	<use-case>
+		<title>Program Manager edits a CourseElement</title>
+		<actor>Program Manager</actor>
+		<pre>The user is logged in.</pre>
+		<success>A CourseElement is altered.</success>
+		<ev>The user navigates to the admin list of CEs.</ev>
+		<ev>The user presses the "edit" button beside the CE.
+		</ev>
+		<ev>The user sees a form containing the current information about the
+			CE.
+			The fields include: The Course that this CE is associated with,
+			CourseElementType (from a list of existing CETs), name, duration,
+			whether the CE is mandatory, the features that are required and
+			their
+			quantity (with a button to add more). Of these fields only the name
+			and the type can be null.</ev>
+		<ev>The user edits the values.</ev>
+		<ev>The user submits the form.</ev>
+		<ev>
+			The CourseElement is altered. The user sees the detail view of the
+			CE.
+			<or> The CourseElement is not altered due to invalid values and the
+				form is
+				presented again, containing the data that was entered and
+				information about which values are defective.</or>
+			<or>
+				A database exception occurs. The same form including the data is
+				presented again plus a message stating the problem.</or>
+		</ev>
+	</use-case>
+
+	<use-case>
+		<title>Program Manager deletes a CourseElement</title>
+		<actor>Program Manager</actor>
+		<pre>The user is logged in.</pre>
+		<success>A CourseElement is deleted.</success>
+		<ev>The user navigates to the admin list of CEs.</ev>
+		<ev>The user presses the "delete" button beside the CE.</ev>
+		<ev>The user sees a prompt asking whether associated
+			CourseElementInstances shall be deleted. The choices are "yes", "no"
+			and "abort". Default is yes.</ev>
+		<ev>The user chooses "yes".</ev>
+		<ev>The user sees a prompt to confirm the deletion of the CE. The
+			choices are "yes" and "no", "no" being default.</ev>
+		<ev>The user chooses "yes".</ev>
+		<ev>
+			The CourseElement (and associated CEI if desired)is tagged as
+			deleted. The user sees the admin list of all CourseElements.
+			<or>
+				The CourseElement is not tagged as deleted due to a database
+				exception. The user sees a prompt
+				stating the problem and a "retry"
+				and a "abort" button. The default is "retry". Every subsequent
+				failed attempt brings up the same prompt.
+		</or>
+		</ev>
+	</use-case>
+
+	<use-case>
+		<title>A Program Manager views an admin list of CourseElements.
+		</title>
+		<actor>Program Manager</actor>
+		<success>The user sees the admin list of CourseElements she
+			wants.
+		</success>
+		<ev>The user navigates to the admin list of all CourseElements.</ev>
+		<ev>
+			The user sees a list of all CourseElements and (horizontal) lists
+			for departments and letters. Also a textfield to search for CEs
+			belonging to a specific Course is available. Beneath the lists is an
+			"apply" button. Beside each CourseElement are "edit" and "delete"
+			buttons plus a "create new" button at the top of the page.
+		</ev>
+		<ev>
+			The user makes his selection for a sub-list and presses "apply".
+			<or>The user is satisfied with the list shown.</or>
+		</ev>
+		<ev>The user sees the selected sub-list and the same selection
+			possibilities as before, indicating the selection via color/bold
+			font.</ev>
+		<note>Each entry in a list defines a subset of CourseElements. For
+			example applying the selection "Computer Science" will result in a
+			list that contains all CourseElementss associated with computer
+			science. Multiple selections are possible, selecting multiple values
+			from one list will produce the union of the subsets. Selecting values
+			from different lists will produce the intersection. Each list has
+			"all" as an entry. All is the same as not selecting for that list.
+			Entering a name of a Course in the textfield will produce the subset
+			of
+			CourseElements that are asscociated with that Course.</note>
+		<status>not implemented</status>
+	</use-case>
+
+
+	<use-case>
+		<title>A Program Manager views the detail view of a CourseElement
+		</title>
+		<actor>Program Manager</actor>
+		<pre>The user is logged in.</pre>
+		<success>The user views the detail view of a CourseElement.</success>
+		<ev>The user navigates to an admin list of CourseElements containing
+			the desired CE.</ev>
+		<ev>The user clicks the name of the CE.</ev>
+		<ev>The user sees the detail view of the CE. Information about the
+			Course that this CE is associated with,
+			CourseElementType (from a list
+			of existing CETs), name, duration,
+			whether the CE is mandatory, the
+			features that are required and
+			their quantity (with a button to add
+			more) is displayed. Buttons to "edit" or "delete" this CE are also
+			available.</ev>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>Main lecturer creates a CourseElementInstance</title>
+		<actor>Main lecturer</actor>
+		<pre>The user is logged in.</pre>
+		<success>A new CourseElementInstance is created.</success>
+		<ev>The user navigates to the detail view of a Course.</ev>
+		<ev>The user presses the "create new instance" button beside a
+			CourseElement.</ev>
+		<ev>The user sees a form to enter the information about the new CEI.
+			The fields include: The CourseInstance that this CEI is associated
+			with from a list of CIs (default is the most recent CourseInstance),
+			lecturer, duration. Of these fields only the lecturer can be null.
+		</ev>
+		<ev>The user submits the form</ev>
+		<ev>
+			The CourseElementInstance is created. The user sees the detail view
+			of the Course.
+			<or> The CourseElementInstance is not created due to invalid values
+				and the
+				form is
+				presented again, containing the data that was entered
+				and
+				information about which values are defective.</or>
+			<or>
+				A database exception occurs. The same form including the data is
+				presented again plus a message stating the problem.</or>
+		</ev>
+	</use-case>
+
+	<use-case>
+		<title>Main Lecturer edits a CourseElementInstance</title>
+		<actor>Main Lecturer</actor>
+		<pre>The user is logged in.</pre>
+		<success>The CEI is altered.</success>
+		<ev>The user navigates to an admin list of CEIs.</ev>
+		<ev>The user presses the "edit" button beside the CEI.
+		</ev>
+		<ev>The user sees a form containing the current information about the
+			CEI.
+			The fields include: The CourseInstance that this CEI is
+			associated with, the CourseElement that this CEI is an instance of,
+			lecturer, duration. Of these fields only the lecturer can be null.
+		</ev>
+		<ev>The user edits the values.</ev>
+		<ev>The user submits the form.</ev>
+		<ev>
+			The CourseElementInstance is altered. The user sees an admin list of
+			CEIs.
+			<or> The CourseElementInstance is not altered due to invalid values
+				and the
+				form is
+				presented again, containing the data that was entered
+				and
+				information about which values are defective.</or>
+			<or>
+				A database exception occurs. The same form including the data is
+				presented again plus a message stating the problem.</or>
+		</ev>
+	</use-case>
+
+	<use-case>
+		<title>Main Lecturer deletes a CourseElementInstance</title>
+		<actor>Main Lecturer</actor>
+		<pre>The user is logged in.</pre>
+		<success>A CourseElementInstance is deleted.</success>
+		<ev>The user navigates to an admin list of CEIs containing the desired
+			CEI.</ev>
+		<ev>The user presses the "delete" button beside the CEI.</ev>
+		<ev>The user sees a prompt to confirm the deletion of the CEI. The
+			choices are "yes" and "no", "no" being default.</ev>
+		<ev>The user chooses "yes".</ev>
+		<ev>
+			The CourseElement is tagged as
+			deleted. The user sees the admin list
+			of all CEI.
+			<or>
+				The CEI is not tagged as deleted due to a database
+				exception. The
+				user sees a prompt
+				stating the problem and a "retry"
+				and a "abort"
+				button. The default is "retry". Every subsequent
+				failed attempt
+				brings up the same prompt.
+		</or>
+		</ev>
+	</use-case>
+
+	<use-case>
+		<title>A user views a list of CourseElementInstances.
+		</title>
+		<actor>Any user</actor>
+		<success>The user sees list of CEIs she wants.
+		</success>
+		<ev>The user navigates to the list of all CEIs.</ev>
+		<ev>
+			The user sees a list of all CEIS and (horizontal) lists
+			for
+			academic terms, departments and letters. Also a textfield to search
+			for CEIs
+			belonging to a specific Course is available. Beneath the
+			lists is an
+			"apply" button. If the user has permission to edit CEIs
+			there are "edit" and "delete"
+			buttons beside each CEI plus a "create
+			new" button at the top of the page.
+		</ev>
+		<ev>
+			The user makes his selection for a sub-list and presses "apply".
+			<or>The user is satisfied with the list shown.</or>
+		</ev>
+		<ev>The user sees the selected sub-list and the same selection
+			possibilities as before, indicating the selection via color/bold
+			font.</ev>
+		<note>Each entry in a list defines a subset of CEIs. For
+			example
+			applying the selection "Computer Science" will result in a
+			list that
+			contains all CEIs associated with computer
+			science. Multiple
+			selections are possible, selecting multiple values
+			from one list will
+			produce the union of the subsets. Selecting values
+			from different
+			lists will produce the intersection. Each list has
+			"all" as an entry.
+			All is the same as not selecting for that list.
+			Entering a name of a
+			Course in the textfield will produce the subset
+			of CEIs that are
+			asscociated with that Course.</note>
+		<status>not implemented</status>
+	</use-case>
+
+
+	<use-case>
+		<title>A user views the detail view of a CourseElementInstance
+		</title>
+		<actor>Any user</actor>
+		<success>The user views the detail view of a CEI.</success>
+		<ev>The user navigates to a list of CEIs containing
+			the desired CEI.
+		</ev>
+		<ev>The user clicks the name of the CEI.</ev>
+		<ev>The user sees the detail view of the CEI. Information includes:
+			The CourseInstance that this CEI is associated with, the
+			CourseElement
+			that this CEI is an instance of, duration. If the user
+			has permisson
+			to edit CEIs, buttons to "edit" or "delete" this CEI are
+			also
+			available.</ev>
+		<status>not implemented</status>
+	</use-case>
+
+	<use-case>
+		<title>A course element is removed from a course</title>
+		<actor>Program Manager, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running, the user is still logged in.</pre>
+		<success>The course element is deleted from the database.</success>
+		<ev>User opens the course element panel.</ev>
+		<ev>User selects a course elements.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI deletes the course element from the datbase.</ev>
+		<q>What happens with already instantiated course elements (which we
+			call course element instance)?</q>
+	</use-case>
+
+	<use-case>
+		<title>Create a Course Element Types</title>
+		<actor>Program Manager, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running, the user is still logged in.</pre>
+		<success>The new course element type is insirted into the database.
+		</success>
+		<ev>User opens the course element type panel.</ev>
+		<ev>User enters the name of the course element type.</ev>
+		<ev>User clicks on submit</ev>
+		<ev>
+			GUI inserts the new course element type into the database.
+			<or>GUI tries to insert the new course element type into the
+				database.</or>
+			<or>Database throws a conflict on the insertion, because a course
+				element type of this name already exists.</or>
+			<or>GUI displays the exception.</or>
+		</ev>
+		<q>
+			What’s the use for course element types? Do we need or want them at
+			all?
+			<a>Course Element types have no functional use, for instance for the
+				scheduler or similiar. Instead it is just an information about the
+				type of the course element.</a>
+		</q>
+	</use-case>
+
+	<use-case>
+		<title>Program Manager creates a new program</title>
+		<scope>GUI</scope>
+		<actor>Program Manager, Database, GUI</actor>
+		<pre>The System is running and the user is logged in.</pre>
+		<post>The System is still running and the user is still logged in.
+		</post>
+		<success>A new program is inserted into the database.</success>
+		<ev>User opens the program panel.</ev>
+		<ev>User chooses to create a new program.</ev>
+		<ev>User selects the department of the new program.</ev>
+		<ev>User selects the academic term of the new program.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new program.</ev>
+		<q>
+			What is the difference between the creation of a program and an
+			academic term? Should a program automatically be generated per
+			department when an Academic Term is created?
+			<a>Yes, they should. It might be an unnecessary step.</a>
+		</q>
+		<note>The program creation was implemented very differently. We have
+			come to realize the program creation is a starting point for creating
+			alot of entities which are dependent to the program, for instance
+			course element instances. Therefore the program creation is now a
+			guided process of chained forms.</note>
+	</use-case>
+
+	<use-case>
+		<title>Admin creates a new Academic Term</title>
+		<scope>GUI</scope>
+		<actor>Program Manager, Database, GUI</actor>
+		<pre>The System is running and the user is logged in.</pre>
+		<post>The System is still running and the user is still logged in.
+		</post>
+		<success>A new academic term is inserted into the database.</success>
+		<ev>User opens the academic term panel.</ev>
+		<ev>User chooses to create a new academic term.</ev>
+		<ev>User the name of the new academic term.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts the new academic term into the database.</ev>
+		<note>Smarty copy.</note>
+		<q>How exactly does smarty copy work? How are starting/ending dates
+			resolved? How Course Element Instances and main-lecturers?</q>
+		<q>Should this use case be splitted up into two use cases: "create
+			AT", "smarty create AT"?</q>
+	</use-case>
+
+	<use-case>
+		<title>Edit an Academic Term</title>
+		<scope>GUI</scope>
+		<actor>Program Manager, Database, GUI</actor>
+		<pre>The System is running and the user is logged in.</pre>
+		<post>The System is still running and the user is still logged in.
+		</post>
+		<success>The academic is altered.</success>
+		<ev>User opens the academic term panel.</ev>
+		<ev>User chooses to edit an academic term.</ev>
+		<ev>User changes the name of the new academic term.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI updates the new academic term into the database..</ev>
+	</use-case>
+
+</use-cases>

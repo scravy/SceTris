@@ -1,0 +1,32 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>Enrollment</category>
+
+	<use-case>
+		<title>User enrolls in a course</title>
+		<actor>Student, GUI, Database</actor>
+		<scope>GUI</scope>
+		<pre>The system is running and the user is logged in with the rights
+			of a student.</pre>
+		<post>The system is still running, the user is still logged in.</post>
+		<success>The user is enrolled in the chosen courses.</success>
+		<ev>User open course panel.</ev>
+		<ev>User selects a course instance from a list of course instances.
+		</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI displays details about the course instance data, e.g. main
+			lecturer, lesson period, different course element instances</ev>
+		<ev>User selects varies course element instances.</ev>
+		<ev>User clicks on submit.</ev>
+		<ev>GUI inserts data into the database with the association between
+			person to course instance and person to course element instance.</ev>
+		<note>The implementation is based on the relation
+			CourseElementInstance and not on the ProposedScheduling.</note>
+		<q>
+			Do we provide a grading system, e.g. checking if enough course
+			element instances were chosen?
+			<a>No, but the relational schema allows the implementation of checks.
+				A complete grading system could be implemented in 
+			</a>
+		</q>
+	</use-case>
+</use-cases>

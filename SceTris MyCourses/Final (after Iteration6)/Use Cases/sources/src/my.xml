@@ -1,0 +1,101 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+	<category>Basic interface methods</category>
+
+	<use-case>
+		<title>User logs in</title>
+		<actor>Any user</actor>
+		<scope>GUI</scope>
+		<pre>The user is not logged in, thus known to the system as an
+			anonymous user.</pre>
+		<post>-</post>
+		<success>The user is logged in and a welcome-page is shown. From that
+			point on, every page informs the user about his current login status
+			(i.e. that she is logged in) and displays his user name.</success>
+
+		<ev>The user navigates to the login-form.</ev>
+		<ev>The user enters his login-credentials, i.e. his username (or
+			email-address) and his password</ev>
+		<ev>The user submits the login-form.</ev>
+
+		<note>A login form may be present on all pages, whilst not logged in.
+			It may for example be reachable via a menu.</note>
+
+		<status>Implemented.</status>
+	</use-case>
+
+	<use-case>
+		<title>User edits his own password</title>
+		<actor>Any user</actor>
+		<scope>GUI</scope>
+		<pre>The user is logged in.</pre>
+		<post>When the action is performed the user is presented another page
+			which informs him about the success of the change of this password.
+			The user is still logged in.</post>
+		<success>The password is stored in the database, such that on next
+			login only the new password will be accepted.</success>
+
+		<ev>The user opens his personal preferences (a link should be
+			available in the main navigation).</ev>
+		<ev>Within the preferences there is a single form, that asks the user
+			for his current password and the new pasword (which should be entered
+			twice).</ev>
+		<ev>The user submits the form.</ev>
+	</use-case>
+
+	<use-case>
+		<title>User edits his profile</title>
+		<actor>Any user</actor>
+
+		<q>
+			Some attributes (like "Matrikel-Number") may not be edited by a user
+			himself. Do we have a mechanism for that?
+			<a>No, we do not. The data model should be update by an attribute
+				"user-editable".</a>
+		</q>
+
+	</use-case>
+
+	<use-case>
+		<title>User displays the lectures he currently is enrolled in.</title>
+		<actor>Any registered user</actor>
+		<pre>The user is logged in.</pre>
+		<post>Anyway a nicely formatted page is shown (on failure, an error
+			explaining what went wrong).</post>
+		<success>The page is displayed. No state is changed.</success>
+
+		<ev>The user clicks on a link, e.g. "my lectures"</ev>
+		<ev>A list of the lectures the user currently is enrolled in is to be
+			displayed. The user should be able to click on them for a detail view
+			(see appropriate use case). People having special rights should
+			special options they are allowed to do with these entities.</ev>
+
+		<q>
+			Do we have the information about what is a running Academic Term?
+			<a>Yes, the information can be deduced from the start/end-times and
+				the current date.</a>
+		</q>
+		<q>Do we have a "leave" mechanism? If so, a "leave" link should also
+			be displayed.</q>
+	</use-case>
+
+	<use-case>
+		<title>User views his timetable</title>
+		<scope>GUI</scope>
+		<actor>Student, Lecturer, Tutor, GUI, Database</actor>
+		<pre>The system is running and the user is logged in.</pre>
+		<success>The users timetable is displayed.</success>
+		<post>The system is still running and the user is still logged in.
+		</post>
+		<ev>User clicks on MyCourses.</ev>
+		<ev>
+			The GUI requests the database for the students courses which the
+			student is enrolled in.
+			<or>The GUI requests the database for the lecturers courses which the
+				lecturer gives.</or>
+			<or>The GUI requests the database for the tutor courses which the
+				tutor is enrolled in and the courses which the tutor gives.</or>
+		</ev>
+		<actor>Any registered user</actor>
+	</use-case>
+
+</use-cases>

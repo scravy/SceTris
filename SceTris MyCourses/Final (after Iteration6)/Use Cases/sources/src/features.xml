@@ -1,0 +1,71 @@
+<use-cases xmlns="http://technodrom.scravy.de/2010/use-case">
+<category>Features</category>
+
+<use-case>
+	<title>Create feature</title>
+	<actor>user with the right to create a feature</actor>
+	<pre>The system is up and running, the user who wants to create a new feature is logged in.</pre>
+	<success>The new feature is created</success>
+	
+	<ev>User navigates to the "create feature" page.
+		<or>Without needed rights, the user wont get to this page.</or>
+	</ev>
+	<ev>A form will be presented to the user in which the user can enter a name for the new feature.</ev>
+	<ev>The form will be submitted.</ev>
+	<ev>The new feature is created. A new empty form will be presented to the user in order to enter another new feature.
+		<or>The new feature is not created, due to malformed data (bad syntax, invalid values). In this case the same form with hints on what went wrong should be displayed again.</or>
+		<or>A database exception occurs. The user should be informed about it, the data should not be lost, i.e. the same form should be shown again (maybe in a way that it can easily be retried).</or>
+	</ev>
+	<status>not implemented</status>
+</use-case>
+
+<use-case>
+	<title>Edit feature</title>
+	<actor>user with the right to edit features</actor>
+	<pre>The system is up and running, the user who wants to edit a feature is logged in.</pre>
+	<post>The feature will not be lost or deleted in case of an error while changing the data of the feature.</post>
+	<success>The feature will have its data legally changed.</success>
+	
+	<ev>The user selects a feature for editing. From the feature list.
+		<or>The user does not has sufficient rights for editing. In lists the entry edit feature should be missing.</or>
+	</ev>
+	<ev>The edit-feature form is shown, with the current name filled in.
+		<or>Show an error message, explaining the missing rights, if the user does not have the needed rights.</or>
+	</ev>
+	<ev>The user changes the name of the feature.</ev>
+	<ev>The entered name is checked whether it already exists before submitting.</ev>
+	<ev>If the renaming was legal (e.g. no newer record has been saved in between) the new name will be written to the database.</ev>
+	<status>not implemented</status>
+</use-case>
+
+<use-case>
+	<title>Delete feature</title>
+	<actor>User with the right to delete features</actor>
+	<pre>The system is up and running, the user who wants to delete a feature is logged in.</pre>
+	<success>The feature will be deleted.</success>
+	
+	<ev>The user selects a feature to delete. From list view or similar.</ev>
+	<q>maybe it would be nice to display the delete option only on features which <i>are</i> currently deletable?</q>
+	<ev>A confirmation page is shown, asking if the room should be really deleted.
+		<or>A message page is shown indicating that and where the feature is currently in use.</or>
+	</ev>
+	<ev>The feature will be deleted.</ev>
+	<ev>The user will land where he left off for his deleting action.</ev>
+	<status>not implemented</status>
+</use-case>
+
+<use-case>
+	<title>List features</title>
+	<actor>User with rights to change features</actor>
+	<pre>The system is up and running, the user is logged in.</pre>
+	<post>no changes will be made to the database in this view</post>
+	<success>presentation of features</success>
+	
+	<ev>User navigates to the "list features" page</ev>
+	<ev>User can specify his search for features by name.</ev>
+	<ev>User gets a list of features fulfilling his search criteria.</ev>
+	<q>Should there be a puplic view of features?</q>
+	<status>not implemented</status>
+</use-case>
+
+</use-cases>

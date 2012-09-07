@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     build.xml
+     Part of SCORE myCourses
+
+     Team Scetris: David Bialik, Julian Fleischer,
+     	Hagen Mahnke, Konrad Reiche, André Zoufahl
+
+     Author: Julian Fleischer
+     ====================================================================== -->
+<project name="scetris-use-cases" default="use-cases.pdf">
+
+	<target name="use-cases.pdf" depends="use-cases.tex">
+		<exec executable="pdflatex">
+			<arg value="use-cases.tex" />
+		</exec>
+		<exec executable="pdflatex">
+			<arg value="use-cases.tex" />
+		</exec>
+		<delete>
+			<fileset dir=".">
+				<include name="use-cases.out" />
+				<include name="use-cases.toc" />
+				<include name="use-cases.log" />
+				<include name="use-cases.xml" />
+				<include name="use-cases.aux" />
+				<include name="use-cases.tex" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="use-cases.tex" depends="use-cases.xml">
+		<xslt style="use-cases-latex.xsl" in="use-cases.xml" out="use-cases.tex" />
+	</target>
+
+	<target name="use-cases.xml">
+		<echo file="use-cases.xml">&lt;use-case-collection xmlns="http://technodrom.scravy.de/2010/use-case"></echo>
+		<concat destfile="use-cases.xml" append="true">
+			<fileset dir="src" includes="*.xml" />
+		</concat>
+		<echo file="use-cases.xml" append="true">&lt;/use-case-collection></echo>
+	</target>
+	
+	<target name="clean">
+		<delete file="use-cases.pdf" />
+	</target>
+
+</project>
