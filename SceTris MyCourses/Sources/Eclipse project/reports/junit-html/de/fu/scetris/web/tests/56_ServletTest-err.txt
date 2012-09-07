@@ -1,0 +1,5 @@
+2011-03-04 03:36:14.056:INFO::Logging to STDERR via org.mortbay.log.StdErrLog
+2011-03-04 03:36:14.216:INFO::jetty-6.1.26
+2011-03-04 03:36:15.398:INFO::Started SocketConnector@0.0.0.0:8081
+2011-03-04 03:36:30.398:INFO::Stopped SocketConnector@0.0.0.0:8081
+

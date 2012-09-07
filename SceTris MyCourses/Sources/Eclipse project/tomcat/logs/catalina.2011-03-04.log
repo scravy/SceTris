@@ -1,0 +1,108 @@
+Mar 4, 2011 8:35:35 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:35:36 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Mar 4, 2011 8:35:38 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [] registered the JBDC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Mar 4, 2011 8:36:19 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/manager] appears to have started a thread named [Poller SunPKCS11-Darwin] but has failed to stop it. This is very likely to create a memory leak.
+Mar 4, 2011 8:36:19 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:38:21 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: .:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+Mar 4, 2011 8:38:22 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:38:22 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1447 ms
+Mar 4, 2011 8:38:22 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Mar 4, 2011 8:38:22 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.29
+Mar 4, 2011 8:38:22 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Mar 4, 2011 8:38:23 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Mar 4, 2011 8:38:26 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:38:26 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Mar 4, 2011 8:38:26 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/84  config=null
+Mar 4, 2011 8:38:26 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 4198 ms
+Mar 4, 2011 8:39:49 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:39:50 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Mar 4, 2011 8:39:50 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [] registered the JBDC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Mar 4, 2011 8:39:50 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap
+SEVERE: The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@39fb9fb3]) and a value of type [org.apache.xerces.parsers.SAXParser] (value [org.apache.xerces.parsers.SAXParser@1241647f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Mar 4, 2011 8:39:52 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/manager] appears to have started a thread named [Poller SunPKCS11-Darwin] but has failed to stop it. This is very likely to create a memory leak.
+Mar 4, 2011 8:39:52 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:40:26 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: .:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+Mar 4, 2011 8:40:27 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:40:27 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1664 ms
+Mar 4, 2011 8:40:28 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Mar 4, 2011 8:40:28 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.29
+Mar 4, 2011 8:40:28 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Mar 4, 2011 8:40:28 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Mar 4, 2011 8:40:33 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:40:33 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Mar 4, 2011 8:40:33 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/130  config=null
+Mar 4, 2011 8:40:33 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 5698 ms
+Mar 4, 2011 8:50:36 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:50:37 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+Mar 4, 2011 8:50:37 AM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+SEVERE: The web application [] registered the JBDC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Mar 4, 2011 8:50:37 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap
+SEVERE: The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4b59d3b2]) and a value of type [org.apache.xerces.parsers.SAXParser] (value [org.apache.xerces.parsers.SAXParser@39b1ff47]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Mar 4, 2011 8:50:37 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap
+SEVERE: The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4b59d3b2]) and a value of type [org.apache.xerces.parsers.SAXParser] (value [org.apache.xerces.parsers.SAXParser@fe2254a]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Mar 4, 2011 8:50:37 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap
+SEVERE: The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4b59d3b2]) and a value of type [org.apache.xerces.parsers.SAXParser] (value [org.apache.xerces.parsers.SAXParser@3ff23f8b]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Mar 4, 2011 8:50:37 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap
+SEVERE: The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4b59d3b2]) and a value of type [org.apache.xerces.parsers.SAXParser] (value [org.apache.xerces.parsers.SAXParser@c33f45e]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Mar 4, 2011 8:50:37 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap
+SEVERE: The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@4b59d3b2]) and a value of type [org.apache.xerces.parsers.SAXParser] (value [org.apache.xerces.parsers.SAXParser@405e305f]) but failed to remove it when the web application was stopped. This is very likely to create a memory leak.
+Mar 4, 2011 8:50:38 AM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+SEVERE: The web application [/manager] appears to have started a thread named [Poller SunPKCS11-Darwin] but has failed to stop it. This is very likely to create a memory leak.
+Mar 4, 2011 8:50:38 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:50:39 AM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: .:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+Mar 4, 2011 8:50:40 AM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:50:40 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 835 ms
+Mar 4, 2011 8:50:40 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Mar 4, 2011 8:50:40 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.29
+Mar 4, 2011 8:50:40 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Mar 4, 2011 8:50:40 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+Mar 4, 2011 8:50:43 AM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Mar 4, 2011 8:50:43 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Mar 4, 2011 8:50:43 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/115  config=null
+Mar 4, 2011 8:50:43 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3414 ms

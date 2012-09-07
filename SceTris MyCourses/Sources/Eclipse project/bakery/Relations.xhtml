@@ -1,0 +1,4752 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:en="http://technodrom.scravy.de/2010/relations/c" xmlns:dc="http://dublincore.org/documents/dcmi-namespace/">
+  <head>
+    <title>Entities &amp; Relationships</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="xhtml.css" title="fancy"/>
+    <link rel="alternate stylesheet" type="text/css" href="xhtml-plain.css" title="plain"/>
+  </head>
+  <body>
+    <h1>Entities &amp; Relationships</h1>
+    <div id="toc">
+      <h2>Entities (21)</h2>
+      <ul>
+        <li>
+          <a href="#entity.AcademicTerm">AcademicTerm</a>
+        </li>
+        <li>
+          <a href="#entity.Attribute">Attribute</a>
+        </li>
+        <li>
+          <a href="#entity.Building">Building</a>
+        </li>
+        <li>
+          <a href="#entity.Configuration">Configuration</a>
+        </li>
+        <li>
+          <a href="#entity.Course">Course</a>
+        </li>
+        <li>
+          <a href="#entity.CourseAttribute">CourseAttribute</a>
+        </li>
+        <li>
+          <a href="#entity.CourseElement">CourseElement</a>
+        </li>
+        <li>
+          <a href="#entity.CourseElementInstance">CourseElementInstance</a>
+        </li>
+        <li>
+          <a href="#entity.CourseElementType">CourseElementType</a>
+        </li>
+        <li>
+          <a href="#entity.CourseInstance">CourseInstance</a>
+        </li>
+        <li>
+          <a href="#entity.Day">Day</a>
+        </li>
+        <li>
+          <a href="#entity.Department">Department</a>
+        </li>
+        <li>
+          <a href="#entity.Feature">Feature</a>
+        </li>
+        <li>
+          <a href="#entity.Person">Person</a>
+        </li>
+        <li>
+          <a href="#entity.Privilege">Privilege</a>
+        </li>
+        <li>
+          <a href="#entity.Program">Program</a>
+        </li>
+        <li>
+          <a href="#entity.ProposedScheduling">ProposedScheduling</a>
+        </li>
+        <li>
+          <a href="#entity.Role">Role</a>
+        </li>
+        <li>
+          <a href="#entity.Room">Room</a>
+        </li>
+        <li>
+          <a href="#entity.Timeslot">Timeslot</a>
+        </li>
+        <li>
+          <a href="#entity.Year">Year</a>
+        </li>
+      </ul>
+      <h2>Relationships (20)</h2>
+      <ul>
+        <li>
+          <a href="#relationship.courseHasCourseAttribute">courseHasCourseAttribute</a>
+        </li>
+        <li>
+          <a href="#relationship.courseRecommendedForYear">courseRecommendedForYear</a>
+        </li>
+        <li>
+          <a href="#relationship.courseRequiresCourse">courseRequiresCourse</a>
+        </li>
+        <li>
+          <a href="#relationship.elementInstancePrefersRoom">elementInstancePrefersRoom</a>
+        </li>
+        <li>
+          <a href="#relationship.elementInstancePrefersTimeslot">elementInstancePrefersTimeslot</a>
+        </li>
+        <li>
+          <a href="#relationship.elementInstanceRequiresFeature">elementInstanceRequiresFeature</a>
+        </li>
+        <li>
+          <a href="#relationship.elementInstanceTakesPlaceInRoom">elementInstanceTakesPlaceInRoom</a>
+        </li>
+        <li>
+          <a href="#relationship.elementRequiresFeature">elementRequiresFeature</a>
+        </li>
+        <li>
+          <a href="#relationship.personEnrolledInCourseInstance">personEnrolledInCourseInstance</a>
+        </li>
+        <li>
+          <a href="#relationship.personGivesCourse">personGivesCourse</a>
+        </li>
+        <li>
+          <a href="#relationship.personHasAttribute">personHasAttribute</a>
+        </li>
+        <li>
+          <a href="#relationship.personHasPrivilege">personHasPrivilege</a>
+        </li>
+        <li>
+          <a href="#relationship.personHasRole">personHasRole</a>
+        </li>
+        <li>
+          <a href="#relationship.personPrefersTimeslot">personPrefersTimeslot</a>
+        </li>
+        <li>
+          <a href="#relationship.personSuccessfullyPassedCourse">personSuccessfullyPassedCourse</a>
+        </li>
+        <li>
+          <a href="#relationship.personTakesPartInElementInstance">personTakesPartInElementInstance</a>
+        </li>
+        <li>
+          <a href="#relationship.roleImpliesAttribute">roleImpliesAttribute</a>
+        </li>
+        <li>
+          <a href="#relationship.roleImpliesPrivilege">roleImpliesPrivilege</a>
+        </li>
+        <li>
+          <a href="#relationship.roomPrefersTimeslot">roomPrefersTimeslot</a>
+        </li>
+        <li>
+          <a href="#relationship.roomProvidesFeature">roomProvidesFeature</a>
+        </li>
+      </ul>
+    </div>
+    <hr/>
+    <div id="content">
+      <div id="entities">
+        <div id="entity.AcademicTerm">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">AcademicTerm</th>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.Program.academic_term">academic_term</a> in <a href="#entity.Program">Program</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.AcademicTerm.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.AcademicTerm.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.AcademicTerm.name" class=" ">
+                <th>
+                  <a href="#entity.AcademicTerm.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.AcademicTerm.timekey" class=" ">
+                <th>
+                  <a href="#entity.AcademicTerm.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.AcademicTerm.start" class=" ">
+                <th>
+                  <a href="#entity.AcademicTerm.start">start</a>
+                </th>
+                <td>date</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>beginnt am</dd>
+                    <dt>title (en)</dt>
+                    <dd>start date</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The date at which the Academic turn begins.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.AcademicTerm.end" class=" ">
+                <th>
+                  <a href="#entity.AcademicTerm.end">end</a>
+                </th>
+                <td>date</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>endet am</dd>
+                    <dt>title (en)</dt>
+                    <dd>end date</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The date at which the Academic turn ends.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.AcademicTerm.start_lessons" class=" ">
+                <th>
+                  <a href="#entity.AcademicTerm.start_lessons">start_lessons</a>
+                </th>
+                <td>date</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Kurse beginnen am</dd>
+                    <dt>title (en)</dt>
+                    <dd>courses starting date</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The date of the first Course Element Instance taking place.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.AcademicTerm.end_lessons" class=" ">
+                <th>
+                  <a href="#entity.AcademicTerm.end_lessons">end_lessons</a>
+                </th>
+                <td>date</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Kurse enden am</dd>
+                    <dt>title (en)</dt>
+                    <dd>courses ending date</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The date of the last Course Element Instance taking place.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.AcademicTerm.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.AcademicTerm.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			All Programs happen in a Period. A Period is has a start and end date. No start date of a Program may be set before the periods start Program and no end date of Program may be set after the Periods end date. One can say: A period is the program of the university, where the university consists of all departments.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Attribute">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Attribute</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Person">Person</a> via <a href="#relationship.personHasAttribute">personHasAttribute</a>, <a href="#entity.Role">Role</a> via <a href="#relationship.roleImpliesAttribute">roleImpliesAttribute</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Attribute.timekey" class=" ">
+                <th>
+                  <a href="#entity.Attribute.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Attribute.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Attribute.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Attribute.name" class=" ">
+                <th>
+                  <a href="#entity.Attribute.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Attribute.type" class=" ">
+                <th>
+                  <a href="#entity.Attribute.type">type</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT 'string'</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Typ des Attributs</dd>
+                    <dt>title (en)</dt>
+                    <dd>type of the attribute</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Attribute.unique_value" class=" ">
+                <th>
+                  <a href="#entity.Attribute.unique_value">unique_value</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ist eindeutig</dd>
+                    <dt>title (en)</dt>
+                    <dd>is unique</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Attribute.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Attribute.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			The Attribute represents user-created Attributes for Persons which can be used to construct constraints.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Building">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Building</th>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.Room.building">building</a> in <a href="#entity.Room">Room</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Building.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Building.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Building.timekey" class=" ">
+                <th>
+                  <a href="#entity.Building.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Building.name" class=" ">
+                <th>
+                  <a href="#entity.Building.name">name</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Name des Gebäudes</dd>
+                    <dt>title (en)</dt>
+                    <dd>name of the building</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The name of Building has to be unique so it identifies the Building.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Building.address" class=" ">
+                <th>
+                  <a href="#entity.Building.address">address</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Adresse</dd>
+                    <dt>title (en)</dt>
+                    <dd>street adress</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The address of the Building has to be unique.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Building.department" class="foreignKey ">
+                <th>
+                  <a href="#entity.Building.department">department</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Department">Department</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gehört zu Department</dd>
+                    <dt>title (en)</dt>
+                    <dd>belongs to Department</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Building.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Building.name">name</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Building.address">address</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+A Building&gt; has a unique street address and belongs to a Department. Some Buildings have a special name (“Henry-Ford-Building”) which is unique across the whole university.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Configuration">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Configuration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Configuration.timekey" class=" ">
+                <th>
+                  <a href="#entity.Configuration.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Configuration.key" class=" primaryKey">
+                <th>
+                  <a href="#entity.Configuration.key">key</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="entity.Configuration.value" class=" ">
+                <th>
+                  <a href="#entity.Configuration.value">value</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Configuration.key">key</a>)</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Course">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Course</th>
+              </tr>
+              <tr>
+                <td>related as subject:</td>
+                <td colspan="3"><a href="#entity.CourseAttribute">CourseAttribute</a> via <a href="#relationship.courseHasCourseAttribute">courseHasCourseAttribute</a>, <a href="#entity.Year">Year</a> via <a href="#relationship.courseRecommendedForYear">courseRecommendedForYear</a>, <a href="#entity.Course">Course</a> via <a href="#relationship.courseRequiresCourse">courseRequiresCourse</a></td>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Course">Course</a> via <a href="#relationship.courseRequiresCourse">courseRequiresCourse</a>, <a href="#entity.Person">Person</a> via <a href="#relationship.personGivesCourse">personGivesCourse</a>, <a href="#entity.Person">Person</a> via <a href="#relationship.personSuccessfullyPassedCourse">personSuccessfullyPassedCourse</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseElement.part_of">part_of</a> in <a href="#entity.CourseElement">CourseElement</a>, by <a href="#entity.CourseInstance.instance_of">instance_of</a> in <a href="#entity.CourseInstance">CourseInstance</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Course.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Course.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Course.name" class=" ">
+                <th>
+                  <a href="#entity.Course.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Course.timekey" class=" ">
+                <th>
+                  <a href="#entity.Course.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Course.department" class="foreignKey ">
+                <th>
+                  <a href="#entity.Course.department">department</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Department">Department</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Das veranstaltende Department</dd>
+                    <dt>title (en)</dt>
+                    <dd>The organizing department</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Course.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Course.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+A Course is a well-defined set of CourseElements. For example there may be a Course which consists of two CourseElements of which one is a mandatory lecture and the other one is an optional seminar.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.CourseAttribute">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">CourseAttribute</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Course">Course</a> via <a href="#relationship.courseHasCourseAttribute">courseHasCourseAttribute</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.CourseAttribute.timekey" class=" ">
+                <th>
+                  <a href="#entity.CourseAttribute.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.CourseAttribute.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.CourseAttribute.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseAttribute.name" class=" ">
+                <th>
+                  <a href="#entity.CourseAttribute.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseAttribute.type" class=" ">
+                <th>
+                  <a href="#entity.CourseAttribute.type">type</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT 'string'</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Typ des Attributs</dd>
+                    <dt>title (en)</dt>
+                    <dd>type of the attribute</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseAttribute.unique_value" class=" ">
+                <th>
+                  <a href="#entity.CourseAttribute.unique_value">unique_value</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ist eindeutig</dd>
+                    <dt>title (en)</dt>
+                    <dd>is unique</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseAttribute.required" class=" ">
+                <th>
+                  <a href="#entity.CourseAttribute.required">required</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>obligatorisch</dd>
+                    <dt>title (en)</dt>
+                    <dd>obligatory</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Whether or not this Course Attribute is obligatory.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.CourseAttribute.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.CourseAttribute.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			CourseAttribute represents user-created Attributes for Courses which can be used to construct constraints.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.CourseElement">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">CourseElement</th>
+              </tr>
+              <tr>
+                <td>related as subject:</td>
+                <td colspan="3"><a href="#entity.Feature">Feature</a> via <a href="#relationship.elementRequiresFeature">elementRequiresFeature</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseElementInstance.course_element">course_element</a> in <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.CourseElement.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.CourseElement.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElement.timekey" class=" ">
+                <th>
+                  <a href="#entity.CourseElement.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.CourseElement.name" class=" ">
+                <th>
+                  <a href="#entity.CourseElement.name">name</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Name des Kurselements</dd>
+                    <dt>title (en)</dt>
+                    <dd>name of the course element</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The name of the Course Element.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElement.part_of" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseElement.part_of">part_of</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gehört zu</dd>
+                    <dt>title (en)</dt>
+                    <dd>part of</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Course this Course Elements belongs to.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElement.duration" class=" ">
+                <th>
+                  <a href="#entity.CourseElement.duration">duration</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>≥ 1</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Dauer</dd>
+                    <dt>title (en)</dt>
+                    <dd>duration</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The duration of the Course Element.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElement.type" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseElement.type">type</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementType">CourseElementType</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Typ der Lehrveranstaltung</dd>
+                    <dt>title (en)</dt>
+                    <dd>type of lessons</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The type of the Course Element.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElement.required" class=" ">
+                <th>
+                  <a href="#entity.CourseElement.required">required</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT true</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>obligatorisch</dd>
+                    <dt>title (en)</dt>
+                    <dd>obligatory</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Whether this Course Element is obligatory or not.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.CourseElement.id">id</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A CourseElement is a type of event at a school or university, like a lecture or a seminar. A CourseElement has a duration and it may take place several times in a week (of which each occurrence has a certain duration). A CourseElement may have some dependencies regarding the Features the Room it is held in has. A CourseElement is part of a Course. It is of a certain type (e.g. lecture, seminar, discussion, meeting, ...).
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.CourseElementInstance">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">CourseElementInstance</th>
+              </tr>
+              <tr>
+                <td>related as subject:</td>
+                <td colspan="3"><a href="#entity.Room">Room</a> via <a href="#relationship.elementInstancePrefersRoom">elementInstancePrefersRoom</a>, <a href="#entity.Timeslot">Timeslot</a> via <a href="#relationship.elementInstancePrefersTimeslot">elementInstancePrefersTimeslot</a>, <a href="#entity.Feature">Feature</a> via <a href="#relationship.elementInstanceRequiresFeature">elementInstanceRequiresFeature</a>, <a href="#entity.Room">Room</a> via <a href="#relationship.elementInstanceTakesPlaceInRoom">elementInstanceTakesPlaceInRoom</a></td>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Person">Person</a> via <a href="#relationship.personTakesPartInElementInstance">personTakesPartInElementInstance</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.ProposedScheduling.element_instance">element_instance</a> in <a href="#entity.ProposedScheduling">ProposedScheduling</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.CourseElementInstance.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.CourseElementInstance.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementInstance.timekey" class=" ">
+                <th>
+                  <a href="#entity.CourseElementInstance.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.CourseElementInstance.course_instance" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseElementInstance.course_instance">course_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseInstance">CourseInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ist Teil von</dd>
+                    <dt>title (en)</dt>
+                    <dd>is a part of</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Course this Course Element Instance is part of.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementInstance.course_element" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseElementInstance.course_element">course_element</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElement">CourseElement</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>abgeleitet von</dd>
+                    <dt>title (en)</dt>
+                    <dd>derived from</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Course Element this Course Element Instance is derived from.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementInstance.starting_timeslot" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseElementInstance.starting_timeslot">starting_timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Beginn</dd>
+                    <dt>title (en)</dt>
+                    <dd>begin</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The starting Timeslot this Course Element Instance is beginning at.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementInstance.lecturer" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseElementInstance.lecturer">lecturer</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Dozent</dd>
+                    <dt>title (en)</dt>
+                    <dd>docent</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The teacher for this Course Element Instance.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementInstance.duration" class=" ">
+                <th>
+                  <a href="#entity.CourseElementInstance.duration">duration</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>≥ 1</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Dauer</dd>
+                    <dt>title (en)</dt>
+                    <dd>duration</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The duration of this Course Element Instance.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementInstance.schedulable_lesson" class=" ">
+                <th>
+                  <a href="#entity.CourseElementInstance.schedulable_lesson">schedulable_lesson</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT true</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Schedulebar</dd>
+                    <dt>title (en)</dt>
+                    <dd>scheduleable</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Whether or not this Course Element Instance is scheduleable.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.CourseElementInstance.id">id</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A CourseElementInstance is created within a Program belonging to a CourseInstance. It is a CourseElement actually taking place.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.CourseElementType">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">CourseElementType</th>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseElement.type">type</a> in <a href="#entity.CourseElement">CourseElement</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.CourseElementType.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.CourseElementType.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementType.name" class=" ">
+                <th>
+                  <a href="#entity.CourseElementType.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseElementType.timekey" class=" ">
+                <th>
+                  <a href="#entity.CourseElementType.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.CourseElementType.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.CourseElementType.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A CourseElementType describes a type of event, like a lecture or a seminar.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.CourseInstance">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">CourseInstance</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Person">Person</a> via <a href="#relationship.personEnrolledInCourseInstance">personEnrolledInCourseInstance</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseElementInstance.course_instance">course_instance</a> in <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.CourseInstance.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.CourseInstance.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseInstance.timekey" class=" ">
+                <th>
+                  <a href="#entity.CourseInstance.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.CourseInstance.program" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseInstance.program">program</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Program">Program</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>läuft innerhalb von</dd>
+                    <dt>title (en)</dt>
+                    <dd>takes place in</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Program this Course Instance is running in.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseInstance.instance_of" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseInstance.instance_of">instance_of</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="entity.CourseInstance.start" class=" ">
+                <th>
+                  <a href="#entity.CourseInstance.start">start</a>
+                </th>
+                <td>date</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>beginnt am</dd>
+                    <dt>title (en)</dt>
+                    <dd>start date</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The start date of the Course Instance.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseInstance.end" class=" ">
+                <th>
+                  <a href="#entity.CourseInstance.end">end</a>
+                </th>
+                <td>date</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>endet am</dd>
+                    <dt>title (en)</dt>
+                    <dd>end date</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The end date of the Course Instance.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.CourseInstance.main_lecturer" class="foreignKey ">
+                <th>
+                  <a href="#entity.CourseInstance.main_lecturer">main_lecturer</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Dozent</dd>
+                    <dt>title (en)</dt>
+                    <dd>teacher</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The docent for this Course Element.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.CourseInstance.id">id</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A CourseInstance is created within a Program. It is a Course actually taking place. There can be several CourseInstances of the same Course within a program. There is a main lecturer being primary responsible for any CourseInstance.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Day">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Day</th>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.Timeslot.day">day</a> in <a href="#entity.Timeslot">Timeslot</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Day.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Day.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Day.name" class=" ">
+                <th>
+                  <a href="#entity.Day.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Day.timekey" class=" ">
+                <th>
+                  <a href="#entity.Day.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Day.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Day.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A Day holds a set of Timeslots.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Department">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Department</th>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.Building.department">department</a> in <a href="#entity.Building">Building</a>, by <a href="#entity.Course.department">department</a> in <a href="#entity.Course">Course</a>, by <a href="#entity.Department.superordinate_department">superordinate_department</a> in <a href="#entity.Department">Department</a>, by <a href="#entity.Person.home_department">home_department</a> in <a href="#entity.Person">Person</a>, by <a href="#entity.Program.department">department</a> in <a href="#entity.Program">Program</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Department.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Department.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Department.name" class=" ">
+                <th>
+                  <a href="#entity.Department.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Department.timekey" class=" ">
+                <th>
+                  <a href="#entity.Department.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Department.superordinate_department" class="foreignKey ">
+                <th>
+                  <a href="#entity.Department.superordinate_department">superordinate_department</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Department">Department</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Übergeordneter Fachbereich</dd>
+                    <dt>title (en)</dt>
+                    <dd>superordinated department</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The superordinated department of this department.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Department.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Department.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A logical group of several entities. Persons, Buildings and Courses belong to a Department. Buildings may belong to several Departments.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Feature">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Feature</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.CourseElementInstance">CourseElementInstance</a> via <a href="#relationship.elementInstanceRequiresFeature">elementInstanceRequiresFeature</a>, <a href="#entity.CourseElement">CourseElement</a> via <a href="#relationship.elementRequiresFeature">elementRequiresFeature</a>, <a href="#entity.Room">Room</a> via <a href="#relationship.roomProvidesFeature">roomProvidesFeature</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Feature.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Feature.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Feature.name" class=" ">
+                <th>
+                  <a href="#entity.Feature.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Feature.timekey" class=" ">
+                <th>
+                  <a href="#entity.Feature.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Feature.description" class=" ">
+                <th>
+                  <a href="#entity.Feature.description">description</a>
+                </th>
+                <td>text</td>
+                <td/>
+                <td/>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Feature.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Feature.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+Rooms do have certain Features which may have a certain quantity. A Feature is identified by a name (“seats”, “beamers”, ...). For example any Room which is suitable to hold a lecture or a seminar in it will have a certain amount of seats, a lab has a certain amount of workplaces. While an auditorium may have 300 seats suitable for doing a lecture it might have only 75 seats suitable for doing an examination.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Person">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Person</th>
+              </tr>
+              <tr>
+                <td>related as subject:</td>
+                <td colspan="3"><a href="#entity.CourseInstance">CourseInstance</a> via <a href="#relationship.personEnrolledInCourseInstance">personEnrolledInCourseInstance</a>, <a href="#entity.Course">Course</a> via <a href="#relationship.personGivesCourse">personGivesCourse</a>, <a href="#entity.Attribute">Attribute</a> via <a href="#relationship.personHasAttribute">personHasAttribute</a>, <a href="#entity.Privilege">Privilege</a> via <a href="#relationship.personHasPrivilege">personHasPrivilege</a>, <a href="#entity.Role">Role</a> via <a href="#relationship.personHasRole">personHasRole</a>, <a href="#entity.Timeslot">Timeslot</a> via <a href="#relationship.personPrefersTimeslot">personPrefersTimeslot</a>, <a href="#entity.Course">Course</a> via <a href="#relationship.personSuccessfullyPassedCourse">personSuccessfullyPassedCourse</a>, <a href="#entity.CourseElementInstance">CourseElementInstance</a> via <a href="#relationship.personTakesPartInElementInstance">personTakesPartInElementInstance</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseElementInstance.lecturer">lecturer</a> in <a href="#entity.CourseElementInstance">CourseElementInstance</a>, by <a href="#entity.CourseInstance.main_lecturer">main_lecturer</a> in <a href="#entity.CourseInstance">CourseInstance</a>, by <a href="#entity.Person.created_by">created_by</a> in <a href="#entity.Person">Person</a>, by <a href="#entity.Person.modified_by">modified_by</a> in <a href="#entity.Person">Person</a>, by <a href="#entity.Person.deleted_by">deleted_by</a> in <a href="#entity.Person">Person</a>, by <a href="#entity.Program.program_manager">program_manager</a> in <a href="#entity.Program">Program</a>, by <a href="#entity.ProposedScheduling.created_by">created_by</a> in <a href="#entity.ProposedScheduling">ProposedScheduling</a>, by <a href="#entity.ProposedScheduling.modified_by">modified_by</a> in <a href="#entity.ProposedScheduling">ProposedScheduling</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Person.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Person.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.ctime" class=" ">
+                <th>
+                  <a href="#entity.Person.ctime">ctime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der Erstellung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of creation</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.mtime" class=" ">
+                <th>
+                  <a href="#entity.Person.mtime">mtime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.created_by" class="foreignKey ">
+                <th>
+                  <a href="#entity.Person.created_by">created_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ursprünglich erstellt von</dd>
+                    <dt>title (en)</dt>
+                    <dd>initially created by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.modified_by" class="foreignKey ">
+                <th>
+                  <a href="#entity.Person.modified_by">modified_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>zuletzt verändert von</dd>
+                    <dt>title (en)</dt>
+                    <dd>least recently modified by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.first_name" class=" ">
+                <th>
+                  <a href="#entity.Person.first_name">first_name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Vorname</dd>
+                    <dt>title (en)</dt>
+                    <dd>first name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The first name of a Person.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.additional_names" class=" ">
+                <th>
+                  <a href="#entity.Person.additional_names">additional_names</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>weitere Namen</dd>
+                    <dt>title (en)</dt>
+                    <dd>additional names</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Additional names of a Person.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.last_name" class=" ">
+                <th>
+                  <a href="#entity.Person.last_name">last_name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Nachname</dd>
+                    <dt>title (en)</dt>
+                    <dd>last name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The last name of a Person.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.email_address" class=" ">
+                <th>
+                  <a href="#entity.Person.email_address">email_address</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eMail-Adresse</dd>
+                    <dt>title (en)</dt>
+                    <dd>email address</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The email address of a Person. It has to be unique.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.login_name" class=" ">
+                <th>
+                  <a href="#entity.Person.login_name">login_name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td>3 ≤ login_name ≤ 40</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Login-Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>login name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The name that is used to log into the system. It has to be unique.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.login_password" class=" ">
+                <th>
+                  <a href="#entity.Person.login_password">login_password</a>
+                </th>
+                <td>password</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Passwort</dd>
+                    <dt>title (en)</dt>
+                    <dd>password</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The password that is used together with the login name in order to log in into the system.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.home_department" class="foreignKey ">
+                <th>
+                  <a href="#entity.Person.home_department">home_department</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Department">Department</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Heimatinstitut</dd>
+                    <dt>title (en)</dt>
+                    <dd>Home department</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The department a student is registered at.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.current_year" class="foreignKey ">
+                <th>
+                  <a href="#entity.Person.current_year">current_year</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Year">Year</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr id="entity.Person.last_login" class=" ">
+                <th>
+                  <a href="#entity.Person.last_login">last_login</a>
+                </th>
+                <td>timestamp</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum des letzten Logins</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of most recent login</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.login_count" class=" ">
+                <th>
+                  <a href="#entity.Person.login_count">login_count</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT 0</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Counts how many times the user logged in to the system.</dd>
+                    <dt>title (en)</dt>
+                    <dd>Zähler über die Anzahl der logins.</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.is_superuser" class=" ">
+                <th>
+                  <a href="#entity.Person.is_superuser">is_superuser</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ist Administrator</dd>
+                    <dt>title (en)</dt>
+                    <dd>is administrator</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Attribute that shows whether the Person is a superuser or not.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.deleted" class=" ">
+                <th>
+                  <a href="#entity.Person.deleted">deleted</a>
+                </th>
+                <td>timestamp</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gelöscht</dd>
+                    <dt>title (en)</dt>
+                    <dd>deleted</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Attribute that shows on which date a Person was deleted from the system.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.deleted_by" class="foreignKey ">
+                <th>
+                  <a href="#entity.Person.deleted_by">deleted_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gelöscht von</dd>
+                    <dt>title (en)</dt>
+                    <dd>deleted by</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Attribute that shows by which Person the User was deleted.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.is_student" class=" ">
+                <th>
+                  <a href="#entity.Person.is_student">is_student</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Matrikelnummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>student number</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The number identifies the Person (student) uniquely.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Person.is_lecturer" class=" ">
+                <th>
+                  <a href="#entity.Person.is_lecturer">is_lecturer</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gelöscht von</dd>
+                    <dt>title (en)</dt>
+                    <dd>deleted by</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				If part of the staff the staff ID will identify the Persion uniquely.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Person.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Person.email_address">email_address</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Person.login_name">login_name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+A Person is a natural person who is able to login to myCourses. Therefore she is having login credentials (e.g. username and password or mail address and password). Every Person has a first name and a last name. There are many different roles at a university and there are persons who act in more than one role (e.g. there are students doing lectures, while not being professors). Every person needs to have a unique identifier regardless of the roles they belong to for administration reasons.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Privilege">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Privilege</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Person">Person</a> via <a href="#relationship.personHasPrivilege">personHasPrivilege</a>, <a href="#entity.Role">Role</a> via <a href="#relationship.roleImpliesPrivilege">roleImpliesPrivilege</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Privilege.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Privilege.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Privilege.name" class=" ">
+                <th>
+                  <a href="#entity.Privilege.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Privilege.timekey" class=" ">
+                <th>
+                  <a href="#entity.Privilege.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Privilege.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Privilege.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A privilege represents the permission to do specific tasks, such as logging in, changing data of courses or publishing the shedule.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Program">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Program</th>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseInstance.program">program</a> in <a href="#entity.CourseInstance">CourseInstance</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Program.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Program.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Program.timekey" class=" ">
+                <th>
+                  <a href="#entity.Program.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Program.academic_term" class="foreignKey ">
+                <th>
+                  <a href="#entity.Program.academic_term">academic_term</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.AcademicTerm">AcademicTerm</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gehört zu Semester</dd>
+                    <dt>title (en)</dt>
+                    <dd>belongs to academic term</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The academic turn this Program is running it.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Program.department" class="foreignKey ">
+                <th>
+                  <a href="#entity.Program.department">department</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Department">Department</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>gehört zum Fachbereich</dd>
+                    <dt>title (en)</dt>
+                    <dd>belongs to department</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The department to which this Program is belonging.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Program.freezed" class=" ">
+                <th>
+                  <a href="#entity.Program.freezed">freezed</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Eingefroren(fertig geplant)</dd>
+                    <dt>title (en)</dt>
+                    <dd>freezed(got ready)</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Whether or not the Program is freezed i.e. no Courses Element Instances will change their place in the Shedule any more.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Program.published" class=" ">
+                <th>
+                  <a href="#entity.Program.published">published</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Veröffentlicht</dd>
+                    <dt>title (en)</dt>
+                    <dd>published</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Whether or not the Program is already released or not.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Program.program_manager" class="foreignKey ">
+                <th>
+                  <a href="#entity.Program.program_manager">program_manager</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Programm Manager</dd>
+                    <dt>title (en)</dt>
+                    <dd>program manager</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The program manager for this Program i.e. the person which is responsible for it.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Program.id">id</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A Program is a set of CourseInstances. It has a running period (start and end date). A program manager is responsible for a Program. A Program belongs to a Department and to one Department only.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.ProposedScheduling">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">ProposedScheduling</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.ProposedScheduling.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.ProposedScheduling.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.priority" class=" ">
+                <th>
+                  <a href="#entity.ProposedScheduling.priority">priority</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>0 ≤ priority ≤ 100</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Priorität</dd>
+                    <dt>title (en)</dt>
+                    <dd>priority</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.ctime" class=" ">
+                <th>
+                  <a href="#entity.ProposedScheduling.ctime">ctime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der Erstellung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of creation</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.mtime" class=" ">
+                <th>
+                  <a href="#entity.ProposedScheduling.mtime">mtime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.created_by" class="foreignKey ">
+                <th>
+                  <a href="#entity.ProposedScheduling.created_by">created_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ursprünglich erstellt von</dd>
+                    <dt>title (en)</dt>
+                    <dd>initially created by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.modified_by" class="foreignKey ">
+                <th>
+                  <a href="#entity.ProposedScheduling.modified_by">modified_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>zuletzt verändert von</dd>
+                    <dt>title (en)</dt>
+                    <dd>least recently modified by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.element_instance" class="foreignKey ">
+                <th>
+                  <a href="#entity.ProposedScheduling.element_instance">element_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>konkretes Kurselement</dd>
+                    <dt>title (en)</dt>
+                    <dd>course element instance</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.timeslot" class="foreignKey ">
+                <th>
+                  <a href="#entity.ProposedScheduling.timeslot">timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Zeitfenster</dd>
+                    <dt>title (en)</dt>
+                    <dd>timeslot</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.ProposedScheduling.room" class="foreignKey ">
+                <th>
+                  <a href="#entity.ProposedScheduling.room">room</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Room">Room</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Raum</dd>
+                    <dt>title (en)</dt>
+                    <dd>room</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.ProposedScheduling.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.ProposedScheduling.element_instance">element_instance</a>, <a href="#entity.ProposedScheduling.timeslot">timeslot</a>, <a href="#entity.ProposedScheduling.room">room</a>)</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Role">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Role</th>
+              </tr>
+              <tr>
+                <td>related as subject:</td>
+                <td colspan="3"><a href="#entity.Attribute">Attribute</a> via <a href="#relationship.roleImpliesAttribute">roleImpliesAttribute</a>, <a href="#entity.Privilege">Privilege</a> via <a href="#relationship.roleImpliesPrivilege">roleImpliesPrivilege</a></td>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Person">Person</a> via <a href="#relationship.personHasRole">personHasRole</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Role.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Role.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Role.name" class=" ">
+                <th>
+                  <a href="#entity.Role.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Role.timekey" class=" ">
+                <th>
+                  <a href="#entity.Role.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Role.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Role.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A role bundles a set of privileges i.e. permissions a user gains when having one or more roles. The right managment is not hierarchal, it is plain.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Room">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Room</th>
+              </tr>
+              <tr>
+                <td>related as subject:</td>
+                <td colspan="3"><a href="#entity.Timeslot">Timeslot</a> via <a href="#relationship.roomPrefersTimeslot">roomPrefersTimeslot</a>, <a href="#entity.Feature">Feature</a> via <a href="#relationship.roomProvidesFeature">roomProvidesFeature</a></td>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.CourseElementInstance">CourseElementInstance</a> via <a href="#relationship.elementInstancePrefersRoom">elementInstancePrefersRoom</a>, <a href="#entity.CourseElementInstance">CourseElementInstance</a> via <a href="#relationship.elementInstanceTakesPlaceInRoom">elementInstanceTakesPlaceInRoom</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.ProposedScheduling.room">room</a> in <a href="#entity.ProposedScheduling">ProposedScheduling</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Room.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Room.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Room.timekey" class=" ">
+                <th>
+                  <a href="#entity.Room.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Room.name" class=" ">
+                <th>
+                  <a href="#entity.Room.name">name</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Name des Raumes</dd>
+                    <dt>title (en)</dt>
+                    <dd>name of the room</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Roomname is unique per Building and identifies the Room in this Building.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Room.number" class=" ">
+                <th>
+                  <a href="#entity.Room.number">number</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Raum-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>room number</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Roomnumber has not to be unique. It is an alternative name for the Room.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Room.building" class="foreignKey ">
+                <th>
+                  <a href="#entity.Room.building">building</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Building">Building</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ist in Gebäude</dd>
+                    <dt>title (en)</dt>
+                    <dd>located in</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Buildingname is unique and represents a location where the Room is.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Room.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Room.name">name</a>, <a href="#entity.Room.building">building</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Room.number">number</a>, <a href="#entity.Room.building">building</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+A Room is a physical location where CourseElementInstances take place. A Room has an identifier which uniquely identifies it across the whole university. A Room is located inside a Building. Every Room has a number which is unique in the Building. A Room has Features and it may have a certain quantity of any Feature (e.g. 300 seats, a beamer, 20 workstations). Some Rooms do have a special name (“Audimax”) which is unique in the building. A Room may be of a certain type (auditorium, lab, ...). Not all rooms are always available.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Timeslot">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Timeslot</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.CourseElementInstance">CourseElementInstance</a> via <a href="#relationship.elementInstancePrefersTimeslot">elementInstancePrefersTimeslot</a>, <a href="#entity.Person">Person</a> via <a href="#relationship.personPrefersTimeslot">personPrefersTimeslot</a>, <a href="#entity.Room">Room</a> via <a href="#relationship.roomPrefersTimeslot">roomPrefersTimeslot</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.CourseElementInstance.starting_timeslot">starting_timeslot</a> in <a href="#entity.CourseElementInstance">CourseElementInstance</a>, by <a href="#entity.ProposedScheduling.timeslot">timeslot</a> in <a href="#entity.ProposedScheduling">ProposedScheduling</a>, by <a href="#relationship.elementInstanceTakesPlaceInRoom.timeslot">timeslot</a> in <a href="#relationship.elementInstanceTakesPlaceInRoom">elementInstanceTakesPlaceInRoom</a>, by <a href="#relationship.personTakesPartInElementInstance.timeslot">timeslot</a> in <a href="#relationship.personTakesPartInElementInstance">personTakesPartInElementInstance</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Timeslot.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Timeslot.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Timeslot.timekey" class=" ">
+                <th>
+                  <a href="#entity.Timeslot.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="entity.Timeslot.day" class="foreignKey ">
+                <th>
+                  <a href="#entity.Timeslot.day">day</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Day">Day</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Tag an welchem der Entsprechende Timeslot liegt.</dd>
+                    <dt>title (en)</dt>
+                    <dd>Day on which this Timeslot takes place.</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Day on which the Timeslot will be placed.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Timeslot.startingTime" class=" ">
+                <th>
+                  <a href="#entity.Timeslot.startingTime">startingTime</a>
+                </th>
+                <td>time</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Uhrzeit zu der der Kurs anfaengt.</dd>
+                    <dt>title (en)</dt>
+                    <dd>Time on which the CourseElementInstance will begin.</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Time on which the COurseElementInstance will begin.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Timeslot.id">id</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			A Timeslot represents a duration in time in which a CourseElementInstance can take place.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="entity.Year">
+          <table class="entity">
+            <thead>
+              <tr>
+                <th colspan="4">Year</th>
+              </tr>
+              <tr>
+                <td>related as object:</td>
+                <td colspan="3"><a href="#entity.Course">Course</a> via <a href="#relationship.courseRecommendedForYear">courseRecommendedForYear</a></td>
+              </tr>
+              <tr>
+                <td>referenced (one-to-many):</td>
+                <td colspan="3">by <a href="#entity.Person.current_year">current_year</a> in <a href="#entity.Person">Person</a></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="entity.Year.id" class=" primaryKey">
+                <th>
+                  <a href="#entity.Year.id">id</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Identifikations-Nummer</dd>
+                    <dt>title (en)</dt>
+                    <dd>numeric identifier</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				An artificial key introduced to allow easy referencing of an entity.
+				Once an id has been set it won’t change, therfore avoiding update anomalies.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Year.name" class=" ">
+                <th>
+                  <a href="#entity.Year.name">name</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>eindeutiger Name</dd>
+                    <dt>title (en)</dt>
+                    <dd>unique name</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a unique name which is readable by humans and may be set by a user
+				working with our application. A name is allowed to change, since it’s not
+				a PRIMARY KEY. Typically it is not allowed
+				to be NULL, since it acts as a secondary identifier.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="entity.Year.timekey" class=" ">
+                <th>
+                  <a href="#entity.Year.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#entity.Year.id">id</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#entity.Year.name">name</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Title</td>
+                <td colspan="3">year</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			Typically Students start studying sometime and end studying sometime later and their course of studies has a regular length. Of course Courses a Student has to enroll in in the same year must not overlap. That is what Year is for. Courses may be assigned to a certain Year (e.g. first year, second year), but they do not necessarily have to.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div id="relationships">
+        <div id="relationship.courseHasCourseAttribute">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">courseHasCourseAttribute (<a href="#entity.Course">Course</a> → <a href="#entity.CourseAttribute">CourseAttribute</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.courseHasCourseAttribute.course" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.courseHasCourseAttribute.course">course</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.courseHasCourseAttribute.attribute" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.courseHasCourseAttribute.attribute">attribute</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseAttribute">CourseAttribute</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.courseHasCourseAttribute.time" class=" primaryKey">
+                <th>
+                  <a href="#relationship.courseHasCourseAttribute.time">time</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.courseHasCourseAttribute.value" class=" ">
+                <th>
+                  <a href="#relationship.courseHasCourseAttribute.value">value</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Wert des Attributs</dd>
+                    <dt>title (en)</dt>
+                    <dd>value of the attribute</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.courseHasCourseAttribute.timekey" class=" ">
+                <th>
+                  <a href="#relationship.courseHasCourseAttribute.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.courseHasCourseAttribute.course">course</a>, <a href="#relationship.courseHasCourseAttribute.attribute">attribute</a>, <a href="#relationship.courseHasCourseAttribute.time">time</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that the given Course has the given Attribute.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.courseRecommendedForYear">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">courseRecommendedForYear (<a href="#entity.Course">Course</a> → <a href="#entity.Year">Year</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.courseRecommendedForYear.course" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.courseRecommendedForYear.course">course</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.courseRecommendedForYear.year" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.courseRecommendedForYear.year">year</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Year">Year</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.courseRecommendedForYear.timekey" class=" ">
+                <th>
+                  <a href="#relationship.courseRecommendedForYear.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.courseRecommendedForYear.course">course</a>, <a href="#relationship.courseRecommendedForYear.year">year</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation gives the Person(students) a hint in which Course they should enroll in order to maintain their studies in order.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.courseRequiresCourse">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">courseRequiresCourse (<a href="#entity.Course">Course</a> → <a href="#entity.Course">Course</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.courseRequiresCourse.course" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.courseRequiresCourse.course">course</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.courseRequiresCourse.dependency" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.courseRequiresCourse.dependency">dependency</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.courseRequiresCourse.timekey" class=" ">
+                <th>
+                  <a href="#relationship.courseRequiresCourse.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.courseRequiresCourse.course">course</a>, <a href="#relationship.courseRequiresCourse.dependency">dependency</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that it is neccessary to take part in the first Course in order to take part in the second Course.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.elementInstancePrefersRoom">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">elementInstancePrefersRoom (<a href="#entity.CourseElementInstance">CourseElementInstance</a> → <a href="#entity.Room">Room</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.elementInstancePrefersRoom.element_instance" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstancePrefersRoom.element_instance">element_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstancePrefersRoom.room" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstancePrefersRoom.room">room</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Room">Room</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstancePrefersRoom.priority" class=" ">
+                <th>
+                  <a href="#relationship.elementInstancePrefersRoom.priority">priority</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>0 ≤ priority ≤ 100</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Priorität</dd>
+                    <dt>title (en)</dt>
+                    <dd>priority</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.elementInstancePrefersRoom.timekey" class=" ">
+                <th>
+                  <a href="#relationship.elementInstancePrefersRoom.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.elementInstancePrefersRoom.element_instance">element_instance</a>, <a href="#relationship.elementInstancePrefersRoom.room">room</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation describes that the given CourseElementInstance is better to be placed in the given Room.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.elementInstancePrefersTimeslot">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">elementInstancePrefersTimeslot (<a href="#entity.CourseElementInstance">CourseElementInstance</a> → <a href="#entity.Timeslot">Timeslot</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.elementInstancePrefersTimeslot.element_instance" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstancePrefersTimeslot.element_instance">element_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstancePrefersTimeslot.timeslot" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstancePrefersTimeslot.timeslot">timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstancePrefersTimeslot.priority" class=" ">
+                <th>
+                  <a href="#relationship.elementInstancePrefersTimeslot.priority">priority</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>0 ≤ priority ≤ 100</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Priorität</dd>
+                    <dt>title (en)</dt>
+                    <dd>priority</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.elementInstancePrefersTimeslot.timekey" class=" ">
+                <th>
+                  <a href="#relationship.elementInstancePrefersTimeslot.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.elementInstancePrefersTimeslot.element_instance">element_instance</a>, <a href="#relationship.elementInstancePrefersTimeslot.timeslot">timeslot</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation describes that the given CourseElementInstance is better to be placed in the given Timeslot.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.elementInstanceRequiresFeature">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">elementInstanceRequiresFeature (<a href="#entity.CourseElementInstance">CourseElementInstance</a> → <a href="#entity.Feature">Feature</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.elementInstanceRequiresFeature.element_instance" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstanceRequiresFeature.element_instance">element_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstanceRequiresFeature.feature" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstanceRequiresFeature.feature">feature</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Feature">Feature</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstanceRequiresFeature.timekey" class=" ">
+                <th>
+                  <a href="#relationship.elementInstanceRequiresFeature.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.elementInstanceRequiresFeature.quantity_min" class=" ">
+                <th>
+                  <a href="#relationship.elementInstanceRequiresFeature.quantity_min">quantity_min</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Mindestanzahl des Features die vorhanden sein muss</dd>
+                    <dt>title (en)</dt>
+                    <dd>minimum number of the feature required</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.elementInstanceRequiresFeature.quantity_better" class=" ">
+                <th>
+                  <a href="#relationship.elementInstanceRequiresFeature.quantity_better">quantity_better</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Anzahl des Features welche besser wäre</dd>
+                    <dt>title (en)</dt>
+                    <dd>number of features that would be better</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.elementInstanceRequiresFeature.element_instance">element_instance</a>, <a href="#relationship.elementInstanceRequiresFeature.feature">feature</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us what kind of Feature is needed or whished by the Person which holds this particular CourseElementInstance.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.elementInstanceTakesPlaceInRoom">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">elementInstanceTakesPlaceInRoom (<a href="#entity.CourseElementInstance">CourseElementInstance</a> → <a href="#entity.Room">Room</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.elementInstanceTakesPlaceInRoom.element_instance" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstanceTakesPlaceInRoom.element_instance">element_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstanceTakesPlaceInRoom.room" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementInstanceTakesPlaceInRoom.room">room</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Room">Room</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementInstanceTakesPlaceInRoom.timekey" class=" ">
+                <th>
+                  <a href="#relationship.elementInstanceTakesPlaceInRoom.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.elementInstanceTakesPlaceInRoom.timeslot" class="foreignKey ">
+                <th>
+                  <a href="#relationship.elementInstanceTakesPlaceInRoom.timeslot">timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Zeitfenster</dd>
+                    <dt>title (en)</dt>
+                    <dd>timeslot</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Timeslot in which the Course Element Instance will take place in the given Room.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.elementInstanceTakesPlaceInRoom.element_instance">element_instance</a>, <a href="#relationship.elementInstanceTakesPlaceInRoom.room">room</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that the mentioned CourseElementInstance is taking place in the given Room.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.elementRequiresFeature">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">elementRequiresFeature (<a href="#entity.CourseElement">CourseElement</a> → <a href="#entity.Feature">Feature</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.elementRequiresFeature.course_element" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementRequiresFeature.course_element">course_element</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElement">CourseElement</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementRequiresFeature.feature" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.elementRequiresFeature.feature">feature</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Feature">Feature</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.elementRequiresFeature.timekey" class=" ">
+                <th>
+                  <a href="#relationship.elementRequiresFeature.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.elementRequiresFeature.quantity_min" class=" ">
+                <th>
+                  <a href="#relationship.elementRequiresFeature.quantity_min">quantity_min</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Mindestanzahl des Features die vorhanden sein muss</dd>
+                    <dt>title (en)</dt>
+                    <dd>minimum number of the feature required</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.elementRequiresFeature.quantity_better" class=" ">
+                <th>
+                  <a href="#relationship.elementRequiresFeature.quantity_better">quantity_better</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Anzahl des Features welche besser wäre</dd>
+                    <dt>title (en)</dt>
+                    <dd>number of features that would be better</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.elementRequiresFeature.course_element">course_element</a>, <a href="#relationship.elementRequiresFeature.feature">feature</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us what kind and amount of Feature is required in order to be held.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personEnrolledInCourseInstance">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personEnrolledInCourseInstance (<a href="#entity.Person">Person</a> → <a href="#entity.CourseInstance">CourseInstance</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personEnrolledInCourseInstance.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personEnrolledInCourseInstance.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personEnrolledInCourseInstance.course_instance" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personEnrolledInCourseInstance.course_instance">course_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseInstance">CourseInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personEnrolledInCourseInstance.ctime" class=" ">
+                <th>
+                  <a href="#relationship.personEnrolledInCourseInstance.ctime">ctime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der Erstellung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of creation</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personEnrolledInCourseInstance.mtime" class=" ">
+                <th>
+                  <a href="#relationship.personEnrolledInCourseInstance.mtime">mtime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personEnrolledInCourseInstance.created_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personEnrolledInCourseInstance.created_by">created_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ursprünglich erstellt von</dd>
+                    <dt>title (en)</dt>
+                    <dd>initially created by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personEnrolledInCourseInstance.modified_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personEnrolledInCourseInstance.modified_by">modified_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>zuletzt verändert von</dd>
+                    <dt>title (en)</dt>
+                    <dd>least recently modified by</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personEnrolledInCourseInstance.user">user</a>, <a href="#relationship.personEnrolledInCourseInstance.course_instance">course_instance</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation gives us the Persons that are enrolled to a specific CourseInstance.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personGivesCourse">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personGivesCourse (<a href="#entity.Person">Person</a> → <a href="#entity.Course">Course</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personGivesCourse.person" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personGivesCourse.person">person</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personGivesCourse.course" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personGivesCourse.course">course</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personGivesCourse.timekey" class=" ">
+                <th>
+                  <a href="#relationship.personGivesCourse.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.personGivesCourse.priority" class=" ">
+                <th>
+                  <a href="#relationship.personGivesCourse.priority">priority</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>0 ≤ priority ≤ 100</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Priorität</dd>
+                    <dt>title (en)</dt>
+                    <dd>priority</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personGivesCourse.person">person</a>, <a href="#relationship.personGivesCourse.course">course</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us which Persons are holding which Courses.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personHasAttribute">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personHasAttribute (<a href="#entity.Person">Person</a> → <a href="#entity.Attribute">Attribute</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personHasAttribute.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personHasAttribute.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personHasAttribute.attribute" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personHasAttribute.attribute">attribute</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Attribute">Attribute</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personHasAttribute.time" class=" primaryKey">
+                <th>
+                  <a href="#relationship.personHasAttribute.time">time</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasAttribute.value" class=" ">
+                <th>
+                  <a href="#relationship.personHasAttribute.value">value</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Wert des Attributs</dd>
+                    <dt>title (en)</dt>
+                    <dd>value of the attribute</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasAttribute.timekey" class=" ">
+                <th>
+                  <a href="#relationship.personHasAttribute.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personHasAttribute.user">user</a>, <a href="#relationship.personHasAttribute.attribute">attribute</a>, <a href="#relationship.personHasAttribute.time">time</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that the Person mentioned has the Attribute given.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personHasPrivilege">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personHasPrivilege (<a href="#entity.Person">Person</a> → <a href="#entity.Privilege">Privilege</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personHasPrivilege.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personHasPrivilege.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personHasPrivilege.privilege" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personHasPrivilege.privilege">privilege</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Privilege">Privilege</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personHasPrivilege.ctime" class=" ">
+                <th>
+                  <a href="#relationship.personHasPrivilege.ctime">ctime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der Erstellung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of creation</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasPrivilege.mtime" class=" ">
+                <th>
+                  <a href="#relationship.personHasPrivilege.mtime">mtime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasPrivilege.created_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personHasPrivilege.created_by">created_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ursprünglich erstellt von</dd>
+                    <dt>title (en)</dt>
+                    <dd>initially created by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasPrivilege.modified_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personHasPrivilege.modified_by">modified_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>zuletzt verändert von</dd>
+                    <dt>title (en)</dt>
+                    <dd>least recently modified by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasPrivilege.target" class=" primaryKey">
+                <th>
+                  <a href="#relationship.personHasPrivilege.target">target</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT ''</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Ziel</dd>
+                    <dt>title (en)</dt>
+                    <dd>target</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The target of this relation (should be a Person) will gain the new Privilege.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasPrivilege.because_of_role" class=" ">
+                <th>
+                  <a href="#relationship.personHasPrivilege.because_of_role">because_of_role</a>
+                </th>
+                <td>boolean</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>aufgrund der Rolle</dd>
+                    <dt>title (en)</dt>
+                    <dd>because of role</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				This is a explanation because of which Role the Privilege was gained.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personHasPrivilege.user">user</a>, <a href="#relationship.personHasPrivilege.privilege">privilege</a>, <a href="#relationship.personHasPrivilege.target">target</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that the given Person has the given Privilege.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personHasRole">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personHasRole (<a href="#entity.Person">Person</a> → <a href="#entity.Role">Role</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personHasRole.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personHasRole.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personHasRole.role" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personHasRole.role">role</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Role">Role</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personHasRole.ctime" class=" ">
+                <th>
+                  <a href="#relationship.personHasRole.ctime">ctime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der Erstellung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of creation</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasRole.mtime" class=" ">
+                <th>
+                  <a href="#relationship.personHasRole.mtime">mtime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasRole.created_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personHasRole.created_by">created_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ursprünglich erstellt von</dd>
+                    <dt>title (en)</dt>
+                    <dd>initially created by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personHasRole.modified_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personHasRole.modified_by">modified_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>zuletzt verändert von</dd>
+                    <dt>title (en)</dt>
+                    <dd>least recently modified by</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personHasRole.user">user</a>, <a href="#relationship.personHasRole.role">role</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that the given Person has the given Role.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personPrefersTimeslot">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personPrefersTimeslot (<a href="#entity.Person">Person</a> → <a href="#entity.Timeslot">Timeslot</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personPrefersTimeslot.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personPrefersTimeslot.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personPrefersTimeslot.timeslot" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personPrefersTimeslot.timeslot">timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personPrefersTimeslot.timekey" class=" ">
+                <th>
+                  <a href="#relationship.personPrefersTimeslot.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.personPrefersTimeslot.priority" class=" ">
+                <th>
+                  <a href="#relationship.personPrefersTimeslot.priority">priority</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>0 ≤ priority ≤ 100</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Priorität</dd>
+                    <dt>title (en)</dt>
+                    <dd>priority</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personPrefersTimeslot.user">user</a>, <a href="#relationship.personPrefersTimeslot.timeslot">timeslot</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation describes that the given person wants this Timeslot more than other timeslots.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personSuccessfullyPassedCourse">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personSuccessfullyPassedCourse (<a href="#entity.Person">Person</a> → <a href="#entity.Course">Course</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personSuccessfullyPassedCourse.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.course" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.course">course</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Course">Course</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.ctime" class=" ">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.ctime">ctime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der Erstellung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of creation</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.mtime" class=" ">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.mtime">mtime</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Datum der letzten Änderung</dd>
+                    <dt>title (en)</dt>
+                    <dd>date of last edit</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.created_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.created_by">created_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>ursprünglich erstellt von</dd>
+                    <dt>title (en)</dt>
+                    <dd>initially created by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.modified_by" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.modified_by">modified_by</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>zuletzt verändert von</dd>
+                    <dt>title (en)</dt>
+                    <dd>least recently modified by</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.grade" class=" ">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.grade">grade</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Note</dd>
+                    <dt>title (en)</dt>
+                    <dd>grade</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The grade the Person got in the specified Course.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.personSuccessfullyPassedCourse.notes" class=" ">
+                <th>
+                  <a href="#relationship.personSuccessfullyPassedCourse.notes">notes</a>
+                </th>
+                <td>text</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Anmerkungen</dd>
+                    <dt>title (en)</dt>
+                    <dd>notes</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Notes regarding the Person in question.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personSuccessfullyPassedCourse.user">user</a>, <a href="#relationship.personSuccessfullyPassedCourse.course">course</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that a Person has passed a specific Course.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.personTakesPartInElementInstance">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">personTakesPartInElementInstance (<a href="#entity.Person">Person</a> → <a href="#entity.CourseElementInstance">CourseElementInstance</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.personTakesPartInElementInstance.user" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personTakesPartInElementInstance.user">user</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Person">Person</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personTakesPartInElementInstance.element_instance" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.personTakesPartInElementInstance.element_instance">element_instance</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.CourseElementInstance">CourseElementInstance</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.personTakesPartInElementInstance.timekey" class=" ">
+                <th>
+                  <a href="#relationship.personTakesPartInElementInstance.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.personTakesPartInElementInstance.timeslot" class="foreignKey ">
+                <th>
+                  <a href="#relationship.personTakesPartInElementInstance.timeslot">timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Zeitfenster</dd>
+                    <dt>title (en)</dt>
+                    <dd>timeslot</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The Timeslot in which the Person will take part in the given Course Element Instance
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.personTakesPartInElementInstance.user">user</a>, <a href="#relationship.personTakesPartInElementInstance.element_instance">element_instance</a>)</td>
+              </tr>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">UNIQUE (<a href="#relationship.personTakesPartInElementInstance.user">user</a>, <a href="#relationship.personTakesPartInElementInstance.timeslot">timeslot</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us that the given Person takes part in the mentioned CourseElementInstance.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.roleImpliesAttribute">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">roleImpliesAttribute (<a href="#entity.Role">Role</a> → <a href="#entity.Attribute">Attribute</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.roleImpliesAttribute.role" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roleImpliesAttribute.role">role</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Role">Role</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roleImpliesAttribute.attribute" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roleImpliesAttribute.attribute">attribute</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Attribute">Attribute</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roleImpliesAttribute.timekey" class=" ">
+                <th>
+                  <a href="#relationship.roleImpliesAttribute.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.roleImpliesAttribute.default" class=" ">
+                <th>
+                  <a href="#relationship.roleImpliesAttribute.default">default</a>
+                </th>
+                <td>string</td>
+                <td/>
+                <td/>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Standardmäßig</dd>
+                    <dt>title (en)</dt>
+                    <dd>default</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Describes whether or not this attribute is set by default.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.roleImpliesAttribute.required" class=" ">
+                <th>
+                  <a href="#relationship.roleImpliesAttribute.required">required</a>
+                </th>
+                <td>boolean</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT false</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>benötigt</dd>
+                    <dt>title (en)</dt>
+                    <dd>required</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				Whether or not this Attribute is required or not.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.roleImpliesAttribute.role">role</a>, <a href="#relationship.roleImpliesAttribute.attribute">attribute</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation keeps track of user-defined Attributes that are implied by a role.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.roleImpliesPrivilege">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">roleImpliesPrivilege (<a href="#entity.Role">Role</a> → <a href="#entity.Privilege">Privilege</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.roleImpliesPrivilege.role" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roleImpliesPrivilege.role">role</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Role">Role</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roleImpliesPrivilege.privilege" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roleImpliesPrivilege.privilege">privilege</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Privilege">Privilege</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roleImpliesPrivilege.timekey" class=" ">
+                <th>
+                  <a href="#relationship.roleImpliesPrivilege.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.roleImpliesPrivilege.target" class=" primaryKey">
+                <th>
+                  <a href="#relationship.roleImpliesPrivilege.target">target</a>
+                </th>
+                <td>string</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT ''</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Ziel</dd>
+                    <dt>title (en)</dt>
+                    <dd>target</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The target of this relation (should be a Role) will gain the new Privilege.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.roleImpliesPrivilege.role">role</a>, <a href="#relationship.roleImpliesPrivilege.privilege">privilege</a>, <a href="#relationship.roleImpliesPrivilege.target">target</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us what Privileges are implied by a given Role.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.roomPrefersTimeslot">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">roomPrefersTimeslot (<a href="#entity.Room">Room</a> → <a href="#entity.Timeslot">Timeslot</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.roomPrefersTimeslot.room" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roomPrefersTimeslot.room">room</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Room">Room</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roomPrefersTimeslot.timeslot" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roomPrefersTimeslot.timeslot">timeslot</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Timeslot">Timeslot</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roomPrefersTimeslot.priority" class=" ">
+                <th>
+                  <a href="#relationship.roomPrefersTimeslot.priority">priority</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>0 ≤ priority ≤ 100</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Priorität</dd>
+                    <dt>title (en)</dt>
+                    <dd>priority</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr id="relationship.roomPrefersTimeslot.timekey" class=" ">
+                <th>
+                  <a href="#relationship.roomPrefersTimeslot.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.roomPrefersTimeslot.room">room</a>, <a href="#relationship.roomPrefersTimeslot.timeslot">timeslot</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation describes that the given Room should be booked at the given Timeslot.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="relationship.roomProvidesFeature">
+          <table class="relationship">
+            <thead>
+              <tr>
+                <th colspan="4">roomProvidesFeature (<a href="#entity.Room">Room</a> → <a href="#entity.Feature">Feature</a>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="relationship.roomProvidesFeature.room" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roomProvidesFeature.room">room</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Room">Room</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roomProvidesFeature.feature" class="foreignKey primaryKey">
+                <th>
+                  <a href="#relationship.roomProvidesFeature.feature">feature</a>
+                </th>
+                <td>FOREIGN KEY → <a href="#entity.Feature">Feature</a></td>
+                <td>NOT NULL</td>
+                <td/>
+              </tr>
+              <tr id="relationship.roomProvidesFeature.timekey" class=" ">
+                <th>
+                  <a href="#relationship.roomProvidesFeature.timekey">timekey</a>
+                </th>
+                <td>timestamp</td>
+                <td>NOT NULL</td>
+                <td>DEFAULT now</td>
+              </tr>
+              <tr id="relationship.roomProvidesFeature.quantity" class=" ">
+                <th>
+                  <a href="#relationship.roomProvidesFeature.quantity">quantity</a>
+                </th>
+                <td>integer</td>
+                <td>NOT NULL</td>
+                <td>≥ 0</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <dl>
+                    <dt>title (de)</dt>
+                    <dd>Quantität</dd>
+                    <dt>title (en)</dt>
+                    <dd>quantity</dd>
+                    <dt>description (en)</dt>
+                    <dd>
+				The quantity in which the Room provides the Feature of question.
+			</dd>
+                  </dl>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Constraint</td>
+                <td colspan="3">PRIMARY KEY (<a href="#relationship.roomProvidesFeature.room">room</a>, <a href="#relationship.roomProvidesFeature.feature">feature</a>)</td>
+              </tr>
+              <tr class="dc_description dc">
+                <td>Description</td>
+                <td colspan="3">
+			This relation tells us which Feature is provided by this room.
+		</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

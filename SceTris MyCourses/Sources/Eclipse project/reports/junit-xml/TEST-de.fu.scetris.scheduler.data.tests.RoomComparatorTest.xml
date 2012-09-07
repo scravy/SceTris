@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Yggdrasil.local" name="de.fu.scetris.scheduler.data.tests.RoomComparatorTest" tests="1" time="3.606" timestamp="2011-03-04T02:16:19">
+  <properties>
+    <property name="java.vendor" value="Apple Inc." />
+    <property name="coverage.summaryxml.dir" value="reports/cobertura-summary-xml" />
+    <property name="scetris.testing.db.port" value="5432" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="jikes.class.path" value=":/System/Library/Frameworks/JavaVM.framework/Home/../Classes/alt-rt.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/charsets.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/dt.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/jce.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/jconsole.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/jsse.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/management-agent.jar:/System/Library/Frameworks/JavaVM.framework/Home/../Classes/ui.jar" />
+    <property name="scetris.setup.symlink.js" value="yes" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Server Compiler" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar" />
+    <property name="reports.html.dir" value="reports/junit-html" />
+    <property name="scetris.setup.db.password" value="chosenByFairRandomDice" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="test.failed" value="true" />
+    <property name="ant.home" value="/opt/local/share/java/apache-ant" />
+    <property name="java.runtime.version" value="1.6.0_22-b04-307-10M3261" />
+    <property name="scetris.setup.db.username" value="scravy" />
+    <property name="tomcat.exists" value="true" />
+    <property name="scetris.setup.tomcat" value="tomcat" />
+    <property name="cobertura.dir" value="cobertura" />
+    <property name="user.name" value="scravy" />
+    <property name="scetris.build.css" value="css" />
+    <property name="awt.nativeDoubleBuffering" value="true" />
+    <property name="user.language" value="en" />
+    <property name="scetris.setup.tomcat.zip" value="tomcat.zip" />
+    <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries" />
+    <property name="scetris.testing.setup.db.database" value="postgres" />
+    <property name="reports.dir" value="reports" />
+    <property name="tomcat.zip.exists" value="true" />
+    <property name="ant.project.default-target" value="coverage" />
+    <property name="ant.project.name" value="cobertura.examples.basic" />
+    <property name="ant.file.cobertura.examples.basic" value="/Users/julianfleischer/Projects/score/trunk/cobertura.xml" />
+    <property name="java.version" value="1.6.0_22" />
+    <property name="scetris.setup.symlink.css" value="yes" />
+    <property name="coverage.html.dir" value="reports/cobertura-html" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="scetris.build.webxml" value="web.xml" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="scetris.templates.lazyload" value="yes" />
+    <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="scetris.testing.db.hostname" value="localhost" />
+    <property name="sun.jnu.encoding" value="MacRoman" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="scetris.build.webxsl" value="web/xsl" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="classes.dir" value="cobertura/classes" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home" />
+    <property name="scetris.webapp.db.hostname" value="localhost" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file.type.cobertura.examples.basic" value="file" />
+    <property name="ant.file" value="/Users/julianfleischer/Projects/score/trunk/cobertura.xml" />
+    <property name="os.version" value="10.6.6" />
+    <property name="scetris.testing.db.database" value="scetris-testing" />
+    <property name="path.separator" value=":" />
+    <property name="scetris.build.installer" value="installer" />
+    <property name="scetris.build.webjs" value="web/js" />
+    <property name="java.vm.version" value="17.1-b03-307" />
+    <property name="scetris.webapp.db.database" value="scetris" />
+    <property name="scetris.standalone.port" value="8081" />
+    <property name="scetris.build.war" value="scetris.war" />
+    <property name="ant.library.dir" value="/opt/local/share/java/apache-ant/lib" />
+    <property name="java.awt.printerjob" value="apple.awt.CPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="apple.awt.CToolkit" />
+    <property name="scetris.setup.tomcat.context" value="ROOT" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="scetris.build.xsl" value="xsl" />
+    <property name="reports.xml.dir" value="reports/junit-xml" />
+    <property name="user.home" value="/Users/julianfleischer" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="coverage.xml.dir" value="reports/cobertura-xml" />
+    <property name="scetris.build.lib" value="lib" />
+    <property name="java.library.path" value=".:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="java.vendor.url" value="http://www.apple.com/" />
+    <property name="ant.file.type.scetris" value="file" />
+    <property name="java.vm.vendor" value="Apple Inc." />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant version 1.8.1 compiled on April 30 2010" />
+    <property name="java.class.path" value="/Users/julianfleischer/Projects/score/trunk/cobertura/instrumented:/Users/julianfleischer/Projects/score/trunk/cobertura/classes:/Users/julianfleischer/Projects/score/trunk/cobertura/cobertura.jar:/Users/julianfleischer/Projects/score/trunk/cobertura/lib/asm-3.0.jar:/Users/julianfleischer/Projects/score/trunk/cobertura/lib/asm-tree-3.0.jar:/Users/julianfleischer/Projects/score/trunk/cobertura/lib/jakarta-oro-2.0.8.jar:/Users/julianfleischer/Projects/score/trunk/cobertura/lib/log4j-1.2.9.jar:/Users/julianfleischer/Projects/score/trunk/lib/aspectjrt.jar:/Users/julianfleischer/Projects/score/trunk/lib/aspectjtools.jar:/Users/julianfleischer/Projects/score/trunk/lib/avalon-framework-4.2.0.jar:/Users/julianfleischer/Projects/score/trunk/lib/batik-all-1.7.jar:/Users/julianfleischer/Projects/score/trunk/lib/commons-io-1.3.1.jar:/Users/julianfleischer/Projects/score/trunk/lib/commons-logging-1.0.4.jar:/Users/julianfleischer/Projects/score/trunk/lib/fop.jar:/Users/julianfleischer/Projects/score/trunk/lib/jetty-6.1.26.jar:/Users/julianfleischer/Projects/score/trunk/lib/jetty-util-6.1.26.jar:/Users/julianfleischer/Projects/score/trunk/lib/json.jar:/Users/julianfleischer/Projects/score/trunk/lib/junction.jar:/Users/julianfleischer/Projects/score/trunk/lib/junit-4.8.2.jar:/Users/julianfleischer/Projects/score/trunk/lib/log4j-1.2.16.jar:/Users/julianfleischer/Projects/score/trunk/lib/postgresql-8.4-702.jdbc4.jar:/Users/julianfleischer/Projects/score/trunk/lib/serializer.jar:/Users/julianfleischer/Projects/score/trunk/lib/servlet-api-2.5-20081211.jar:/Users/julianfleischer/Projects/score/trunk/lib/weave.jar:/Users/julianfleischer/Projects/score/trunk/lib/xalan.jar:/Users/julianfleischer/Projects/score/trunk/lib/xercesImpl.jar:/Users/julianfleischer/Projects/score/trunk/lib/xml-apis.jar:/Users/julianfleischer/Projects/score/trunk/lib/xmlgraphics-commons-1.4.jar:/Users/julianfleischer/Projects/score/trunk/lib/yuicompressor-2.4.2.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/annotations-api.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/catalina-ant.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/catalina-ha.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/catalina-tribes.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/catalina.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/el-api.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/jasper-el.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/jasper-jdt.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/jasper.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/jsp-api.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/servlet-api.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/tomcat-coyote.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/tomcat-dbcp.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/tomcat-i18n-es.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/tomcat-i18n-fr.jar:/Users/julianfleischer/Projects/score/trunk/tomcat/lib/tomcat-i18n-ja.jar:/Users/julianfleischer/Projects/score/trunk:/Users/julianfleischer/.bin/aspectj1.6/lib/aspectjrt.jar:/Users/julianfleischer/.bin/scala/lib/scala-library.jar:/Users/julianfleischer/.bin/java/junit-4.8.2.jar:/Users/julianfleischer/.bin/java/postgresql-8.4-702.jdbc4.jar:/opt/local/share/java/apache-ant/lib/ant-launcher.jar:/opt/local/share/java/apache-ant/lib/ant.jar:/opt/local/share/java/apache-ant/lib/ant-junit.jar" />
+    <property name="scetris.testing.setup.db.password" value="chosenByFairRandomDice" />
+    <property name="scetris.setup.symlink.xsl" value="yes" />
+    <property name="scetris.setup.db.database" value="postgres" />
+    <property name="scetris.build.deploy" value="scetris" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="scetris.testing.db.password" value="kleinerAffeMitHut" />
+    <property name="weave.build.bin" value="weave" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="scetris.build.repository" value="http://technodrom.scravy.de/score" />
+    <property name="scetris.testing.setup.db.username" value="scravy" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="junction.build.bin" value="junction" />
+    <property name="java.io.tmpdir" value="/var/folders/cH/cHlPbjpoEuyk+BYOGdvkYE+++TI/-Tmp-/" />
+    <property name="scetris.cobertura.zip" value="cobertura.zip" />
+    <property name="scetris.webapp.db.port" value="5432" />
+    <property name="java.vendor.url.bug" value="http://bugreport.apple.com/" />
+    <property name="scetris.webapp.db.password" value="someDefaultPasswordThatShouldBeChangedAsSoonAsPossible" />
+    <property name="scetris.testing.db.username" value="scetris-testing" />
+    <property name="weave.build.src" value="src/de/fu/weave" />
+    <property name="mrj.build" value="10M3261" />
+    <property name="instrumented.dir" value="cobertura/instrumented" />
+    <property name="java.awt.graphicsenv" value="apple.awt.CGraphicsEnvironment" />
+    <property name="os.arch" value="x86_64" />
+    <property name="junction.build.src" value="src/de/fu/junction" />
+    <property name="java.ext.dirs" value="/Library/Java/Extensions:/System/Library/Java/Extensions:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext" />
+    <property name="user.dir" value="/Users/julianfleischer/Projects/score/trunk" />
+    <property name="mrj.version" value="1060.1.6.0_22-307" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="scetris.build.bin" value="bin" />
+    <property name="basedir" value="/Users/julianfleischer/Projects/score/trunk" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="scetris.build.js" value="js" />
+    <property name="ant.core.lib" value="/opt/local/share/java/apache-ant/lib/ant.jar" />
+    <property name="file.encoding" value="MacRoman" />
+    <property name="scetris.build.web" value="web" />
+    <property name="scetris.build.src" value="src" />
+    <property name="scetris.webapp.db.username" value="scetris" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="ant.file.scetris" value="/Users/julianfleischer/Projects/score/trunk/build.xml" />
+    <property name="scetris.build.webcss" value="web/css" />
+    <property name="src.dir" value="src" />
+    <property name="ant.project.invoked-targets" value="coverage" />
+  </properties>
+  <testcase classname="de.fu.scetris.scheduler.data.tests.RoomComparatorTest" name="testCompare" time="3.068" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

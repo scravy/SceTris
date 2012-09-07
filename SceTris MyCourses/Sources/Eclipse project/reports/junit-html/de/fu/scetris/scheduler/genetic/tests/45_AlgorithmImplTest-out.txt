@@ -1,0 +1,2 @@
+ERROR  <init>, Database exception org.postgresql.util.PSQLException: FEHLER: doppelter Schlüsselwert verletzt Unique-Constraint »uniq_id35823840_number«
+

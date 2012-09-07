@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weavlet
+	xmlns="http://technodrom.scravy.de/2010/weavlet-config">
+	
+	<connection
+		database="scetris"
+		host="localhost"
+		port="5432"
+		username="scetris"
+		password="someDefaultPasswordThatShouldBeChangesAsSoonAsPossible"
+	/>
+	
+	<session
+		default-language="en"
+		default-stylesheet="scetris.css"
+		print-stylesheet="scetris-print.css"
+		default-type="html"
+	/>
+	
+	<locations>
+		<location name="xsl">xsl</location>
+		<location name="xsl-web">xsl</location>
+	</locations>
+	
+	<modules>
+		<module class="de.fu.scetris.mods.Help">
+			<path>help</path>
+			<path>hilfe</path>
+		</module>
+		<module class="de.fu.scetris.mods.UserMgmt">
+			<path>admin/users</path>
+			<path>verwaltung/benutzer</path>
+		</module>
+	</modules>
+	
+	<output>
+		<converter class="de.fu.weave.output.JSON" name="json" />
+		<converter class="de.fu.weave.output.XSLFO" name="pdf" />
+		<converter class="de.fu.weave.output.LaTeX" name="latex" />
+		<converter class="de.fu.weave.output.Plain" name="plain" />
+	</output>
+	
+</weavlet>

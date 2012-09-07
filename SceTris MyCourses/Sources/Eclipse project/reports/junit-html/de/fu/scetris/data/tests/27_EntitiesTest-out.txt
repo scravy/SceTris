@@ -1,0 +1,3 @@
+ERROR  <init>, Database exception org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "uniq_id35822938_login_name"
+0 [main] ERROR Database  - Database exception org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "uniq_id35822938_login_name"
+

@@ -1,0 +1,450 @@
+<lang>
+	<users>User accounts</users>
+	<roles>Login roles</roles>
+	<groups>User groups</groups>
+	<buildings>Buildings</buildings>
+	<rooms>Rooms</rooms>
+	<departments>Departments</departments>
+	<features>Room features</features>
+	<roomsAndFeatures>Rooms and features</roomsAndFeatures>
+	
+	<no-superordinate-department>Not subordinated</no-superordinate-department>
+	<belongs-to-no-dep>Belongs to no department</belongs-to-no-dep>
+	
+	<userAttributes>User attributes</userAttributes>
+	<courseAttributes>Course attributes</courseAttributes>
+	
+	<usersAndRolesDescription>Here you can manage user accounts, groups, roles and privileges.</usersAndRolesDescription>
+	
+	<noCourses>No courses in the database. To create a course, select “new course” from the menu to the left.
+		Don’t forget to create some departments before!</noCourses>
+	<noDepartments>Currently there are no departments in the database. You may want to create one, using the Form above.</noDepartments>
+	<noBuildings>There are currently no buildings registered in the database.
+		To register a building, select “new building” from the menu to the left.</noBuildings>
+	<noFeatures>There are currently no features stored in the database.
+		To create a new feature, select “new feature” from the menu to the left.</noFeatures>
+	<noRooms>There are currently no rooms registered in the database.
+		To register a room, select a building (use “all building” from the menu on the left)
+		and create a new room.</noRooms>
+	<noPrivileges>There are no privileges stored in the database. This should not happen at all,
+		are you sure, that SceTris is correctly setup?</noPrivileges>
+	<noUsers>There are currently no registered users. This should not happen at all,
+		please make sure, that SceTris is corretly setup and at least one superadmin
+		was created during setup.</noUsers>
+	<noRoles>Currently no roles are defined. To define a role, select “new Role” from the menu on the left.</noRoles>
+	<noAttributes>Currently there are no attributes defined. To define a new Attribute, go to
+		“System settings” and select “new attribute” from the menu to the left.</noAttributes>
+	<noAcademicTerms>No academic terms are defined right now. You may want to define one, using the menu to the left.</noAcademicTerms>
+	<noYears>No Years have been created yet. You may want to create one now, using the menu to the left.</noYears>
+	<noPrograms>There are no programs in the database right now. You may want to create one now, using the menu to the left.</noPrograms>
+	
+	<!-- USED IN LEFT NAVIGATION AS WELL AS ON THE FIRST PAGE OF EACH SECTION -->
+	<createUser>Create a new user account</createUser>
+	<createUserShort>new</createUserShort>
+	<editUser>Edit user account</editUser>
+	<listUsers>Show a listing of all users</listUsers>
+	<listUsersShort>All users</listUsersShort>
+	
+	<createGroup>Create a new user group</createGroup>
+	<createGroupShort>new group</createGroupShort>
+	<listGroups>Show existing groups</listGroups>
+	<listGroupsShort>All groups</listGroupsShort>
+	
+	<createDepartment>Create a new deparment</createDepartment>
+	<createDepartmentShort>new</createDepartmentShort>
+	<listDepartments>Show existing departments</listDepartments>
+	<listDepartmentsShort>All departments</listDepartmentsShort>
+	
+	<createRole>Create a new login role</createRole>
+	<createRoleShort>new</createRoleShort>
+	<listRoles>List available login roles</listRoles>
+	<listRolesShort>All roles</listRolesShort>
+	
+	<createRoom>Create a new room</createRoom>
+	<createRoomShort>new room</createRoomShort>
+	<listRooms>List available rooms</listRooms>
+	<listRoomsShort>All rooms</listRoomsShort>
+	
+	<createBuilding>Register a building</createBuilding>
+	<createBuildingShort>new building</createBuildingShort>
+	<listBuildings>List current building</listBuildings>
+	<listBuildingsShort>All buildings</listBuildingsShort>
+	
+	<createFeature>Create a new feature</createFeature>
+	<createFeatureShort>new feature</createFeatureShort>
+	<listFeatures>List available features</listFeatures>
+	<listFeaturesShort>All features</listFeaturesShort>
+	<editFeature>Edit feature</editFeature>
+	
+	<createCourse>Create a new course</createCourse>
+	<createCourseShort>new course</createCourseShort>
+	<listCourses>List all courses</listCourses>
+	<listCoursesShort>All courses</listCoursesShort>
+	
+	<createCourseElement>Create a new courseelement</createCourseElement>
+	<createCourseElementShort>new courseelement</createCourseElementShort>
+	<listCourseElements>List all courseelements</listCourseElements>
+	<listCourseElementsShort>All courseelements</listCourseElementsShort>
+
+	<createProgram>Create new program</createProgram>
+	<createProgramShort>new program</createProgramShort>
+	<listPrograms>List all programs</listPrograms>
+	<listProgramsShort>All programs</listProgramsShort>
+		
+	<createYear>Create new year</createYear>
+	<createYearShort>new year</createYearShort>
+	<listYears>List all years</listYears>
+	<listYearsShort>All years</listYearsShort>
+
+	<createCET>Create new CET</createCET>
+	<createCETShort>new CET</createCETShort>
+	<listCET>List all CETs</listCET>
+	<listCETShort>All CETs</listCETShort>
+	
+	<createAcademicTerm>Create a new academic term</createAcademicTerm>
+	<createAcademicTermShort>new term</createAcademicTermShort>
+	<listAcademicTerms>List all academic terms</listAcademicTerms>
+	<listAcademicTermsShort>All terms</listAcademicTermsShort>
+	
+	<specialImport>Import (advanced)</specialImport>
+	<specialExport>Export (advanced)</specialExport>
+	
+	<createPrivilege>Create a new privilege</createPrivilege>
+	<createPrivilegeShort>new</createPrivilegeShort>
+	<listPrivileges>List all possible privileges in the system</listPrivileges>
+	<listPrivilegesShort>All privileges</listPrivilegesShort>
+
+	<createAttribute>Create a new attribute</createAttribute>
+	<createAttributeShort>new</createAttributeShort>
+	<listAttributes>Manage existing attributes</listAttributes>
+	<listAttributesShort>All attributes</listAttributesShort>
+	
+	<listSystemconfigShort>System configuration</listSystemconfigShort>
+	
+	<schedulerPanel>Scheduler-Panel</schedulerPanel>
+	
+	
+	<createCourseAttribute>Create a new attribute for courses</createCourseAttribute>
+	<listCourseAttributes>Manage existing attributes</listCourseAttributes>
+	<createCourseAttributeShort>new attribute</createCourseAttributeShort>
+	<listCourseAttributesShort>Manage attributes</listCourseAttributesShort>
+	
+	<createBuilding>Create a new building</createBuilding>
+	<listBuildings>Show detailed listing</listBuildings>
+	<createDepartment>Create a new department</createDepartment>
+	<listDepartments>Show detailed listing</listDepartments>
+	<createFeature>Create a feature</createFeature>
+	<listFeatures>Manage features</listFeatures>
+	<createRoom>Create a new room</createRoom>
+	
+	<sysconfigDescription>- description -</sysconfigDescription>
+	
+	<userAttributesDescription>User accounts may have certain attributes, for example a student may a
+	student id whereas a lecturere may have an office. These attributes can be managed here.</userAttributesDescription>
+	
+	<courseAttributesDescription>As well as user account may have certain attributes, courses may have them, too.
+	For example a course may have a list of recommended literature. These attributes can be managed here.</courseAttributesDescription>
+	
+	<roomsAndFeaturesDescription>- description (rooms and features) - [ e.g. Rooms feature certain resources, like seats, beamers, chalkboards...]</roomsAndFeaturesDescription>
+	<buildingsDescription>- description (buildings) -</buildingsDescription>
+	<departmentsDescription>- description (departments) -</departmentsDescription>
+	
+	<schedulerConfiguration>Scheduler configuration</schedulerConfiguration>
+	<schedulerConfigurationDescription>- description - </schedulerConfigurationDescription>
+	<configureScheduler>Set scheduling parameters</configureScheduler>
+	
+	<systemStatus>System status</systemStatus>
+	<systemStatusDescription>- description -</systemStatusDescription>
+	<showStatistics>Show statistics</showStatistics>
+	<showInstallationDetails>Info about current Scetris setup</showInstallationDetails>
+	
+	<import>Import data</import>
+	<export>Export data</export>
+	<imexDescription>- description (import / export) -</imexDescription>
+	<importDescription>- description (import xml) -</importDescription>
+	<exportDescription>- description (export everything) -</exportDescription>
+	
+	<name>Name</name>
+	<options>Options</options>
+	<details>Details</details>
+	<edit>Edit</edit>
+	<delete>Delete</delete>
+	
+	<superuser>superuser</superuser>
+	
+	<labels>
+		<searchUser.q>Search existing</searchUser.q>
+		<searchUser.button.submit>Search</searchUser.button.submit>
+		
+		<searchGroup.q>Search existing</searchGroup.q>
+		<searchGroup.button.submit>Search</searchGroup.button.submit>
+		
+		<searchRole.q>Search existing</searchRole.q>
+		<searchRole.button.submit>Search</searchRole.button.submit>
+		
+		<quickEditBuilding.button.submit>Edit</quickEditBuilding.button.submit>
+		<quickEditDepartment.button.submit>Edit</quickEditDepartment.button.submit>
+		
+		<importXML.data>XML data</importXML.data>
+		<importXML.button.submit>Import now</importXML.button.submit>
+		
+		<!-- ENTITY : BUILDING -->
+		<quickEditBuildings.building>Search buildings</quickEditBuildings.building>
+		<quickEditBuildings.button.submit>Search</quickEditBuildings.button.submit>
+		
+		<newBuilding.name>Name</newBuilding.name>
+		<newBuilding.address>Address</newBuilding.address>
+		<newBuilding.department>Belongs to</newBuilding.department>
+		<newBuilding.button.submit>Create buidling</newBuilding.button.submit>
+
+		<editBuilding.name>Name</editBuilding.name>
+		<editBuilding.address>Address</editBuilding.address>
+		<editBuilding.department>Belongs to</editBuilding.department>
+		<editBuilding.button.submit>Update</editBuilding.button.submit>
+		
+		<!-- ENTITY : PRIVILEGE -->
+		<newPrivilege.name>Privilege</newPrivilege.name>
+		<newPrivileges.privileges>Privileges</newPrivileges.privileges>
+		<newPrivilege.button.submit>Create new privilege</newPrivilege.button.submit>
+		<newPrivileges.button.submit>Create new privileges</newPrivileges.button.submit>
+		
+		<!-- ENTITY : PERSON -->		
+		<newUser.firstName>First name</newUser.firstName>
+		<newUser.lastName>Last name</newUser.lastName>
+		<newUser.additionalNames>Additional name(s)</newUser.additionalNames>
+		<newUser.loginPassword>Password</newUser.loginPassword>
+		<newUser.emailAddress>Email address</newUser.emailAddress>
+		<newUser.loginName>Login name</newUser.loginName>
+		<newUser.isSuperuser>Superuser rights</newUser.isSuperuser>
+		<newUser.workingHours>Working hours</newUser.workingHours>
+		<newUser.homeDepartment>Home department</newUser.homeDepartment>
+		<newUser.currentYear>Current Year</newUser.currentYear>
+		<newUser.isStudent>Is a student</newUser.isStudent>
+		<newUser.isLecturer>Is a lecturer</newUser.isLecturer>
+		<newUser.privileges>Privileges</newUser.privileges>
+		<newUser.roles>Roles</newUser.roles>
+		<newUser.button.submit>Create new user account</newUser.button.submit>
+		
+		<editUser.firstName>First name</editUser.firstName>
+		<editUser.lastName>Last name</editUser.lastName>
+		<editUser.additionalNames>Additional name(s)</editUser.additionalNames>
+		<editUser.emailAddress>Email address</editUser.emailAddress>
+		<editUser.loginPassword>Password</editUser.loginPassword>
+		<editUser.loginName>Login name</editUser.loginName>
+		<editUser.isSuperuser>Superuser rights</editUser.isSuperuser>
+		<editUser.workingHours>Working hours</editUser.workingHours>
+		<editUser.isStudent>Is a student</editUser.isStudent>
+		<editUser.isLecturer>Is a lecturer</editUser.isLecturer>
+		<editUser.privileges>Privileges</editUser.privileges>
+		<editUser.roles>Roles</editUser.roles>
+		<editUser.button.submit>Save changes</editUser.button.submit>
+
+		<!-- ENTITY : ATTRIBUTE -->
+		
+		
+		<newAttribute.name>Name</newAttribute.name>
+		<newAttribute.type>Type</newAttribute.type>
+		<newAttribute.uniqueValue>Unique Value</newAttribute.uniqueValue>
+		<newAttribute.button.submit>Create new Attribute</newAttribute.button.submit>
+
+
+		<!-- ENTITY : COURSEATTRIBUTE -->
+		<newCourse.department>Department</newCourse.department>
+		
+		
+		<newCourseElement.name>Name</newCourseElement.name>
+		<newCourseElement.partOf>Part of</newCourseElement.partOf>
+		<newCourseElement.duration>Duration</newCourseElement.duration>
+		<newCourseElement.type>Type</newCourseElement.type>
+		<newCourseElement.required>Is required</newCourseElement.required>		
+		
+		<newCourse.name>Name</newCourse.name>
+		<newCourse.partOf>Part of</newCourse.partOf>
+		<newCourse.duration>Duration</newCourse.duration>
+		<newCourse.type>Type</newCourse.type>
+		<newCourse.required>Is required</newCourse.required>
+		<newCourse.button.submit>Submit</newCourse.button.submit>
+		
+		<newProgram.academicTerm>Academic Term</newProgram.academicTerm>
+		<newProgram.department>Department</newProgram.department>
+		<newProgram.button.submit>Submit</newProgram.button.submit>
+		
+		<newAcademicTerm.name>Name</newAcademicTerm.name>
+		<newAcademicTerm.start>Start</newAcademicTerm.start>
+		<newAcademicTerm.end>End</newAcademicTerm.end>
+		<newAcademicTerm.startLessons>Start of Lessons</newAcademicTerm.startLessons>
+		<newAcademicTerm.endLessons>End of Lessons</newAcademicTerm.endLessons>
+		<newAcademicTerm.button.submit>Submit</newAcademicTerm.button.submit>
+		
+		<newYear.name>Name</newYear.name>
+		<newYear.button.submit>Submit</newYear.button.submit>
+		
+		<newCET.name>Type</newCET.name>
+		<newCET.button.submit>Submit</newCET.button.submit>
+
+		<newCourseAttribute.name>Name</newCourseAttribute.name>
+		<newCourseAttribute.type>Type</newCourseAttribute.type>
+		<newCourseAttribute.uniqueValue>Unique Value</newCourseAttribute.uniqueValue>
+		<newCourseAttribute.required>Required</newCourseAttribute.required>
+		<newCourseAttribute.button.submit>Create new Courseattribute</newCourseAttribute.button.submit>
+
+		<!--  ENTITY : COURSEELEMENT -->
+		<courseElement.partOf>part of this course</courseElement.partOf>
+		<courseElement.type>type of the course element</courseElement.type>
+
+		<!-- ENTITY : DEPARTMENT -->
+		<quickEditDepartments.department>Search departments</quickEditDepartments.department>
+		<quickEditDepartments.button.submit>Search</quickEditDepartments.button.submit>		
+		
+		<newDepartment.name>Name</newDepartment.name>
+		<newDepartment.superordinateDepartment>Superordinate department</newDepartment.superordinateDepartment>
+		<newDepartment.button.submit>Submit</newDepartment.button.submit>
+		
+		<deleteUsers.button.submit>Delete selected users</deleteUsers.button.submit>
+		
+		<!-- ENTITY : ROLE -->
+		<newRole.name>Role name</newRole.name>
+		<newRole.privileges>Privileges</newRole.privileges>
+		<newRole.attributes>Attributes</newRole.attributes>
+		<newRole.button.submit>Create new role</newRole.button.submit>
+		<deleteRoles.button.submit>Delete selected</deleteRoles.button.submit>
+
+		<newGroup.name>Group name</newGroup.name>
+		
+
+		<!-- ENTITY : ROOM -->		
+		<newRoom.building>Building</newRoom.building>
+		<newRoom.name>Name</newRoom.name>
+		<newRoom.number>Number</newRoom.number>
+		
+		
+		<!-- LOGIN : USER -->
+		<loginUser.username>Username</loginUser.username>
+		<loginUser.password>Password</loginUser.password>
+		<loginUser.button.submit>Sign In</loginUser.button.submit>
+		<loginUser.failure>Please enter your credentials</loginUser.failure>
+	</labels>
+	
+	<info>
+		<newUser.firstName>The first name of the new user (required).</newUser.firstName>
+		<newUser.lastName>The last name of the new user (required).</newUser.lastName>
+		<newUser.additionalNames>Additional names of the new user (optional).</newUser.additionalNames>
+		<newUser.emailAddress>The email address of the new user (optional).
+			Please note, that the email address can also serve as login credential.</newUser.emailAddress>
+		<newUser.loginName>The login name of the new user used for logging in (required).
+			Should consist of letters (a-z) and/or digits only, may contain several non-consecutive dots.</newUser.loginName>
+		<newUser.loginPassword>The password for the new user account (required).</newUser.loginPassword>
+		<newUser.homeDepartment>The home department of a user is the department where
+			she/he is allowed to enroll or to teach (however, optional).</newUser.homeDepartment>
+		<newUser.isSuperuser>Only check this if you know what you are doing. This will grant all privileges to this user.
+			Better consider creating a role.</newUser.isSuperuser>
+		<newUser.isStudent>Check this, if the new user is a student.
+			The field is not aassociated with any special use (it’s only for the record)</newUser.isStudent>
+		<newUser.isLecturer>Check this, if the new user is a lecturer. Lecturer do have a public profile
+			and their accounts show up in the “people” pane (reachable using the menu on top).</newUser.isLecturer>
+			
+		<editUser.firstName>The first name of the new user (required).</editUser.firstName>
+		<editUser.lastName>The last name of the new user (required).</editUser.lastName>
+		<editUser.additionalNames>Additional names of the new user (optional).</editUser.additionalNames>
+		<editUser.emailAddress>The email address of the new user (optional).
+			Please note, that the email address can also serve as login credential.</editUser.emailAddress>
+		<editUser.loginName>The login name of the new user used for logging in (required).
+			Should consist of letters (a-z) and/or digits only, may contain several non-consecutive dots.</editUser.loginName>
+		<editUser.loginPassword>The password for the new user account (required).</editUser.loginPassword>
+		<editUser.homeDepartment>The home department of a user is the department where
+			she/he is allowed to enroll or to teach (however, optional).</editUser.homeDepartment>
+		<editUser.isSuperuser>Only check this if you know what you are doing. This will grant all privileges to this user.
+			Better consider creating a role.</editUser.isSuperuser>
+		<editUser.isStudent>Check this, if the new user is a student.
+			The field is not aassociated with any special use (it’s only for the record)</editUser.isStudent>
+		<editUser.isLecturer>Check this, if the new user is a lecturer. Lecturer do have a public profile
+			and their accounts show up in the “people” pane (reachable using the menu on top).</editUser.isLecturer>
+	
+		<editCourse.name>Name</editCourse.name>
+		<newCourseAttribute.type>Type</newCourseAttribute.type>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<newCourse.department>Department</newCourse.department>
+		
+		<newCourseElement.name>Name of this Courseelement (required)</newCourseElement.name>
+		<newCourseElement.partOf>The Course this element belongs to (required)</newCourseElement.partOf>
+		<newCourseElement.duration>Duration of this Element (required)</newCourseElement.duration>
+		<newCourseElement.type>Choose a predefined Courseelementtype (required)</newCourseElement.type>
+		<newCourseElement.required>Set if this element is required (required)</newCourseElement.required>
+		
+		<newProgram.academicTerm>Select a predefined academic Term (required)</newProgram.academicTerm>
+		<newProgram.department>Select a Department for the program (required)</newProgram.department>
+		
+		<newAcademicTerm.name>Set a human readable name of the new Academic Term. (required)</newAcademicTerm.name>
+		<newAcademicTerm.start>Date of the first day of the academic term</newAcademicTerm.start>
+		<newAcademicTerm.end>Last day of the academic term</newAcademicTerm.end>
+		<newAcademicTerm.startLessons>First day of lessons (lectures, laboratories, …)</newAcademicTerm.startLessons>
+		<newAcademicTerm.endLessons>Last day of lessons</newAcademicTerm.endLessons>
+		
+		<newYear.name>Name of semester </newYear.name>
+		
+		<newCET.name>Type</newCET.name>
+		<newCET.button.submit>Submit</newCET.button.submit>
+
+		<newCourseAttribute.name>Name of Attribute used in Courses (required)</newCourseAttribute.name>
+		<newCourseAttribute.type>Attributes can either be text or a number (required)</newCourseAttribute.type>
+		<newCourseAttribute.uniqueValue>Does this value needs to be unique amoung all entries</newCourseAttribute.uniqueValue>
+		<newCourseAttribute.required>Is it mandatory</newCourseAttribute.required>
+
+	
+		
+		<newDepartment.name>Name of the new Department (required)</newDepartment.name>
+		<newDepartment.superordinateDepartment>Select a superordinate department if it exists (optional)</newDepartment.superordinateDepartment>
+		
+		
+		<!-- ENTITY : ROLE -->
+		<newRole.name>human readable rolename</newRole.name>
+		<newRole.privileges>Select privileges this role should own</newRole.privileges>
+		<newRole.button.submit>Create new role</newRole.button.submit>
+		<deleteRoles.button.submit>Delete selected</deleteRoles.button.submit>
+
+		<newGroup.name>Group name</newGroup.name>
+		
+
+		<!-- ENTITY : ROOM -->		
+		<newRoom.building>Building</newRoom.building>
+		<newRoom.name>Name</newRoom.name>
+		<newRoom.number>Number</newRoom.number>
+		
+		
+		<!-- LOGIN : USER -->
+		<loginUser.username>Username or E-Mail-Address</loginUser.username>
+		<loginUser.password>Password</loginUser.password>
+		<loginUser.button.submit>Sign In</loginUser.button.submit>
+		<loginUser.failure>Please enter your credentials</loginUser.failure>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	</info>
+	
+	<newUser.success>Successfully created new user.</newUser.success>
+	<editUser.success>Changes saved.</editUser.success>
+	<newRole.success>Successfully created new login role</newRole.success>
+	<newDepartment.success>Successfully created new department</newDepartment.success>
+	<newGroup.success>Successfully created new group</newGroup.success>
+	
+	<newPrivilege.success>Privilege creation successfull</newPrivilege.success>
+	<newPrivileges.success>Privileges were successfully created</newPrivileges.success>
+</lang>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ====================================================================== 
+     install-definition.xml
+     Part of SCORE myCourses
+
+     Team Scetris: David Bialik, Julian Fleischer,
+     	Hagen Mahnke, Konrad Reiche, André Zoufahl
+
+     Author: David Bialik
+     Since:  Iteration5
+     ====================================================================== -->
+<project name="installer-wrapper" default="step">
+	<description>
+		This buildfile is used to make the izpack task know about the properties defined in
+		build.xml and should never be used on its own.
+	</description>
+	
+	<target name="step" description="Creates an installer in order to deploy our final product to the consumer.">
+		<taskdef name="izpack" classpath="${scetris.build.installer}/standalone-compiler.jar" classname="com.izforge.izpack.ant.IzPackTask" />
+		<izpack output="installer/scetris-install.jar"  basedir="${basedir}" >
+			<config><![CDATA[
+<installation version="1.0">
+	<info>
+		<appname>scetris</appname>
+		<appsubpath>scetris</appsubpath>
+		<appversion>prebeta</appversion>
+		<authors>
+			<author name="David Bialik" email="david.bialik@fu-berlin.de" />
+			<author name="Julian Fleischer" email="julian.fleischer@fu-berlin.de" />
+			<author name="Hagen Mahnke" email="hagen.mahnke@fu-berlin.de" />
+			<author name="Konrad Reiche" email="konrad.reiche@fu-berlin.de" />
+			<author name="André Zoufahl" email="andre.zoufahl@fu-berlin.de" />
+		</authors>
+	</info>
+	
+	<guiprefs width="525" height="425" resizable="yes" />
+	
+	<locale>
+		<langpack iso3="eng" />
+		<langpack iso3="deu" />
+	</locale>
+	
+	<variables>
+		<variable name="tomcat.zip.path" value="@{scetris.setup.tomcat.zip}" />
+		<variable name="scetris.dir" value="@{scetris.build.deploy}" />
+		<variable name="tomcat.context" value="@{scetris.setup.tomcat.context}" />
+		<varialbe name="scetris.installer" value="@{scetris.build.installer}" />
+		<variable name="user.tomcat" value="" />
+		
+		<variable name="setup.db.database" value="postgres" />
+		<variable name="setup.db.password" value="" />
+		<variable name="setup.db.username" value="postgres" />
+		<variable name="webapp.db.database" value="" />
+		<variable name="webapp.db.hostname" value="localhost" />
+		<variable name="webapp.db.password" value="" />
+		<variable name="webapp.db.port" value="5432" />
+		<variable name="webapp.db.username" value="" />
+	</variables>
+	
+	<dynamicvariables>
+		<variable name="user.tomcat" value="${INSTALL_PATH}${FILE_SEPARATOR}tomcat" condition="installTomcat" />
+		<variable name="classpath" value="${user.tomcat}${FILE_SEPARATOR}webapps${FILE_SEPARATOR}${tomcat.context}${FILE_SEPARATOR}WEB-INF${FILE_SEPARATOR}classes${SYSTEM_path_separator}${user.tomcat}${FILE_SEPARATOR}webapps${FILE_SEPARATOR}${tomcat.context}${FILE_SEPARATOR}WEB-INF${FILE_SEPARATOR}lib${FILE_SEPARATOR}weave.jar${SYSTEM_path_separator}${user.tomcat}${FILE_SEPARATOR}webapps${FILE_SEPARATOR}${tomcat.context}${FILE_SEPARATOR}WEB-INF${FILE_SEPARATOR}lib${FILE_SEPARATOR}postgresql-8.4-702.jdbc4.jar${SYSTEM_path_separator}${user.tomcat}${FILE_SEPARATOR}webapps${FILE_SEPARATOR}${tomcat.context}${FILE_SEPARATOR}WEB-INF${FILE_SEPARATOR}lib${FILE_SEPARATOR}log4j-1.2.16.jar${SYSTEM_path_separator}${user.tomcat}${FILE_SEPARATOR}webapps${FILE_SEPARATOR}${tomcat.context}${FILE_SEPARATOR}WEB-INF${FILE_SEPARATOR}lib${FILE_SEPARATOR}junction.jar" />
+	</dynamicvariables>
+	
+	<resources>
+		<res id="Installer.image" src="installer/scetris_install.png" />
+		<res id="LicencePanel.licence" src="LICENSE" />
+		<res id="InfoPanel.info" src="ABOUT" />
+		<res id="userInputSpec.xml" src="installer/userInputSpec.xml" />
+		<res id="userInputLang.xml_eng" src="installer/userInputLang.xml_eng" />
+		<res id="userInputLang.xml_deu" src="installer/userInputLang.xml_deu" />
+	</resources>
+	
+	<conditions>
+		<condition id="installTomcat" type="PackSelection">
+			<packid>tomcatID</packid>
+		</condition>
+	</conditions>
+	
+	<panels>
+		<panel classname="HelloPanel" />
+		<panel classname="DataCheckPanel" />
+		<panel classname="InfoPanel" />
+		<panel classname="LicencePanel" />
+		<panel classname="PacksPanel" />
+		<panel classname="UserInputPanel" condition="!installTomcat" />
+		<panel classname="TargetPanel" />
+		<panel classname="UserInputPanel" />
+		<panel classname="SummaryPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="FinishPanel" />
+	</panels>
+	
+	<packs>
+		<pack id="tomcatID" name="tomcat" required="no" preselected="yes">
+			<description>copy tomcat to user defined path</description>
+			<file src="${tomcat.zip.path}" targetdir="${INSTALL_PATH}/tomcat" override="askfalse" unpack="true" />
+			<file src="@{scetris.build.installer}/startup.bat" targetdir="${user.tomcat}/bin" override="true" os="windows" />
+			<parsable targetfile="${user.tomcat}/bin/startup.bat" os="windows" />
+		</pack>
+		<pack name="scetris" required="yes" preselected="yes">
+			<description>copy scetris into tomcat/webapps/ROOT/</description>
+			<fileset dir="@{scetris.build.deploy}" targetdir="${user.tomcat}/webapps/${tomcat.context}" override="askfalse" />
+			<file src="@{scetris.build.installer}/installer.jar" targetdir="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib" />
+			<parsable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/scetris.properties" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/installer.jar" stage="postinstall" keep="true" type="jar" >
+				<args>
+					<arg value="-cp" />
+					<arg value="${classpath}" />
+					<arg value="de.fu.scetris.Installer" />
+					<arg value="--superuser" />
+					<arg value="${setup.db.username}" />
+					<arg value="--admin-db" />
+					<arg value="${setup.db.database}" />
+					<arg value="--master-pw" />
+					<arg value="${setup.db.password}" />
+					<arg value="--hostname" />
+					<arg value="${webapp.db.hostname}" />
+					<arg value="--port" />
+					<arg value="${webapp.db.port}" />
+					<arg value="--database" />
+					<arg value="${webapp.db.database}" />
+					<arg value="--username" />
+					<arg value="${webapp.db.username}" />
+					<arg value="--password" />
+					<arg value="${webapp.db.password}" />
+					<arg value="--privilegesXml" />
+					<arg value="privileges.xml" />
+				</args>
+			</executable>
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/aspectjrt.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/junction.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/xml-apis.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/avalon-framework-4.2.0.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/xmlgraphics-commons-1.4.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/batik-all-1.7.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/log4j-1.2.16.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/commons-io-1.3.1.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/postgresql-8.4-702.jdbc4.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/commons-logging-1.0.4.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/serializer.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/fop.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/weave.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/installer.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/xalan.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/json.jar" />
+			<executable targetfile="${user.tomcat}/webapps/${tomcat.context}/WEB-INF/lib/xercesImpl.jar" />
+			<executable targetfile="${user.tomcat}/bin/startup.sh" />
+			<executable targetfile="${user.tomcat}/bin/shutdown.sh" />
+			<executable targetfile="${user.tomcat}/bin/catalina.sh" />
+			<executable targetfile="${user.tomcat}/bin/digest.sh" />
+			<executable targetfile="${user.tomcat}/bin/setclasspath.sh" />
+			<executable targetfile="${user.tomcat}/bin/tool-wrapper.sh" />
+			<executable targetfile="${user.tomcat}/bin/version.sh" />
+		</pack>
+	</packs>
+</installation>
+			]]></config>
+		</izpack>
+	</target>
+</project>

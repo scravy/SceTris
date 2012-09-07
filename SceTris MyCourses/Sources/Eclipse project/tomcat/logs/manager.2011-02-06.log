@@ -1,0 +1,22 @@
+Feb 6, 2011 5:45:23 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Feb 6, 2011 5:45:23 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: init: Global resources are available
+Feb 6, 2011 5:45:23 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Feb 6, 2011 5:48:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Feb 6, 2011 5:48:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: restart: Reloading web application at '/'
+Feb 6, 2011 5:49:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Feb 6, 2011 5:52:17 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: undeploy: Undeploying web application at '/quiz'
+Feb 6, 2011 5:52:18 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Feb 6, 2011 5:52:48 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: sessions: Session information for web application at '/manager'
+Feb 6, 2011 5:52:48 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: sessions: Session expiration for 30 minutes '/manager'
+Feb 6, 2011 5:52:48 PM org.apache.catalina.core.ApplicationContext log
+INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'

@@ -1,0 +1,322 @@
+<html xmlns:lxslt="http://xml.apache.org/xslt" xmlns:stringutils="xalan://org.apache.tools.ant.util.StringUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Unit Test Results: de.fu.scetris.web.tests.AriogTest</title>
+<link rel="stylesheet" type="text/css" title="Style" href="../../../../../stylesheet.css">
+<script type="text/javascript" language="JavaScript">
+        var TestCases = new Array();
+        var cur;
+        
+    cur = TestCases['de.fu.scetris.web.tests.AriogTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/share/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/home/konrad/Dropbox/uni/score/trunk/cobertura.xml';
+    
+        cur['ant.file.cobertura.examples.basic'] = '/home/konrad/Dropbox/uni/score/trunk/cobertura.xml';
+    
+        cur['ant.file.scetris'] = '/home/konrad/Dropbox/uni/score/trunk/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.cobertura.examples.basic'] = 'file';
+    
+        cur['ant.file.type.scetris'] = 'file';
+    
+        cur['ant.home'] = '/usr/share/ant';
+    
+        cur['ant.java.version'] = '1.6';
+    
+        cur['ant.library.dir'] = '/usr/share/ant/lib';
+    
+        cur['ant.project.default-target'] = 'coverage';
+    
+        cur['ant.project.invoked-targets'] = 'coverage';
+    
+        cur['ant.project.name'] = 'cobertura.examples.basic';
+    
+        cur['ant.version'] = 'Apache Ant version 1.8.0 compiled on May 9 2010';
+    
+        cur['basedir'] = '/home/konrad/Dropbox/uni/score/trunk';
+    
+        cur['classes.dir'] = 'cobertura/classes';
+    
+        cur['cobertura.dir'] = 'cobertura';
+    
+        cur['coverage.html.dir'] = 'reports/cobertura-html';
+    
+        cur['coverage.summaryxml.dir'] = 'reports/cobertura-summary-xml';
+    
+        cur['coverage.xml.dir'] = 'reports/cobertura-xml';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.encoding.pkg'] = 'sun.io';
+    
+        cur['file.separator'] = '/';
+    
+        cur['instrumented.dir'] = 'cobertura/instrumented';
+    
+        cur['java.awt.graphicsenv'] = 'sun.awt.X11GraphicsEnvironment';
+    
+        cur['java.awt.printerjob'] = 'sun.print.PSPrinterJob';
+    
+        cur['java.class.path'] = '/home/konrad/Dropbox/uni/score/trunk/cobertura/instrumented:/home/konrad/Dropbox/uni/score/trunk/cobertura/classes:/home/konrad/Dropbox/uni/score/trunk/cobertura/cobertura.jar:/home/konrad/Dropbox/uni/score/trunk/cobertura/lib/asm-3.0.jar:/home/konrad/Dropbox/uni/score/trunk/cobertura/lib/asm-tree-3.0.jar:/home/konrad/Dropbox/uni/score/trunk/cobertura/lib/jakarta-oro-2.0.8.jar:/home/konrad/Dropbox/uni/score/trunk/cobertura/lib/log4j-1.2.9.jar:/home/konrad/Dropbox/uni/score/trunk/lib/aspectjrt.jar:/home/konrad/Dropbox/uni/score/trunk/lib/aspectjtools.jar:/home/konrad/Dropbox/uni/score/trunk/lib/avalon-framework-4.2.0.jar:/home/konrad/Dropbox/uni/score/trunk/lib/batik-all-1.7.jar:/home/konrad/Dropbox/uni/score/trunk/lib/commons-io-1.3.1.jar:/home/konrad/Dropbox/uni/score/trunk/lib/commons-logging-1.0.4.jar:/home/konrad/Dropbox/uni/score/trunk/lib/fop.jar:/home/konrad/Dropbox/uni/score/trunk/lib/jetty-6.1.26.jar:/home/konrad/Dropbox/uni/score/trunk/lib/jetty-util-6.1.26.jar:/home/konrad/Dropbox/uni/score/trunk/lib/json.jar:/home/konrad/Dropbox/uni/score/trunk/lib/junction (Home\'s conflicted copy 2011-03-04).jar:/home/konrad/Dropbox/uni/score/trunk/lib/junction.jar:/home/konrad/Dropbox/uni/score/trunk/lib/junit-4.8.2.jar:/home/konrad/Dropbox/uni/score/trunk/lib/log4j-1.2.16.jar:/home/konrad/Dropbox/uni/score/trunk/lib/postgresql-8.4-702.jdbc4.jar:/home/konrad/Dropbox/uni/score/trunk/lib/serializer.jar:/home/konrad/Dropbox/uni/score/trunk/lib/servlet-api-2.5-20081211.jar:/home/konrad/Dropbox/uni/score/trunk/lib/weave (Home\'s conflicted copy 2011-03-04).jar:/home/konrad/Dropbox/uni/score/trunk/lib/weave.jar:/home/konrad/Dropbox/uni/score/trunk/lib/xalan.jar:/home/konrad/Dropbox/uni/score/trunk/lib/xercesImpl.jar:/home/konrad/Dropbox/uni/score/trunk/lib/xml-apis.jar:/home/konrad/Dropbox/uni/score/trunk/lib/xmlgraphics-commons-1.4.jar:/home/konrad/Dropbox/uni/score/trunk/lib/yuicompressor-2.4.2.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/annotations-api.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/catalina-ant.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/catalina-ha.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/catalina-tribes.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/catalina.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/el-api.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/jasper-el.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/jasper-jdt.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/jasper.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/jsp-api.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/servlet-api.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/tomcat-coyote.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/tomcat-dbcp.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/tomcat-i18n-es.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/tomcat-i18n-fr.jar:/home/konrad/Dropbox/uni/score/trunk/tomcat/lib/tomcat-i18n-ja.jar:/usr/share/java/ant-launcher-1.8.0.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar';
+    
+        cur['java.class.version'] = '50.0';
+    
+        cur['java.endorsed.dirs'] = '/usr/lib/jvm/java-6-openjdk/jre/lib/endorsed';
+    
+        cur['java.ext.dirs'] = '/usr/lib/jvm/java-6-openjdk/jre/lib/ext:/usr/java/packages/lib/ext';
+    
+        cur['java.home'] = '/usr/lib/jvm/java-6-openjdk/jre';
+    
+        cur['java.io.tmpdir'] = '/tmp';
+    
+        cur['java.library.path'] = '/usr/lib/jvm/java-6-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-6-openjdk/jre/lib/amd64:/usr/lib/jvm/java-6-openjdk/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib/jni:/lib:/usr/lib';
+    
+        cur['java.runtime.name'] = 'OpenJDK Runtime Environment';
+    
+        cur['java.runtime.version'] = '1.6.0_20-b20';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Sun Microsystems Inc.';
+    
+        cur['java.specification.version'] = '1.6';
+    
+        cur['java.vendor'] = 'Sun Microsystems Inc.';
+    
+        cur['java.vendor.url'] = 'http://java.sun.com/';
+    
+        cur['java.vendor.url.bug'] = 'http://java.sun.com/cgi-bin/bugreport.cgi';
+    
+        cur['java.version'] = '1.6.0_20';
+    
+        cur['java.vm.info'] = 'mixed mode';
+    
+        cur['java.vm.name'] = 'OpenJDK 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Sun Microsystems Inc.';
+    
+        cur['java.vm.specification.version'] = '1.0';
+    
+        cur['java.vm.vendor'] = 'Sun Microsystems Inc.';
+    
+        cur['java.vm.version'] = '19.0-b09';
+    
+        cur['junction.build.bin'] = 'junction';
+    
+        cur['junction.build.src'] = 'src/de/fu/junction';
+    
+        cur['line.separator'] = ' ';
+    
+        cur['os.arch'] = 'amd64';
+    
+        cur['os.name'] = 'Linux';
+    
+        cur['os.version'] = '2.6.35-27-generic';
+    
+        cur['path.separator'] = ':';
+    
+        cur['reports.dir'] = 'reports';
+    
+        cur['reports.html.dir'] = 'reports/junit-html';
+    
+        cur['reports.xml.dir'] = 'reports/junit-xml';
+    
+        cur['scetris.build.bin'] = 'bin';
+    
+        cur['scetris.build.css'] = 'css';
+    
+        cur['scetris.build.deploy'] = 'scetris';
+    
+        cur['scetris.build.installer'] = 'installer';
+    
+        cur['scetris.build.js'] = 'js';
+    
+        cur['scetris.build.lib'] = 'lib';
+    
+        cur['scetris.build.repository'] = 'http://technodrom.scravy.de/score';
+    
+        cur['scetris.build.src'] = 'src';
+    
+        cur['scetris.build.war'] = 'scetris.war';
+    
+        cur['scetris.build.web'] = 'web';
+    
+        cur['scetris.build.webcss'] = 'web/css';
+    
+        cur['scetris.build.webjs'] = 'web/js';
+    
+        cur['scetris.build.webxml'] = 'web.xml';
+    
+        cur['scetris.build.webxsl'] = 'web/xsl';
+    
+        cur['scetris.build.xsl'] = 'xsl';
+    
+        cur['scetris.cobertura.zip'] = 'cobertura.zip';
+    
+        cur['scetris.setup.db.database'] = 'postgres';
+    
+        cur['scetris.setup.db.password'] = 'postgres';
+    
+        cur['scetris.setup.db.username'] = 'postgres';
+    
+        cur['scetris.setup.symlink.css'] = 'no';
+    
+        cur['scetris.setup.symlink.js'] = 'no';
+    
+        cur['scetris.setup.symlink.xsl'] = 'no';
+    
+        cur['scetris.setup.tomcat'] = 'tomcat';
+    
+        cur['scetris.setup.tomcat.context'] = 'ROOT';
+    
+        cur['scetris.setup.tomcat.zip'] = 'tomcat.zip';
+    
+        cur['scetris.standalone.port'] = '8081';
+    
+        cur['scetris.templates.lazyload'] = 'yes';
+    
+        cur['scetris.testing.db.database'] = 'scetris-testing';
+    
+        cur['scetris.testing.db.hostname'] = 'localhost';
+    
+        cur['scetris.testing.db.password'] = 'kleinerAffeMitHut';
+    
+        cur['scetris.testing.db.port'] = '5432';
+    
+        cur['scetris.testing.db.username'] = 'scetris-testing';
+    
+        cur['scetris.testing.setup.db.database'] = 'postgres';
+    
+        cur['scetris.testing.setup.db.password'] = 'postgres';
+    
+        cur['scetris.testing.setup.db.username'] = 'postgres';
+    
+        cur['scetris.webapp.db.database'] = 'scetris';
+    
+        cur['scetris.webapp.db.hostname'] = 'localhost';
+    
+        cur['scetris.webapp.db.password'] = 'scetris';
+    
+        cur['scetris.webapp.db.port'] = '5432';
+    
+        cur['scetris.webapp.db.username'] = 'scetris';
+    
+        cur['src.dir'] = 'src';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.class.path'] = '/usr/lib/jvm/java-6-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/netx.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/plugin.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/rhino.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-openjdk/jre/classes';
+    
+        cur['sun.boot.library.path'] = '/usr/lib/jvm/java-6-openjdk/jre/lib/amd64';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.cpu.isalist'] = '';
+    
+        cur['sun.desktop'] = 'gnome';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeLittle';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Server Compiler';
+    
+        cur['sun.os.patch.level'] = 'unknown';
+    
+        cur['test.failed'] = 'true';
+    
+        cur['tomcat.exists'] = 'true';
+    
+        cur['tomcat.zip.exists'] = 'true';
+    
+        cur['user.country'] = 'DE';
+    
+        cur['user.dir'] = '/home/konrad/Dropbox/uni/score/trunk';
+    
+        cur['user.home'] = '/home/konrad';
+    
+        cur['user.language'] = 'de';
+    
+        cur['user.name'] = 'konrad';
+    
+        cur['user.timezone'] = '';
+    
+        cur['weave.build.bin'] = 'weave';
+    
+        cur['weave.build.src'] = 'src/de/fu/weave';
+    </script><script type="text/javascript" language="JavaScript">
+        function displayProperties (name) {
+          var win = window.open('','JUnitSystemProperties','scrollbars=1,resizable=1');
+          var doc = win.document;
+          doc.open();
+          doc.write("<html><head><title>Properties of " + name + "</title>");
+          doc.write("<style type=\"text/css\">");
+          doc.write("body {font:normal 68% verdana,arial,helvetica; color:#000000; }");
+          doc.write("table tr td, table tr th { font-size: 68%; }");
+          doc.write("table.properties { border-collapse:collapse; border-left:solid 1 #cccccc; border-top:solid 1 #cccccc; padding:5px; }");
+          doc.write("table.properties th { text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#eeeeee; }");
+          doc.write("table.properties td { font:normal; text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#fffffff; }");
+          doc.write("h3 { margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica }");
+          doc.write("</style>");
+          doc.write("</head><body>");
+          doc.write("<h3>Properties of " + name + "</h3>");
+          doc.write("<div align=\"right\"><a href=\"javascript:window.close();\">Close</a></div>");
+          doc.write("<table class='properties'>");
+          doc.write("<tr><th>Name</th><th>Value</th></tr>");
+          for (prop in TestCases[name]) {
+            doc.write("<tr><th>" + prop + "</th><td>" + TestCases[name][prop] + "</td></tr>");
+          }
+          doc.write("</table>");
+          doc.write("</body></html>");
+          doc.close();
+          win.focus();
+        }
+      
+      </script>
+</head>
+<body>
+<h1>Unit Test Results.</h1>
+<table width="100%">
+<tr>
+<td align="left"></td><td align="right">Designed for use with <a href="http://www.junit.org/">JUnit</a> and <a href="http://ant.apache.org/">Ant</a>.</td>
+</tr>
+</table>
+<hr size="1">
+<h3>Class de.fu.scetris.web.tests.AriogTest</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th nowrap>Time(s)</th><th nowrap>Time Stamp</th><th>Host</th>
+</tr>
+<tr valign="top" class="Pass">
+<td><a title="Display all tests" href="55_AriogTest.html">AriogTest</a></td><td><a title="Display all tests" href="55_AriogTest.html">1</a></td><td>0</td><td>0</td><td>0.232</td><td>2011-03-04T02:36:13</td><td>Notebook</td>
+</tr>
+</table>
+<h2>Tests</h2>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td><a name="setUp"></a>setUp</td><td>Success</td><td></td><td>0.024</td>
+</tr>
+</table>
+<div class="Properties">
+<a href="javascript:displayProperties('de.fu.scetris.web.tests.AriogTest');">
+                    Properties &raquo;
+                </a>
+</div>
+<div class="Properties">
+<a href="./55_AriogTest-out.txt">
+                        System.out &raquo;
+                    </a>
+</div>
+</body>
+</html>

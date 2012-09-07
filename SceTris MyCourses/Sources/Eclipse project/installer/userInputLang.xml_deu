@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<langpack>
+	<str id="titleTomcatLocation" txt="Tomcat Postionsauswahlfenster" />
+	<str id="tomcatLocationInfo" txt="Wähle den Ordner aus in welchem Tomcat installiert wurde. Er sollte einen Ordner webapps enthalten. Scetris wird kopiert nach webapps/ROOT." />
+	<str id="properties" txt="Benötigte Benutzereingaben" />
+	<str id="propertiesInfo" txt="Die hier eingegebenen Daten werden in die Datei scetris.properties gespeichert werden. Diese liegt in webapps/ROOT/WEB-INF/scetris.properties um die Datenbank für die Anwendung erreichbar zu machen." />
+	<str id="setup.db.database.text" txt="Name der template-Datenbank welche von Postgres erstellt und benutzt wird" />
+	<str id="fieldEmpty" txt="Keines der Felder darf leer bleiben" />
+	<str id="setup.db.password.text" txt="Password des Super-Admins von Postgres" />
+	<str id="password.enter" txt="Password eingeben:" />
+	<str id="password.reenter" txt="Password erneut eingeben:" />
+	<str id="passwordsNotEqual" txt="Passwörter stimmen nicht überein" />
+	<str id="setup.db.username.text" txt="Name des Super-Admins von Postgres" />
+	<str id="webapp.db.database.text" txt="Name der Datenbank, welche von Scetris verwendet werden wird" />
+	<str id="webapp.db.hostname.text" txt="Hostname der Datenbank, welche verwendet werden soll" />
+	<str id="webapp.db.port.text" txt="Port der Datenbank, welche verwendet werden soll" />
+	<str id="webapp.db.username.text" txt="Name die der Superuser für die Scetris Datenbank haben soll" />
+	<str id="webapp.db.password.text" txt="Password für den Superuser der Scetris Datenbank" />
+	<str id="portOnlyNumbers" txt="Der Port darf nur Werte zwischen 0 und 65535 annehmen (0 bis 1023 sind 'Well known Ports', 1024 bis 49151 sind 'Registered Ports', 49152 bis 65535 sind 'Private Ports')" />
+</langpack>

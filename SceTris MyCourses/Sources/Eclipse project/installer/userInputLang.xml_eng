@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<langpack>
+	<str id="titleTomcatLocation" txt="Tomcat location select screen" />
+	<str id="tomcatLocationInfo" txt="Select the folder where your Tomcat is installed. It should contain a folder webapps. Scetris will be copied into webapps/ROOT." />
+	<str id="properties" txt="Neccessary user information" />
+	<str id="propertiesInfo" txt="The properties entered here will be written into the file located at your tomcat/webapps/ROOT/WEB-INF/scetris.properties in order to make database access possible" />
+	<str id="setup.db.database.text" txt="Name of the template database used and created by Postgres" />
+	<str id="fieldEmpty" txt="None of the fields is allowed to stay empty" />
+	<str id="setup.db.password.text" txt="Password of the Super Admin Postgres user" />
+	<str id="password.enter" txt="Enter Password:" />
+	<str id="password.reenter" txt="Reenter Password:" />
+	<str id="passwordsNotEqual" txt="Reentered password is not correct" />
+	<str id="setup.db.username.text" txt="Name of the Super Admin Postgres user" />
+	<str id="webapp.db.database.text" txt="Name of the Database that will be used by scetris" />
+	<str id="webapp.db.hostname.text" txt="Hostname of the database to use" />
+	<str id="webapp.db.port.text" txt="Port of the database to use" />
+	<str id="webapp.db.username.text" txt="Name of the Superuser for the Scetris database" />
+	<str id="webapp.db.password.text" txt="Password of the Superuser for the Scetris database" />
+	<str id="portOnlyNumbers" txt="port has to be between 0 and 65535 (0 to 1023 are 'Well Known Ports', 1024 to 49151 are 'Registered Ports', 49152 to 65535 are 'Private Ports')" />
+</langpack>

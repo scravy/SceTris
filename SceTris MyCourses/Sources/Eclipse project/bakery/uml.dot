@@ -1,0 +1,124 @@
+
+digraph Relations {
+	overlap=scale;
+	splines=true
+
+	sep=.5;
+	
+	node [shape=box, color=red,fontsize=96];
+	AcademicTerm;
+	Attribute;
+	Building;
+	Configuration;
+	Course;
+	CourseAttribute;
+	CourseElement;
+	CourseElementInstance;
+	CourseElementType;
+	CourseInstance;
+	Day;
+	Department;
+	Feature;
+	Group;
+	Person;
+	Privilege;
+	Program;
+	ProposedScheduling;
+	Role;
+	Room;
+	Timeslot;
+	Year;
+
+	node [shape=box, color=green,fontsize=14];
+	CourseElementPartOf
+	CourseElementType
+	CourseElementInstanceCourseInstance
+	CourseElementInstanceCourseElement
+	CourseElementInstanceStartingTimeslot
+	CourseInstanceProgram
+	CourseInstanceInstanceOf
+	CourseInstanceMainLecturer
+	DepartmentSuperordinateDepartment
+	PersonCreatedBy
+	PersonModifiedBy
+	PersonDeletedBy
+	ProgramAcademicTerm
+	ProgramDepartment
+	ProgramProgramManager
+	ProposedSchedulingCreatedBy
+	ProposedSchedulingModifiedBy
+	ProposedSchedulingElementInstance
+	ProposedSchedulingTimeslot
+	ProposedSchedulingRoom
+	RoomBuilding
+	TimeslotDay
+	courseHasCourseAttribute;
+	courseRecommendedForYear;
+	courseRequiresCourse;
+	elementInstancePrefersRoom;
+	elementInstancePrefersTimeslot;
+	elementInstanceRequiresFeature;
+	elementInstanceTakesPlaceInRoom;
+	elementRequiresFeature;
+	personBelongsToGroup;
+	personEnrolledInCourseInstance;
+	personGivesCourse;
+	personHasAttribute;
+	personHasPrivilege;
+	personHasRole;
+	personPrefersTimeslot;
+	personSuccessfullyPassedCourse;
+	personTakesPartInElementInstance;
+	roleImpliesAttribute;
+	roleImpliesPrivilege;
+	roomPrefersTimeslot;
+	roomProvidesFeature;
+
+	edge [color=black];
+	CourseElement -> CourseElementPartOf -> Course;
+	CourseElement -> CourseElementType -> CourseElementType;
+	CourseElementInstance -> CourseElementInstanceCourseInstance -> CourseInstance;
+	CourseElementInstance -> CourseElementInstanceCourseElement -> CourseElement;
+	CourseElementInstance -> CourseElementInstanceStartingTimeslot -> Timeslot;
+	CourseInstance -> CourseInstanceProgram -> Program;
+	CourseInstance -> CourseInstanceInstanceOf -> Course;
+	CourseInstance -> CourseInstanceMainLecturer -> Person;
+	Department -> DepartmentSuperordinateDepartment -> Department;
+	Person -> PersonCreatedBy -> Person;
+	Person -> PersonModifiedBy -> Person;
+	Person -> PersonDeletedBy -> Person;
+	Program -> ProgramAcademicTerm -> AcademicTerm;
+	Program -> ProgramDepartment -> Department;
+	Program -> ProgramProgramManager -> Person;
+	ProposedScheduling -> ProposedSchedulingCreatedBy -> Person;
+	ProposedScheduling -> ProposedSchedulingModifiedBy -> Person;
+	ProposedScheduling -> ProposedSchedulingElementInstance -> CourseElementInstance;
+	ProposedScheduling -> ProposedSchedulingTimeslot -> Timeslot;
+	ProposedScheduling -> ProposedSchedulingRoom -> Room;
+	Room -> RoomBuilding -> Building;
+	Timeslot -> TimeslotDay -> Day;
+
+	edge [color=black];
+	Course -> courseHasCourseAttribute -> CourseAttribute;
+	Course -> courseRecommendedForYear -> Year;
+	Course -> courseRequiresCourse -> Course;
+	CourseElementInstance -> elementInstancePrefersRoom -> Room;
+	CourseElementInstance -> elementInstancePrefersTimeslot -> Timeslot;
+	CourseElementInstance -> elementInstanceRequiresFeature -> Feature;
+	CourseElementInstance -> elementInstanceTakesPlaceInRoom -> Room;
+	CourseElement -> elementRequiresFeature -> Feature;
+	Person -> personBelongsToGroup -> Group;
+	Person -> personEnrolledInCourseInstance -> CourseInstance;
+	Person -> personGivesCourse -> Course;
+	Person -> personHasAttribute -> Attribute;
+	Person -> personHasPrivilege -> Privilege;
+	Person -> personHasRole -> Role;
+	Person -> personPrefersTimeslot -> Timeslot;
+	Person -> personSuccessfullyPassedCourse -> Course;
+	Person -> personTakesPartInElementInstance -> CourseElementInstance;
+	Role -> roleImpliesAttribute -> Attribute;
+	Role -> roleImpliesPrivilege -> Privilege;
+	Room -> roomPrefersTimeslot -> Timeslot;
+	Room -> roomProvidesFeature -> Feature;
+
+}

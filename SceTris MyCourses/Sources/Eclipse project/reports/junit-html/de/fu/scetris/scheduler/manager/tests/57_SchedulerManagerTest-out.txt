@@ -1,0 +1,5 @@
+Stopping the scheduler.
+Finished with hard fitness 1.0 and soft fitness 1.0
+Stopping the scheduler.
+Finished with hard fitness 0.6923076923076923 and soft fitness 1.0
+

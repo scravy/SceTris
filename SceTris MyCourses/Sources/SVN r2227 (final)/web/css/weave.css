@@ -1,0 +1,315 @@
+@charset "UTF-8";
+
+@import "reset.css";
+@import "global.css";
+@import "content.css";
+@import "ui/jquery-ui-1.8.6.custom.css";
+
+@namespace "http://www.w3.org/1999/xhtml";
+
+
+/* BASIC START */
+
+#content ul {
+	margin: 0 20px 0 0;
+	padding: 4px 0 4px 0;
+}
+
+#content li {
+	list-style-type: none;
+	line-height: 140%;
+	/*margin: 0 0 0 20px;*/	
+	margin: 0 0 0 35px; 
+	padding: 0;
+}
+
+#content ul li {
+  	margin: 0;
+	line-height: 140%;
+	padding: 0 0 0 10px;
+	background-image: url("../gfx/rechteck_gr_liste.gif");
+	background-repeat: no-repeat;
+	background-position: 0 7px;
+}
+
+ul, ol, li {
+	font-size: 100%;
+	line-height: 140%;
+	list-style-type: none;
+}
+
+
+table.niceBorder td {
+	border: 1px solid black;
+}
+
+table.niceBorder td, table.niceBorder th {
+	margin: .83em;
+}
+
+table.niceBorder th {
+	font-weight: italic;
+}
+
+table.niceBorder {
+	border-collapse: collapse;
+	border: 1px solid white;
+}
+
+.text-input + .info, select + .info {
+	display: none;
+	float: right;
+	width: 200px;
+	background-color: black;
+	background-color: rgba(0,0,0,.8);
+	color: white;
+	padding: .15em;
+	border: 1px solid black;
+}
+
+.text-input {
+	float: left;
+}
+
+.text-input:focus + .info, select:focus + .info, .timeslot:hover + .info {
+	display: block;
+}
+
+.infotext {
+	background-color: #FFFFFF;
+	border-top: 2px solid #D1D1D1;
+	border-right: 2px solid #D1D1D1;
+	border-bottom: 2px solid #D1D1D1;
+	padding: 10px;
+	margin-left: 20px;
+}
+
+.formField textarea {
+	width: 400px;
+	height: 200px;
+}
+
+.formField .pancy-slider {
+	position: relative;
+	display: block;
+	width: 125px;
+	left: 215px;
+	top: 10px;
+	margin-bottom: 2em;
+}
+
+
+.inlinebutton {
+	border: 1px solid #D1D1D1;
+	color: #000000;
+	padding: 1px 2px;
+	margin: 1px;
+	background-color: #FFFFFF;	
+}
+
+
+em {
+	font-style: italic;
+}
+
+#az_content div.commit-failure > ul {
+	color: white;
+	margin-left: 1.2em;
+	margin-top: -1em;
+}
+
+#az_content .commit-failure > ul > li {
+	list-style: none;
+	display: block;
+	background-image: none;
+}
+
+.timeslot + .info {
+	background-image: url("http://userpage.fu-berlin.de/andrez/timetablebox.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	display: none;
+	width: 190px;
+	z-index: 3;	
+}
+
+table span.name, table span.time {
+	display: block;
+}
+
+table span.time {
+	font-style: italic;
+	color: gray;
+}
+
+/* FORMS/INPUT     END */
+
+#az_left ul li a {
+	color: gray;
+}
+
+#az_left ul li a:hover {
+	background: #f0f0f0;
+	color: black;
+}
+
+#az_left ul li a:hover::before {
+	content: "> ";
+}
+
+
+/* MISC START */
+
+.action {
+	font-size: 1.4em;	
+}
+
+.delete {
+	color: red;
+}
+/* MISC END */
+
+/* TIMETABLE START */
+.timetable {
+	width: 550px; 
+}
+
+.timetable th{
+	width: 87px;
+	height: 30px;
+}
+
+.timeslot{
+	float: left;
+	position: absolute; 
+	width: 80px;
+	margin: 2px;
+	border: 1px dashed #999999;
+	background-color: #FFFFFF;
+	overflow: hidden;
+	cursor: help;
+	line-height: 9pt;	
+}
+
+.ceiselector {
+	position: absolute;
+	right: 0px;
+	border-left: 3px solid #FFFFFF;	
+}
+
+body {
+	background: url(http://www.fu-berlin.de/media/layout/bg_body_blau.gif) repeat-x scroll center top #FFFFFF;		
+}
+
+#az_all {
+	position: relative;
+	width: 100%;
+}
+
+#az_head {
+	width: 979px;
+	height: 177px;
+	position: relative;
+}
+
+#az_head #search{
+	width: 199px;
+}
+
+#az_site {
+	background-color: #FFFFFF;
+	padding-top: 10px;
+	clear: both;
+	position: relative;
+	width: 979px;
+}
+
+#az_content {
+	margin-left: 195px;
+	margin-right: 0;
+}
+
+#az_breadcrump {
+	font-size: 90%;
+	line-height: 120%;
+	margin-bottom: 15px;	
+}
+
+#az_breadcrump a {
+	color: #666666;
+	text-decoration: none;	
+}
+
+#az_content_all {
+	width: 100%;
+}
+
+
+#az_content_all ul {
+	margin: 0 20px 0 0;
+	padding: 4px 0 4px 0;
+}
+
+#az_content_all li {
+	list-style-type: none;
+	line-height: 140%;
+	/*margin: 0 0 0 20px;*/	
+	margin: 0 0 0 35px; 
+	padding: 0;
+}
+
+#az_content_all ul li {
+  	margin: 0;
+	line-height: 140%;
+	padding: 0 0 0 10px;
+	background-image: url(http://www.fu-berlin.de/layout_1_3/img/rechteck_gr_liste.gif);
+	background-repeat: no-repeat;
+	background-position: 0 7px;
+}
+
+
+
+
+#az_content_left {
+	width: 549px;		/* 549 - 30padding*/
+	float: left;
+	
+	margin-bottom: 10px;
+	padding: 0 20px 21px 15px;
+	
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	
+	min-height: 200px;
+
+}
+
+
+#az_content_right {
+	float: left;
+	width: 150px;	
+}
+
+#az_content_right #search-results {
+	margin-top: 0px;	
+}
+
+#az_left {
+	width: 174px;
+	float: left;
+	padding: 0 10px;
+}
+
+#az_left ul {
+	margin-left: 5px;
+}
+
+#az_left a {
+	display: block;
+}
+
+
+#listplayer ul li {
+	float: left;
+	background-image: none;
+}

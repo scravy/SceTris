@@ -1,0 +1,1350 @@
+<template xmlns="http://technodrom.scravy.de/2010/meta/java"
+	xmlns:j="http://technodrom.scravy.de/2010/meta/acgt/java">
+<!--
+ * java2.xml / 2010
+ * Part of SCORE myCourses
+ * 
+ * Team Scetris: David Bialik, Julian Fleischer,
+ * Hagen Mahnke, Konrad Reiche, André Zoufahl
+-->
+
+
+<!-- ==============================================================
+     HEADER
+     ============================================================== -->
+<header>/* <file /> / <date />
+ * Part of SCORE myCourses
+ * 
+ * Team Scetris: David Bialik, Julian Fleischer,
+ * Hagen Mahnke, Konrad Reiche, André Zoufahl
+ *
+ * This file was automatically generated
+ * using <processor />
+ */
+
+/**
+ * @formatter:off
+ */
+package <target-package />;
+
+</header>
+
+<!-- ==============================================================
+     ENTITY
+     ============================================================== -->
+<entity><j:class>/**
+ * OO-Representation of the entity-relation <class-name />
+ * &lt;p&gt;
+ * <description />
+ */
+@<weave-annotation />.Entity(name = "<entity-name />")
+@<weave-annotation />.Relation(name = <table escape="literal" />, requiredSqlCols = {<for-required>"<sql-col />"<not-last>, </not-last></for-required>})
+@<weave />.xml.annotation.XmlElement("<entity-name />")
+public class <class-name /> extends <weave-orm />.GenericEntity implements <weave-orm />.Entity <if-user>, <weave />.User</if-user> {
+	<j:field name="manager">final <manager-class /> manager;</j:field>
+	<j:field name="exists" type="boolean" default="false" />
+
+	<for-all-fields>public static final String <field-Name /> = "<sql-col />";
+	</for-all-fields>
+
+	<j:class name="Form">/**
+	 * 
+	 */
+	public abstract static class Form extends <target-package />.formsupport.AbstractForm {
+		public static final long serialVersionUID = <serial-version-uid />L;
+		
+		<for-all-fields><not-hidden>
+		@<weave />.Form.Pos(<pos />)
+		@<weave />.Form.Field("<field-name />")<not-nullable> @<weave />.Form.Required</not-nullable><if-is-id>
+		@<weave />.Form.FormControl(<weave />.Form.Control.HIDDEN)</if-is-id><if-is-timekey>
+		@<weave />.Form.FormControl(<weave />.Form.Control.HIDDEN)</if-is-timekey><if-text>
+		@<weave />.Form.FormControl(<weave />.Form.Control.TEXTAREA)</if-text><if-min>
+		@<weave />.Form.Min(<value-min />)</if-min><if-max>
+		@<weave />.Form.Max(<value-max />)</if-max><if-step>
+		@<weave />.Form.Step(<value-step />)</if-step><if-only>
+		@<weave />.Form.Only(<value-only escape="literal" />)</if-only><if-match>
+		@<weave />.Form.Match(<value-match escape="literal" />)</if-match>
+		@<weave />.Form.ActiveValidator("<field-name />$validator")
+		@<weave />.Form.ActiveConverter("<field-name />$converter")</not-hidden><if-ref>
+		@<weave />.Form.Alternatives("<field-name />$alternatives")
+		@<weave />.Form.FormControl(<weave />.Form.Control.ALTERNATIVES)</if-ref>
+		public <if-java-profile><java-profile /></if-java-profile><not-java-profile><if-ref><ref-id-type /></if-ref><not-ref><field-type /></not-ref></not-java-profile> <field-name />;<if-ref>
+		
+		public java.util.Map&lt;<ref-id-boxtype />,java.lang.String&gt; <field-name />$alternatives = new java.util.TreeMap&lt;<ref-id-boxtype />,java.lang.String&gt;();</if-ref>
+		</for-all-fields>
+		
+		public Form setValues(<class-name /> $object) {
+			<for-all-fields><not-java-profile>
+			<field-name /> = $object.<if-ref>ref</if-ref><not-ref>get</not-ref><field-Name />();</not-java-profile><if-java-profile>
+			try {
+			<field-name /> = <if-nullable>!$object.has<field-Name />() ? null : </if-nullable>new <java-profile />($object.get<field-Name />());
+			} catch (Exception $exc) { }</if-java-profile></for-all-fields>
+			return this;
+		}
+	}</j:class>
+	
+	<for-all-fields><j:field basename="_">/**
+	 * <field-title />
+	 * &lt;p&gt;
+	 * <field-description />
+	 */
+	<field-type /> _<field-name /><if-nullable> = null</if-nullable>;</j:field>
+	<j:field basename="changed_">boolean changed_<field-name /> = false;</j:field>
+	<j:field basename="fetched_">boolean fetched_<field-name /> = false;</j:field><if-ref>
+	<j:field basename="ref_"><ref-id-type /> ref_<field-name />;</j:field></if-ref></for-all-fields>
+	
+	<j:constructor>/**
+	 * Constructs the entity from an SQL ResultSet.
+	 * &lt;p>
+	 * This Constructor is not publicly available as it should be used by {@link <manager-class />} only.
+	 * @param result The SQL ResultSet
+	 */
+	<class-name />(<manager-class /> manager, java.sql.ResultSet result) throws <weave-orm />.DatabaseException {
+		this.manager = manager;
+		timekey(true);
+		try {
+			<for-all-fields><is-ref>ref</is-ref>_<field-name /> = result.get<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>("<sql-col />");<if-nullable>
+			if (result.wasNull()) {
+				<is-ref>ref</is-ref>_<field-name /> = null;
+			}</if-nullable><not-ref>
+			fetched_<field-name /> = true;</not-ref>
+			</for-all-fields>
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+		exists = true;
+	}</j:constructor>
+	
+	<j:constructor>/**
+	 * Constructs the entity <class-name /> and initializes only the required attributes (i.e. the fields which are neither nullable nor have a default value) <for-required>
+	 * @param _<field-name /> <field-description /></for-required>
+	 */
+	<class-name />(<manager-class /> manager, <for-required><field-type /> _<field-name /><not-last>, </not-last></for-required>) {
+		timekey(true);
+		this.manager = manager;<for-required>
+		this._<field-name /> = _<field-name />;<if-ref>
+		this.ref_<field-name /> = _<field-name />.id();</if-ref>
+		this.fetched_<field-name /> = true;</for-required>
+	}</j:constructor>
+	
+	<j:constructor>/**
+	 * Constructs the entity <class-name /> and initializes all attributes.<for-fields>
+	 * @param _<field-name /> <field-description /></for-fields>
+	 */
+	<class-name />(<manager-class /> manager, final boolean full, <for-fields><field-type /> _<field-name /><not-last>, </not-last></for-fields>) {
+		timekey(true);
+		if (!full) {
+			this.manager = null;
+		} else {
+			this.manager = manager;<for-fields>
+			this._<field-name /> = _<field-name />;<if-ref>
+			this.ref_<field-name /> = _<field-name />.id();</if-ref>
+			this.fetched_<field-name /> = true;</for-fields>
+		}
+	}</j:constructor><if-user>
+	
+	@Override
+	public String loginName() {
+		return getLoginName(); <!-- this is quick and dirty. Needs to be determined somehow *what* the login name actually is -->
+	}</if-user>
+	
+	<j:method name="id">/**
+	 * Returns the unique identifier for this entity.
+	 * @since Iteration2
+	 */
+	public <id-type /> id() {
+		return _<id-field />;
+	}</j:method>
+	
+	<j:method name="toString">@Override
+	public String toString() {
+		return "<entity-class />: \"" + this._<name-field /> + "\" (#" + this._<id-field /> + ")";
+	}</j:method>
+	
+	<j:method name="hashCode">/*@Override
+	public int hashCode() {
+		return <weave-orm />.GenericRelationManager._hashCode(this._<id-field />);
+	}*/</j:method>
+	
+	<j:method name="create">/**
+	 * Creates the entity in the database if it does not exist in the database (this is the case if it was constructed using {@link <manager-class />#new<entity-class />} rather than {@link <manager-class />#create<entity-class />).
+	 */
+	@Override
+	public <class-name /> create() throws <weave-orm />.DatabaseException {
+		String query = "INSERT INTO " + <table escape="literal" /> + " (<for-fields>\"<sql-col />\", </for-fields><for-all-fields><if-timekey>\"<sql-col />\"</if-timekey></for-all-fields>)"
+			+ " VALUES (<for-fields>?, </for-fields><for-all-fields><if-timekey>?</if-timekey></for-all-fields>)<if-serial> RETURNING <id-name /></if-serial>;";
+		timekey(true);
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			int i = 1;<for-fields><if-nullable><not-default>
+			if (<if-ref>ref</if-ref>_<field-name /> != null) {</not-default></if-nullable><not-default>
+				stmt.set<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>(i++, <if-ref>ref</if-ref>_<field-name />);</not-default><if-nullable><not-default>
+			} else {
+				<has-default>stmt.set<field-jdbc-type />(i++, <default />);
+				</has-default><not-default>stmt.setNull(i++, <field-jdbc-constant />);
+				</not-default>
+			}</not-default></if-nullable><has-default><not-nullable>
+			if (manager.isNull(_<field-name />)) {
+				stmt.set<field-jdbc-type />(i++, _<field-name /> = <default />);
+			} else {
+				stmt.set<field-jdbc-type />(i++, _<field-name />);
+			}</not-nullable></has-default>
+			</for-fields><for-all-fields><if-timekey>
+			stmt.set<field-jdbc-type />(i++, _<field-name />);</if-timekey></for-all-fields>
+			<not-serial>stmt.execute();
+			</not-serial><if-serial>java.sql.ResultSet keys = manager.executeQuery(stmt);
+			if (keys.next()) {
+				_<id-field /> = keys.get<id-jdbc-type />(1);
+			} else {
+				throw new <weave-orm />.DatabaseException("no key was generated. phail.");
+			}</if-serial>
+			<for-fields>changed_<field-name /> = false;
+			</for-fields>
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		}
+		exists = true;
+		return this;
+	}</j:method>
+	<for-all-fields><if-timekey>
+	public void pushChanges(<field-type /> timekey) throws <weave-orm />.DatabaseException {
+		_<field-name /> = timekey;
+		pushChanges();
+	}</if-timekey></for-all-fields>
+	<j:method name="pushChanges">/**
+	 * Updates the associated data inside the database
+	 */
+	@Override
+	public void pushChanges() throws <weave-orm />.DatabaseException {
+		if (!exists) {
+			create();
+			return;
+		}
+		String query = "UPDATE " + <table escape="literal" /> + " SET <for-fields>\"<sql-col />\" = ?"
+			+ ", </for-fields><for-all-fields><if-timekey>\"<sql-col />\" = ?</if-timekey></for-all-fields> "
+			+ "WHERE <for-all-fields><if-timekey>\"<sql-col />\" = ? AND </if-timekey></for-all-fields><id-name /> = ?;";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			int i = 1;<for-fields><if-nullable><not-default>
+			if (<if-ref>ref</if-ref>_<field-name /> != null) {</not-default></if-nullable><not-default>
+				stmt.set<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>(i++, <if-ref>ref</if-ref>_<field-name />);</not-default><if-nullable><not-default>
+			} else {
+				<has-default>stmt.set<field-jdbc-type />(i++, <default />);
+				</has-default><not-default>stmt.setNull(i++, <field-jdbc-constant />);
+				</not-default>
+			}</not-default></if-nullable><has-default><not-nullable>
+			if (manager.isNull(_<field-name />)) {
+				stmt.set<field-jdbc-type />(i++, <default />);
+			} else {
+				stmt.set<field-jdbc-type />(i++, _<field-name />);
+			}</not-nullable></has-default>
+			</for-fields><for-all-fields><if-timekey>
+			<field-type /> currentTimekey = _<field-name />;
+			<field-type /> newTimekey = <default />;
+			stmt.set<field-jdbc-type />(i++, newTimekey);
+			stmt.set<field-jdbc-type />(i++, currentTimekey);</if-timekey></for-all-fields>
+			stmt.set<id-jdbc-type />(i++, this.id());
+			int rowsUpdated = stmt.executeUpdate();
+			if (rowsUpdated == 0) {
+				throw new <weave-orm />.OutdatedRecordException();
+			}<for-all-fields><if-timekey>
+			_<field-name /> = newTimekey;</if-timekey></for-all-fields>
+			<for-fields>changed_<field-name /> = false;
+			</for-fields>
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		}
+	}</j:method>
+	
+	<j:method name="pullChanges">
+	<j:throws><weave-orm />.DatabaseException</j:throws>
+	<j:body>
+		pullChanges(0);
+	</j:body></j:method>
+	
+	<j:method name="pullChanges">/**
+	 *
+	 */
+	@Override
+	public void pullChanges(int depth) throws <weave-orm />.DatabaseException {
+		<j:error>Not yet implemented</j:error>
+	}</j:method>
+	
+	<j:method name="delete">/**
+	 * Deletes the associated data inside the database
+	 */
+	@Override
+	public void delete() throws <weave-orm />.DatabaseException {
+		String query = "DELETE FROM " + <table escape="literal" /> + " WHERE \"<id-name />\" = ?;";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.set<id-jdbc-type />(1, _<id-field />);
+			stmt.execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+		exists = false;
+	}</j:method>
+
+	<j:method name="exists">@Override
+	public boolean exists() {
+		return exists;
+	}</j:method>
+	<j:method name="compareTo">
+	public int compareTo(<entity-class /> entity) {
+		if (!exists) {
+			if (this == entity) return 0;
+			if (this.hashCode() &lt;= entity.hashCode()) return -7;
+			return 7;
+		}
+		if (entity == null) return -4711;
+		if (equals(entity)) {
+			return 0;
+		}
+		return <weave-orm />.GenericRelationManager.compareValues(id(), entity.id());
+	}</j:method>
+	<j:method name="compareTo">
+	public int compareTo(<weave-orm />.Entity entity) {
+		if (entity == null) return -1;
+		if (entity instanceof <entity-class />) {
+			return compareTo((<entity-class />) entity);
+		}
+		return getClass().getName().compareTo(entity.getClass().getName());
+	}</j:method>
+	<j:method name="equals">
+	public boolean equals(<entity-class /> entity) {
+		if (entity == null) return false;
+		if (!exists) return this == entity;
+		return entity.id() == id();
+	}</j:method>
+	
+	<j:method name="equals">@Override
+	public boolean equals(Object obj) {
+		if (obj == null) return false;
+		if (obj instanceof <entity-class />) {
+			return equals((<entity-class />) obj);
+		}
+		return false;
+	}</j:method>
+	
+	<for-subject-of><j:method name="objectOf">/**
+	 * Retrieves the first java-object which is related to this java-object as via <relationship-class />.
+	 * &lt;p>
+	 * This is the subject of <relationship-class />.
+	 
+	 * @return The object regarding <relationship-class /> where this (the java-object you call objectsOf<relationship-class /> on) is the subject.
+	 * @since Iteration3
+	 */
+	public <object-class /> objectOf<relationship-class />() throws <weave-orm />.DatabaseException {
+		java.util.List&lt;<object-class />&gt; coll = objectsOf<relationship-class />();
+		if (coll.isEmpty()) {
+			return null;
+		}
+		return coll.iterator().next();
+	}</j:method>
+	
+	<j:method name="objectsOf">/**
+	 * Retrieves all objects which are related to this object as via <relationship-class />. If you know that there will be only
+	 * 1:1 relationships of the type <relationship-class />, {@link #objectOf<relationship-class />} is what you are looking for.
+	 * &lt;p>
+	 * This is the subject of <relationship-class />.
+	 * @return The object regarding <relationship-class /> where this (the java-object you call objectsOf<relationship-class /> on) is the subject.
+	 */
+	public java.util.List&lt;<object-class />&gt; objectsOf<relationship-class />() throws <weave-orm />.DatabaseException {
+		String query = "SELECT * FROM " + <object-table escape="literal" />
+			+ " WHERE \"<object-id-field />\" IN (SELECT \"<object-field />\" FROM "
+			+ <relationship-table escape="literal" /> + " WHERE \"<subject-field />\" = ?);";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.set<subject-id-jdbc-type />(1, id());
+			java.sql.ResultSet result = manager.executeQuery(stmt);
+			java.util.List&lt;<object-class />&gt; ret = new java.util.ArrayList&lt;<object-class />&gt;();
+			while (result.next()) {
+				ret.add(new <object-class />(manager, result));
+			}
+			return ret;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method>
+	
+	<j:method name="whereSubjectOf">/**
+	 * Retrieves the actual Relationship-Objects in which
+	 * this is the subject of the relationship.
+	 */
+	public java.util.List&lt;<relationship-class />&gt; whereSubjectOf<relationship-class />() throws <weave-orm />.DatabaseException {
+		String query = "SELECT * FROM " + <relationship-table escape="literal" />
+			+ " WHERE \"<subject-field />\" = ?;";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.set<subject-id-jdbc-type />(1, id());
+			java.sql.ResultSet result = manager.executeQuery(stmt);
+			java.util.List&lt;<relationship-class />&gt; ret = new java.util.ArrayList&lt;<relationship-class />&gt;();
+			while (result.next()) {
+				ret.add(new <relationship-class />(manager, this, null, result));
+			}
+			return ret;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method>
+	
+	</for-subject-of><for-object-of><j:method name="subjectOf">/**
+	 * Retrieves the first java-object which is related to this java-object as via <relationship-class />.
+	 * &lt;p>
+	 * This is the object of <relationship-class />.
+	 * @return The subject regarding <relationship-class /> where this (the java-object you call subjectsOf<relationship-class /> on) is the object.
+	 * @since Iteration3
+	 */
+	public <subject-class /> subjectOf<relationship-class />() throws <weave-orm />.DatabaseException {
+		java.util.List&lt;<subject-class />&gt; coll = subjectsOf<relationship-class />();
+		if (coll.isEmpty()) {
+			return null;
+		}
+		return coll.iterator().next();
+	}</j:method>
+	
+	<j:method name="subjectsOf">/**
+	 * Retrieves all java-objects which are related to this java-object as via <relationship-class />. If you know that there will be only
+	 * 1:1 relationships of the type <relationship-class />, {@link #subjectOf<relationship-class />} is what you are looking for.
+	 * &lt;p>
+	 * This is the object of <relationship-class />.
+	 * @return A Collection of subjects regarding <relationship-class /> where this (the java-object you call subjectsOf<relationship-class /> on) is the object.
+	 */
+	public java.util.List&lt;<subject-class />&gt; subjectsOf<relationship-class />() throws <weave-orm />.DatabaseException {
+		String query = "SELECT * FROM " + <subject-table escape="literal" />
+			+ " WHERE \"<subject-id-field />\" IN (SELECT \"<subject-field />\" FROM "
+			+ <relationship-table escape="literal" /> + " WHERE \"<object-field />\" = ?);";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.set<object-id-jdbc-type />(1, id());
+			java.sql.ResultSet result = manager.executeQuery(stmt);
+			java.util.List&lt;<subject-class />&gt; ret = new java.util.ArrayList&lt;<subject-class />&gt;();
+			while (result.next()) {
+				ret.add(new <subject-class />(manager, result));
+			}
+			return ret;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		}
+	}</j:method>
+	
+	<j:method name="whereObjectOf">/**
+	 * Retrieves the actual Relationship-Object in which
+	 * this is the object of the relationship.
+	 * @since Iteration3
+	 */
+	public java.util.List&lt;<relationship-class />&gt; whereObjectOf<relationship-class />() throws <weave-orm />.DatabaseException {
+		String query = "SELECT * FROM " + <relationship-table escape="literal" />
+			+ " WHERE \"<object-field />\" = ?;";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.set<object-id-jdbc-type />(1, id());
+			java.sql.ResultSet result = manager.executeQuery(stmt);
+			java.util.List&lt;<relationship-class />&gt; ret = new java.util.ArrayList&lt;<relationship-class />&gt;();
+			while (result.next()) {
+				ret.add(new <relationship-class />(manager, null, this, result));
+			}
+			return ret;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method></for-object-of><if-user>
+	
+	<j:method name="hasPrivilege">@Override
+	public boolean hasPrivilege(String privilege) {
+		if (isSuperUser()) {
+			return true;
+		}
+		String query = "SELECT may(?, ?);";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.setString(1, getLoginName());
+			stmt.setString(2, privilege);
+			
+			java.sql.ResultSet result = manager.executeQuery(stmt);
+			result.next();
+			return result.getBoolean(1);
+		} catch (java.sql.SQLException e) {
+			return false;
+		}
+	}</j:method>
+
+	<j:method name="hasPrivilege">@Override
+	public boolean hasPrivilege(String privilege, Object target) {
+		return hasPrivilege(privilege, target.toString());
+	}</j:method>
+
+	<j:method name="hasPrivilege">@Override
+	public boolean hasPrivilege(String privilege, String target) {
+		if (isSuperUser()) {
+			return true;
+		}
+		String query = "SELECT may(?, ?, ?);";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			stmt.setString(1, getLoginName());
+			stmt.setString(2, privilege);
+			stmt.setString(3, target);
+			
+			java.sql.ResultSet result = manager.executeQuery(stmt);
+			result.next();
+			return result.getBoolean(1);
+		} catch (java.sql.SQLException e) {
+			return false;
+		}
+	}</j:method>
+	
+	<j:method name="isSuperUser">@Override
+	public boolean isSuperUser() {
+		return getIsSuperuser();
+	}</j:method></if-user>
+	
+	<getters />
+	<setters />
+}
+</j:class></entity>
+
+
+
+<!-- ==============================================================
+     RELATIONSHIP
+     ============================================================== -->
+<relationship><j:class>/**
+ * OO-Representation of the relationship-relation <class-name />
+ * &lt;p&gt;
+ * <description />
+ * @since Iteration2
+ */
+@<weave-annotation />.Relationship(name = "<relationship-name />", subject = <subject-class />.class, object = <object-class />.class)
+@<weave-annotation />.Relation(name = <table escape="literal" />, requiredSqlCols = {<for-required>"<sql-col />"<not-last>, </not-last></for-required>})
+@<weave />.xml.annotation.XmlElement("<relationship-name />")
+public class <class-name /> extends <weave-orm />.GenericRelationship {
+
+	<j:field name="manager">final <manager-class /> manager;</j:field>
+	<j:field name="exists" type="boolean" default="false" />
+
+	<for-all-fields>public static final String <field-Name /> = "<sql-col />";
+	</for-all-fields>
+
+	<for-all-fields>/**
+	 * <field-title />
+	 * &lt;p&gt;
+	 * <field-description />
+	 * @since Iteration2
+	 */
+	<field-type /> _<field-name /><if-nullable> = null</if-nullable>;
+	boolean changed_<field-name /> = false;
+	boolean fetched_<field-name /> = false;
+	<if-ref><ref-id-type /> ref_<field-name />;</if-ref>
+	</for-all-fields>
+	
+	<j:field name="subject"><subject /> subject;</j:field>
+	<j:field name="subject_refid"><subject-ref-type /> subject_refid;</j:field>
+	<j:field name="object"><object /> object;</j:field>
+	<j:field name="object_refid"><object-ref-type /> object_refid;</j:field>
+	
+	<j:constructor>
+	<class-name />(<manager-class /> manager, <subject-class /> subject, <object-class /> object, java.sql.ResultSet result) throws <weave-orm />.DatabaseException {
+		this.manager = manager;
+		timekey(true);
+		try {<for-all-fields>
+			<is-ref>ref</is-ref>_<field-name /> = result.get<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>("<sql-col />");<if-nullable>
+			if (result.wasNull()) {
+				<is-ref>ref</is-ref>_<field-name /> = null;
+			}</if-nullable><not-ref>
+			fetched_<field-name /> = true;</not-ref></for-all-fields>	
+			this.subject_refid = ref_<subject-field-name />;
+			this.object_refid = ref_<object-field-name />;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+		this.object = object;
+		this.subject = subject;
+		exists = true;
+	}</j:constructor>
+	<j:constructor>
+	<class-name />(<manager-class /> manager, java.sql.ResultSet result) throws <weave-orm />.DatabaseException {
+		this.manager = manager;
+		timekey(true);
+		try {<for-all-fields>
+			this.<is-ref>ref</is-ref>_<field-name /> = result.get<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>("\"<sql-col />\"");<if-nullable>
+			if (result.wasNull()) {
+				this.<is-ref>ref</is-ref>_<field-name /> = null;
+			}</if-nullable><not-ref>
+			this.fetched_<field-name /> = true;</not-ref></for-all-fields>
+			this.subject_refid = ref_<subject-field-name />;
+			this.object_refid = ref_<object-field-name />;
+			this.subject = manager.get<subject-class />(this.subject_refid);
+			this.object = manager.get<object-class />(this.object_refid);
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+		this.exists = true;
+	}</j:constructor>
+	<j:constructor>
+	<class-name />(<manager-class /> manager, <subject-class /> subject, <object-class /> object<for-required>, <field-type /> _<field-name /></for-required>) {
+		if (subject == null || object == null) {
+			throw new IllegalArgumentException();
+		}
+		this.manager = manager;
+		this._<subject-field-name /> = this.subject = subject;
+		this.ref_<subject-field-name /> = this.subject_refid = subject.id();
+		this._<object-field-name /> = this.object = object;
+		this.ref_<object-field-name /> = this.object_refid = object.id();
+		timekey(true);
+		<for-required>
+		this._<field-name /> = _<field-name />;<if-ref>
+		this.ref_<field-name /> = _<field-name />.id();</if-ref>
+		this.fetched_<field-name /> = true;</for-required>
+	}</j:constructor>
+	<j:constructor>
+	<class-name />(<manager-class /> manager, boolean full, <subject-class /> subject, <object-class /> object<for-fields>, <field-type /> _<field-name /></for-fields>) {
+		if (subject == null || object == null) {
+			throw new IllegalArgumentException();
+		}
+		this.manager = manager;
+		this.subject = subject;
+		this.subject_refid = subject.id();
+		this.object = object;
+		this.object_refid = object.id();
+		timekey(true);
+		<for-fields>
+		this._<field-name /> = _<field-name />;<if-ref>
+		this.ref_<field-name /> = _<field-name />.id();</if-ref>
+		this.fetched_<field-name /> = true;</for-fields>
+	}</j:constructor>
+	
+	<j:method name="subject">@Override
+	public <subject /> subject() throws <weave-orm />.DatabaseException {
+		if (subject == null) {
+			subject = manager.get<subject-class />(subject_refid);
+		}
+		return subject;
+	}</j:method>
+	
+	<j:method name="object">@Override
+	public <object /> object() throws <weave-orm />.DatabaseException {
+		if (object == null) {
+			object = manager.get<object-class />(object_refid);
+		}
+		return object;
+	}</j:method>
+	
+	<j:method name="equals">@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof <class-name />) {
+			return equals((<class-name />) obj);
+		}
+		return false;
+	}</j:method>
+	
+	<j:method name="equals">public boolean equals(<class-name /> relationship) {
+		try {
+			return relationship.subject().equals(subject())
+				&amp;&amp; relationship.object().equals(object());
+		} catch (<weave-orm />.DatabaseException e) {
+			return false;
+		}
+	}</j:method>
+	
+	<j:method name="create">@Override
+	public <class-name /> create() throws <weave-orm />.DatabaseException {
+		String query = "INSERT INTO " + <table escape="literal" /> + " (\"<subject-fk-name />\", \"<object-fk-name />\"<for-fields>,"
+			+ "\"<sql-col />\"</for-fields><for-all-fields><if-timekey>, \"<sql-col />\"</if-timekey></for-all-fields>)"
+			+ " VALUES (?, ?<for-fields>, ?</for-fields><for-all-fields><if-timekey>, ?</if-timekey></for-all-fields>)<if-serial> RETURNING <id-name /></if-serial>;";
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			int i = 1;
+			stmt.setInt(i++, subject().id());
+			stmt.setInt(i++, object().id());<for-fields><if-nullable><not-default>
+			if (<if-ref>ref</if-ref>_<field-name /> != null) {</not-default></if-nullable><not-default>
+				stmt.set<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>(i++, <if-ref>ref</if-ref>_<field-name />);</not-default><if-nullable><not-default>
+			} else {
+				<has-default>stmt.set<field-jdbc-type />(i++, <default />);
+				</has-default><not-default>stmt.setNull(i++, <field-jdbc-constant />);
+				</not-default>
+			}</not-default></if-nullable><has-default><not-nullable>
+			if (manager.isNull(_<field-name />)) {
+				stmt.set<field-jdbc-type />(i++, _<field-name /> = <default />);
+			} else {
+				stmt.set<field-jdbc-type />(i++, _<field-name />);
+			}</not-nullable></has-default>
+			</for-fields><for-all-fields><if-timekey>
+			stmt.set<field-jdbc-type />(i++, timekey(true));</if-timekey></for-all-fields>
+			stmt.execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		}
+		exists = true;
+		return this;
+	}</j:method>
+	
+	<j:method name="exists">@Override
+	public boolean exists() {
+		return exists;
+	}</j:method>
+	
+	<j:method name="pushChanges">@Override
+	public void pushChanges() throws <weave-orm />.DatabaseException {
+		if (!exists) {
+			create();
+			return;
+		}<if-fields>
+		String query = "UPDATE " + <table escape="literal" /> + " SET <for-fields>\"<sql-col />\" = ?, "
+			+ "</for-fields>"
+			+ "<for-all-fields><if-timekey>\"<sql-col />\" = ?</if-timekey></for-all-fields> WHERE "<for-all-fields><if-timekey>
+			+ "\"<sql-col />\" = ?"</if-timekey></for-all-fields><for-primaries>
+			+ " AND \"<sql-col />\" = ?"</for-primaries>;
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			int i = 1;<for-fields><if-nullable>
+			if (<if-ref>ref</if-ref>_<field-name /> != null) {</if-nullable>
+				stmt.set<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>(i++, <if-ref>ref</if-ref>_<field-name />);<if-nullable>
+			} else {
+				stmt.setNull(i++, <field-jdbc-constant />);
+			}</if-nullable></for-fields><for-all-fields><if-timekey>
+			<field-type /> currentTimekey = _<field-name />;
+			<field-type /> newTimekey = <default />;
+			stmt.set<field-jdbc-type />(i++, newTimekey);
+			stmt.set<field-jdbc-type />(i++, currentTimekey);</if-timekey></for-all-fields><for-primaries>
+			stmt.set<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>(i++, <if-ref>ref</if-ref>_<field-name />);</for-primaries>
+			int rowsUpdated = stmt.executeUpdate();
+			if (rowsUpdated == 0) {
+				throw new <weave-orm />.OutdatedRecordException(<table escape="literal" /> + '#' + id());
+			}<for-all-fields><if-timekey>
+			_<field-name /> = newTimekey;</if-timekey></for-all-fields>
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		}</if-fields>
+	}</j:method>
+	<for-all-fields><if-timekey>
+	public void pushChanges(<field-type /> timekey) throws <weave-orm />.DatabaseException {
+		_<field-name /> = timekey;
+		pushChanges();
+	}</if-timekey></for-all-fields>
+	
+	<j:method name="delete">@Override
+	public void delete() throws <weave-orm />.DatabaseException {
+		String query = "DELETE FROM " + <table escape="literal" />
+			+ " WHERE "<for-primaries>
+			+ " \"<sql-col />\" = ?<not-last> AND </not-last>"</for-primaries>;
+		try {
+			java.sql.PreparedStatement stmt = manager.connectionManager().getConnection().prepareStatement(query);
+			int i = 1;<for-primaries>
+			stmt.set<is-ref>Int</is-ref><not-ref><field-jdbc-type /></not-ref>(i++, <if-ref>ref</if-ref>_<field-name />);</for-primaries>
+			stmt.execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		}
+		exists = false;
+	}</j:method>
+	
+	<getters />
+	
+	<setters />
+}
+</j:class></relationship>
+
+
+<!-- ==============================================================
+     GETTER
+     ============================================================== -->
+<getter>
+	<j:method basename="get"><not-ref><not-password>
+	@<weave-xml-anno />.XmlAttribute("<field-name />")</not-password></not-ref><if-ref>
+	@<weave-xml-anno />.XmlElement("<field-name />")
+	@<weave-xml-anno />.XmlDependency("is<field-Name />Fetched")</if-ref>
+	@<weave-annotation />.Attribute(name = "<sql-col />"<if-autoinc>, serial = true</if-autoinc><if-nullable>, nullable = true</if-nullable><is-id>, primary = true</is-id><if-hidden>, hidden = true</if-hidden><if-use>, use = "<use />"</if-use><if-ref>, ref = <ref-rel />.class</if-ref>)
+	public <field-type /> get<field-Name />()<is-ref> throws <weave-orm />.DatabaseException</is-ref> {<is-nullable>
+		if (<is-ref>ref</is-ref>_<field-name /> == null) {
+			return null;
+		}</is-nullable><is-ref>
+		if (!fetched_<field-name />) {
+			_<field-name /> = manager.get<field-type />(ref_<field-name />);
+			fetched_<field-name /> = true;
+		}</is-ref>
+		return _<field-name />;
+	}</j:method><if-nullable>
+	<j:method basename="has">
+	public boolean has<field-Name />() {
+		return _<field-name /> != null;
+	}</j:method></if-nullable>
+	
+	<if-ref><j:method basename="is*Fetched">/**
+	 *
+	 * @return true if the resource has already been fetched from the database
+	 */
+	public boolean is<field-Name />Fetched() {
+		return fetched_<field-name />;
+	}</j:method></if-ref>
+	
+	<if-not-id><j:method basename="is*Changed">/**
+	 *
+	 * @return true if the resource has been changed since the last commit
+	 */
+	public boolean is<field-Name />Changed() {
+		return changed_<field-name />;
+	}</j:method></if-not-id><if-ref>
+	<j:method basename="ref">
+	@<weave />.xml.annotation.XmlAttribute("<field-name />")
+	public <ref-id-type /> ref<field-Name />() {
+		return ref_<field-name />;
+	}</j:method></if-ref>
+	<if-timekey>
+	public <field-type /> timekey() {
+		return _<field-name />;
+	}
+	
+	public boolean isValidTimekey(<field-type /> key) {
+		return <weave-orm />.GenericRelationManager.compareValues(_<field-name />, key) == 0;
+	}
+	
+	public void checkTimekey(<field-type /> key) throws <weave-orm />.OutdatedRecordException {
+		if (!isValidTimekey(key)) {
+			throw new <weave-orm />.OutdatedRecordException();
+		}
+	}</if-timekey>
+</getter>
+
+
+<!-- ==============================================================
+     SETTER
+     ============================================================== -->
+<setter><if-timekey>@Override
+	protected <field-type /> timekey(boolean update) {
+		_<field-name /> = <default />;
+		return _<field-name />;
+	}</if-timekey>
+	
+	<if-not-id><if-not-timekey>/**
+	 * Sets the value of &lt;code><field-name />&lt;/code>. <is-nullable>You may specify null as value.</is-nullable>
+	 *
+	 * If the new value is the same as the old value, this method has no effect, i.e. if you
+	 * specify a new value, than {@see is<field-Name />Changed()} will return true. If you specify
+	 * the same value as the old value is<field-Name />Changed() will return the same as it did
+	 * before calling &lt;code>set<field-Name />(...)&lt;/code>.
+	 * <not-nullable>
+	 * @throws IllegalArgumentException if the value is &lt;code>null&lt;/code> (since &lt;code><field-name />&lt;/code> is not nullable)</not-nullable>
+	 * @since Iteration2
+	 */
+	public <class-name /> set<field-Name />(<field-type /> value) {
+		<not-nullable>if (manager.isNull(value)) {
+			throw new java.lang.IllegalArgumentException("<field-name /> is not nullable, null given");
+		}</not-nullable>
+		<is-nullable>if (value == null) {
+			clear<field-Name />();
+			return this;
+		}</is-nullable>
+		if (<weave-orm />.GenericRelationManager.compareValues(<is-ref>ref</is-ref>_<field-name />, value<is-ref>._id</is-ref>) == 0) return this;
+		changed_<field-name /> = true;<is-ref>
+		ref_<field-name /> = value._id;
+		fetched_<field-name /> = true;</is-ref>
+		_<field-name /> = value;
+		return this;
+	}<if-nullable>
+	
+	<j:method basename="clear">/**
+	 * <field-name /> may be null, use this function to clear its value.
+	 * @since Iteration3
+	 */
+	public <class-name /> clear<field-Name />() {
+		if (_<field-name /> == null<is-ref> &amp;&amp; ref_<field-name /> == null</is-ref>) {
+			return this;
+		}
+		_<field-name /> = null;<is-ref>
+		ref_<field-name /> = null;</is-ref>
+		changed_<field-name /> = true;
+		return this;
+	}</j:method></if-nullable></if-not-timekey></if-not-id>
+</setter>
+
+
+<!-- ==============================================================
+     MANAGER
+     ============================================================== -->
+<manager-interface>
+public interface <class-name />Interface extends <weave-orm />.RelationManager {<for-entities>
+	public java.sql.SQLXML export<entity-class />(boolean with_schema) throws <weave-orm />.DatabaseException;
+	
+	public <entity-class /> new<entity-class />(<for-required><field-type /> _<field-name /><not-last>, </not-last></for-required>);
+	
+	public <entity-class /> create<entity-class />(<for-required><field-type /> _<field-name /><not-last>, </not-last></for-required>) throws <weave-orm />.DatabaseException;
+	
+	public <entity-class /> fullyCreate<entity-class />(<for-fields><field-type /> _<field-name /><not-last>, </not-last></for-fields>) throws <weave-orm />.DatabaseException;
+	
+	public <entity-class /> fullyNew<entity-class />(<for-fields><field-type /> _<field-name /><not-last>, </not-last></for-fields>) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int offset, int limit, <weave-orm />.Filter filters) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int offset, int limit, <weave-orm />.Filter filter, String... joinColumns) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int limit, <weave-orm />.Filter filter, String... joinColumns) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(<weave-orm />.Filter filter, String... joinColumns) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(<weave-orm />.Filter filters) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />() throws <weave-orm />.DatabaseException;
+	
+	public <entity-class /> get<entity-class />(<id-type /> id) throws <weave-orm />.DatabaseException;
+	
+	public void delete<entity-class />(<weave-orm />.Filter... filters) throws <weave-orm />.DatabaseException;
+	
+	public void delete<entity-class />(<id-type /> id) throws <weave-orm />.DatabaseException;
+</for-entities>
+<for-relationships>
+	public java.util.List&lt;<relationship-class />&gt; get<relationship-class />(<subject-class /> subject, <object-class /> object) throws <weave-orm />.DatabaseException;
+	
+	public java.util.List&lt;<relationship-class />&gt; get<relationship-class />() throws <weave-orm />.DatabaseException;
+	
+	public void delete<relationship-class />(<weave-orm />.Filter... filters) throws <weave-orm />.DatabaseException;
+	
+	public void delete<relationship-class />(<subject-class /> subject, <object-class /> object) throws <weave-orm />.DatabaseException;
+	
+	public <relationship-class /> fullyNew<relationship-class />(<subject-class /> subject, <object-class /> object<for-fields>, <field-type /> _<field-name /></for-fields>);
+	
+	public <relationship-class /> fullyCreate<relationship-class />(<subject-class /> subject, <object-class /> object<for-fields>, <field-type /> _<field-name /></for-fields>) throws <weave-orm />.DatabaseException;
+	
+	public <relationship-class /> new<relationship-class />(<subject-class /> subject, <object-class /> object<for-required>, <field-type /> _<field-name /></for-required>);
+	
+	public <relationship-class /> create<relationship-class />(<subject-class /> subject, <object-class /> object<for-required>, <field-type /> _<field-name /></for-required>) throws <weave-orm />.DatabaseException;
+	
+	public java.sql.SQLXML export<relationship-class />(boolean with_schema) throws <weave-orm />.DatabaseException;
+</for-relationships>
+
+	public static class RelationManagerFactory {
+		private final <weave-orm />.ConnectionManager $connectionManager;
+	
+		RelationManagerFactory() {
+			this.$connectionManager = null;
+		}
+		
+		RelationManagerFactory(<weave-orm />.ConnectionManager $connectionManager) {
+			this.$connectionManager = $connectionManager;
+		}
+	
+		public static RelationManagerFactory newFactory() {
+			return new RelationManagerFactory();
+		}
+		
+		public static RelationManagerFactory newFactory(<weave-orm />.ConnectionManager $connectionManager) {
+			if ($connectionManager == null) return newFactory();
+			return new RelationManagerFactory($connectionManager);
+		}
+	
+		public <class-name />Interface newInstance() {
+			if ($connectionManager == null) {
+				return new <class-name />();
+			} else {
+				return new <class-name />($connectionManager);
+			}
+		}
+		
+		public static <class-name />Interface newInstance(<weave-orm />.ConnectionManager $connectionManager) {
+			return new <class-name />($connectionManager);
+		}
+	}
+}
+</manager-interface>
+     
+<manager>
+<j:class>/**
+ *
+ */
+public class <class-name /> extends <weave-orm />.GenericRelationManager
+	implements java.lang.Cloneable, <class-name />Interface {
+	
+	<j:field name="knownRelations">java.util.Map&lt;String,<weave-orm />.Relation> knownRelations = new java.util.TreeMap&lt;String,<weave-orm />.Relation>();</j:field>
+	
+	<j:constructor>/**
+	 * Constructs a new RelationManager
+	 */
+	public <class-name />() {
+		super();
+	}</j:constructor>
+	
+	<j:constructor>/**
+	 * 
+	 */
+	public <class-name />(<weave-orm />.ConnectionManager $connectionManager) {
+		super($connectionManager);
+	}</j:constructor>
+	
+	<j:method basename="clone">public <class-name /> clone() {
+		try {
+			return (<class-name />) super.clone();
+		} catch (Exception $exc) {
+			return null;
+		}
+	}</j:method>
+	
+	<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+	     FOR RELATIONSHIPS
+	     = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
+	<for-relationships><j:method basename="get*(&lt;subject&gt;,&lt;object&gt;)">/**
+	 *
+	 */
+	public java.util.List&lt;<relationship-class />&gt; get<relationship-class />(<subject-class /> subject, <object-class /> object) throws <weave-orm />.DatabaseException {
+		<weave-orm />.Filter[] filters = {
+			<weave-orm />.filters.Filters.eq("<subject-fk-name />", subject.id()),
+			<weave-orm />.filters.Filters.eq("<object-fk-name />", object.id())
+		};
+		java.lang.StringBuilder limitString = new StringBuilder();
+		String whereString = makeWhereString(filters);
+		java.lang.String query = "SELECT * FROM " + <table escape="literal" /> + whereString + limitString.toString();
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			java.sql.ResultSet result = executeQuery(assignFilters(stmt, filters));
+			java.util.List&lt;<relationship-class />&gt; resultCollection = new java.util.ArrayList&lt;<relationship-class />&gt;();
+			while (result.next()) {
+				resultCollection.add(new <relationship-class />(this, subject, object, result));
+			}
+			return resultCollection;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		} catch (NullPointerException e) {
+			throw new <weave-orm />.DatabaseException("Database is not available (is it set up?)", e);
+		}
+	}</j:method>
+	
+	<j:method basename="get()">/**
+	 *
+	 */
+	public java.util.List&lt;<relationship-class />&gt; get<relationship-class />() throws <weave-orm />.DatabaseException {
+		<weave-orm />.Filter[] filters = new <weave-orm />.Filter[0];
+		java.lang.StringBuilder limitString = new StringBuilder();
+		String whereString = makeWhereString(filters);
+		java.lang.String query = "SELECT * FROM " + <table escape="literal" /> + whereString + limitString.toString();
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			java.sql.ResultSet result = executeQuery(assignFilters(stmt, filters));
+			java.util.List&lt;<relationship-class />&gt; resultCollection = new java.util.ArrayList&lt;<relationship-class />&gt;();
+			while (result.next()) {
+				resultCollection.add(new <relationship-class />(this, result));
+			}
+			return resultCollection;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		} catch (NullPointerException e) {
+			throw new <weave-orm />.DatabaseException("Database is not available (is it set up?)", e);
+		}
+	}</j:method>
+	
+	<j:method basename="delete">/**
+	 * Deletes the relationships matching the given filters.
+	 */
+	public void delete<relationship-class />(<weave-orm />.Filter... filters) throws <weave-orm />.DatabaseException {
+		String whereString = (filters.length > 0) ? " WHERE " + translateToSQL(filters) : "";
+		java.lang.String query = "DELETE FROM " + <table escape="literal" /> + whereString;
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			assignFilters(stmt, filters).execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method>
+	
+	<j:method basename="delete">/**
+	 * Deletes the relationship identified by the given subject and object.
+	 */
+	public void delete<relationship-class />(<subject-class /> subject, <object-class /> object) throws <weave-orm />.DatabaseException {
+		delete<relationship-class />(<weave-orm />.filters.Filters.all(
+			<weave-orm />.filters.Filters.eq("<subject-fk-name />", subject.id()),
+			<weave-orm />.filters.Filters.eq("<object-fk-name />", object.id())));
+	}</j:method>
+	
+	<j:method basename="fullyNew">/**
+	 * Creates a new relationship between two Entities. Only the object will be created, not it’s corresponding row in the database.
+     * <for-fields>
+	 * @param _<field-name /> <field-description /></for-fields>
+	 */
+	public <relationship-class /> fullyNew<relationship-class />(<subject-class /> subject, <object-class /> object<for-fields>, <field-type /> _<field-name /></for-fields>) {
+		return new <relationship-class />(this, true, subject, object<for-fields>, _<field-name /></for-fields>);
+	}</j:method>
+	
+	<j:method basename="fullyCreate">/**
+	 * Creates a new relationship between two Entities. The Relationship is automatically created in the database.
+     * <for-fields>
+	 * @param _<field-name /> <field-description /></for-fields>
+	 */
+	public <relationship-class /> fullyCreate<relationship-class />(<subject-class /> subject, <object-class /> object<for-fields>, <field-type /> _<field-name /></for-fields>) throws <weave-orm />.DatabaseException {
+		<relationship-class /> obj = fullyNew<relationship-class />(subject, object<for-fields>, _<field-name /></for-fields>);
+		obj.create();
+		return obj;
+	}</j:method>
+	
+	<j:method basename="new">/**
+     * <for-required>
+	 * @param _<field-name /> <field-description /></for-required>
+	 */
+	public <relationship-class /> new<relationship-class />(<subject-class /> subject, <object-class /> object<for-required>, <field-type /> _<field-name /></for-required>) {
+		return new <relationship-class />(this, subject, object<for-required>, _<field-name /></for-required>);
+	}</j:method>
+	
+	<j:method basename="create">/**
+	 * Creates a new relationship between two Entities. The Relationship is automatically created in the database.
+     * <for-required>
+	 * @param _<field-name /> <field-description /></for-required>
+	 */
+	public <relationship-class /> create<relationship-class />(<subject-class /> subject, <object-class /> object<for-required>, <field-type /> _<field-name /></for-required>) throws <weave-orm />.DatabaseException {
+		<relationship-class /> obj = new<relationship-class />(subject, object<for-required>, _<field-name /></for-required>);
+		obj.create();
+		return obj;
+	}</j:method>
+	
+	<j:method basename="export">/**
+	 *
+	 */
+	public java.sql.SQLXML export<relationship-class />(boolean with_schema) throws <weave-orm />.DatabaseException {
+		return export(<table escape="literal" />, with_schema);
+	}</j:method>
+	</for-relationships>
+	<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+	     FOR ENTITIES
+	     = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
+	<for-entities><j:method basename="export">/**
+	 * 
+	 */
+	public java.sql.SQLXML export<entity-class />(boolean with_schema) throws <weave-orm />.DatabaseException {
+		return export(<table escape="literal" />, with_schema);
+	}</j:method>
+	
+	<j:method basename="new">/**
+	 * Instantiates (but does not {@link <entity-class />#create()}) a <entity-class /> with only required attributes.<for-required>
+	 * @param _<field-name /> <field-description /></for-required>
+	 * @return A new entity-object which is minimally initialized and not yet created in the database.
+	 * @since Iteration2
+	 */
+	public <entity-class /> new<entity-class />(<for-required><field-type /> _<field-name /><not-last>, </not-last></for-required>) {
+		return new <entity-class />(this, <for-required>_<field-name /><not-last>, </not-last></for-required>);
+	}</j:method>
+	
+	<j:method basename="create">/**
+	 * Creates a <entity-class /> with only required attributes.<for-required>
+	 * @param _<field-name /> <field-description /></for-required>
+	 * @return A new entity object which is minimally initialized and also existing in the database.
+	 * @since Iteration2
+	 */
+	public <entity-class /> create<entity-class />(<for-required><field-type /> _<field-name /><not-last>, </not-last></for-required>) throws <weave-orm />.DatabaseException {
+		<entity-class /> entity = new<entity-class />(<for-required>_<field-name /><not-last>, </not-last></for-required>);
+		entity.create();
+		return entity;
+	}</j:method>
+	
+	<j:method basename="fullyCreate">/**
+	 * Creates a <entity-class /> and initializes all attributes.<for-fields>
+	 * @param _<field-name /> <field-description /></for-fields>
+	 * @return A new entity object which is fully initialized and represented in the database.
+	 * @since Iteration2
+	 */
+	public <entity-class /> fullyCreate<entity-class />(<for-fields><field-type /> _<field-name /><not-last>, </not-last></for-fields>) throws <weave-orm />.DatabaseException {
+		<entity-class /> entity = fullyNew<entity-class />(<for-fields>_<field-name /><not-last>, </not-last></for-fields>);
+		entity.create();
+		return entity;
+	}</j:method>
+	
+	<j:method basename="fullyNew">/**
+	 * Instantiates (but does not {@link <entity-class />#create()}) a <entity-class /> and initializes all attributes.<for-fields>
+	 *
+	 * @param _<field-name /> <field-description /></for-fields>
+	 * @return A new entity object which is fully initialized but not represented in the database.
+	 * @since Iteration2
+	 */
+	public <entity-class /> fullyNew<entity-class />(<for-fields><field-type /> _<field-name /><not-last>, </not-last></for-fields>) throws <weave-orm />.DatabaseException {
+		<entity-class /> entity = new <entity-class />(this, true, <for-fields>_<field-name /><not-last>, </not-last></for-fields>);
+		return entity;
+	}</j:method>
+	
+	<j:method basename="get*(int,int,Filter)">/**
+	 * Gets <entity-class /> entities matching the given filters.
+	 *
+	 * @param offset In a dataset of 200 items the offset is the position of an item in this set. Selection will start at this point.
+	 * @param limit An upper bound for the number of entities to fetch.
+	 * @param filters Any number (including zero) of filters.
+	 * @throws IllegalArgumentException If offset is negative.
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int offset, int limit, <weave-orm />.Filter filters) throws <weave-orm />.DatabaseException {
+		if (offset &lt; 0) {
+			throw new IllegalArgumentException("Offset must be 0 or positive.");
+		}
+		java.lang.StringBuilder limitString = new StringBuilder();
+		limitString.append(" LIMIT ");
+		if (limit > -1) {
+			limitString.append(limit);
+		} else {
+			limitString.append("ALL");
+		}
+		if (offset > 0) {
+			limitString.append(" OFFSET " + offset);
+		}
+		String whereString = makeWhereString(filters);
+		java.lang.String query = "SELECT * FROM " + <table escape="literal" /> + whereString + limitString.toString();
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			java.sql.ResultSet result = executeQuery(assignFilters(stmt, filters));
+			java.util.List&lt;<entity-class />&gt; resultCollection = new java.util.ArrayList&lt;<entity-class />&gt;();
+			while (result.next()) {
+				resultCollection.add(new <entity-class />(this, result));
+			}
+			return resultCollection;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(query, e);
+		} catch (NullPointerException e) {
+			throw new <weave-orm />.DatabaseException("Database is not available (is it set up?)", e);
+		}
+	}</j:method>
+	
+	<j:method basename="get*(int,int,Filter,String...)">/**
+	 * 
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int offset, int limit, <weave-orm />.Filter filter, String... joinColumns) throws <weave-orm />.DatabaseException {
+		return get<entity-class />(offset, limit, filter);
+	}</j:method>
+	
+	<j:method basename="get*(int,int,String...)">/**
+	 * 
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int offset, int limit, String... joinColumns) throws <weave-orm />.DatabaseException {
+		return get<entity-class />(offset, limit, null, joinColumns);
+	}</j:method>
+	
+	<j:method basename="get*(int,Filter,String...)">/**
+	 * 
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(int limit, <weave-orm />.Filter filter, String... joinColumns) throws <weave-orm />.DatabaseException {
+		return get<entity-class />(0, limit, filter, joinColumns);
+	}</j:method>
+	
+	<j:method basename="get*(Filter,String...)">/**
+	 * 
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(<weave-orm />.Filter filter, String... joinColumns) throws <weave-orm />.DatabaseException {
+		return get<entity-class />(0, -1, filter, joinColumns);
+	}</j:method>
+	
+	<j:method basename="get*(Filter)">/**
+     * 
+     *
+     * @param filters Any number (including zero) of filters.
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />(<weave-orm />.Filter filters) throws <weave-orm />.DatabaseException {
+		return get<entity-class />(0, -1, filters);
+	}</j:method>
+	
+	<j:method basename="get*()">/**
+     * 
+     *
+     * @param filters Any number (including zero) of filters.
+	 */
+	public java.util.List&lt;<entity-class />&gt; get<entity-class />() throws <weave-orm />.DatabaseException {
+		return get<entity-class />(0, -1);
+	}</j:method>
+	
+	<j:method basename="get*(&lt;id&gt;)">/**
+	 * Gets a single <entity-class /> entity by its ID.
+	 *
+	 * @param id The id of the <entity-class /> retrieve
+	 * @return The entity or null if no entity is identified by the given id.
+	 */
+	public <entity-class /> get<entity-class />(<id-type /> id) throws <weave-orm />.DatabaseException {
+		String query = "SELECT * FROM " + <table escape="literal" /> + " WHERE \"<id-field />\" = ?;";
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			stmt.set<id-jdbc-type />(1, id);
+			java.sql.ResultSet result = executeQuery(stmt);
+			if (!result.next()) {
+				return null;
+			}
+			return new <entity-class />(this, result);
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method>
+	
+	<j:method basename="delete">/**
+	 * Deletes the entities matching the given Filters
+	 */
+	public void delete<entity-class />(<weave-orm />.Filter... filters) throws <weave-orm />.DatabaseException {
+		String whereString = (filters.length > 0) ? " WHERE " + translateToSQL(filters) : "";
+		java.lang.String query = "DELETE FROM " + <table escape="literal" /> + whereString;
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			assignFilters(stmt, filters).execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method>
+	
+	<j:method basename="delete">/**
+	 * Deletes the entity that is identified by the given id.
+	 */
+	public void delete<entity-class />(<id-type /> id) throws <weave-orm />.DatabaseException {
+		String query = "DELETE FROM " + <table escape="literal" /> + " WHERE \"<id-field />\" = ?;";
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			stmt.set<id-jdbc-type />(1, id);
+			stmt.execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	}</j:method><if-user>
+	
+	<j:method basename="executeQuery()">@Override
+	protected java.sql.ResultSet executeQuery(java.sql.PreparedStatement $stmt) throws java.sql.SQLException {
+		return super.executeQuery($stmt);
+	}</j:method>
+	
+	<j:method basename="fetchUsers" override="true">/**
+	 * Returns a list of <entity-class /> as Users. Basically this is the same as {@link #get<entity-class />(<weave-orm />.Filter)}.
+	 * &lt;p&gt;
+	 * This method is required by {@see de.fu.weave} for basic actions like login and logout. It differs from &lt;code>get<entity-class />(Filter...)&lt;/code> in that it does not return <entity-class />-objects but User-objects.
+	 *
+	 * @since Iteration2
+	 */
+	@Override
+	public java.util.List&lt;? extends <weave />.User&gt; fetchUsers(<weave-orm />.Filter filter) throws <weave-orm />.DatabaseException {
+		return getPerson(filter);
+	}</j:method>
+	
+	<j:method basename="fetchUser">/**
+	 * Returns a User identified by the given id. Basically this is the same as {@link #get<entity-class />(int)}. It differs from get<entity-class />(int) in that it does not return a <entity-class />-objects but a User-object.
+	 * @since Iteration2
+	 */
+	@Override
+	public <weave />.User fetchUser(int id) throws <weave-orm />.DatabaseException {
+		return getPerson(id);
+	}</j:method>
+	</if-user></for-entities>
+	
+	<j:method name="install" type="boolean">
+	<j:throws><weave-orm />.DatabaseException</j:throws>
+	<j:body>
+		try {
+			beginTransaction();
+			java.sql.Statement stmt = connectionManager().getConnection().createStatement();
+			<for-queries>stmt.executeUpdate(<query escape="literal" />);
+			</for-queries>
+			commitTransaction();
+			return true;
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+	</j:body></j:method>
+	
+	<j:method name="dropSchema" type="boolean">
+	<j:throws><weave-orm />.DatabaseException</j:throws>
+	<j:body>
+		java.lang.String query = "DROP SCHEMA IF EXISTS \"scetris\" CASCADE;";
+		try {
+			java.sql.PreparedStatement stmt = connectionManager().getConnection().prepareStatement(query);
+			stmt.execute();
+		} catch (java.sql.SQLException e) {
+			throw new <weave-orm />.DatabaseException(e);
+		}
+		return true;
+	</j:body></j:method>
+}
+</j:class></manager>
+
+</template>
