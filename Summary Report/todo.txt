@@ -1,0 +1,33 @@
+JEDER SOLLTE HIER ALLES EINTRAGEN UND ALLES STREICHEN
+
+
+################
+##### BOGUS ####
+################
+
+4 listenpunkte , zahlen
+
+
+5 warum kursiver text als einleitung / bzw. warum nicht sonst auch kursiv ? beides scheint sinnvoll, müssen uns nur einigen
+
+5 java fett machen
+5 jetty wird genannt aber nicht tomcat ?
+5 footnotes/link auf lettze seite ?
+5.0 letzter satz (postgres … ) als footnote ?
+5.3 xsl-t 
+
+
++ buzzwords/keywords gleich machen 
+ ZB: "MyCourses", "use case", "data access layer" oder "database access layer", 
++ Darüber einige werden ob fett oder kursiv
+
+################
+##### TODO #####
+################
+
++ the app. 8 - neue subsection : configurability/ erweiterbarkeit/ xml
+
+
+################
+# ABGEARBEITET #
+################

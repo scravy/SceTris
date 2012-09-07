@@ -1,0 +1,39 @@
+\section{Technologies}
+The following sections will discuss the technologies used in our project and the rationale behind them. For each technology we state the software or tool we used.
+
+\subsection{Programming languages}
+\begin{description}
+
+\item[Java] is the only language that all members had a reasonable level of skill in. Thus it was preferred over other languages such as Haskell, PHP, Python. Perl and Ruby. We did however not restrict ourselves to using only Java but instead employed AspectJ which is described in the next paragraph.
+
+\item[AspectJ] as we were all familiar with Java and wanted to have aspects, which is especially useful to supplement auto-generated code. Regarding the amount of time spent to learn new technologies and the fact that we did not have much of a time buffer,  this was the right decision. Using AspectJ did not force anyone in our team to learn a new language but still provided powerful features that were utilized by some where useful. Especially considering the huge amount of auto-generated code, AspectJ was a great choice as it allowed us to plug in functionality in some auto-generated classes without changing the other auto-generated classes and also allowed do this in a most simple way.
+
+\item[PL/pgSQL] as we wanted to take advantage of the performance of Postgres for some of our functions. We carefully examined functions that could be implemented in PL/pgSQL, to see if implementing it on application level might be better. Accordingly we are convinced that using PL/pgSQl in those cases that we did is beneficial to overall performance.
+
+\item[Ant \& Shell scripts] were used for routinely operated jobs. As the amount of time to write a shell script is small they quickly payed of. 
+\end{description}
+
+\subsection{Tools}
+\begin{description}
+
+\item[Wikis] are often used to spread knowledge over a wide community, we also used a wiki. This way we had the possibility to work on all different documents that were important for the project, like various guidelines, usecases, reports of iterations. As well all member were able to enter their personal timetables of the week, so each of us could easily see when some of us were available. 
+
+\item[Ticket system] was needed during the project, since we needed a system that could save all kinds of problems regarding the current implementation. As Mail is not the best way to do so, we installed a ticket system provided by \emph{trac}. Sadly it was rarely used in the first few iterations. But as the project went on, we realized that there were many situation when there was something missing or not working properly, so anybody could simply open a ticket, describe the problem, assign a component of the project, and even assign a person who's responsible for that certain problem. 
+
+\item[Web-server] 
+
+\item[Build tool] were often used, when several tasks are done various times, like compiling code or cleaning directories. As we used Java as mainlanguage for our project the decision to use \emph{ant} was pretty easy. Another reason for \emph{ant} is the fact, that we provide a mechanism to deploy our software easy and fast, since no additional software needs to be installed except for Java, which is required anyway.
+
+\item[IDE] are also common for repeatative tasks but that was not a problem anymore, since we used other build tools. First of all, different people write different code and what we want is a homogenous product, both the application the user is confronted with and the underlaying code. So we decided to use \emph{Eclipse} as our IDE, which will autoformat code with a given stylesheet. This way the code will always have the same look and feel. Secondly it's important to not think about missing code and the fact we used AspectJ could have been problematic. Luckily \emph{Eclipse} will automatically combine sourcecode from Java with the code from AspectJ so you don't have worry about missing functions while writing the code.
+
+\item[JUnit]
+
+\item[DBMS] as we needed a way to save our data persistent for both the scheduler and the web user interface. One goal was to use FLOSS as much as possible \emph{PostgreSQL} seemed reasonable for us, since some of us already used it succesfully on smaller projects.
+
+\item[CVS] are very useful for larger projects with more than one person working on the code. With common sense you realize that it's impossible to review every code from other members to combine them seperatly or even the consistent spreading of code to others is nearly impossible. As there are several CVS that pretty much offer the same, we come to a decision to use \emph{subversion}, because our institute provided already \emph{subversion} for other students, so no time was wasted on configurating our own \emph{subverison}. 
+\end{description}
+
+
+\subsection{Relational model}
+
+

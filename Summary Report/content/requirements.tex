@@ -1,0 +1,34 @@
+\section{Requirements}
+The next two sections are a overview of the problem and the resulting requirements. The first section will state the problem, while the second describes the specification we deduced from it.
+
+\subsection{Problem Statement}
+Organizations like universities and schools are required to allocate courses to the given resources in a sensible way. As the amount of resources and courses grows large, it gets increasingly costly to do the allocation manually. Furthermore the task is repeated quite often and thus a lot of work is spent for it. Often the courses and resources remain similar each term and much of the previous solution can be reused. Each solution to such a problem must satisfy a number of constraints. These constraints often are, but are not limited to:
+\begin{itemize}
+	\item a room can only be booked once at a given time
+	\item a lecturer can only lecture one course at a given time
+	\item the different instances of a course must be held at different times
+\end{itemize}
+We called them hard-constraints.Furthermore a number of constraints exist that represent a preference. These constraints should be satisfied where possible but they need not be. These were called soft-constraints.
+
+\subsection{Requirement elicitation}
+Most of the requirements are already present in the project description of myCourses. While the need to find the requirements was mostly eliminated it is still helpful to be a more specific about the meaning of these requirements. To make the requirements more specific and better understood we created use-cases. These use-cases helped during implementation as the question of their realization was possible.
+
+\vskip2ex
+
+As we also desired more insight in how a scheduling process may look like, we asked an employee of our institute to give us a demonstration. The demonstration was conducted on the system used at our institute. While it did not reveal  completely unknown aspects to us it gave us a better estimation of the importance of certain aspects.
+
+\subsection{Requirement specification}
+The ideal scenario is a program that automatically finds an optimal solution. However the problem is NP-hard and thus a computer-aided scheduling process is the focus. As the interests of many employees and students at the universities are affected by the result, they should be allowed to participate in the process or at least be taken into consideration. The requirements that struck us as most important are the following:
+\begin{itemize}
+	\item automatic course allocation
+	\item satisfaction of hard- and soft-constraints
+	\item chance for manual allocations
+	\item suited for multi-user environments
+	\item scalable scheduling
+	\item configurable system
+	\item scheduling-related information is available
+	\item definition of scheduling-related information is possible
+	\item comfortable presentation to the user
+	\item restricted access to information
+\end{itemize}
+These are the requirements that had the highest influence on our initial design and each subsequent change.

@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{Davis85}
+L.~Davis.
+\newblock Job shop scheduling with genetic algorithm.
+\newblock In {\em Proc.\ of the International Conference on Genetic Algorithms
+  and Their Applications}, pages 136--140, Pittsburgh, PA, 1985.
+
+\bibitem{Ghaemi_usinga}
+Sehraneh Ghaemi.
+\newblock Using a genetic algorithm optimizer tool to solve university
+  timetable scheduling problem.
+
+\bibitem{10.1109/ICISE.2009.1281}
+Xia Wang, Lin Huang, and Qing Zou.
+\newblock The research on multi-strategy course scheduling algorithm.
+\newblock {\em Information Science and Engineering, International Conference
+  on}, 0:2419--2422, 2009.
+
+\end{thebibliography}
