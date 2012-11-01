@@ -1,62 +1,97 @@
-\documentclass{article}
-\usepackage[utf8x]{inputenc}
+\documentclass[a4paper, 11pt]{article}
+%\usepackage{fullpage}
+\usepackage{anysize}\usepackage[utf8x]{inputenc}
 \usepackage{float}
 \usepackage{graphics}
 \usepackage{graphicx}
-\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor = black,plainpages = false,hypertexnames = false,citecolor = black] {hyperref}
+\usepackage{url}
+
+%zweispaltenlayout
+\usepackage{multicol}
+\setlength{\columnsep}{20pt}
+%separation between two column floats and text
+\setlength\textfloatsep{10pt plus 4pt minus 3pt}
+
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH,bookmarksopen = true,bookmarksnumbered = true,linkcolor=black,plainpages = false,hypertexnames = false,citecolor = black,urlcolor=black] {hyperref}
+
+%%andres voodoo
+%\usepackage{setspace}
+%\singlespacing
+%\doublespacing
+
+\marginsize{1.8cm}{1.8cm}{1.2cm}{1.2cm}
+
+
+\newcommand{\ads}[1]{\textbf{#1}}
+\newcommand{\link}[2]{\footnote{\href{#1}{\texttt{#1} – #2}}}
 
 \begin{document}
 \begin{titlepage}
- 
+
 %opening
 
 \newcommand{\changefont}[3]{
 \fontfamily{#1}  \fontseries{#2}  \fontshape{#3}  \selectfont}
 
-\title{\huge \textbf{S.C.O.R.E  MyCourses} \vskip 2ex \includegraphics[width=0.5\textwidth]{images/scetris_trans_blackglow.png} \vskip 2ex \textbf{\large Summary report} \vskip 2ex}
+\title{\huge\textsc{MyCourses\\Summary Report} \vskip 2ex \includegraphics[width=0.5\textwidth]{images/logo_scetris.pdf} \vskip 2ex \textsc{\LARGE SCORE Contest 2011} \vskip 2ex}
+
 \author{\changefont{cmr}{m}{sc} David Bialik, Julian Fleischer, Hagen Mahnke,\\ \changefont{cmr}{m}{sc} Konrad Reiche, André Zoufahl}
-\date{\today}
+\date{January 15, 2011}
 
 \maketitle
 
 \vskip 3ex
 \center \includegraphics[width=0.3\textwidth]{images/siegel.jpg}
 
-\center \changefont{cmr}{m}{sc} \LARGE Free University of Berlin \vskip 2ex \large Department of Mathematics and Computer Science\\Institute of Computer Science
+\center \textsc{ \LARGE Freie Universität Berlin \vskip 2ex \large Department of Mathematics and Computer Science\\Institute of Computer Science }\vskip 4ex \href{http://www.fu-berlin.de/}{\textsf{www.fu-berlin.de}}
 
 \thispagestyle{empty}
 \end{titlepage}
 
 \newpage
 
+%\pdfbookmark[1]{\contentsname}{toc}
+
+\begin{multicols}{2}
+
+\pdfbookmark[1]{Contents}{toc}
 \tableofcontents
 
-\newpage
+\raggedcolumns
+\columnbreak
+%\newpage
 
 \begin{abstract}
-This document summarizes the activities of a team of undergraduate students participating in the student contest on software engineering [SCORE] 2011. The carried out project was myCourses. (The work was done on the project myCourses.) The document contains descriptions of the work done during the development process. In particular about the requirement solicitation, requirements specification, design and the implementation. (It provides a description of the problem, the software development process and the product.)
+This document summarizes the activities of a team of undergraduate students participating in the student contest on software engineering [SCORE] 2011\link{http://score-contest.org/2011/}{Homepage of SCORE}. The carried out project was \emph{MyCourses}\link{http://score-contest.org/2011/projects/Crnkovic.MyCourses.pdf}{Project description of MyCourses}. The document contains descriptions of the work done during the development process, in particular about the requirement solicitation, requirements specification, design and the implementation. 
 \end{abstract}
 
 
+\input{content/01team.tex}
+\input{content/02development.tex}
+\input{content/03requirements.tex}
+\input{content/04architecture.tex}
+\input{content/05technologies.tex}
+\input{content/06design.tex}
+\input{content/07implementation.tex}
+\input{content/08application.tex}
+\input{content/09validation.tex}
+\input{content/10outcome.tex}
 
 
-\input{content/whoarewe.tex}
-\input{content/development.tex}
-\input{content/requirements.tex}
-\input{content/arch_design.tex}
-\input{content/technologies.tex}
-\input{content/implementation.tex}
-\input{content/validation.tex}
-\input{content/application.tex}
-\input{content/outcome.tex}
-\input{content/conclusion.tex}
-
-
+\end{multicols}
+\begin{multicols}{2}
 
 \nocite{*}
 \bibliographystyle{plain}
+\pdfbookmark[1]{References}{bib}
 \bibliography{summary_report}
 
+\begin{figure}[H]
+\includegraphics[width=\columnwidth]{images/hack_whitespace.png}
+\end{figure}
 
+\end{multicols}
 
 \end{document}

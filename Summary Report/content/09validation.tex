@@ -1,0 +1,44 @@
+\end{multicols}
+\begin{multicols}{2}[\section{Verification and validation}]
+\label{sec:verification-and-validation}
+
+This section will cover testing and other measurements which were taken to reassure ourselves of the correctness of our implementations. However, performance measurement is also part of verification and validation.
+
+\end{multicols}
+\begin{multicols}{2}[\subsection{Unit tests using JUnit and automated testing using Cobertura}]
+
+In order to test the correctness of \emph{MyCourses} we applied JUnit. Additonally we used Cobertura to check the code and branch coverage of each unit test. Since total code or even branch coverage was a too time intense task, we decided to concentrate the unit tests on only the most important parts of \emph{MyCourses}. This encompass unit testing for the scheduler and the complete data access layer where the tasks are most critical.
+
+Testing the scheduler for correctness is a non-trivial task. Not only does the presence of a genetic algorithm increase the complexity, but its random-factor also makes it hard to test conditions which have to be satisfied at all times. One approach to improve the testability of the scheduler is the introduction of a seeded random generator. Whenever randomness is applied in the scheduler, it can be reproduced by using the same seed.
+
+In order to achieve a high guarantee of the schedulers correctness JUnit tests were implemented as fine-granular as possible. This implies unit tests for every component of the scheduler. Unfortunately, unit tests allow only little input testing. Data-driven testing is a more promising approach for testing the scheduler.
+
+As we were in need of real world tests we wrote a test data generator. Data sets were entered from the New York University\link{http://www.nyu.edu}{New York University} Course Schedule Search\link{http://www.nyu.edu/registrar/listings/}{New York University Course Schedule Search}.
+
+\end{multicols}
+\begin{multicols}{2}[\subsection{Performance and Benchmarking}]
+
+Performance, especially of the scheduler, can be easily tested by test runs with varying size of data input. However this gives no detailed information about the actual performance of separate components. For that reason the profiler \ads{JProfiler} was used to inspect the Java Virtual Machine while executing the program.
+
+This lead to a step-by-step process of picking up the slowest component display in the profiler and trying to improve its performance. In some cases this procedure gave us huge performance boosts.
+
+A weak point of the scheduling performance was the rating of candidate solutions. When checking the constraint satisfactions many data sets have to be queried. The emerging I/O blocking slows the scheduler down. We coped with this task by introducting a query cache.
+
+Also we provided a benchmark of our own, which runs the scheduler with different seeds and different configurations regarding the algorithm and regarding the size of the data sets. For instance the department \emph{Economics} has the following data to be scheduled:
+
+\vskip 2ex
+
+\begin{tabular}{lc}
+Courses: & 43\\
+CourseElements: & 62\\
+CourseInstances: & 43\\
+CourseElementInstances: & 181\\
+\end{tabular}
+
+\vskip 2ex
+
+Without further constraints, but the default constraints \emph{not more then 1 course in the same room at the same time} and \emph{the course lecturer teaches no course at the same time}, the computation is often done in less than 15 minutes.
+
+However, with the increase of custom hard and soft constraints the probability of finding an optimal schedule in a reasonable time decreases dramatically. To some extend the optimization done by the genetic algorithm depends on luck solving remaining conflicts.
+
+But as the scheduler provides a fair pre-schedule we give the responsibility to the user solving remaining conflicts.

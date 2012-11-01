@@ -1,0 +1,56 @@
+\end{multicols}
+\begin{multicols}{2}[\section{Requirements}]
+\label{sec:requirements}
+The following three sections are an overview of the problem and the resulting requirements. The first section  states the problem, while the second describes the elicitation we deduced from it, followed by the specification in the third section.
+
+\end{multicols}
+\pagebreak
+\begin{multicols}{2}[\subsection{Problem statement}]
+
+Organizations like universities and schools have to allocate courses to the given resources in a sensible way. As the amount of resources and courses grows large, it gets increasingly costly to do the allocation manually. Furthermore the task of course scheduling is repeated quite often and thus a lot of work is spent on it. Often the courses and resources remain consistent each term and large parts of the previous solution can be reused. Each solution to such a problem must satisfy a number of constraints.
+
+\end{multicols}
+\begin{multicols}{2}[\subsection{Requirement elicitation}]
+\label{sec:requirement-elicitation}
+Most of the requirements are already outlined in the project description of \emph{MyCourses}. Still we considered it helpful to get more insights into these requirements. To make the requirements more specific and better understood we created use cases. These use cases helped us during implementation as they provided an important frame of orientation.
+
+As we also desired more insight into how a scheduling process might look like, we asked an employee of our institute to give us a demonstration. The demonstration was conducted on the system used at our institute. Although it did not reveal  completely unknown aspects to us, it gave us a better estimation of the importance of certain aspects.
+
+
+\end{multicols}
+\begin{multicols}{2}[\subsection{Requirement specification}]
+\label{sec:requirement-specification}
+The ideal scenario is a program that automatically finds an optimal solution. However the problem is NP-hard \cite{JSSP} and thus a computer-aided scheduling process is the focus.
+
+The problem of course scheduling is defined by the given constraints which have to be satisfied. In order to meet the \emph{MyCourses} specification requirements of high configurability we distinguish constraints by \emph{hard} and \emph{soft constraints}.
+
+\begin{description}
+\item[Hard constraints] are constraints which must be satisfied. If these constraints are not satisfied the lecturing of courses is not possible. This includes the following constraints:
+
+\begin{itemize}
+\item not more than 1 course in the same room at the same time
+
+\item the course lecturer teaches no other course at the same time
+
+\item courses belonging to the same year do not overlap with each other in time in order to ensure studiability
+
+\item every constraint defined by the user with the priority of $100\%$, for instance preferred time, preferred room, etc.
+\end{itemize}
+
+\item[Soft constraints] are constraints which need not to be ultimately satisfied. This includes only constraints defined by the user with a priority less than $100\%$.
+\end{description}
+
+An \emph{optimal solution} is a scheduling which asserts the satisfaction of all \emph{hard} and \emph{soft} constraints.
+
+
+As the interests of many employees and students at the universities are affected by the result, they should be allowed to participate in the process or at least be taken into consideration. The requirements that had the greatest influence on our initial design and each subsequent change are:
+
+\begin{itemize}
+	\item automatic and manual allocation of courses
+	\item satisfaction of hard and softconstraints
+	\item suited for multi-user environments
+	\item scalable scheduling
+	\item defining/ presenting of scheduling-related information
+	\item user-friendly look and feel
+	\item access restriction to different areas
+\end{itemize}
